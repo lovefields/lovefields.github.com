@@ -1,5 +1,5 @@
 # lovefield's portpolio and translation site
-<h2>Portpolio</h2>
+<h4>Portpolio</h4>
 
 
-<h2>Translation</h2>
+<h4>Translation</h4>
