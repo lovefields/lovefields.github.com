@@ -3,6 +3,4 @@
 <ol>
   <li>site : ~~~ <a href="#" target="_blank">tset</a></li>
 </ol>
-
-
 <h4>Translation</h4>
