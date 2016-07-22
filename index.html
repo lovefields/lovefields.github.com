@@ -1,33 +1,157 @@
-﻿<!DOCTYPE html> 
+<!DOCTYPE html> 
 <html xml:lang="ko-KR" lang="ko-KR"> 
 <head> 
 <meta charset="utf-8"> 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LoveField's Site</title> 
-<style type="text/css"> 
-@charset"utf-8";
-@importurl(http://fonts.googleapis.com/css?family=Noto+Sans);
-
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Noto+Sans">
+<title>LoveField's Site</title>
+<style type="text/css">
 body,h1,h2,h3,h4,h5,h6,p,blockquote,pre,dl,dd,ol,ul,fieldset,legend,figure,menu{margin:0;padding:0;border:0}
 article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
 table,th,td{border-spacing:0;border-collapse:collapse}
 ol,ul,li{list-style:none}
 h1,h2,h3,h4,h5,h6{font-size:1em;font-weight:normal}
-body{font:normal 12px/1.2 "noto Sans",sans-serif}
+body{font:normal 12px/1.2 "noto Sans",sans-serif;background:#1c3144}
 input,textarea,select,button{margin:0;padding:0;border-radius:0;color:#333;font:normal 12px/1.2 "noto Sans",sans-serif;outline:0;vertical-align:middle}
 a,a:link,a:visited,a:hover,a:active{text-decoration:none}
 a,button,input[type="submit"],input[type="button"],input[type="reset"]{border:0;background:transparent;cursor:pointer}
 img{border:0;vertical-align:top}
-
-.clearfix:after{content:"";display:block;clear:both}
+html,body{height:100%}
 
 .ts{-o-transition:all 0.3s ease;-moz-transition:all 0.3s ease;-webkit-transition:all 0.3s ease;transition:all 0.3s ease}
+
+.wrap{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex;width:100%;height:100%}
+
+.link_box{display:inline-block;width:220px;margin:auto;color:#fff}
+.link_box h1{font-size:30px;font-weight:bold;text-align:center}
+.link_box h1::before{
+display:inline;
+content:'LoveField\'s Site';
+-webkit-animation:title 5s ease;
+-moz-animation:title 5s ease;
+animation:title 5s ease
+}
+
+@-webkit-keyframes title{
+	0%{content:''}
+	6%{content:'L'}
+	12%{content:'Lo'}
+	18%{content:'Lov'}
+	24%{content:'Love'}
+	30%{content:'LoveF'}
+	36%{content:'LoveFi'}
+	42%{content:'LoveFie'}
+	48%{content:'LoveFiel'}
+	54%{content:'LoveField'}
+	60%{content:'LoveField\''}
+	66%{content:'LoveField\'s'}
+	72%{content:'LoveField\'s '}
+	78%{content:'LoveField\'s S'}
+	84%{content:'LoveField\'s Si'}
+	94%{content:'LoveField\'s Sit'}
+}
+
+@-moz-keyframes title{
+	0%{content:''}
+	6%{content:'L'}
+	12%{content:'Lo'}
+	18%{content:'Lov'}
+	24%{content:'Love'}
+	30%{content:'LoveF'}
+	36%{content:'LoveFi'}
+	42%{content:'LoveFie'}
+	48%{content:'LoveFiel'}
+	54%{content:'LoveField'}
+	60%{content:'LoveField\''}
+	66%{content:'LoveField\'s'}
+	72%{content:'LoveField\'s '}
+	78%{content:'LoveField\'s S'}
+	84%{content:'LoveField\'s Si'}
+	94%{content:'LoveField\'s Sit'}
+}
+
+@keyframes title{
+	0%{content:''}
+	6%{content:'L'}
+	12%{content:'Lo'}
+	18%{content:'Lov'}
+	24%{content:'Love'}
+	30%{content:'LoveF'}
+	36%{content:'LoveFi'}
+	42%{content:'LoveFie'}
+	48%{content:'LoveFiel'}
+	54%{content:'LoveField'}
+	60%{content:'LoveField\''}
+	66%{content:'LoveField\'s'}
+	72%{content:'LoveField\'s '}
+	78%{content:'LoveField\'s S'}
+	84%{content:'LoveField\'s Si'}
+	94%{content:'LoveField\'s Sit'}
+}
+
+.link_box nav{height:0;margin:10px 0 0;padding:0;border:3px solid #fff;box-sizing:border-box;overflow:hidden;
+-webkit-animation:wrap 3s ease;
+-moz-animation:wrap 3s ease;
+animation:wrap 3s ease;
+-webkit-animation-fill-mode:forwards;
+-moz-animation-fill-mode:forwards;
+animation-fill-mode:forwards;
+-webkit-animation-delay:5s;
+-moz-animation-delay:5s;
+animation-delay:5s
+}
+
+@-webkit-keyframes wrap{
+	0%{height:0px;padding:0}
+	100%{height:266px;padding:20px}
+}
+
+@-moz-keyframes wrap{
+	0%{height:0px;padding:0}
+	100%{height:266px;padding:20px}
+}
+
+@keyframes wrap{
+	0%{height:0px;padding:0}
+	100%{height:266px;padding:20px}
+}
+
+.link_box nav a{display:block;height:60px;margin:0 0 20px;background:rgba(255,255,255,0.5);color:#fff;text-align:center;line-height:60px;opacity:0;overflow:hidden;
+-webkit-animation:opacity 3s ease;
+-moz-animation:opacity 3s ease;
+animation:opacity 3s ease;
+-webkit-animation-fill-mode:forwards;
+-moz-animation-fill-mode:forwards;
+animation-fill-mode:forwards;
+-webkit-animation-delay:8s;
+-moz-animation-delay:8s;
+animation-delay:8s
+}
+
+@-webkit-keyframes opacity{
+	0%{opacity:0}
+	100%{opacity:1}
+}
+
+@-moz-keyframes opacity{
+	0%{opacity:0}
+	100%{opacity:1}
+}
+
+@keyframes opacity{
+	0%{opacity:0}
+	100%{opacity:1}
+}
+
+.link_box nav a:last-child{margin:0}
+.link_box nav a:hover{background:#fff;color:#333}
+
 </style>
 </head>
 <body>
 <div class="wrap">
 	<div class="link_box">
-		<h1>LoveField's Site</h1>
+		<h1></h1>
 		<nav>
 			<a href="/portfolio/">Portfolio</a>
 			<a href="/TR/">TR index</a>
