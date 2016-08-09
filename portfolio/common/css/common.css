@@ -11,7 +11,7 @@ a,a:link,a:visited,a:hover,a:active{text-decoration:none}
 a,button,input[type="submit"],input[type="button"],input[type="reset"]{border:0;background:transparent;cursor:pointer}
 img{border:0;vertical-align:top}
 html,body{height:100%}
-.wrap{position:relative;height:100%;min-height:768px}
+.wrap{position:relative;height:100%;min-height:768px;overflow:hidden}
 
 /*공통*/
 .ellipsis{display:block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;-o-text-overflow:ellipsis}
@@ -44,8 +44,22 @@ header .btn-about{float:right}
 .gnb .list li button{width:200px;height:49px;border:2px solid rgba(255,255,255,0.5);border-bottom:0;color:#fff;font-size:13px;box-sizing:border-box}
 .gnb .list li:last-child button{border-bottom:2px solid rgba(255,255,255,0.5)}
 
-.info{position:absolute;top:0;right:0;bottom:0;width:600px;background:#fff;z-index:30}
-.info .close{width:100px;height:100px;color:transparent;text-indent:-9999px;box-sizing:border-box;overflow:hidden}
+.info{position:absolute;top:0;right:-600px;bottom:0;width:600px;padding:100px;background:#fff;box-sizing:border-box;z-index:30}
+.info.act{right:0}
+.info .close{position:absolute;top:0;left:0;width:100px;height:100px;border:2px solid #000;color:transparent;text-indent:-9999px;box-sizing:border-box;overflow:hidden}
+.info .close::before{display:block;content:'';position:absolute;top:45px;left:23px;width:50px;height:3px;border-radius:3px;background:#000;transform:rotate(-45deg)}
+.info .close::after{display:block;content:'';position:absolute;top:45px;left:23px;width:50px;height:3px;border-radius:3px;background:#000;transform:rotate(45deg)}
+.info .close:hover{background:#000}
+.info .close:hover::before{background:#fff}
+.info .close:hover::after{background:#fff}
+.info section{text-align:center}
+.info h3{font-size:18px;font-weight:bold}
+.info img{width:300px;margin:10px 0 25px}
+.info dl{text-align:left}
+.info dl dt{margin:0 0 10px;font-size:14px;font-weight:bold}
+.info dl dd{margin:0 0 20px;font-size:14px;line-height:1.5}
+
+
 
 .content{position:absolute;top:0;left:0;right:0;bottom:0;background:url('../img/bg.jpg') no-repeat center center / cover;z-index:10}
 
