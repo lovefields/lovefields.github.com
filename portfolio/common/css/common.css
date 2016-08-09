@@ -39,10 +39,17 @@ header .btn-about{float:right}
 
 .gnb{position:relative}
 .gnb .btn-menu{border-left:0}
-.gnb .list{position:absolute;top:0;left:100%;height:0;margin:0 0 0 -2px;overflow:hidden}
-.gnb .list.act{height:392px}
-.gnb .list li button{width:200px;height:49px;border:2px solid rgba(255,255,255,0.5);border-bottom:0;color:#fff;font-size:13px;box-sizing:border-box}
-.gnb .list li:last-child button{border-bottom:2px solid rgba(255,255,255,0.5)}
+.gnb .list{position:absolute;top:0;left:-100%;width:100%;height:100%}
+.gnb .list li button{position:absolute;width:100px;height:100px;margin:0 0 0 -10px;border:2px solid rgba(255,255,255,0.5);color:#fff;font-size:13px;opacity:0;visibility:hidden;box-sizing:border-box}
+.gnb .list li:nth-child(1) button{top:0;left:200%;border-left:0}
+.gnb .list li:nth-child(2) button{top:100%;left:0;border-top:0}
+.gnb .list li:nth-child(3) button{top:200%;left:0;border-top:0}
+.gnb .list li:nth-child(4) button{top:100%;left:100%;border-top:0;border-left:0}
+.gnb .list li:nth-child(5) button{top:0;left:300%;border-left:0}
+.gnb .list li:nth-child(6) button{top:100%;left:200%;border-top:0;border-left:0}
+.gnb .list li:nth-child(7) button{top:200%;left:100%;border-top:0;border-left:0}
+.gnb .list li:nth-child(8) button{top:300%;left:0;border-top:0}
+.gnb .list.act li button{margin:0;opacity:1;visibility:visible}
 
 .info{position:absolute;top:0;right:-600px;bottom:0;width:600px;padding:100px;background:#fff;box-sizing:border-box;overflow-y:auto;z-index:30}
 .info.act{right:0}
@@ -71,8 +78,7 @@ header .btn-about{float:right}
 
 *[class^="btn"]{width:60px;height:60px;font-size:12px}
 
-.gnb .list{top:100%;left:0;margin:-2px 0 0 -2px}
-.gnb .list li button{width:180px;height:29px;font-size:12px}
+.gnb .list li button{width:60px;height:60px;font-size:12px}
 
 .info{right:-100%;width:100%;padding:60px}
 .info .close{width:60px;height:60px}
