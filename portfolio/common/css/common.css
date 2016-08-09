@@ -53,9 +53,9 @@ header .btn-about{float:right}
 
 .info{position:absolute;top:0;right:-600px;bottom:0;width:600px;padding:100px;background:#fff;box-sizing:border-box;overflow-y:auto;z-index:30}
 .info.act{right:0}
-.info .close{position:absolute;top:0;left:0;width:100px;height:100px;border:2px solid #000;color:transparent;text-indent:-9999px;box-sizing:border-box;overflow:hidden}
-.info .close::before{display:block;content:'';position:absolute;top:45px;left:23px;width:50px;height:3px;border-radius:3px;background:#000;-ms-transform:rotate(-45deg);-moz-transform:rotate(-45deg);-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}
-.info .close::after{display:block;content:'';position:absolute;top:45px;left:23px;width:50px;height:3px;border-radius:3px;background:#000;-ms-transform:rotate(45deg);-moz-transform:rotate(45deg);-webkit-transform:rotate(45deg);transform:rotate(45deg)}
+.info .close{position:absolute;top:0;left:0;width:60px;height:60px;background:#000;color:transparent;text-indent:-9999px;box-sizing:border-box;overflow:hidden}
+.info .close::before{display:block;content:'';position:absolute;top:45%;left:25%;width:50%;height:3px;border-radius:3px;background:#fff;-ms-transform:rotate(-45deg);-moz-transform:rotate(-45deg);-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}
+.info .close::after{display:block;content:'';position:absolute;top:45%;left:25%;width:50%;height:3px;border-radius:3px;background:#fff;-ms-transform:rotate(45deg);-moz-transform:rotate(45deg);-webkit-transform:rotate(45deg);transform:rotate(45deg)}
 .info .close:hover{background:#000}
 .info .close:hover::before{background:#fff}
 .info .close:hover::after{background:#fff}
@@ -81,8 +81,4 @@ header .btn-about{float:right}
 .gnb .list li button{width:60px;height:60px;font-size:12px}
 
 .info{right:-100%;width:100%;padding:60px}
-.info .close{width:60px;height:60px}
-.info .close::before{top:28px;left:13px;width:30px}
-.info .close::after{top:28px;left:13px;width:30px}
-
 }
