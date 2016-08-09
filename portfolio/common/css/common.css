@@ -44,7 +44,7 @@ header .btn-about{float:right}
 .gnb .list li button{width:200px;height:49px;border:2px solid rgba(255,255,255,0.5);border-bottom:0;color:#fff;font-size:13px;box-sizing:border-box}
 .gnb .list li:last-child button{border-bottom:2px solid rgba(255,255,255,0.5)}
 
-.info{position:absolute;top:0;right:-600px;bottom:0;width:600px;padding:100px;background:#fff;box-sizing:border-box;z-index:30}
+.info{position:absolute;top:0;right:-600px;bottom:0;width:600px;padding:100px;background:#fff;box-sizing:border-box;overflow-y:auto;z-index:30}
 .info.act{right:0}
 .info .close{position:absolute;top:0;left:0;width:100px;height:100px;border:2px solid #000;color:transparent;text-indent:-9999px;box-sizing:border-box;overflow:hidden}
 .info .close::before{display:block;content:'';position:absolute;top:45px;left:23px;width:50px;height:3px;border-radius:3px;background:#000;-ms-transform:rotate(-45deg);-moz-transform:rotate(-45deg);-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}
@@ -54,7 +54,7 @@ header .btn-about{float:right}
 .info .close:hover::after{background:#fff}
 .info section{text-align:center}
 .info h3{font-size:18px;font-weight:bold}
-.info img{width:300px;margin:10px 0 25px}
+.info img{width:100%;max-width:300px;margin:10px 0 25px}
 .info dl{text-align:left}
 .info dl dt{margin:0 0 10px;font-size:14px;font-weight:bold}
 .info dl dd{margin:0 0 20px;font-size:14px;line-height:1.5}
@@ -63,9 +63,20 @@ header .btn-about{float:right}
 
 
 @media all and (max-width:970px){
-
+.wrap{min-height:0}
 }
 
 @media all and (max-width:768px){
+.logo{width:60px;height:60px}
+
+*[class^="btn"]{width:60px;height:60px;font-size:12px}
+
+.gnb .list{top:100%;left:0;margin:-2px 0 0 -2px}
+.gnb .list li button{width:180px;height:29px;font-size:12px}
+
+.info{right:-100%;width:100%;padding:60px}
+.info .close{width:60px;height:60px}
+.info .close::before{top:28px;left:13px;width:30px}
+.info .close::after{top:28px;left:13px;width:30px}
 
 }
