@@ -79,8 +79,14 @@ header .btn-about{float:right}
 
 @media all and (max-width:970px){
 .wrap{min-height:0}
-}
 
+.content .content-item{width:300px;height:500px;margin:-220px 0 0 -150px;text-align:center}
+.content .content-item img{float:none;width:100%;max-width:250px}
+.content .content-item .text{float:none;width:100%;padding:15px 0 0}
+.content .content-item .close{top:auto;bottom:100%;right:-2px;border:2px solid #fff;border-bottom:0}
+.content .content-item.act{margin:-250px 0 0 -150px;opacity:1;visibility:visible}
+.content .content-item.end{margin:-280px 0 0 -150px;opacity:0;visibility:hidden}
+}
 @media all and (max-width:768px){
 .logo{width:60px;height:60px}
 
@@ -89,4 +95,9 @@ header .btn-about{float:right}
 .gnb .list li button{width:60px;height:60px;font-size:12px}
 
 .info{right:-100%;width:100%;padding:60px}
+
+.content .content-item{top:120px;left:0;right:0;bottom:0;width:auto;height:auto;margin:0 0 0 100%}
+.content .content-item img{max-width:150px}
+.content .content-item.act{margin:0;opacity:1;visibility:visible}
+.content .content-item.end{margin:0 100% 0 0;opacity:0;visibility:hidden}
 }
