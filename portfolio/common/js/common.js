@@ -1,4 +1,6 @@
 $(document).ready(function(){
+	var width = $(window).width();
+
 	$('.btn-menu').click(function(){
 		$('.gnb .list').toggleClass('act');
 	});
@@ -15,19 +17,31 @@ $(document).ready(function(){
 	$('.gnb .list li button').click(function(){
 		var val = $(this).attr('data-index');
 
-		$('.content .content-item').removeClass('end').removeClass('act');
-		if(item !== 0){
-			$('.content .content-item[data-index="'+ item +'"]').addClass('end');
-		}
-		$('.content .content-item[data-index="'+ val +'"]').addClass('act');
+		if(item !== val){
+			if(width < 768){
+				$('.gnb .list').removeClass('act');
+			}
 
-		item = val;
-		return;
+
+			$('.content .content-item').removeClass('end').removeClass('act');
+			if(item !== 0){
+				$('.content .content-item[data-index="'+ item +'"]').addClass('end');
+			}
+			$('.content .content-item[data-index="'+ val +'"]').addClass('act');
+
+			item = val;
+			return;
+		}
 	});
 
 	$('.content .content-item .close').click(function(){
 		item = 0;
 		$('.content .content-item.act').removeClass('act').addClass('end');
+		return;
+	});
+
+	$(window).resize(function(){
+		width = $(window).width();
 		return;
 	});
 });
