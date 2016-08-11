@@ -37,6 +37,10 @@ header .btn-about{float:right}
 *[class^="btn"] .title{font-size:1.8em;line-height:2.2em}
 *[class^="btn"] p{position:absolute;bottom:20%;left:0;right:0;font-size:0.6em}
 
+.close{position:relative;width:60px;height:60px;background:#000;color:transparent;text-indent:-9999px;box-sizing:border-box;overflow:hidden}
+.close::before{display:block;content:'';position:absolute;top:45%;left:25%;width:50%;height:3px;border-radius:3px;background:#fff;-ms-transform:rotate(-45deg);-moz-transform:rotate(-45deg);-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}
+.close::after{display:block;content:'';position:absolute;top:45%;left:25%;width:50%;height:3px;border-radius:3px;background:#fff;-ms-transform:rotate(45deg);-moz-transform:rotate(45deg);-webkit-transform:rotate(45deg);transform:rotate(45deg)}
+
 .gnb{position:relative}
 .gnb .btn-menu{border-left:0}
 .gnb .list{position:absolute;top:0;left:-100%;width:100%;height:100%}
@@ -53,12 +57,7 @@ header .btn-about{float:right}
 
 .info{position:absolute;top:0;right:-600px;bottom:0;width:600px;padding:100px;background:#fff;box-sizing:border-box;overflow-y:auto;z-index:30}
 .info.act{right:0}
-.info .close{position:absolute;top:0;left:0;width:60px;height:60px;background:#000;color:transparent;text-indent:-9999px;box-sizing:border-box;overflow:hidden}
-.info .close::before{display:block;content:'';position:absolute;top:45%;left:25%;width:50%;height:3px;border-radius:3px;background:#fff;-ms-transform:rotate(-45deg);-moz-transform:rotate(-45deg);-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}
-.info .close::after{display:block;content:'';position:absolute;top:45%;left:25%;width:50%;height:3px;border-radius:3px;background:#fff;-ms-transform:rotate(45deg);-moz-transform:rotate(45deg);-webkit-transform:rotate(45deg);transform:rotate(45deg)}
-.info .close:hover{background:#000}
-.info .close:hover::before{background:#fff}
-.info .close:hover::after{background:#fff}
+.info .close{position:absolute;top:0;left:0}
 .info section{text-align:center}
 .info h3{font-size:18px;font-weight:bold}
 .info img{width:100%;max-width:300px;margin:10px 0 25px}
@@ -67,13 +66,15 @@ header .btn-about{float:right}
 .info dl dd{margin:0 0 20px;font-size:14px;line-height:1.5}
 
 .content{position:absolute;top:0;left:0;right:0;bottom:0;background:url('../img/bg.jpg') no-repeat center center / cover;z-index:10}
-.content .content-item{display:none;position:absolute;top:50%;left:50%;width:800px;height:300px;margin:-150px 0 0 -400px;padding:25px;border:2px solid #fff;background:rgba(255,255,255,0.3);box-sizing:border-box}
+.content .content-item{position:absolute;top:50%;left:50%;width:800px;height:300px;margin:-120px 0 0 -400px;padding:25px;border:2px solid #fff;background:rgba(255,255,255,0.3);opacity:0;visibility:hidden;box-sizing:border-box}
 .content .content-item img{float:left;width:250px}
 .content .content-item .text{float:left;width:470px;padding:0 0 0 25px}
 .content .content-item .text .title{color:#fff;font-size:20px;font-weight:bold}
 .content .content-item .text p{padding:10px 0 20px;color:#fff;font-size:14px;line-height:1.4}
 .content .content-item .text .link{display:inline-block;width:100px;height:25px;background:#fff;color:#333;text-align:center;line-height:25px}
-.content .content-item.act{display:block}
+.content .content-item .close{position:absolute;top:0;right:0;width:40px;height:40px;background:transparent;border:2px solid #fff;border-top:0;border-right:0}
+.content .content-item.act{margin:-150px 0 0 -400px;opacity:1;visibility:visible}
+.content .content-item.end{margin:-180px 0 0 -400px;opacity:0;visibility:hidden}
 
 
 @media all and (max-width:970px){
