@@ -1,13 +1,11 @@
 $(document).ready(function(){
 	var width = $(window).width();
 
-	$('.btn-menu').click(function(e){
-		e.preventDefault();
+	$('.btn-menu').click(function(){
 		$('.gnb .list').toggleClass('act');
 	});
 
-	$('.btn-about').click(function(e){
-		e.preventDefault();
+	$('.btn-about').click(function(){
 		$('.info').addClass('act');
 	});
 
