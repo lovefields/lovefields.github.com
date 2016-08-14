@@ -2,10 +2,12 @@ $(document).ready(function(){
 	var width = $(window).width();
 
 	$('.btn-menu').click(function(){
-		$('.gnb .list').addClass('act');
+		e.preventDefault();
+		$('.gnb .list').toggleClass('act');
 	});
 
-	$('.btn-about').click(function(){
+	$('.btn-about').click(function(e){
+		e.preventDefault();
 		$('.info').addClass('act');
 	});
 
