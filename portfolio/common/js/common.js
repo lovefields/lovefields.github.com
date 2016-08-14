@@ -2,7 +2,7 @@ $(document).ready(function(){
 	var width = $(window).width();
 
 	$('.btn-menu').click(function(){
-		$('.gnb .list').toggleClass('act');
+		$('.gnb .list').addClass('act');
 	});
 
 	$('.btn-about').click(function(){
