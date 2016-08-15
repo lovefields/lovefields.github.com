@@ -42,6 +42,8 @@ header .btn-about{float:right}
 .close::after{display:block;content:'';position:absolute;top:45%;left:25%;width:50%;height:3px;border-radius:3px;background:#fff;-ms-transform:rotate(45deg);-moz-transform:rotate(45deg);-webkit-transform:rotate(45deg);transform:rotate(45deg)}
 
 .gnb{position:relative}
+.gnb .notice{position:absolute;top:150%;left:25%;width:50%;height:100%;padding:25% 0;background:#fff;color:#333;text-align:center;box-sizing:border-box;-moz-animation:opacity 1.5s ease infinite;-webkit-animation:opacity 1.5s ease infinite;animation:opacity 1.5s ease infinite}
+.gnb .notice::before{display:block;content:'';position:absolute;bottom:70%;left:-9%;width:0;height:0;border:30px solid transparent;border-top-color:#fff;border-left-color:#fff;-ms-transform:rotate(45deg);-moz-transform:rotate(45deg);-webkit-transform:rotate(45deg);transform:rotate(45deg)}
 .gnb .btn-menu{border-left:0}
 .gnb .list{position:absolute;top:0;left:-100%;width:100%;height:100%}
 .gnb .list li button{position:absolute;width:100px;height:100px;margin:0 0 0 -10px;border:2px solid rgba(255,255,255,0.5);color:#fff;font-size:13px;opacity:0;visibility:hidden;box-sizing:border-box}
@@ -77,6 +79,22 @@ header .btn-about{float:right}
 .content .content-item .close{position:absolute;top:0;right:0;width:40px;height:40px;background:transparent;border:2px solid #fff;border-top:0;border-right:0}
 .content .content-item.act{margin:-150px 0 0 -400px;opacity:1;visibility:visible}
 .content .content-item.end{margin:-180px 0 0 -400px;opacity:0;visibility:hidden}
+
+@-moz-keyframes opacity {
+	0%{opacity:0}
+	50%{opacity:1}
+	100%{opacity:0}
+}
+@-webkit-keyframes opacity {
+	0%{opacity:0}
+	50%{opacity:1}
+	100%{opacity:0}
+}
+@keyframes opacity {
+	0%{opacity:0}
+	50%{opacity:1}
+	100%{opacity:0}
+}
 @media all and (max-width:970px){
 .wrap{min-height:0}
 
@@ -95,6 +113,9 @@ header .btn-about{float:right}
 .gnb .list li button{width:60px;height:60px;font-size:12px}
 
 .info{right:-100%;width:100%;padding:60px}
+
+.gnb .notice{font-size:10px}
+.gnb .notice::before{display:block;content:'';position:absolute;bottom:70%;left:-4.5%;width:0;height:0;border:15px solid transparent;border-top-color:#fff;border-left-color:#fff}
 
 .content .content-item{top:120px;left:0;right:0;bottom:0;width:auto;height:auto;margin:0 0 0 100%;overflow-y:auto}
 .content .content-item img{max-width:150px}

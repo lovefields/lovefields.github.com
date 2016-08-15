@@ -3,6 +3,7 @@ $(document).ready(function(){
 
 	$('.btn-menu').click(function(){
 		$('.gnb .list').toggleClass('act');
+		$('.gnb .notice').addClass('hide');
 	});
 
 	$('.btn-about').click(function(){
