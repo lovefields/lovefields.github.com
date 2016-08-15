@@ -55,7 +55,7 @@ header .btn-about{float:right}
 .gnb .list li:nth-child(8) button{top:300%;left:0;border-top:0}
 .gnb .list.act li button{margin:0;opacity:1;visibility:visible}
 
-.info{position:absolute;top:0;right:-600px;bottom:0;width:600px;padding:100px;background:#fff;box-sizing:border-box;overflow-y:auto;z-index:30}
+.info{position:absolute;top:0;right:-600px;bottom:0;width:600px;padding:50px 100px;background:#fff;box-sizing:border-box;overflow-y:auto;z-index:30}
 .info.act{right:0}
 .info .close{position:absolute;top:0;left:0}
 .info section{text-align:center}
@@ -70,22 +70,22 @@ header .btn-about{float:right}
 .content .content-item img{float:left;width:250px}
 .content .content-item .text{float:left;width:470px;padding:0 0 0 25px}
 .content .content-item .text .title{color:#fff;font-size:20px;font-weight:bold}
-.content .content-item .text p{padding:10px 0 20px;color:#fff;font-size:14px;line-height:1.4}
+.content .content-item .text dl{padding:10px 0 20px;color:#fff;font-size:14px;line-height:1.4}
+.content .content-item .text dl dt{font-weight:bold}
+.content .content-item .text dl dd{padding:0 0 5px 10px}
 .content .content-item .text .link{display:inline-block;width:100px;height:25px;background:#fff;color:#333;text-align:center;line-height:25px}
 .content .content-item .close{position:absolute;top:0;right:0;width:40px;height:40px;background:transparent;border:2px solid #fff;border-top:0;border-right:0}
 .content .content-item.act{margin:-150px 0 0 -400px;opacity:1;visibility:visible}
 .content .content-item.end{margin:-180px 0 0 -400px;opacity:0;visibility:hidden}
-
-
 @media all and (max-width:970px){
 .wrap{min-height:0}
 
-.content .content-item{width:300px;height:500px;margin:-220px 0 0 -150px;text-align:center}
+.content .content-item{width:300px;height:600px;margin:-270px 0 0 -150px;text-align:center}
 .content .content-item img{float:none;width:100%;max-width:250px}
-.content .content-item .text{float:none;width:100%;padding:15px 0 0}
+.content .content-item .text{float:none;width:100%;padding:10px 0 0}
 .content .content-item .close{top:auto;bottom:100%;right:-2px;border:2px solid #fff;border-bottom:0}
-.content .content-item.act{margin:-250px 0 0 -150px;opacity:1;visibility:visible}
-.content .content-item.end{margin:-280px 0 0 -150px;opacity:0;visibility:hidden}
+.content .content-item.act{margin:-300px 0 0 -150px;opacity:1;visibility:visible}
+.content .content-item.end{margin:-330px 0 0 -150px;opacity:0;visibility:hidden}
 }
 @media all and (max-width:768px){
 .logo{width:60px;height:60px}
@@ -96,8 +96,10 @@ header .btn-about{float:right}
 
 .info{right:-100%;width:100%;padding:60px}
 
-.content .content-item{top:120px;left:0;right:0;bottom:0;width:auto;height:auto;margin:0 0 0 100%}
+.content .content-item{top:120px;left:0;right:0;bottom:0;width:auto;height:auto;margin:0 0 0 100%;overflow-y:auto}
 .content .content-item img{max-width:150px}
+.content .content-item .text .title{font-size:18px}
+.content .content-item .close{top:0;bottom:auto;right:0;border-top:0;border-right:0;border-bottom:2px solid #fff}
 .content .content-item.act{margin:0;opacity:1;visibility:visible}
 .content .content-item.end{margin:0 100% 0 0;opacity:0;visibility:hidden}
 }
