@@ -44,6 +44,8 @@ header .btn-about{float:right}
 .gnb{position:relative}
 .gnb .notice{position:absolute;top:150%;left:25%;width:50%;height:100%;padding:25% 0;background:#fff;color:#333;text-align:center;box-sizing:border-box;-moz-animation:opacity 1.5s ease infinite;-webkit-animation:opacity 1.5s ease infinite;animation:opacity 1.5s ease infinite}
 .gnb .notice::before{display:block;content:'';position:absolute;bottom:70%;left:-9%;width:0;height:0;border:30px solid transparent;border-top-color:#fff;border-left-color:#fff;-ms-transform:rotate(45deg);-moz-transform:rotate(45deg);-webkit-transform:rotate(45deg);transform:rotate(45deg)}
+.gnb .notice.hide{display:none}
+.gnb .notice.hide::before{display:none}
 .gnb .btn-menu{border-left:0}
 .gnb .list{position:absolute;top:0;left:-100%;width:100%;height:100%}
 .gnb .list li button{position:absolute;width:100px;height:100px;margin:0 0 0 -10px;border:2px solid rgba(255,255,255,0.5);color:#fff;font-size:13px;opacity:0;visibility:hidden;box-sizing:border-box}
