@@ -115,7 +115,7 @@ header .btn-about{float:right}
 .info{right:-100%;width:100%;padding:60px}
 
 .gnb .notice{font-size:10px}
-.gnb .notice::before{display:block;content:'';position:absolute;bottom:70%;left:-4.5%;width:0;height:0;border:15px solid transparent;border-top-color:#fff;border-left-color:#fff}
+.gnb .notice::before{display:block;content:'';position:absolute;bottom:70%;left:-1.5%;width:0;height:0;border:15px solid transparent;border-top-color:#fff;border-left-color:#fff}
 
 .content .content-item{top:120px;left:0;right:0;bottom:0;width:auto;height:auto;margin:0 0 0 100%;overflow-y:auto}
 .content .content-item img{max-width:150px}
