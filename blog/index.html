@@ -1,26 +1,23 @@
-<!DOCTYPE html>
-<html xml:lang="ko-KR" lang="ko-KR">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
-<meta name="format-detection" content="telephone=no">
-<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">
-<link rel="stylesheet" type="text/css" href="common/css/common.css">
+---
+layout: default
+---
 
-<meta property="og:title" content="">
-<meta property="og:author" content="">
-<meta property="og:image" content="">
-<meta property="og:keywords" content="">
-<meta property="og:description" content="">
+<div class="home">
 
-<title>blog</title>
+  <h1 class="page-heading">Posts</h1>
 
-</head>
-<body>
-<div class="wrap">
+  <ul class="post-list">
+    {% for post in site.posts %}
+      <li>
+        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+
+        <h2>
+          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title | escape }}</a>
+        </h2>
+      </li>
+    {% endfor %}
+  </ul>
+
+  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
 
 </div>
-<script type="text/javascript" src="common/js/jquery-2.2.0.min.js"></script>
-<script type="text/javascript" src="common/js/common.js"></script>
-</body>
-</html>
