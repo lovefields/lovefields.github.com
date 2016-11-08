@@ -11,5 +11,5 @@
 
 <h4>blog</h4>
 <ol>
-  <li>lovefield's blog <a href="https://lovefields.github.io/blog" target="_blank">link</a></li>
+  <li>lovefield's blog <a href="https://lovefields.github.io" target="_blank">link</a></li>
 </ol>
