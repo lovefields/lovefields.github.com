@@ -1,0 +1,19 @@
+<div class="category_menu">
+	<button>Category</button>
+	<div class="list">
+		<a href="{{ "/html.html" | prepend: site.baseurl }}">HTML</a>
+		<a href="{{ "/css.html" | prepend: site.baseurl }}">CSS</a>
+		<a href="{{ "/javascript.html" | prepend: site.baseurl }}">Javascript</a>
+		<a href="{{ "/java.html" | prepend: site.baseurl }}">Java</a>
+		<a href="{{ "/xml.html" | prepend: site.baseurl }}">XML</a>
+	</div>
+
+	<label for="list">Category</label>
+	<select id="list" hidden>
+		<option value="{{ "/html.html" | prepend: site.baseurl }}">HTML</option>
+		<option value="{{ "/css.html" | prepend: site.baseurl }}">CSS</option>
+		<option value="{{ "/javascript.html" | prepend: site.baseurl }}">Javascript</option>
+		<option value="{{ "/java.html" | prepend: site.baseurl }}">Java</option>
+		<option value="{{ "/xml.html" | prepend: site.baseurl }}">XML</option>
+	</select>
+</div>

@@ -1,0 +1,22 @@
+---
+layout: page
+title: Lovefield's post
+permalink: /user01/
+---
+<div class="layout home clearfix">
+	<aside>{% include aside_team.html %}</aside>
+
+	<section>
+		<h2 hidden>Lovefield's post</h2>
+
+		<ul class="post_list">
+		{% for post in site.posts %}
+			{% if post.author == "Lovefield" %}
+				{% include post_list.html %}
+			{% endif %}
+		{% endfor %}
+		</ul>
+
+		{% include rss.html %}
+	</section>
+</div>

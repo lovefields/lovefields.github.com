@@ -1,0 +1,22 @@
+---
+layout: page
+title: 민갤's post
+permalink: /user02/
+---
+<div class="layout home clearfix">
+	<aside>{% include aside_team.html %}</aside>
+
+	<section>
+		<h2 hidden>민갤's post</h2>
+
+		<ul class="post_list">
+		{% for post in site.posts %}
+			{% if post.author == "민갤" %}
+				{% include post_list.html %}
+			{% endif %}
+		{% endfor %}
+		</ul>
+
+		{% include rss.html %}
+	</section>
+</div>

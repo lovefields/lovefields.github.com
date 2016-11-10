@@ -1,20 +1,17 @@
 <!DOCTYPE html>
 <html lang="ko-kr">
 
-  {% include head.html %}
+{% include head.html %}
 
-  <body>
+<body oncontextmenu="return false">
+<div class="wrap">
+	{% include header.html %}
 
-    {% include header.html %}
-
-    <div class="page-content">
-      <div class="wrapper">
-        {{ content }}
-      </div>
-    </div>
-
-    {% include footer.html %}
-
-  </body>
-
+	<div class="container">
+		{{ content }}
+	</div>
+</div>
+<script type="text/javascript" src="{{ "/js/jquery-2.1.0.min.js" | prepend: site.baseurl }}"></script>
+<script type="text/javascript" src="{{ "/js/common.js" | prepend: site.baseurl }}"></script>
+</body>
 </html>

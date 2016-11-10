@@ -1,0 +1,25 @@
+{% if post.image %}
+<li class="hasimg clearfix">
+	<div class="imgarea">
+		<img src="{{ post.image | prepend: site.baseurl }}" alt="{{ post.title | escape }}">
+	</div>
+
+	<span class="post-meta">{{ post.date | date: "%Y %m %d %H:%M" }}</span>
+
+	<h2>
+		<a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title | escape }}</a>
+	</h2>
+	<p>{{ post.category }}</p>
+	<p>{{ post.author }}</p>
+</li>
+{% else %}
+<li>
+	<span class="post-meta">{{ post.date | date: "%Y %m %d %H:%M" }}</span>
+
+	<h2>
+		<a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title | escape }}</a>
+	</h2>
+	<p>{{ post.category }}</p>
+	<p>{{ post.author }}</p>
+</li>
+{% endif %}
