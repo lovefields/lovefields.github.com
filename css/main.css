@@ -122,5 +122,5 @@ footer{padding:20px 0;border-top:2px solid #f0f3f7;line-height:1.5}
 }
 @media all and (max-width:960px){
 .category_menu .pc{display:none}
-.category_menu .list{visibility:hidden}
+.category_menu #list{visibility:hidden}
 }
