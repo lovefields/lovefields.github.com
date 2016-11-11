@@ -1,19 +1,21 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
-date:   2016-11-08 23:18:57 +0900
-categories: jekyll update
+title:  "window 에서 jekyll 설치하기"
+date:   2016-11-10 12:00:00 +0900
+categories: jekyll install
 author: Lovefield
-description: test
+description: 
 keywords : test~
 image: /test/test/test.jpg
-category : html
+category : all
 ---
 <b>You’ll find this post in your</b> `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
 
 To add new posts, simply add a file in the `_posts` directory that follows the convention `YYYY-MM-DD-name-of-post.ext` and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.
 
 Jekyll also offers powerful support for code snippets:
+
+<p class="t_center"><img src="{{ "/img/profile01.png" | prepend: site.baseurl }}" alt=""></p>
 
 {% highlight ruby %}
 def print_hi(name)
