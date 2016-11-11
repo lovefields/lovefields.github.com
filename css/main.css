@@ -137,5 +137,6 @@ footer{padding:20px 0;border-top:2px solid #f0f3f7;line-height:1.5}
 .container section{float:none;width:100%}
 
 .category_menu{overflow:hidden}
+.category_menu .btn{padding:0 12px;box-sizing:border-box}
 .category_menu .pc{display:none}
 }
