@@ -1,0 +1,26 @@
+---
+layout: page
+title: Post in java
+permalink: /java/
+---
+<div class="layout home clearfix">
+	<aside>{% include aside_team.html %}</aside>
+
+	<section>
+		<div class="title01 clearfix">
+			<h2>{{ page.title }}</h2>
+
+			{% include category.html %}
+		</div>
+
+		<ul class="post_list">
+		{% for post in site.posts %}
+			{% if post.category == "java" %}
+				{% include post_list.html %}
+			{% endif %}
+		{% endfor %}
+		</ul>
+
+		{% include rss.html %}
+	</section>
+</div>
