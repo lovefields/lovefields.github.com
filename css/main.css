@@ -61,6 +61,7 @@ footer{padding:20px 0;border-top:2px solid #f0f3f7;line-height:1.5}
 .category_menu .list a:last-child{border:0;border-radius:0 0 10px 10px}
 .category_menu .list a:hover{background:#fff;color:#38b7ea}
 .category_menu .list.act{visibility:visible;opacity:1}
+.category_menu #list{position:absolute;top:100%;left:0;right:0}
 
 
 
