@@ -29,5 +29,3 @@ github_username:  lovefields
 # Build settings
 markdown: kramdown
 theme: minima
-
-ampdir: /_layouts

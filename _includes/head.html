@@ -1,12 +1,12 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,user-scalable=no">
 
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700">
-	<link rel="stylesheet" amp-custom href="{{ "/css/main.css" | prepend: site.baseurl }}">
+	<link rel="stylesheet"  href="{{ "/css/main.css" | prepend: site.baseurl }}">
 
 	<title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
 
@@ -22,10 +22,5 @@
 	<meta property="og:description" content="{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
 	
 	<link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
-	{% if page.path contains '_posts' %}
-	<link rel="amphtml" href="{{ page.id | prepend: '/_layouts' | prepend: site.baseurl | prepend: site.url }}">
-	{% endif %}
 	<link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
-
-	<script async src="https://cdn.ampproject.org/v0.js"></script>
 </head>
