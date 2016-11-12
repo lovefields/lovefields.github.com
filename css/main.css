@@ -87,12 +87,14 @@ footer{padding:20px 0;border-top:2px solid #f0f3f7;line-height:1.5}
 .post_list li .textarea .date{font-size:14px;color:#999}
 .post_list li .textarea .author b{color:#38b7ea}
 
+.post{padding:0 0 100px}
 .post .post-header{padding:10px;background:#fff;border-bottom:2px solid #f0f3f7;border-radius:10px 10px 0 0;overflow:hidden}
 .post .post-header h2{font-size:20px;font-weight:bold}
 .post .post-header p{margin:5px 0 0}
 .post .post-header time{font-size:14px}
-.post .post-content{padding:10px;background:#fff;border-radius:0 0 10px 10px;font-size:14px;overflow:hidden}
+.post .post-content{padding:10px 10px 50px;background:#fff;border-radius:0 0 10px 10px;font-size:14px;line-height:1.4;overflow:hidden}
 .post .post-content p{margin:10px 0 0;word-wrap:break-word}
+.post .post-content code{padding:2px 5px;background:#ddd;border-radius:5px}
 .post .post-content .red{color:#ff0000}
 .post .post-content .blue{color:#0000ff}
 
@@ -100,7 +102,7 @@ footer{padding:20px 0;border-top:2px solid #f0f3f7;line-height:1.5}
 
 /* code color */
 .highlight{margin:15px 0 0;padding:10px;background:#ddd;border-radius:10px}
-.highlight *{font:normal 14px/1.4 'Inconsolata',sans-serif}
+.highlight,pre,code{font:normal 14px/1.4 'Inconsolata',sans-serif}
 .highlight code{word-wrap:break-word;word-break:keep-all;white-space:pre-wrap}
 .highlight .c{color:#998;font-style:italic} /* Comment */
 .highlight .err{color:#a61717;background-color:#e3d2d2} /* Error */

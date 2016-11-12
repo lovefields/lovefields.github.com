@@ -1,0 +1,163 @@
+---
+layout: post
+title:  "window 에서 jekyll 설치하기"
+date:   2016-11-12 12:00:00 +0900
+author: Lovefield
+description: window 에서 jekyll 을 설치하는데 고생하시는 모든 분들을 위한 가이드.
+keywords : window,jekyll,github,블로그
+image: /img/post01.png
+category : all
+---
+
+오늘은 블로그를 완성한 기념으로, 3개월동안 jekyll과 씨름한 기념으로, window 에서 jekyll 설치하는 방법을 매우 상세하게 알려주려고 합니다.<br><del>window 개객기</del>
+
+우선 오로지 <b class="blue">CMD</b> 로만 합니다.
+
+<b class="blue">CMD</b>를 <b class="red">관리자 권한</b>으로 실행시켜주세요.<br><del>설마 CMD를 모르진 않겟지..</del>
+
+그다음 윈도우 패키지 관리자인 <b class="blue">Chocolatey</b>를 설치할겁니다.
+
+{% highlight text %}
+@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
+{% endhighlight %}
+
+요걸 복사하신후에 <b class="blue">CMD</b> 에서 "마우스 오른쪽 클릭 - 붙여넣기" 를 하신후 실행하면 설치가 됩니다.
+
+설치가 완료되었다면 이제 <b class="blue">ruby</b>와 <b class="blue">jekyll</b>을 설치해줄 차래입니다.
+
+&nbsp;
+
+<b class="blue">CMD</b> 에서 <code>choco install ruby -y</code> 를 입력해 <b class="blue">ruby</b>을 설치합니다.
+
+그리고 <code>choco install ruby2.devkit</code>를 입력해 <b class="blue">devkit</b>도 깔아줍니다
+
+그다음 설정인데요 <b class="blue">CMD</b>를 재실행 한다음 <code>cd C:\tools\DevKit2</code>를 입력한뒤 <code>ruby dk.rb init</code>를 입력해 활성화 한다음.<br>
+<b>C:/tools/DebKit2/config.yml</b> 파일을 열어 하단에 <code>- C:/tools/ruby23</code>을 입력하고 저장해줍니다.
+
+다시 <b class="blue">CMD</b>로 돌아와서 <code>ruby dk.rb install</code> 을 쳐주고 업데이트 표시가 나오면 성공입니다.
+
+&nbsp;
+
+<b class="blue">CMD</b>를 재실행 한뒤  <code>gem install jekyll -v '3.2.1'</code> 를 입력해 <b class="blue">jekyll</b>을 설치해줍니다.
+
+에러가 난다면 <code>gem source -a http://rubygems.org</code> 를 써줘서 <b>rubygems.org</b> 를 인식하게 한후 재시도 합니다.
+
+&nbsp;
+
+자 드디어 <b class="blue">jekyll</b> 이 설치되었지만 <code>jekyll new blog</code> 를 하는순간 에러가 나며 파일이 덜생성될겁니다.
+
+다시 <b class="blue">CMD</b> 창에서 <code>gem install bundler</code>를 입력해 <b class="blue">bundler</b> 를 설치해줍니다.<br>중간에 질문이 나온다면 다 Y 해줍니다.
+
+그리고 <code>gem isntall minima -v '2.0.0'</code>을 입력해 <b class="blue">minima</b>도 설치해줍니다.
+
+그리고 <code>gem install jekyll-feed -v '0.8.0'</code>을 입력해 설치해줍니다.
+
+그리고
+
+<code>choco install libxml2 -Source "https://www.nuget.org/api/v2/"</code>
+
+<code>choco install libxslt -Source "https://www.nuget.org/api/v2/"</code>
+
+<code>choco install libiconv -Source "https://www.nuget.org/api/v2/"</code>
+
+{% highlight cmd %}
+ gem install nokogiri --^
+   --with-xml2-include=C:\Chocolatey\lib\libxml2.2.7.8.7\build\native\include^
+   --with-xml2-lib=C:\Chocolatey\lib\libxml2.redist.2.7.8.7\build\native\bin\v110\x64\Release\dynamic\cdecl^
+   --with-iconv-include=C:\Chocolatey\lib\libiconv.1.14.0.11\build\native\include^
+   --with-iconv-lib=C:\Chocolatey\lib\libiconv.redist.1.14.0.11\build\native\bin\v110\x64\Release\dynamic\cdecl^
+   --with-xslt-include=C:\Chocolatey\lib\libxslt.1.1.28.0\build\native\include^
+   --with-xslt-lib=C:\Chocolatey\lib\libxslt.redist.1.1.28.0\build\native\bin\v110\x64\Release\dynamic
+{% endhighlight %}
+
+위의것을 차래대로 입력해 하나하나 설치해줍니다.<br><del>겁나 많아..</del>
+
+&nbsp;
+
+그럼 다시 <b class="blue">CMD</b> 창에서 <code>cd C:/YORDIR</code>원하는 디렉토리로 이동후 <code>jekyll new blog</code>를 입력해 설치해줍니다.
+
+예~ 설치가 잘됫습니다.<br>
+이제 해당 폴더의 blog에 들어가보면 파일이 부족합니다.<br>
+<del>네???</del>
+
+이쯤되면 짜증납니다.<br>
+하지만 지원받은 파일로!! 진행이 가능합니다.<br>
+
+<a href="{{"/file/jekyll.zip" | prepend: site.baseurl}}" download>jekyll.zip 다운로드</a><br>
+<b>파일을 제공해주신 '앱개발 고픈 모임 의 원희' 님 감사합니다.</b>
+
+파일을 다운로드 하신후에 지킬로 만들었던 blog 폴더에 풀어줍니다.<br>
+겹치는 파일은 덮어 써주세요.
+
+그다음 blog 폴더 내의 Gemfile 을 열어
+{% highlight yml %}
+source "https://rubygems.org"
+ruby RUBY_VERSION
+
+# Hello! This is where you manage which Jekyll version is used to run.
+# When you want to use a different version, change it below, save the
+# file and run `bundle install`. Run Jekyll with `bundle exec`, like so:
+#
+#     bundle exec jekyll serve
+#
+# This will help ensure the proper Jekyll version is running.
+# Happy Jekylling!
+gem "jekyll", "3.2.1"
+
+# This is the default theme for new Jekyll sites. You may change this to anything you like.
+gem "minima"
+
+# If you want to use GitHub Pages, remove the "gem "jekyll"" above and
+# uncomment the line below. To upgrade, run `bundle update github-pages`.
+# gem "github-pages", group: :jekyll_plugins
+
+gem 'wdm', '~> 0.1.0' if Gem.win_platform?
+
+# If you have any plugins, put them here!
+# group :jekyll_plugins do
+#   gem "jekyll-github-metadata", "~> 1.0"
+# end
+{% endhighlight %}
+와 같이 수정합니다.<br>
+#은 주석이라 텍스트가 달라도 일단 주석처리 해줍니다.
+
+그다음은 <b>_config.yml</b> 파일을 수정해줍니다.
+
+{% highlight yml %}
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing these this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'jekyll serve'. If you change this file, please restart the server process.
+
+# Site settings
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+title: 사이트제목
+email: 이메일
+description: 사이트 설명
+
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "github 주소" # the base hostname & protocol for your site
+twitter_username: 트위터 네임
+github_username:  github 네임
+
+# Build settings
+markdown: kramdown
+theme: minima
+{% endhighlight %}
+
+그다음 다시 <b class="blue">CMD</b> 창에서 <code>bundle install</code>을 적어줘 실행합니다.<br>
+<code>bundle install</code> 을 실행할떄는 꼭 설치된 루트여야합니다.
+
+자 그럼 완료되었습니다.<br>
+<b class="blue">CMD</b> 창에서 <code>jekyll serve --watch</code>를 입력하고 완료가 되면<br>
+<b>localhost:4000/</b> 으로 이동해 확인할수 있습니다.
+
+이제 github page 에 올리면 나만의 블로그를 확인하실수 있습니다.
