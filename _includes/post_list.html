@@ -1,25 +1,30 @@
-{% if post.image %}
-<li class="hasimg clearfix">
-	<div class="imgarea">
-		<img src="{{ post.image | prepend: site.baseurl }}" alt="{{ post.title | escape }}">
-	</div>
-
-	<span class="post-meta">{{ post.date | date: "%Y %m %d %H:%M" }}</span>
-
-	<h2>
-		<a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title | escape }}</a>
-	</h2>
-	<p>{{ post.category }}</p>
-	<p>{{ post.author }}</p>
-</li>
-{% else %}
 <li>
-	<span class="post-meta">{{ post.date | date: "%Y %m %d %H:%M" }}</span>
-
-	<h2>
-		<a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title | escape }}</a>
-	</h2>
-	<p>{{ post.category }}</p>
-	<p>{{ post.author }}</p>
+	<a href="{{ post.url | prepend: site.baseurl }}" class="clearfix">
+		{% if post.image %}
+			<img src="{{ post.image | prepend: site.baseurl }}" alt="{{ post.title | escape }}">
+		{% else %}
+			{% if post.category == "all" %}
+				<img src="{{ "/img/dico.png" | prepend: site.baseurl }}" alt="{{ post.title | escape }}">
+			{% endif %}
+			{% if post.category == "html" %}
+				<img src="{{ "/img/html.png" | prepend: site.baseurl }}" alt="{{ post.title | escape }}">
+			{% endif %}
+			{% if post.category == "css" %}
+				<img src="{{ "/img/css.png" | prepend: site.baseurl }}" alt="{{ post.title | escape }}">
+			{% endif %}
+			{% if post.category == "javascript" %}
+				<img src="{{ "/img/javascript.png" | prepend: site.baseurl }}" alt="{{ post.title | escape }}">
+			{% endif %}
+			{% if post.category == "android" %}
+				<img src="{{ "/img/android.png" | prepend: site.baseurl }}" alt="{{ post.title | escape }}">
+			{% endif %}
+		{% endif %}
+		
+		<div class="textarea">
+			<h3 class="ellipsis">{{ post.title | escape }}</h3>
+			<p class="date">{{ post.date | date: "%Y.%m.%d" }}</p>
+			<p class="category">{{ post.category }}</p>
+			<p class="author">by <b>{{ post.author }}</b></p>
+		</div>
+	</a>
 </li>
-{% endif %}

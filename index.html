@@ -14,10 +14,10 @@ layout: default
 			{% include category.html %}
 		</div>
 
-		<ul class="post_list">
-		{% for post in site.posts %}
-			{% include post_list.html %}
-		{% endfor %}
+		<ul class="post_list clearfix">
+			{% for post in site.posts %}
+				{% include post_list.html %}
+			{% endfor %}
 		</ul>
 
 		{% include rss.html %}

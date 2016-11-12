@@ -13,7 +13,7 @@ permalink: /css/
 			{% include category.html %}
 		</div>
 
-		<ul class="post_list">
+		<ul class="post_list clearfix">
 		{% for post in site.posts %}
 			{% if post.category == "css" %}
 				{% include post_list.html %}
