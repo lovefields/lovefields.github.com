@@ -1,6 +1,8 @@
-document.onready = function(){
+window.onload = function(){
 	var width = window.innerWidth,
 			btn = document.querySelectorAll('.category_menu .btn');
+
+	console.log('text');
 
 	if(btn.length !== 0){
 		if(width > 970){
