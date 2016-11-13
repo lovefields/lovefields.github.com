@@ -30,7 +30,7 @@ category : all
 <b class="blue">CMD</b> 에서 <code>choco install ruby -y</code> 를 입력해 <b class="blue">ruby</b>을 설치합니다.
 
 <code>/* 2016-11-13 추가 / 프론트 엔드 개발 그륩 - 강동훈 님 */</code><br>
-Windows 7 64bit에서 설치중입니다. 루비에서 막혀서<br>"error fetching https //rubygems.org ... "
+Windows 7 64bit에서 설치중입니다. 루비에서 막혀서<br>"Unable to download data from https:rubygemsorg - SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed"
 
 이 에러 뜨시는 분은 아래 게시물에서 "For windows users" 부분 참고해서 ruby 설치 후 jekyll 설치 진행하시면 됩니다!<br><a href="http://stackoverflow.com/a/27641786/7152877" target="_blank">http://stackoverflow.com/a/27641786/7152877</a><br>
 <code>/* end */</code>

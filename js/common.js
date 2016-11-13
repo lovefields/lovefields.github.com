@@ -1,15 +1,22 @@
-$(document).ready(function(){
-	var width = $(window).width();
+document.onready = function(){
+	var width = window.innerWidth,
+			btn = document.querySelectorAll('.category_menu .btn');
 
-	if(width > 970){
-		$('.category_menu .btn').click(function(){
-			$('.category_menu .list').toggleClass('act');
-		});
-	}else{
-		$('.category_menu #list').change(function(){
-			var val = $(this).val();
-			
-			window.location.href = val;
-		});
+	if(btn.length !== 0){
+		if(width > 970){
+			btn[0].addEventListener('click',function(){
+				document.querySelector('.category_menu .list').classList.toggle('act');
+			});
+		}else{
+			btn[1].addEventListener('change',function(){
+				var val = this.value;
+				window.location.href = val;
+			});
+		}
 	}
-});
+
+	window.onresize = function(){
+		width = window.innerWidth;
+		return;
+	}
+}
