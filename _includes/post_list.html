@@ -1,22 +1,22 @@
 <li>
 	<a href="{{ post.url | prepend: site.baseurl }}" class="clearfix">
 		{% if post.image %}
-			<img src="{{ post.image | prepend: site.baseurl }}" alt="{{ post.title | escape }}">
+			<amp-img src="{{ post.image | prepend: site.baseurl }}" alt="{{ post.title | escape }}" width="236" height="118" layout="responsive"></amp-img>
 		{% else %}
 			{% if post.category == "all" %}
-				<img src="{{ "/img/dico.png" | prepend: site.baseurl }}" alt="{{ post.title | escape }}">
+				<amp-img src="{{ "/img/dico.png" | prepend: site.baseurl }}" alt="{{ post.title | escape }}" width="236" height="118" layout="responsive"></amp-img>
 			{% endif %}
 			{% if post.category == "html" %}
-				<img src="{{ "/img/html.png" | prepend: site.baseurl }}" alt="{{ post.title | escape }}">
+				<amp-img src="{{ "/img/html.png" | prepend: site.baseurl }}" alt="{{ post.title | escape }}" width="236" height="118" layout="responsive"></amp-img>
 			{% endif %}
 			{% if post.category == "css" %}
-				<img src="{{ "/img/css.png" | prepend: site.baseurl }}" alt="{{ post.title | escape }}">
+				<amp-img src="{{ "/img/css.png" | prepend: site.baseurl }}" alt="{{ post.title | escape }}" width="236" height="118" layout="responsive"></amp-img>
 			{% endif %}
 			{% if post.category == "javascript" %}
-				<img src="{{ "/img/javascript.png" | prepend: site.baseurl }}" alt="{{ post.title | escape }}">
+				<amp-img src="{{ "/img/javascript.png" | prepend: site.baseurl }}" alt="{{ post.title | escape }}" width="236" height="118" layout="responsive"></amp-img>
 			{% endif %}
 			{% if post.category == "android" %}
-				<img src="{{ "/img/android.png" | prepend: site.baseurl }}" alt="{{ post.title | escape }}">
+				<amp-img src="{{ "/img/android.png" | prepend: site.baseurl }}" alt="{{ post.title | escape }}" width="236" height="118" layout="responsive"></amp-img>
 			{% endif %}
 		{% endif %}
 		

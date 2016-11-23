@@ -8,12 +8,14 @@
 		<a href="{{ "/android/" | prepend: site.baseurl }}">Android</a>
 	</div>
 
-	<select id="list" class="btn m">
-		<option selected disabled value="">Category</option>
-		<option value="{{ "/" | prepend: site.baseurl }}">ALL</option>
-		<option value="{{ "/html/" | prepend: site.baseurl }}">HTML</option>
-		<option value="{{ "/css/" | prepend: site.baseurl }}">CSS</option>
-		<option value="{{ "/javascript/" | prepend: site.baseurl }}">Javascript</option>
-		<option value="{{ "/android/" | prepend: site.baseurl }}">Android</option>
-	</select>
+	<form method="post" action-xhr="{{ site.url }}" target="_blank">
+		<select id="list" class="btn m">
+			<option selected disabled value="">Category</option>
+			<option value="{{ "/" | prepend: site.baseurl }}">ALL</option>
+			<option value="{{ "/html/" | prepend: site.baseurl }}">HTML</option>
+			<option value="{{ "/css/" | prepend: site.baseurl }}">CSS</option>
+			<option value="{{ "/javascript/" | prepend: site.baseurl }}">Javascript</option>
+			<option value="{{ "/android/" | prepend: site.baseurl }}">Android</option>
+		</select>
+	</form>
 </div>

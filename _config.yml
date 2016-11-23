@@ -22,10 +22,11 @@ keywords: HTML,CSS,HTML5,CSS3,javascript,JS,jQuery,java,xml
 description: Lovefield 의 개발 팀 블로그입니다.
 
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://lovefields.github.io" # the base hostname & protocol for your site
-twitter_username: jekyllrb
+url: "https://lovefields.github.io" # the base hostname & protocol for your site
 github_username:  lovefields
 
 # Build settings
 markdown: kramdown
 theme: minima
+
+ampdir: /_layout

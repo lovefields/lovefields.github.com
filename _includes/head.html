@@ -6,7 +6,201 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700">
-	<link rel="stylesheet"  href="{{ "/css/main.css" | prepend: site.baseurl }}">
+	<style amp-custom>
+body,h1,h2,h3,h4,h5,h6,p,blockquote,pre,dl,dd,ol,ul,fieldset,legend,figure,menu{margin:0;padding:0;border:0}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
+table,th,td{border-spacing:0;border-collapse:collapse}
+ol,ul,li{list-style:none}
+h1,h2,h3,h4,h5,h6{font-size:1em;font-weight:normal}
+body{background:#f5f8f9;color:#333;font:normal 12px/1.3 'Open Sans','Noto Sans',sans-serif}
+input,textarea,select,button{margin:0;padding:0;border-radius:0;color:#333;font:normal 12px/1.3 'Open Sans','Noto Sans',sans-serif;outline:0;vertical-align:middle}
+a:link,a:visited,a:hover,a:active{text-decoration:none}
+a,button,input[type="submit"],input[type="button"],input[type="reset"]{border:0;background:transparent;cursor:pointer}
+img{max-width:100%;border:0;vertical-align:top}
+
+/* global */
+.ellipsis{display:block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;-o-text-overflow:ellipsis}
+.clearfix::after{display:block;content:"";clear:both}
+.ts,.ts::after,.ts::before{-o-transition:all 0.5s ease;-moz-transition:all 0.5s ease;-webkit-transition:all 0.5s ease;transition:all 0.5s ease}
+
+.t_left{text-align:left}
+.t_center{text-align:center}
+.t_right{text-align:right}
+
+.layout{width:100%;max-width:1280px;margin:0 auto}
+@media all and (max-width:1280px){
+header .layout{width:98.5%;padding:0 1.5% 0 0}
+.layout{width:97%;padding:0 1.5%}
+}
+
+header{position:fixed;top:0;left:0;right:0;height:60px;background:#fff;border-bottom:2px solid #f0f3f7;z-index:100}
+header .logo{float:left}
+header .gnb{float:right}
+.container{min-height:100%;padding:61px 0 0;box-sizing:border-box}
+.container .layout{padding:30px 0 0}
+.container aside{float:left;width:220px}
+.container section{float:right;width:-webkit-calc(100% - 240px);width:calc(100% - 240px)}
+footer{padding:20px 0;border-top:2px solid #f0f3f7;line-height:1.5}
+
+.logo{padding:0 10px;height:60px;border-left:1px solid #f0f3f7;border-right:1px solid #f0f3f7;line-height:60px}
+.logo a{color:#38b7ea;font-size:24px;font-weight:bold}
+
+.gnb{margin:0 -5px}
+.gnb a{display:block;float:left;margin:0 5px;color:#333;font-size:14px;font-weight:bold;line-height:60px}
+
+.team{margin:0 0 20px}
+.team ul li{margin:0 0 10px}
+.team ul li:last-child{margin:0}
+.team ul li a{display:block;padding:10px;border-radius:10px;background:#fff;color:#333;overflow:hidden}
+.team ul li a .imgarea{float:left;width:60px;height:60px;border-radius:50%;overflow:hidden}
+.team ul li a .imgarea img{width:100%;min-height:100%}
+.team ul li a .profile{display:table;float:right;width:120px;height:60px}
+.team ul li a .profile .cell{display:table-cell;vertical-align:middle}
+.team ul li a .profile h3{font-size:14px;font-weight:bold}
+
+.user{padding:10px;background:#fff;border-radius:10px;overflow:hidden}
+.user .imgarea{width:160px;height:160px;margin:10px auto 0;border-radius:50%;overflow:hidden}
+.user .profile{padding:10px 0 0}
+.user .profile h3{font-size:18px;font-weight:bold}
+.user .profile p{margin:5px 0 0}
+.user .link{margin:10px 0 0;padding:10px 0 0;border-top:1px solid #38b7ea}
+.user .link a{display:inline-block;margin:0 5px 5px 0;padding:5px;background:#38b7ea;color:#fff;;border-radius:5px}
+
+.title01{background:#fff;border-radius:10px;margin:0 0 20px}
+.title01 h2{float:left;height:40px;padding:0 15px;font-size:16px;font-weight:bold;line-height:40px}
+.title01 .category_menu{float:right;height:40px}
+
+.category_menu{position:relative}
+.category_menu .btn{display:block;position:relative;width:80px;height:100%;background:#38b7ea;border:0;border-radius:0 10px 10px 0;color:#fff;font-weight:bold;text-align:center;line-height:40px;outline:0;-webkit-appearance:none}
+.category_menu .btn:active{box-shadow:inset 2px 4px 0 rgba(0,0,0,0.2)}
+.category_menu .list{position:absolute;top:100%;left:0;right:0;margin:10px 0 0;border-radius:10px;visibility:hidden;opacity:0}
+.category_menu .list::before{display:block;content:'';position:absolute;bottom:100%;left:50%;width:0;height:0;margin:0 0 0 -4px;border:4px solid transparent;border-bottom-color:#38b7ea}
+.category_menu .list a{display:block;height:20px;background:#38b7ea;border-bottom:1px solid #fff;color:#fff;text-align:center;line-height:20px}
+.category_menu .list a:first-child{border-radius:10px 10px 0 0}
+.category_menu .list a:last-child{border:0;border-radius:0 0 10px 10px}
+.category_menu .list a:hover{background:#fff;color:#38b7ea}
+.category_menu .list.act{visibility:visible;opacity:1}
+
+.about .about_wrap{margin:0 -1.5%}
+.about .user{float:left;width:22%;min-height:330px;margin:0 1.5%;box-sizing:border-box}
+
+.post_list{margin:0 -1.5%}
+.post_list li{float:left;width:22%;margin:0 1.5% 15px;background:#fff;border-radius:10px;overflow:hidden}
+.post_list li:hover{background:#f3f3f3}
+.post_list li a{color:#333}
+.post_list li .textarea{padding:10px;border-top:1px solid #f0f3f7}
+.post_list li .textarea h3{font-size:16px;font-weight:bold}
+.post_list li .textarea p{margin:5px 0 0}
+.post_list li .textarea .date{font-size:14px;color:#999}
+.post_list li .textarea .author b{color:#38b7ea}
+
+.post{padding:0 0 100px}
+.post .post-header{padding:10px;background:#fff;border-bottom:2px solid #f0f3f7;border-radius:10px 10px 0 0;overflow:hidden}
+.post .post-header h2{font-size:20px;font-weight:bold}
+.post .post-header p{margin:5px 0 0}
+.post .post-header time{font-size:14px}
+.post .post-content{padding:10px 10px 50px;background:#fff;border-radius:0 0 10px 10px;font-size:14px;line-height:1.4;overflow:hidden}
+.post .post-content p{margin:10px 0 0;word-wrap:break-word}
+.post .post-content .w80{width:80%;margin:10px auto 0}
+.post .post-content .w50{width:50%;margin:10px auto 0}
+.post .post-content .w30{width:30%;margin:10px auto 0}
+.post .post-content code{padding:2px 5px;background:#ddd;border-radius:5px}
+.post .post-content .red{color:#ff0000}
+.post .post-content .blue{color:#0000ff}
+
+.rss,.ccl{margin:20px 0 0;text-align:right}
+
+/* code color */
+.highlight{margin:15px 0 0;padding:10px;background:#ddd;border-radius:10px}
+.highlight,pre,code{font:normal 14px/1.4 'Inconsolata',sans-serif}
+.highlight code{word-wrap:break-word;word-break:keep-all;white-space:pre-wrap}
+.highlight .c{color:#998;font-style:italic} /* Comment */
+.highlight .err{color:#a61717;background-color:#e3d2d2} /* Error */
+.highlight .k{font-weight:bold} /* Keyword */
+.highlight .o{font-weight:bold} /* Operator */
+.highlight .cm{color:#998;font-style:italic} /* Comment.Multiline */
+.highlight .cp{color:#999;font-weight:bold} /* Comment.Preproc */
+.highlight .c1{color:#998;font-style:italic} /* Comment.Single */
+.highlight .cs{color:#999;font-weight:bold;font-style:italic} /* Comment.Special */
+.highlight .gd{color:#000;background-color:#fdd} /* Generic.Deleted */
+.highlight .gd.x{color:#000;background-color:#faa} /* Generic.Deleted.Specific */
+.highlight .ge{font-style:italic} /* Generic.Emph */
+.highlight .gr{color:#a00} /* Generic.Error */
+.highlight .gh{color:#999} /* Generic.Heading */
+.highlight .gi{color:#000;background-color:#dfd} /* Generic.Inserted */
+.highlight .gi.x{color:#000;background-color:#afa} /* Generic.Inserted.Specific */
+.highlight .go{color:#888} /* Generic.Output */
+.highlight .gp{color:#555} /* Generic.Prompt */
+.highlight .gs{font-weight:bold} /* Generic.Strong */
+.highlight .gu{color:#aaa} /* Generic.Subheading */
+.highlight .gt{color:#a00} /* Generic.Traceback */
+.highlight .kc{font-weight:bold} /* Keyword.Constant */
+.highlight .kd{font-weight:bold} /* Keyword.Declaration */
+.highlight .kp{font-weight:bold} /* Keyword.Pseudo */
+.highlight .kr{font-weight:bold} /* Keyword.Reserved */
+.highlight .kt{color:#458;font-weight:bold} /* Keyword.Type */
+.highlight .m{color:#099} /* Literal.Number */
+.highlight .s{color:#d14} /* Literal.String */
+.highlight .na{color:#008080} /* Name.Attribute */
+.highlight .nb{color:#0086B3} /* Name.Builtin */
+.highlight .nc{color:#458;font-weight:bold} /* Name.Class */
+.highlight .no{color:#008080} /* Name.Constant */
+.highlight .ni{color:#800080} /* Name.Entity */
+.highlight .ne{color:#900;font-weight:bold} /* Name.Exception */
+.highlight .nf{color:#900;font-weight:bold} /* Name.Function */
+.highlight .nn{color:#555} /* Name.Namespace */
+.highlight .nt{color:#000080} /* Name.Tag */
+.highlight .nv{color:#008080} /* Name.Variable */
+.highlight .ow{font-weight:bold} /* Operator.Word */
+.highlight .w{color:#bbb} /* Text.Whitespace */
+.highlight .mf{color:#099} /* Literal.Number.Float */
+.highlight .mh{color:#099} /* Literal.Number.Hex */
+.highlight .mi{color:#099} /* Literal.Number.Integer */
+.highlight .mo{color:#099} /* Literal.Number.Oct */
+.highlight .sb{color:#d14} /* Literal.String.Backtick */
+.highlight .sc{color:#d14} /* Literal.String.Char */
+.highlight .sd{color:#d14} /* Literal.String.Doc */
+.highlight .s2{color:#d14} /* Literal.String.Double */
+.highlight .se{color:#d14} /* Literal.String.Escape */
+.highlight .sh{color:#d14} /* Literal.String.Heredoc */
+.highlight .si{color:#d14} /* Literal.String.Interpol */
+.highlight .sx{color:#d14} /* Literal.String.Other */
+.highlight .sr{color:#009926} /* Literal.String.Regex */
+.highlight .s1{color:#d14} /* Literal.String.Single */
+.highlight .ss{color:#990073} /* Literal.String.Symbol */
+.highlight .bp{color:#999} /* Name.Builtin.Pseudo */
+.highlight .vc{color:#008080} /* Name.Variable.Class */
+.highlight .vg{color:#008080} /* Name.Variable.Global */
+.highlight .vi{color:#008080} /* Name.Variable.Instance */
+.highlight .il{color:#099} /* Literal.Number.Integer.Long */
+
+@media all and (min-width:768px){
+.category_menu .m{display:none}
+}
+@media all and (max-width:960px){
+.post_list li{width:47%}
+}
+@media all and (max-width:768px){
+.container aside{display:none}
+.container section{float:none;width:100%}
+
+.category_menu{overflow:hidden}
+.category_menu .btn{padding:0 0 0 12px}
+.category_menu .pc{display:none}
+
+.about .about_wrap{margin:0}
+.about .user{float:none;width:100%;min-height:0;margin:0 0 20px}
+
+.post .post-content .w80{width:100%;margin:10px 0 0}
+.post .post-content .w50{width:100%;margin:10px 0 0}
+.post .post-content .w30{width:100%;margin:10px 0 0}
+.post .post-content br{display:none}
+}
+@media all and (max-width:500px){
+.post_list{margin:0}
+.post_list li{float:none;width:100%;margin:0 0 15px}
+}
+	</style>
 
 	<title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
 
@@ -20,17 +214,18 @@
 	<meta property="og:image" content="{% if page.image %}{{ page.image | prepend: site.url }}{% else %}{{ site.image | prepend: site.url }}{% endif %}">
 	<meta property="og:keywords" content="{% if page.keywords %}{{ page.keywords | escape }}{% else %}{{ site.keywords | escape }}{% endif %}">
 	<meta property="og:description" content="{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+
+	{% if page.path contains '_posts' %}
+	<link rel="amphtml" href="{{ page.id | prepend: '/_layout' | prepend: site.baseurl | prepend: site.url }}">
+	{% endif %}
 	
 	<link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
 	<link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
 
-	<script type="text/javascript">
-		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	<script async src="https://cdn.ampproject.org/v0.js"></script>
+	<script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
+	<script async type="text/javascript" src="{{ "/js/common.js" | prepend: site.baseurl }}"></script>
 
-		ga('create', 'UA-63573250-1', 'auto');
-		ga('send', 'pageview');
-	</script>
+	<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style>
+	<noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
 </head>

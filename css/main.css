@@ -26,7 +26,7 @@ header .layout{width:98.5%;padding:0 1.5% 0 0}
 .layout{width:97%;padding:0 1.5%}
 }
 
-header{position:fixed;top:0;left:0;right:0;height:60px;background:#fff;border-bottom:2px solid #f0f3f7}
+header{position:fixed;top:0;left:0;right:0;height:60px;background:#fff;border-bottom:2px solid #f0f3f7;z-index:100}
 header .logo{float:left}
 header .gnb{float:right}
 .container{min-height:100%;padding:61px 0 0;box-sizing:border-box}
@@ -94,6 +94,9 @@ footer{padding:20px 0;border-top:2px solid #f0f3f7;line-height:1.5}
 .post .post-header time{font-size:14px}
 .post .post-content{padding:10px 10px 50px;background:#fff;border-radius:0 0 10px 10px;font-size:14px;line-height:1.4;overflow:hidden}
 .post .post-content p{margin:10px 0 0;word-wrap:break-word}
+.post .post-content .w80{width:80%;margin:10px auto 0}
+.post .post-content .w50{width:50%;margin:10px auto 0}
+.post .post-content .w30{width:30%;margin:10px auto 0}
 .post .post-content code{padding:2px 5px;background:#ddd;border-radius:5px}
 .post .post-content .red{color:#ff0000}
 .post .post-content .blue{color:#0000ff}
@@ -181,6 +184,9 @@ footer{padding:20px 0;border-top:2px solid #f0f3f7;line-height:1.5}
 .about .about_wrap{margin:0}
 .about .user{float:none;width:100%;min-height:0;margin:0 0 20px}
 
+.post .post-content .w80{width:100%;margin:10px 0 0}
+.post .post-content .w50{width:100%;margin:10px 0 0}
+.post .post-content .w30{width:100%;margin:10px 0 0}
 .post .post-content br{display:none}
 }
 @media all and (max-width:500px){

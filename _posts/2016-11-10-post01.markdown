@@ -91,7 +91,7 @@ Windows 7 64bit에서 설치중입니다. 루비에서 막혀서<br>"Unable to d
 이쯤되면 짜증납니다.<br>
 하지만 지원받은 파일로!! 진행이 가능합니다.<br>
 
-<a href="{{"/file/jekyll.zip" | prepend: site.baseurl}}" download>jekyll.zip 다운로드</a><br>
+<a href="{{ "/file/jekyll.zip" | prepend: site.url }}" download>jekyll.zip 다운로드</a><br>
 <b>파일을 제공해주신 '앱개발 고픈 모임 의 원희' 님 감사합니다.</b>
 
 파일을 다운로드 하신후에 지킬로 만들었던 blog 폴더에 풀어줍니다.<br>

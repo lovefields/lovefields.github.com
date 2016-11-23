@@ -15,40 +15,40 @@ category : android
 
 상단 메뉴 'Downloads'에서 'Java SE'로 들어가서
 
-<p class="t_center"><img src="{{ "/img/post02/java01.jpg" | prepend: site.baseurl }}" alt=""></p>
+<p class="t_center"><amp-img src="{{ "/img/post02/java01.jpg" | prepend: site.baseurl }}" alt="다운로드 위치" width="1020" height="512" layout="responsive"></amp-img></p>
 
 'JAVA DOWNLOAD'로 들어갑니다.
 
-<p class="t_center"><img src="{{ "/img/post02/java02.jpg" | prepend: site.baseurl }}" alt=""></p>
+<p class="t_center"><amp-img src="{{ "/img/post02/java02.jpg" | prepend: site.baseurl }}" alt="왼쪽 자바 다운로드" width="1020" height="512" layout="responsive"></amp-img></p>
 
 Accept License Agreement를 체크해주시고 본인 컴퓨터 사양에 맞는 설치 파일을 다운받습니다.<br>
 (x84: 32bit Windows용, x64: 64bit Windows용)
 
-<p class="t_center"><img src="{{ "/img/post02/java03.jpg" | prepend: site.baseurl }}" alt=""></p>
+<p class="t_center"><amp-img src="{{ "/img/post02/java03.jpg" | prepend: site.baseurl }}" alt="윈도우용 java 파일 다운로드" width="1020" height="512" layout="responsive"></amp-img></p>
 
 2. 설치 파일을 열어 Java를 설치합니다.
 
-<p class="t_center"><img src="{{ "/img/post02/java04.jpg" | prepend: site.baseurl }}" alt=""></p>
-<p class="t_center"><img src="{{ "/img/post02/java05.jpg" | prepend: site.baseurl }}" alt=""></p>
+<p class="t_center w30"><amp-img src="{{ "/img/post02/java04.jpg" | prepend: site.baseurl }}" alt="자바아이콘" width="269" height="282" layout="responsive"></amp-img></p>
+<p class="t_center w50"><amp-img src="{{ "/img/post02/java05.jpg" | prepend: site.baseurl }}" alt="설치 진행1" width="495" height="378" layout="responsive"></amp-img></p>
 
 여기서 잠깐!
 Java 설치 경로를 수정해줍니다.
 
-<p class="t_center"><img src="{{ "/img/post02/java06.jpg" | prepend: site.baseurl }}" alt=""></p>
+<p class="t_center w50"><amp-img src="{{ "/img/post02/java06.jpg" | prepend: site.baseurl }}" alt="설치 진행2" width="495" height="378" layout="responsive"></amp-img></p>
 
 Android Studio는 'Program Files'과 같이 경로에 띄어쓰기가 존재하면 인식하지 못합니다.<br>
 ∴ '\Program Files' 를 지워 경로에 띄어쓰기가 존재하지 않도록 해줍니다.<br>
 이렇게 하시면 Android studio가 java를 찾을 수 있게 따로 시스템 경로를 설정하지 않아도 됩니다.
 
-<p class="t_center"><img src="{{ "/img/post02/java07.jpg" | prepend: site.baseurl }}" alt=""></p>
+<p class="t_center w50"><amp-img src="{{ "/img/post02/java07.jpg" | prepend: site.baseurl }}" alt="설치 진행3" width="495" height="378" layout="responsive"></amp-img></p>
 
 대상 폴더 경로는 그대로 두셔도 무방합니다.
 
-<p class="t_center"><img src="{{ "/img/post02/java08.jpg" | prepend: site.baseurl }}" alt=""></p>
+<p class="t_center w50"><amp-img src="{{ "/img/post02/java08.jpg" | prepend: site.baseurl }}" alt="설치 진행4" width="495" height="378" layout="responsive"></amp-img></p>
 
 Java 설치가 끝났습니다.
 
-<p class="t_center"><img src="{{ "/img/post02/java09.jpg" | prepend: site.baseurl }}" alt=""></p>
+<p class="t_center w50"><amp-img src="{{ "/img/post02/java09.jpg" | prepend: site.baseurl }}" alt="설치 진행5" width="495" height="378" layout="responsive"></amp-img></p>
 
 
 3. 이제 Android Studio를 설치하겠습니다.<br>
@@ -58,54 +58,54 @@ Android studio 공식 홈페이지에 가서 설치 파일을 다운로드 받�
 
 'DOWNLOAD ANDROID STUDIO' 클릭하시고
 
-<p class="t_center"><img src="{{ "/img/post02/andorid01.jpg" | prepend: site.baseurl }}" alt=""></p>
+<p class="t_center"><amp-img src="{{ "/img/post02/andorid01.jpg" | prepend: site.baseurl }}" alt="안드로드 스튜디오 홈페이지" width="1020" height="512" layout="responsive"></amp-img></p>
 
 'I have read and agree with the above terms and conditions'를 체크한 뒤<br>
 파랗게 변한 'DOWNLOAD ANDROID STUDIO 버전 FOR WINDOWS (용량)'을 클릭합니다.
 
-<p class="t_center"><img src="{{ "/img/post02/andorid02.jpg" | prepend: site.baseurl }}" alt=""></p>
+<p class="t_center"><amp-img src="{{ "/img/post02/andorid02.jpg" | prepend: site.baseurl }}" alt="안드로드 스튜디오 다운로드" width="1020" height="512" layout="responsive"></amp-img></p>
 
 4. 설치 파일을 실행합니다.
 
-<p class="t_center"><img src="{{ "/img/post02/andorid03.jpg" | prepend: site.baseurl }}" alt=""></p>
+<p class="t_center w30"><amp-img src="{{ "/img/post02/andorid03.jpg" | prepend: site.baseurl }}" alt="안드로이드 스튜디오 아이콘" alt="자바아이콘" width="269" height="282" layout="responsive"></amp-img></p>
 
 가볍게 Next 눌러줍니다.
 
-<p class="t_center"><img src="{{ "/img/post02/andorid04.jpg" | prepend: site.baseurl }}" alt=""></p>
-<p class="t_center"><img src="{{ "/img/post02/andorid05.jpg" | prepend: site.baseurl }}" alt=""></p>
+<p class="t_center w50"><amp-img src="{{ "/img/post02/andorid04.jpg" | prepend: site.baseurl }}" alt="설치 진행1" width="495" height="378" layout="responsive"></amp-img></p>
+<p class="t_center w50"><amp-img src="{{ "/img/post02/andorid05.jpg" | prepend: site.baseurl }}" alt="설치 진행2" width="495" height="378" layout="responsive"></amp-img></p>
 
 Android studio를 설치할 경로와 SDK를 설치할 경로는 드라이브의 용량이 넉넉하다면 굳이 건드리지 않아도 됩니다.
 
-<p class="t_center"><img src="{{ "/img/post02/andorid06.jpg" | prepend: site.baseurl }}" alt=""></p>
+<p class="t_center w50"><amp-img src="{{ "/img/post02/andorid06.jpg" | prepend: site.baseurl }}" alt="설치 진행3" width="495" height="378" layout="responsive"></amp-img></p>
 
 저는 E 드라이브가 저장용량이 커서 E 드라이브로 바꾸면서 경로 또한 간단하게 바꾸었습니다.
 
-<p class="t_center"><img src="{{ "/img/post02/andorid07.jpg" | prepend: site.baseurl }}" alt=""></p>
+<p class="t_center w50"><amp-img src="{{ "/img/post02/andorid07.jpg" | prepend: site.baseurl }}" alt="설치 진행4" width="495" height="378" layout="responsive"></amp-img></p>
 
 Install > Next > Finish
 
-<p class="t_center"><img src="{{ "/img/post02/andorid08.jpg" | prepend: site.baseurl }}" alt=""></p>
-<p class="t_center"><img src="{{ "/img/post02/andorid09.jpg" | prepend: site.baseurl }}" alt=""></p>
-<p class="t_center"><img src="{{ "/img/post02/andorid10.jpg" | prepend: site.baseurl }}" alt=""></p>
+<p class="t_center w50"><amp-img src="{{ "/img/post02/andorid08.jpg" | prepend: site.baseurl }}" alt="설치 진행5" width="495" height="378" layout="responsive"></amp-img></p>
+<p class="t_center w50"><amp-img src="{{ "/img/post02/andorid09.jpg" | prepend: site.baseurl }}" alt="설치 진행6" width="495" height="378" layout="responsive"></amp-img></p>
+<p class="t_center w50"><amp-img src="{{ "/img/post02/andorid10.jpg" | prepend: site.baseurl }}" alt="설치 진행7 width="495" height="378" layout="responsive"></amp-img></p>
 
 설치가 완료되어 프로그램을 실행시키면 Complete Installation 창이 뜹니다.<br>
 Android Studio를 처음 설치하는 것이므로 기본적으로 선택되어 있는<br>
 'I do not have a previous version of Studio or I do not want to import my settings' 으로 놔두고 'OK'를 누릅니다.
 
-<p class="t_center"><img src="{{ "/img/post02/andorid11.jpg" | prepend: site.baseurl }}" alt=""></p>
-<p class="t_center"><img src="{{ "/img/post02/andorid12.jpg" | prepend: site.baseurl }}" alt=""></p>
-<p class="t_center"><img src="{{ "/img/post02/andorid13.jpg" | prepend: site.baseurl }}" alt=""></p>
+<p class="t_center w50"><amp-img src="{{ "/img/post02/andorid11.jpg" | prepend: site.baseurl }}" alt="설치 진행8" width="510" height="203" layout="responsive"></amp-img></p>
+<p class="t_center w50"><amp-img src="{{ "/img/post02/andorid12.jpg" | prepend: site.baseurl }}" alt="설치 진행9" width="510" height="383" layout="responsive"></amp-img></p>
+<p class="t_center w50"><amp-img src="{{ "/img/post02/andorid13.jpg" | prepend: site.baseurl }}" alt="설치 진행10" width="510" height="383" layout="responsive"></amp-img></p>
 
 마찬가지로 'Standard'가 선택되어 있는 상태로 'Next' 합니다.
 
-<p class="t_center"><img src="{{ "/img/post02/andorid14.jpg" | prepend: site.baseurl }}" alt=""></p>
-<p class="t_center"><img src="{{ "/img/post02/andorid15.jpg" | prepend: site.baseurl }}" alt=""></p>
-<p class="t_center"><img src="{{ "/img/post02/andorid16.jpg" | prepend: site.baseurl }}" alt=""></p>
-<p class="t_center"><img src="{{ "/img/post02/andorid17.jpg" | prepend: site.baseurl }}" alt=""></p>
+<p class="t_center w80"><amp-img src="{{ "/img/post02/andorid14.jpg" | prepend: site.baseurl }}" alt="설치 진행11" width="796" height="598" layout="responsive"></amp-img></p>
+<p class="t_center w80"><amp-img src="{{ "/img/post02/andorid15.jpg" | prepend: site.baseurl }}" alt="설치 진행12" width="796" height="598" layout="responsive"></amp-img></p>
+<p class="t_center w80"><amp-img src="{{ "/img/post02/andorid16.jpg" | prepend: site.baseurl }}" alt="설치 진행13" width="796" height="598" layout="responsive"></amp-img></p>
+<p class="t_center w80"><amp-img src="{{ "/img/post02/andorid17.jpg" | prepend: site.baseurl }}" alt="설치 진행14" width="796" height="598" layout="responsive"></amp-img></p>
 
 5. 설치가 완료되었습니다.
 
-<p class="t_center"><img src="{{ "/img/post02/andorid17_1.jpg" | prepend: site.baseurl }}" alt=""></p>
+<p class="t_center w50"><amp-img src="{{ "/img/post02/andorid17_1.jpg" | prepend: site.baseurl }}" alt="설치 완료" width="662" height="489" layout="responsive"></amp-img></p>
 
 
 [오라클 공식 사이트]: https://www.oracle.com/index.html
