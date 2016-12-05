@@ -37,7 +37,7 @@ Java 설치 경로를 수정해줍니다.
 <p class="t_center w50"><amp-img src="{{ "/img/post02/java06.jpg" | prepend: site.baseurl }}" alt="설치 진행2" width="495" height="378" layout="responsive"></amp-img></p>
 
 Android Studio는 'Program Files'과 같이 경로에 띄어쓰기가 존재하면 인식하지 못합니다.<br>
-∴ '\Program Files' 를 지워 경로에 띄어쓰기가 존재하지 않도록 해줍니다.(또한 한글명도 없어야 합니다.)<br>
+∴ '\Program Files' 를 지워 경로에 띄어쓰기가 존재하지 않도록 해줍니다.<br>
 이렇게 하시면 Android studio가 java를 찾을 수 있게 따로 시스템 경로를 설정하지 않아도 됩니다.
 
 <p class="t_center w50"><amp-img src="{{ "/img/post02/java07.jpg" | prepend: site.baseurl }}" alt="설치 진행3" width="495" height="378" layout="responsive"></amp-img></p>
