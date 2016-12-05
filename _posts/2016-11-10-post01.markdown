@@ -56,7 +56,7 @@ Windows 7 64bit에서 설치중입니다. 루비에서 막혀서<br>"Unable to d
 
 다시 <b class="blue">CMD</b> 창에서 <code>gem install bundler</code>를 입력해 <b class="blue">bundler</b> 를 설치해줍니다.<br>중간에 질문이 나온다면 다 Y 해줍니다.
 
-그리고 <code>gem isntall minima -v '2.0.0'</code>을 입력해 <b class="blue">minima</b>도 설치해줍니다.
+그리고 <code>gem install minima -v '2.0.0'</code>을 입력해 <b class="blue">minima</b>도 설치해줍니다.
 
 그리고 <code>gem install jekyll-feed -v '0.8.0'</code>을 입력해 설치해줍니다.
 
