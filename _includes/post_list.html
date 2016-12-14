@@ -6,14 +6,8 @@
 			{% if post.category == "all" %}
 				<amp-img src="{{ "/img/dico.png" | prepend: site.baseurl }}" alt="{{ post.title | escape }}" width="236" height="118" layout="responsive"></amp-img>
 			{% endif %}
-			{% if post.category == "html" %}
-				<amp-img src="{{ "/img/html.png" | prepend: site.baseurl }}" alt="{{ post.title | escape }}" width="236" height="118" layout="responsive"></amp-img>
-			{% endif %}
-			{% if post.category == "css" %}
-				<amp-img src="{{ "/img/css.png" | prepend: site.baseurl }}" alt="{{ post.title | escape }}" width="236" height="118" layout="responsive"></amp-img>
-			{% endif %}
-			{% if post.category == "javascript" %}
-				<amp-img src="{{ "/img/javascript.png" | prepend: site.baseurl }}" alt="{{ post.title | escape }}" width="236" height="118" layout="responsive"></amp-img>
+			{% if post.category == "Front end" %}
+				<amp-img src="{{ "/img/front_end.png" | prepend: site.baseurl }}" alt="{{ post.title | escape }}" width="236" height="118" layout="responsive"></amp-img>
 			{% endif %}
 			{% if post.category == "android" %}
 				<amp-img src="{{ "/img/android.png" | prepend: site.baseurl }}" alt="{{ post.title | escape }}" width="236" height="118" layout="responsive"></amp-img>
