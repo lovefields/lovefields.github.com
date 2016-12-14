@@ -1,0 +1,78 @@
+---
+layout: post
+title:  "Android Studio 개발 환경 만들기"
+date: 2016-12-06 12:00:00 +0900
+author: 민갤
+description: Android Studio 
+keywords : Android Studio,Android,Studio
+category : android
+---
+
+1] Android Studio 가 설치되면 가장 먼저 사용할 SDK를 다운로드 합니다.<br>하단의 'Configure'를 클릭하여 'SDK Manager'를 엽니다.<br><br>
+
+<p class="t_center w30"><amp-img src="{{ "/img/post03/android18.jpg" | prepend: site.baseurl }}" alt="안드로이드 스튜디오 메뉴창" width="662" height="648" layout="responsive"></amp-img></p><br><br>
+
+Default Settings가 열리며 'SDK Platforms'이 보입니다.<br>
+필요한 안드로이드 버전의 SDK를 체크하여 'OK'를 누르면 바로 다운로드 가능하지만 처음 설치해서 실행하는 것이므로<br>
+하단의 'Launch Standalone SDK Manager'를 클릭합니다.<br><br>
+
+<p class="t_center w50"><amp-img src="{{ "/img/post03/android19.jpg" | prepend: site.baseurl }}" alt="안드로이드 스튜디오 환경설정" width="1023" height="695" layout="responsive"></amp-img></p><br><br>
+'Android SDK Manager'가 열렸습니다.<br>
+잠시 기다렸다가 loding이 끝나면 열려 있는 Packages들을 전부 닫아줍니다.<br>
+'Tools', 'Extras'를 기본적으로 체크해주고 'Android 7.0(Nougat)'는 아직 안정적이지 않으므로 체크를 해제합니다.<br>
+App을 만들 때 낮은 버전의 안드로이드를 사용하는 사람들도 고려해야 하므로,<br>
+저는 현재 안드로이드 버전 점유율을 참고하여 Jelly Bean(API 16)부터 사용가능하도록 SDK를 다운받겠습니다.<br><br>
+
+<p class="t_center w30"><amp-img src="{{ "/img/post03/android20.jpg" | prepend: site.baseurl }}" alt="SDK Manager" width="686" height="641" layout="responsive"></amp-img></p><br><br>
+'Choose Packages to Install'창이 뜨면 큰 항목들을 일일이 클릭하며 'Accept License'를 체크해줍니다.<br><br>
+
+<p class="t_center w30"><amp-img src="{{ "/img/post03/android21.jpg" | prepend: site.baseurl }}" alt="Choose Packages to Install" width="726" height="463" layout="responsive"></amp-img></p>
+<p class="t_center w30"><amp-img src="{{ "/img/post03/android22.jpg" | prepend: site.baseurl }}" alt="Downloading Android SDK" width="686" height="641" layout="responsive"></amp-img></p><br><br>
+SDK가 설치될 동안 프로그램의 작업 환경을 설정해보겠습니다.<br>
+다시 처음 화면으로 돌아가서 하단의 'Configure'를 클릭하여 'Settings'을 엽니다.<br><br><br>
+
+2] 화면 테마 바꾸기<br><br>
+
+Android Studio의 테마는 대표적으로 백색과 흑색이 있습니다.<br>
+보통 작업을 하게 되면 화면을 오래 바라보게 되기 마련인데 이때 백색 테마보단 흑색 테마가 눈의 피로감이 덜합니다.<br><br>
+
+Configure > Settings(또는 File >Settings, Ctrl+Alt+S)에서 'Appearance & Behavior > Appearance'를 열어<br>
+'UI Options'의 가장 위에 있는 'Theme:'의 아래화살표를 눌러 'Darcula'를 선택합니다.<br>
+(Darcula: 흑색 테마, Intellij: 백색 테마)<br><br>
+
+<p class="t_center w50"><amp-img src="{{ "/img/post03/android_theme01.jpg" | prepend: site.baseurl }}" alt="Theme Setting" width="1024" height="695" layout="responsive"></amp-img></p><br><br>
+Darcula 테마 화면<br><br>
+
+<p class="t_center w30"><amp-img src="{{ "/img/post03/android_theme02.jpg" | prepend: site.baseurl }}" alt="Theme Darck" width="662" height="489" layout="responsive"></amp-img></p><br><br><br>
+
+3. 글꼴 설정<br><br>
+
+Android Studio에서 기본 글꼴로 코딩하게 되면 <br>
+I(i)와 l(L), 0과 O(o)이 비슷하게 생겨 알파벳을 착각하게 되는 일이 발생합니다.<br>
+이를 방지하기 위해 처음부터 미리 글꼴을 변경합니다.<br><br>
+
+Settings에서 'Editor > Colors $ Fonts > Font'를 열어<br>
+상단의 'Scheme:' 옆에 있는 'Save As...'를 클릭하여 defult 상태로 'OK'를 누릅니다.<br><br>
+
+<p class="t_center w50"><amp-img src="{{ "/img/post03/android_theme03.jpg" | prepend: site.baseurl }}" alt="Font Setting" width="1023" height="694" layout="responsive"></amp-img></p><br><br>
+
+'Editor Font'를 수정할 수 있게 됩니다.<br>
+'Show only monospaced fonts'의 'Primary font:' 옆에 있는 아래화살표를 눌러 'Consolas' 글꼴을 선택합니다.<br><br>
+
+<p class="t_center w50"><amp-img src="{{ "/img/post03/android_theme04.jpg" | prepend: site.baseurl }}" alt="Font Setting2" width="1025" height="696" layout="responsive"></amp-img></p><br><br>
+
+difult 글꼴과 Consolas 글꼴 비교<br><br>
+
+<p class="t_center w30"><amp-img src="{{ "/img/post03/android_theme04_1.jpg" | prepend: site.baseurl }}" alt="Font default" width="759" height="337" layout="responsive"></amp-img></p>
+<p class="t_center w30"><amp-img src="{{ "/img/post03/android_theme04_2.jpg" | prepend: site.baseurl }}" alt="Font Consolas" width="759" height="337" layout="responsive"></amp-img></p><br><br>
+
+
+4. 자동 Import<br><br>
+
+코딩을 할 때 필요한 class를 사용하려면 import를 해야합니다. <br>
+이것들을 일일이 단축키 Alt+Enter를 눌러 import하기에는 번거로우니 자동으로 import 되도록 설정합니다.<br><br>
+
+Settings에서 'Editor > General > Auto Import'를 엽니다.<br>
+Java의 'Optimize imports on the fly'와 'Add unambiguous imports on the fly'를 체크합니다.<br><br>
+
+<p class="t_center w50"><amp-img src="{{ "/img/post03/android_theme05.jpg" | prepend: site.baseurl }}" alt="Auto Import" width="1024" height="696" layout="responsive"></amp-img></p>
