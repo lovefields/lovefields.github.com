@@ -5,7 +5,7 @@ date:   2016-12-14 12:00:00 +0900
 author: Lovefield
 description: HTML을 처음 접하는 사람들을 위한 설명.
 keywords : HTML,HTML5,Front end,프론트 엔드
-category : Front end
+category : front_end
 ---
 
 안녕하세요 lovefield 입니다.<br>
