@@ -12,7 +12,13 @@ category : android
 
 <p class="t_center w50"><amp-img src="{{ "/img/post03/android18.jpg" | prepend: site.baseurl }}" alt="안드로이드 스튜디오 메뉴창" width="662" height="648" layout="responsive"></amp-img></p><br>
 
-Default Settings가 열리며 'SDK Platforms'이 보입니다.<br>
+SDK 설정 대화상자인 Default Settings가 열리며 'SDK Platforms'이 보입니다.<br>
+그 위에 있는 Android SDK Location은 SDK가 설치된 위치를 보여줍니다. Edit을 눌러 설치된 위치를 변경할 수 있습니다.<br><br>
+
+SDK platforms 탭: 안드로이드 시스템의 컴포넌트들 설치 및 삭제 가능<br>
+SDK Tools 탭: 각종 도구 설치 및 삭제 가능<br>
+SDK Update Sites 탭: 업그레이드할 것이 있는지 확인하는 사이트 선택 가능<br><br>
+
 필요한 안드로이드 버전의 SDK를 체크하여 'OK'를 누르면 바로 다운로드 가능하지만 처음 설치해서 실행하는 것이므로<br>
 하단의 <span class="blue">Launch Standalone SDK Manager</span>를 클릭합니다.<br>
 
@@ -20,7 +26,7 @@ Default Settings가 열리며 'SDK Platforms'이 보입니다.<br>
 
 'Android SDK Manager'가 열렸습니다.<br>
 잠시 기다렸다가 loding이 끝나면 열려 있는 Packages들을 전부 닫아줍니다.<br>
-<span class="blue">Tools</span>, <span class="blue">Extras</span>를 기본적으로 체크해주고 'Android 7.0(Nougat)'는 아직 안정적이지 않으므로 체크를 해제합니다.<br>
+<span class="blue">Tools</span>, <span class="blue">Extras</span> 를 기본적으로 체크해주고 'Android 7.0(Nougat)'는 아직 안정적이지 않으므로 체크를 해제합니다.<br>
 App을 만들 때 낮은 버전의 안드로이드를 사용하는 사람들도 고려해야 하므로,<br>
 저는 현재 안드로이드 버전 점유율을 참고하여 Jelly Bean(API 16)부터 사용가능하도록 SDK를 다운받겠습니다.<br>
 
