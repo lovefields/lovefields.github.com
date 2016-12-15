@@ -5,15 +5,16 @@ date:   2016-12-14 12:00:00 +0900
 author: Lovefield
 description: HTML을 처음 접하는 사람들을 위한 설명.
 keywords : HTML,HTML5,Front end,프론트 엔드
+image : /img/html.png
 category : front_end
 ---
 
 안녕하세요 lovefield 입니다.<br>
 오늘은 HTML에 대해서 설명해드리겟습니다.<br><br>
 
-HTML은 <b class="blue">Hyper Text Markup Lnaguage</b> 라고들 흔히 말해줄겁니다.<br>
-그래서 <b class="blue">Hyper Text Markup Lnaguage</b>가 뭔데?<br>
-<b class="blue">Hyper Text Markup Lnaguage</b>는 <span class="blue">Hyper Text</span> 와 <span class="blue">Markup Language</span> 의 합성어입니다.<br><br>
+HTML은 <b class="blue">Hyper Text Markup Language</b> 라고들 흔히 말해줄겁니다.<br>
+그래서 <b class="blue">Hyper Text Markup Language</b>가 뭔데?<br>
+<b class="blue">Hyper Text Markup Language</b>는 <span class="blue">Hyper Text</span> 와 <span class="blue">Markup Language</span> 의 합성어입니다.<br><br>
 
 <b class="blue">Hyper Text</b> 는 하이퍼 링크 를 통해서 독자가 원하는 문서로 이동할수 있는 텍스트를 말합니다.<br>
 즉, 책을 순서대로 넘길수 있다는 가정하에 <b class="blue">Hyper Text</b>는 목차에서 선택해 원하는 곳으로 이동할수 있는 것이죠.<br><br>
