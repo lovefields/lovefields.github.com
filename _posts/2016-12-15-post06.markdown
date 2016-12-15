@@ -1,0 +1,65 @@
+---
+layout: post
+title:  "Android Studio 실행하기"
+date: 2016-12-15 12:00:00 +0900
+author: 민갤
+description: Android Studio 
+keywords : Android Studio,Android,Studio
+category : android
+---
+
+１. Android Studio를 실행시켜 첫 프로젝트를 만들어 봅시다.<br>
+<span class="blue">Start a new Android Studio project</span>를 누릅니다.<br>
+
+<p class="t_center w50"><amp-img src="{{ "/img/post06/new00.jpg" | prepend: site.baseurl }}" alt="웰컴 스크린창" width="662" height="489" layout="responsive"></amp-img></p><br>
+
+새로운 프로젝트 생성 대화상자입니다.<br><br>
+<span class="blue">Application name</span>은 Project Name이 되며, 프로그램 내부에서 참조와 식별에 사용됩니다. 이름은 반드시 첫글자가 대문자여야 합니다.<br>
+<span class="blue">Company Domain</span>은 가상 주소를 입력하거나 자신의 도메인 URL(www 제외)을 입력합니다.<br>
+<span class="blue">Package Name</span>은 Company Domain에 입력한 URL(거꾸로)과 Application name이 이어진 이름으로 자동생성 됩니다.<br>
+이름이 마음에 들지 않는다면 오른쪽 끝의 Edit을 클릭하여 변경할 수 있습니다.<br>
+이 이름은 안드로이드 시장에서 우리 앱을 고유하게 식별하는 데 사용됩니다.<br>
+<span class="blue">Project location</span>은 앞으로 만들어 나갈 프로젝트 파일들이 저장되고 관리되는 디렉터리 경로를 나타냅니다.<br>
+다른 위치에 프로젝트 파일들을 모으거나 저장하고 싶다면 '...' 버튼을 눌러 변경할 수 있습니다.<br><br>
+
+저는 프로젝트 파일을 쉽게 관리하기 위하여 드라이브에 work 파일을 만들어 저장 위치를 그곳으로 변경했습니다.<br> 
+입력을 완료했으면 Next 버튼을 누릅니다.<br>
+
+<p class="t_center w50"><amp-img src="{{ "/img/post06/new01.jpg" | prepend: site.baseurl }}" alt="새로운 프로젝트 생성 대화상자" width="1065" height="751" layout="responsive"></amp-img></p><br>
+
+우리 앱이 실행될 안드로이드 장치의 유형을 선택하는 대화상자입니다.<br>
+어떤 플랫폼을 사용할 것인지와 플랫폼의 안드로이드 운영체제 버전을 최소 얼마 이상으로 할 지 지정할 수 있습니다.<br>
+SDK 버전을 낮은 것으로 선택하면 더욱 많은 사람들이 우리 앱을 사용할 수 있지만, 호환성을 고려해서 개발해야 합니다.<br>
+주로 스마트폰 앱을 개발할 것이므로 <span class="blue">Phone and Tablet</span>(폰과 태블릿)만 선택하고, Minimum SDK 버전은 <span class="blue">API 16: Android 4.1(Jelly Bean)</span>로 선택합니다.<br>
+
+<p class="t_center w50"><amp-img src="{{ "/img/post06/new02.jpg" | prepend: site.baseurl }}" alt="안드로이드 장치의 유형을 선택하는 대화상자" width="1065" height="751" layout="responsive"></amp-img></p><br>
+
+Next 버튼을 누르면 프로젝트에서 처음 생성되어질 화면(Activity)의 유형을 선택하는 대화상자가 나타납니다.<br>
+각 유형은 프로젝트 템플릿으로 되어있어 해당 액티비티를 생성하는 데 필요한 기본 코드와 파일들이 자동 생성됩니다.<br>
+빈 화면인 <span class="blue">Empty Activity</span>를 선택하고 <span class="blue">Next</span>를 누릅니다.
+
+<p class="t_center w50"><amp-img src="{{ "/img/post06/new03.jpg" | prepend: site.baseurl }}" alt="액티비티의 유형을 선택하는 대화상자" width="1065" height="751" layout="responsive"></amp-img></p><br>
+
+화면을 만드는 클래스와 레이아웃 이름을 지정하는 대화상자입니다.<br><br>
+
+<span class="blue">Activity Name</span>은 화면을 구성할 Class의 이름을 나타냅니다. <br>
+특수문자 없이 영단어만 사용하여 앞글자들은 대문자로 입력하는 것을 권장합니다.<br>
+상속 받는 클래스일 경우 상속하는 부모 클래스의 이름을 맨 끝에 붙여주는 것이 좋습니다.<br>
+(예: Activity 클래스의 서브 클래스인 AppCompatActivity 클래스를 상속 받으면 NameActivity)<br>
+<span class="blue">Layout Name</span>은 화면을 나타낼 레이아웃의 이름입니다.<br>
+Activity Name에 입력된 이름을 소문자로 한, 맨 끝 단어는 맨 앞으로 오고 단어 사이에는 밑줄이 들어간 이름으로 자동 부여됩니다.<br>
+가급적 임의로 변경하기보다 자동 부여된 것을 사용하는 것이 좋습니다.<br>
+Layout Name에 입력한 이름을 가진 XML 파일을 자동생성 해주는 Gnenrate Layout File이 체크된 그대로 <span class="blue">Finish</span> 합니다.<br>
+
+<p class="t_center w50"><amp-img src="{{ "/img/post06/new04.jpg" | prepend: site.baseurl }}" alt="화면을 만드는 클래스와 레이아웃 이름을 지정하는 대화상자" width="1065" height="751" layout="responsive"></amp-img></p><br>
+
+Android Studio는 컴퓨터를 키고난 후 첫 실행할 때마다 작업 도구를 여느라 시간이 걸립니다.<br>
+(Android Studio를 키면 RAM이 4GB나 먹힙니다.)<br>
+
+<p class="t_center w50"><amp-img src="{{ "/img/post06/new05.jpg" | prepend: site.baseurl }}" alt="프로젝트 생성 중" width="660" height="487" layout="responsive"></amp-img></p><br>
+<p class="t_center w50"><amp-img src="{{ "/img/post06/new06.jpg" | prepend: site.baseurl }}" alt="프로젝트 생성 중2 - 오늘의 팁" width="1384" height="811" layout="responsive"></amp-img></p><br>
+<p class="t_center w50"><amp-img src="{{ "/img/post06/new07.jpg" | prepend: site.baseurl }}" alt="프로젝트 생성 중3" width="1386" height="813" layout="responsive"></amp-img></p><br>
+
+드디어 프로젝트가 시작되었습니다.<br>
+
+<p class="t_center w50"><amp-img src="{{ "/img/post06/new08.jpg" | prepend: site.baseurl }}" alt="프로젝트" width="1600" height="860" layout="responsive"></amp-img></p><br>
