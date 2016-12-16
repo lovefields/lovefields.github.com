@@ -10,7 +10,7 @@ category : front_end
 ---
 
 안녕하세요 lovefield 입니다.<br>
-오늘은 CSS에 대해서 설명해드리겟습니다.<br><br>
+오늘은 CSS에 대해서 설명해드리겠습니다.<br><br>
 
 <b class="blue">CSS</b>란 <b>Cascading Style Sheets</b> 으로 <b>Markup Language</b>가 표시되는 방법을 정의해줍니다.<br>
 간단하게 HTML이 표시되는 것을 꾸며주는 녀석인 것이죠.<br><br>
@@ -43,7 +43,7 @@ body{background:red}
 가장 어려운 부분이라고 생각됩니다.<br>
 실제로 많은 사람들이 어려워하고 제가 알려드리고 있는 멘티 분들도 꽤 어려워 하는 부분이죠.<br>
 우선 참고할 사이트는 <a href="https://css-tricks.com/" target="_blank"><b class="red">CSS-Tricks</b></a> 입니다.<br>
-선택자와 속성,값 에대한 설명이 제일 잘되어있다고 판단되는 사이트에요.<br><br>
+선택자와 속성, 값에 대한 설명이 제일 잘되어있다고 판단되는 사이트에요.<br><br>
 
 그리고 <b class="blue">CSS</b>는 정말 연습이 많이 필요하다고 생각됩니다.<br>
-항상 레이아웃에대해서 연습하시고 표현 방법에대해서 연습하셔야 합니다.
+항상 레이아웃에 대해서 연습하시고 표현 방법에 대해서 연습하셔야 합니다.

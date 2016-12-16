@@ -25,10 +25,15 @@ SDK Update Sites 탭: 업그레이드할 것이 있는지 확인하는 사이트
 <p class="t_center w50"><amp-img src="{{ "/img/post03/android19.jpg" | prepend: site.baseurl }}" alt="안드로이드 스튜디오 환경설정" width="1023" height="695" layout="responsive"></amp-img></p><br>
 
 'Android SDK Manager'가 열렸습니다.<br>
-잠시 기다렸다가 loding이 끝나면 열려 있는 Packages들을 전부 닫아줍니다.<br>
-<span class="blue">Tools</span>, <span class="blue">Extras</span> 를 기본적으로 체크해주고 'Android 7.0(Nougat)'는 아직 안정적이지 않으므로 체크를 해제합니다.<br>
+잠시 기다렸다가 loading이 끝나면 열려 있는 Packages들을 전부 닫아줍니다.<br>
+
+<span class="blue">Tools</span>, <span class="blue">Extras</span> 를 전체 선택합니다.<br>
+SDK는 용량이 커서 저장 공간이 작다면 API 버전 별로 나뉘어 있는 것은 최신 버전으로, 또는 필요한 것들만 선택하셔도 무방합니다.<br>
+
+'Android 7.0(Nougat)'는 아직 안정적이지 않으므로 자동 선택 되어있다면 체크를 해제합니다.<br>
 App을 만들 때 낮은 버전의 안드로이드를 사용하는 사람들도 고려해야 하므로,<br>
-저는 현재 안드로이드 버전 점유율을 참고하여 Jelly Bean(API 16)부터 사용가능하도록 SDK를 다운받겠습니다.<br>
+저는 현재 안드로이드 버전 점유율을 참고하여 Jelly Bean(API 16)부터 사용 가능하도록 SDK를 다운받겠습니다.<br>
+Android API도 전체 선택할 필요 없이 필요한 것들만 체크하여 다운로드 하셔도 됩니다.<br>
 
 <p class="t_center w50"><amp-img src="{{ "/img/post03/android20.jpg" | prepend: site.baseurl }}" alt="SDK Manager" width="686" height="641" layout="responsive"></amp-img></p><br>
 'Choose Packages to Install'창이 뜨면 큰 항목들을 일일이 클릭하며 <span class="blue">Accept License</span>를 체크해줍니다.<br>
@@ -54,12 +59,12 @@ Darcula 테마 화면<br>
 
 ３. 글꼴 설정<br>
 
-Android Studio에서 기본 글꼴로 코딩하게 되면 <br>
+Android Studio에서 기본 글꼴로 코딩 하게 되면 <br>
 I(i)와 l(L), 0과 O(o)이 비슷하게 생겨 알파벳을 착각하게 되는 일이 발생합니다.<br>
 이를 방지하기 위해 처음부터 미리 글꼴을 변경합니다.<br>
 
 Settings에서 'Editor > Colors $ Fonts > <span class="blue">Font</span>'를 열어<br>
-상단의 'Scheme:' 옆에 있는 <span class="blue">Save As...</span>를 클릭하여 defult 상태로 'OK'를 누릅니다.<br>
+상단의 'Scheme:' 옆에 있는 <span class="blue">Save As...</span>를 클릭하여 default 상태로 'OK'를 누릅니다.<br>
 
 <p class="t_center w50"><amp-img src="{{ "/img/post03/android_theme03.jpg" | prepend: site.baseurl }}" alt="Font Setting" width="1023" height="694" layout="responsive"></amp-img></p><br>
 
@@ -68,7 +73,7 @@ Settings에서 'Editor > Colors $ Fonts > <span class="blue">Font</span>'를 열
 
 <p class="t_center w50"><amp-img src="{{ "/img/post03/android_theme04.jpg" | prepend: site.baseurl }}" alt="Font Setting2" width="1025" height="696" layout="responsive"></amp-img></p><br>
 
-difult 글꼴과 Consolas 글꼴 비교<br>
+default 글꼴과 Consolas 글꼴 비교<br>
 
 <p class="t_center w30"><amp-img src="{{ "/img/post03/android_theme04_1.jpg" | prepend: site.baseurl }}" alt="Font default" width="759" height="337" layout="responsive"></amp-img></p>
 <p class="t_center w30"><amp-img src="{{ "/img/post03/android_theme04_2.jpg" | prepend: site.baseurl }}" alt="Font Consolas" width="759" height="337" layout="responsive"></amp-img></p><br>
@@ -76,7 +81,7 @@ difult 글꼴과 Consolas 글꼴 비교<br>
 
 ４. 자동 Import<br>
 
-코딩을 할 때 필요한 class를 사용하려면 import를 해야합니다. <br>
+코딩을 할 때 필요한 class를 사용하려면 import를 해야 합니다. <br>
 이것들을 일일이 단축키 Alt+Enter를 눌러 import하기에는 번거로우니 자동으로 import 되도록 설정합니다.<br>
 
 Settings에서 'Editor > General > <span class="blue">Auto Import</span>'를 엽니다.<br>
