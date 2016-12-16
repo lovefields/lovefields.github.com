@@ -11,9 +11,10 @@ category : android
 １. Android Studio를 실행시켜 첫 프로젝트를 만들어 봅시다.<br>
 <span class="blue">Start a new Android Studio project</span>를 누릅니다.<br>
 
-<p class="t_center w50"><amp-img src="{{ "/img/post06/new00.jpg" | prepend: site.baseurl }}" alt="웰컴 스크린창" width="662" height="489" layout="responsive"></amp-img></p><br>
+<p class="t_center w50"><amp-img src="{{ "/img/post06/new00.jpg" | prepend: site.baseurl }}" alt="웰컴 스크린창" width="662" height="489" layout="responsive"></amp-img></p>
 
 새로운 프로젝트 생성 대화상자입니다.<br><br>
+
 <span class="blue">Application name</span>은 Project Name이 되며, 프로그램 내부에서 참조와 식별에 사용됩니다. 이름은 반드시 첫글자가 대문자여야 합니다.<br>
 <span class="blue">Company Domain</span>은 가상 주소를 입력하거나 자신의 도메인 URL(www 제외)을 입력합니다.<br>
 <span class="blue">Package Name</span>은 Company Domain에 입력한 URL(거꾸로)과 Application name이 이어진 이름으로 자동생성 됩니다.<br>
