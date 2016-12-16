@@ -9,115 +9,158 @@ category : android
 ---
 
 Android Studio로 안드로이드 App을 개발하려면 <br>
+
 JAVA JDK(Java Development Kit)와 <br>
+
 Android Studio의 IDE(Integrated Development Environment)와 SDK(Software Development Kit)를 설치해야 합니다. <br><br> 
 
+
+
 １. Android는 자바 프로그래밍 언어를 사용하기 때문에 JDk를 먼저 설치합니다.<br>
+
 JDK는 SE(Standard Edition) 7 버전 이상이 좋으며, 되도록이면 최신 버전의 JDK를 설치하는 것이 좋습니다.<br>
+
 다운로드는 오라클(Oracle) 공식 사이트에서 할 수 있습니다.<br><br>
 
+
 [오라클 공식 사이트]<br><br>
+
 
 상단 메뉴 <span class="blue">Downloads</span>에서 <span class="blue">Java SE</span>로 들어가서<br>
 
 <p class="t_center w80"><amp-img src="{{ "/img/post02/java01.jpg" | prepend: site.baseurl }}" alt="다운로드 위치" width="1020" height="512" layout="responsive"></amp-img></p><br>
 
+
 <span class="blue">JAVA DOWNLOAD</span>로 들어갑니다.<br>
 
 <p class="t_center w80"><amp-img src="{{ "/img/post02/java02.jpg" | prepend: site.baseurl }}" alt="왼쪽 자바 다운로드" width="1020" height="512" layout="responsive"></amp-img></p><br>
 
+
 <span class="blue">Accept License Agreement</span>를 체크해주시고 본인 컴퓨터 사양에 맞는 설치 파일을 다운받습니다.<br>
+
 (x84: 32bit Windows용, x64: 64bit Windows용)<br>
 
 <p class="t_center w80"><amp-img src="{{ "/img/post02/java03.jpg" | prepend: site.baseurl }}" alt="윈도우용 java 파일 다운로드" width="1020" height="512" layout="responsive"></amp-img></p><br><br>
+
 
 설치 파일(jdk-버전명-windows-사양)을 열어 Java를 설치합니다.<br>
 
 <p class="t_center w30"><amp-img src="{{ "/img/post02/java04.jpg" | prepend: site.baseurl }}" alt="자바아이콘" width="269" height="282" layout="responsive"></amp-img></p>
 <p class="t_center w50"><amp-img src="{{ "/img/post02/java05.jpg" | prepend: site.baseurl }}" alt="설치 진행1" width="495" height="378" layout="responsive"></amp-img></p><br>
 
+
 여기서 잠깐!<br>
+
 Java 설치 경로를 수정해줍니다.<br>
 
 <p class="t_center w50"><amp-img src="{{ "/img/post02/java06.jpg" | prepend: site.baseurl }}" alt="설치 진행2" width="495" height="378" layout="responsive"></amp-img></p><br>
 
+
 Android Studio는 'Program Files'과 같이 경로에 <span class="red">띄어쓰기</span>나 <span class="red">한글</span>이 존재하면 인식하지 못하는 현상이 발생할 수 있습니다.<br>
+
 그러므로 '\Program Files' 를 지워 경로에 띄어쓰기가 존재하지 않도록 해줍니다.<br>
+
 이렇게 하시면 Android studio가 java를 찾을 수 있게 따로 시스템 경로를 설정하지 않아도 됩니다.<br>
 
 <p class="t_center w50"><amp-img src="{{ "/img/post02/java07.jpg" | prepend: site.baseurl }}" alt="설치 진행3" width="495" height="378" layout="responsive"></amp-img></p><br>
+
 
 대상 폴더 경로는 그대로 두셔도 무방합니다.<br>
 
 <p class="t_center w50"><amp-img src="{{ "/img/post02/java08.jpg" | prepend: site.baseurl }}" alt="설치 진행4" width="495" height="378" layout="responsive"></amp-img></p><br>
 
-Java 설치가 끝났습니다.<br>
 
+Java 설치가 끝났습니다.<br>
 <p class="t_center w50"><amp-img src="{{ "/img/post02/java09.jpg" | prepend: site.baseurl }}" alt="설치 진행5" width="495" height="378" layout="responsive"></amp-img></p><br><br>
 
 
+
 ２. 이제 Android Studio를 설치하겠습니다.<br>
+
 Android studio 공식 홈페이지에 가서 설치 파일을 다운로드 받습니다.<br><br>
 
+
 [Android Studio 공식 사이트]<br><br>
+
 
 <span class="blue">DOWNLOAD ANDROID STUDIO</span> 클릭하시고<br>
 
 <p class="t_center w50"><amp-img src="{{ "/img/post02/android01.jpg" | prepend: site.baseurl }}" alt="안드로드 스튜디오 홈페이지" width="1020" height="512" layout="responsive"></amp-img></p><br>
 
+
 <span class="blue">I have read and agree with the above terms and conditions</span>를 체크한 뒤<br>
+
 파랗게 변한 <span class="blue">DOWNLOAD ANDROID STUDIO 버전 FOR WINDOWS (용량)</span>을 클릭합니다.<br>
 
 <p class="t_center w50"><amp-img src="{{ "/img/post02/android02.jpg" | prepend: site.baseurl }}" alt="안드로드 스튜디오 다운로드" width="1020" height="512" layout="responsive"></amp-img></p><br>
+
 
 다운로드 된 설치 파일(android-studio-bundle-버전번호-windows.exe)을 실행합니다.<br>
 
 <p class="t_center w30"><amp-img src="{{ "/img/post02/android03.jpg" | prepend: site.baseurl }}" alt="안드로이드 스튜디오 아이콘" alt="자바아이콘" width="269" height="282" layout="responsive"></amp-img></p><br>
 
+
 Android Studio 설치 대화상자가 나타나면 <span class="blue">Next</span>를 누릅니다. <br>
+
 <p class="t_center w50"><amp-img src="{{ "/img/post02/android04.jpg" | prepend: site.baseurl }}" alt="설치 진행1" width="495" height="378" layout="responsive"></amp-img></p><br>
 
+
 설치할 컴포넌트를 선택할 수 있는 대화상자입니다. 이번에도 <span class="blue">Next</span>를 눌러줍니다.<br>
+
 <p class="t_center w50"><amp-img src="{{ "/img/post02/android05.jpg" | prepend: site.baseurl }}" alt="설치 진행2" width="495" height="378" layout="responsive"></amp-img></p><br>
 
-Android studio를 설치할 위치와 SDK를 설치할 위치를 지정할 수 있는 대화상자입니다.
+
+Android studio를 설치할 위치와 SDK를 설치할 위치를 지정할 수 있는 대화상자입니다.<br>
+
 드라이브의 용량이 넉넉하다면 굳이 건드리지 않아도 됩니다.<br>
 
 <p class="t_center w50"><amp-img src="{{ "/img/post02/android06.jpg" | prepend: site.baseurl }}" alt="설치 진행3" width="495" height="378" layout="responsive"></amp-img></p><br>
+
 
 저는 E 드라이브가 저장용량이 커서 'Browse...' 버튼을 눌러 드라이브를 E 드라이브로 바꾸면서 경로 또한 간단하게 바꾸었습니다.<br>
 
 <p class="t_center w50"><amp-img src="{{ "/img/post02/android07.jpg" | prepend: site.baseurl }}" alt="설치 진행4" width="495" height="378" layout="responsive"></amp-img></p><br>
 
+
 시작 메뉴 폴더를 지정하는 대화상자입니다. <span class="blue">Install</span>을 눌러 설치를 시작합니다.<br>
 
 <p class="t_center w50"><amp-img src="{{ "/img/post02/android08.jpg" | prepend: site.baseurl }}" alt="설치 진행5" width="495" height="378" layout="responsive"></amp-img></p><br>
 
+
 설치가 정상적으로 끝나면 Next 버튼이 활성화 됩니다. <span class="blue">Next</span>를 누르면 설치 완료 대화상자가 나타납니다.<br>
+
 Start Android Studio가 체크되어 있는 상태로 <span class="blue">Finish</span> 버튼을 누르면 Android Studio가 바로 실행됩니다.<br>
 
 <p class="t_center w50"><amp-img src="{{ "/img/post02/android09.jpg" | prepend: site.baseurl }}" alt="설치 진행6" width="495" height="378" layout="responsive"></amp-img></p>
 <p class="t_center w50"><amp-img src="{{ "/img/post02/android10.jpg" | prepend: site.baseurl }}" alt="설치 진행7" width="495" height="378" layout="responsive"></amp-img></p><br>
 
+
 만일 Android Studio가 컴퓨터에 설치된 적이 없다면 Complete Installation 창이 뜹니다.<br>
+
 이전 버전의 Android Studio 설정 내역을 가져올 수 있는 기능을 제공하는 대화상자입니다.<br>
+
 새로 설치한 최신 버전에 이전 버전의 설정 내역을 가져오고 싶다면 'I want to import my settings from a custom location'을 선택합니다.<br>
+
 처음 설치하거나 이전 설정 내역이 필요 없는 분은<br>
+
 <span class="blue">I do not have a previous version of Studio or I do not want to import my settings</span>이 체크된 상태로 <span class="blue">OK</span>를 누릅니다.<br>
 
 <p class="t_center w50"><amp-img src="{{ "/img/post02/android11.jpg" | prepend: site.baseurl }}" alt="설치 진행8" width="510" height="203" layout="responsive"></amp-img></p>
 <p class="t_center w50"><amp-img src="{{ "/img/post02/android12.jpg" | prepend: site.baseurl }}" alt="설치 진행9" width="510" height="383" layout="responsive"></amp-img></p>
 <p class="t_center w50"><amp-img src="{{ "/img/post02/android13.jpg" | prepend: site.baseurl }}" alt="설치 진행10" width="510" height="383" layout="responsive"></amp-img></p><br>
 
+
 <span class="blue">Standard</span>가 선택되어 있는 상태로 <span class="blue">Next</span> 합니다.<br>
 
 <p class="t_center w50"><amp-img src="{{ "/img/post02/android14.jpg" | prepend: site.baseurl }}" alt="설치 진행11" width="796" height="598" layout="responsive"></amp-img></p><br>
+
 
 Finish를 누르면 최신 버전의 컴포넌트들이 다운로드 or 업데이트 됩니다.<br>
 
 <p class="t_center w50"><amp-img src="{{ "/img/post02/android15.jpg" | prepend: site.baseurl }}" alt="설치 진행12" width="796" height="598" layout="responsive"></amp-img></p>
 <p class="t_center w50"><amp-img src="{{ "/img/post02/android16.jpg" | prepend: site.baseurl }}" alt="설치 진행13" width="796" height="598" layout="responsive"></amp-img></p>
 <p class="t_center w50"><amp-img src="{{ "/img/post02/android17.jpg" | prepend: site.baseurl }}" alt="설치 진행14" width="796" height="598" layout="responsive"></amp-img></p><br>
+
 
 설치가 완료되었습니다.<br>
 
