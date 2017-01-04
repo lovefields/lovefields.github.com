@@ -8,30 +8,27 @@ keywords : Android Studio,Android,Studio,Shape,Drawable
 category : android
 ---
 
+Shape Drawable 은 Drawable 객체를 XML 로 생성하는 것이다.<br>
+예를 들면, 버튼 모양이나 배경 화면을 꾸밀 때 비트맵을 사용하지 않고 직접 XML로 만든다.<br>
+비트맵을 내부에 저장하는 것보다 XML로 만드는 편이 APK 의 용량을 줄일 수 있다.<br>
 
-<span class="blue">Start a new Android Studio project</span>를 누릅니다.<br>
-<p class="t_center w50"><amp-img src="{{ "/img/post06/new00.jpg" | prepend: site.baseurl }}" alt="웰컴 스크린창" width="662" height="489" layout="responsive"></amp-img></p><br>
+파일은 <span class="blue">res/drawable</span> 안에 <span class="blue">.xml</span> 형태로 저장된다.<br>
+파일명은 대문자를 사용하지 않는다.<br>
 
+{% highlight xml %}
+<!--syntax-->
 
-
-Shape Drawable 은 Drawable 객체를 XML 로 생성하는 것이다.
-예를 들면, 버튼 모양이나 배경 화면을 꾸밀 때 비트맵을 사용하지 않고 직접 XML로 만든다.
-비트맵을 내부에 저장하는 것보다 XML로 만드는 편이 APK 의 용량을 줄일 수 있다.
-
-파일은 res/drawable 안에 .xml 형태로 저장된다.
-파일명은 대문자를 사용하지 않는다.
-
-<span class="yellow"><?</span>xml version=<span class="green">"1.0"</span> encoding=<span class="green">"utf-8"</span><span class="yellow">?></span>
-<span class="yellow"><shape</span>
+<?xml version="1.0" encoding="utf-8"?>
+<shape
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:shape=["rectangle" | "oval" | "line" | "ring"] <span class="yellow">></span>
-    <span class="yellow"><corners</span>
+    android:shape=["rectangle","oval","line","ring"] >
+    <corners
         android:radius="integer"
         android:topLeftRadius="integer"
         android:topRightRadius="integer"
         android:bottomLeftRadius="integer"
-        android:bottomRightRadius="integer" <span class="yellow">/></span>
-    <span class="yellow"><gradient</span>
+        android:bottomRightRadius="integer" />
+    <gradient
         android:angle="integer"
         android:centerX="float"
         android:centerY="float"
@@ -39,21 +36,58 @@ Shape Drawable 은 Drawable 객체를 XML 로 생성하는 것이다.
         android:endColor="color"
         android:gradientRadius="integer"
         android:startColor="color"
-        android:type=["linear" | "radial" | "sweep"]
-        android:useLevel=["true" | "false"] <span class="yellow">/></span>
-    <span class="yellow"><padding</span>
+        android:type=["linear","radial","sweep"]
+        android:useLevel=["true","false"] />
+    <padding
         android:left="integer"
         android:top="integer"
         android:right="integer"
-        android:bottom="integer" <span class="yellow">/></span>
-    <span class="yellow"><size</span>
+        android:bottom="integer" />
+    <size
         android:width="integer"
-        android:height="integer" <span class="yellow">/></span>
-    <span class="yellow"><solid</span>
-        android:color="color" <span class="yellow">/></span>
-    <span class="yellow"><stroke</span>
+        android:height="integer" />
+    <solid
+        android:color="color" />
+    <stroke
         android:width="integer"
         android:color="color"
         android:dashWidth="integer"
-        android:dashGap="integer" <span class="yellow">/></span>
-<span class="yellow"></shape>
+        android:dashGap="integer" />
+</shape>
+{% endhighlight %}
+
+
+<span class="red">&lt;shape&gt;</span><br>
+shape xml의 루트 요소.
+
+<span class="blue">xmlns:android</span>="string"<br>
+XML의 namespace. 반드시 "http://schemas.android.com/apk/res/android" 로 정의해야한다.<br>
+
+<span class="blue">android:shape</span>="keyword"<br>
+shape의 유형을 정의한다. <br>
+사용 가능한 값은 기본 shape인 "rectangle" 사각형, 타원 shape "oval" 원, "line" 선, "ring" 고리형 shape가 있다.<br>
+android:shape="line" 의 경우 반드시 <stroke> 요소를 사용해 선의 두께를 정의해야 한다.<br>
+
+만일 android:shape="ring" 으로 정의할 경우 다음 속성을 사용할 수 있다.<br>
+
+<span class="blue">android:innerRadius</span>="dimension"<br>
+고리 안쪽 원의 반지름 값을 정의한다.<br>
+
+<span class="blue">android:innerRadiusRatio</span>="float"<br>
+고리의 전체 가로 길이에 대한 안쪽 원의 반지름 비율값으로, 기본값은 9다.<br>
+값이 5일 경우 전체 가로 길이를 5로 나눈값이 안쪽 원의 반지름이 된다.<br>
+android:innerRadius가 같이 정의되어 있다면 android:innerRadiusRatio 값으로 적용된다.<br>
+
+<span class="blue">android:thickness</span>="dimension"<br>
+고리의 두께.
+
+<span class="blue">android:thicknessRatio</span>="float"<br>
+고리 전체 가로 길이에 대한 고리의 두께 비율값으로, 기본값은 3이다.<br>
+값이 2일 경우 전체 가로 길이를 2로 나눈 값이 고리의 두께가 된다.<br>
+android:innerRadius가 같이 정의되어 있다면 android:thicknessRatio 값으로 적용된다.<br>
+
+<span class="blue">android:useLevel</span>="boolean"<br>
+일반적으로 "false"를 사용한다.<br>
+LevelListDrawable로 사용할 경우 "true"를 쓰며, Shape가 보이지 않게 된다.<br>
+
+&lt;corners&gt;
