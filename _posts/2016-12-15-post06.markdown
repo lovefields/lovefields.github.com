@@ -53,7 +53,7 @@ Layout Name에 입력한 이름을 가진 XML 파일을 자동생성 해주는 G
 
 <p class="t_center w80"><amp-img src="{{ "/img/post06/new04.jpg" | prepend: site.baseurl }}" alt="화면을 만드는 클래스와 레이아웃 이름을 지정하는 대화상자" width="1065" height="751" layout="responsive"></amp-img></p><br>
 
-Android Studio는 컴퓨터를 키고 난 후 첫 실행할 때마다 작업 도구를 여느라 시간이 걸립니다.<br>
+Android Studio는 처음 프로젝트를 실행할 때 화면을 구성하는 시간이 다소 걸린다.<br>
 (Android Studio를 키면 RAM이 4GB나 먹힙니다.)<br>
 
 <p class="t_center w50"><amp-img src="{{ "/img/post06/new05.jpg" | prepend: site.baseurl }}" alt="프로젝트 생성 중" width="660" height="487" layout="responsive"></amp-img></p><br>
