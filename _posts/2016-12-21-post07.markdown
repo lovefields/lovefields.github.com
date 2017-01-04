@@ -206,3 +206,9 @@ imageView에 사용할 경우 android:scaleType="center"로 설정하여 제한�
 &#149; <span class="blue">android:dashWidth</span>="dimension"<br>
 &nbsp;&nbsp; 점선의 크기를 지정한다.<br>
 &nbsp;&nbsp; android:dashGap가 설정된 경우에만 적용된다.<br>
+<br>
+<br>
+
+[참고 사이트]<br>
+
+[참고 사이트]:https://developer.android.com/guide/topics/resources/drawable-resource.html#Shape
