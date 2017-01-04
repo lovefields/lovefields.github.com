@@ -15,7 +15,7 @@ category : front_end
 <b class="blue">CSS</b>란 <b>Cascading Style Sheets</b> 으로 <b>Markup Language</b>가 표시되는 방법을 정의해줍니다.<br>
 간단하게 HTML이 표시되는 것을 꾸며주는 녀석인 것이죠.<br><br>
 
-<p class="h2">CSS의 역사</p>
+<p class="h2"><b>CSS의 역사</b></p>
 
 <b class="blue">CSS</b>는 1994년 <b>하콤 비움 리</b> 가 제안합니다.<br>
 그리고 1996년에 CSS1이 발표되며 W3C에 권고안이 되었죠.<br><br>
@@ -26,7 +26,7 @@ CSS4 selectors Level 4 - 2014년<br><br>
 
 이렇게 발전되어왔으며 CSS4 스펙은 없지만 셀렉터가 존재하는 상태죠 ㅎㅎ<br><br>
 
-<p class="h2">CSS의 문법</p>
+<p class="h2"><b>CSS의 문법</b></p>
 
 {% highlight css %}
 body{background:red}
@@ -38,7 +38,7 @@ body{background:red}
 <b class="blue">red</b> 는 값.<br>
 으로 구성되어있습니다.<br>
 
-<p class="h2">CSS 공부</p>
+<p class="h2"><b>CSS 공부</b></p>
 
 가장 어려운 부분이라고 생각됩니다.<br>
 실제로 많은 사람들이 어려워하고 제가 알려드리고 있는 멘티 분들도 꽤 어려워 하는 부분이죠.<br>
