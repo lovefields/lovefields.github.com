@@ -22,7 +22,7 @@ HTML은 <b class="blue">Hyper Text Markup Language</b> 라고들 흔히 말해�
 <b class="blue">Markup Language</b>는 문서나 데이터의 구조를 명기하는 언어입니다.<br>
 즉, 우리가 보는 정보의 구조를 잡아주는 녀석인 것이죠.<br><br>
 
-<p class="h2">HTML의 역사</p>
+<p class="h2"><b>HTML의 역사</b></p>
 
 모르시는 분 없으실 겁니다. HTML의 아버지 <strong class="blue">팀 버너스리</strong>.<br>
 <b class="blue">팀 버너스리</b>는 1993년 HTML의 초안을 제작. 1993년 말에 HTML을 구현해 표준화를 제안했습니다.<br><br>
@@ -37,7 +37,7 @@ HTML은 <b class="blue">Hyper Text Markup Language</b> 라고들 흔히 말해�
 마지막 HTML5를 보면 거의 10년만에 버전이 업데이트 되었는데요.<br>
 그렇기 때문에 HTML5에서 많은 변화가 있고 각광받은 것도 있습니다.<br><br>
 
-<p class="h2">HTMl의 문법</p>
+<p class="h2"><b>HTMl의 문법</b></p>
 
 기본적으로 다음과 같이 태그를 열고 닫고 합니다.
 
@@ -54,7 +54,7 @@ HTML은 <b class="blue">Hyper Text Markup Language</b> 라고들 흔히 말해�
 
 가끔 &#47;&gt;로 끝에 닫는 분들이 계시는데 그건 XHTML문법이므로 기각합니다.<br><br>
 
-<p class="h2">HTML 공부</p>
+<p class="h2"><b>HTML 공부</b></p>
 
 중요합니다. 우리는 항상 업데이트 되는 <b class="blue">HTML</b>을 공부해야 하고 <b class="blue">W3C</b>에서 지정하는 것들을 숙지해야 합니다.<br>
 그러나 <b class="blue">W3C</b>의 문서는 입문인 여러분이 보기에는 굉장히 복잡하고 어려울 것입니다.<br>
