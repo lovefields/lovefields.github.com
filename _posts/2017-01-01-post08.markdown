@@ -1,0 +1,125 @@
+---
+layout: post
+title:  "Android Studio 자주 사용하는 단축키"
+date: 2017-01-01 12:00:00 +0900
+author: 민갤
+description: Android Studio 
+keywords : Android Studio,Android,Studio,단축키
+category : android
+---
+
+프로그램의 단축키는 <span class="blue">Help > Keymap Reference</span> 에서 확인할 수 있다.<br>
+<br>
+<br>
+
+<b>자주 사용하는 단축키</b> <br>
+<br>
+
+&#149; <span class="blue">Ctrl + Y</span><br>
+&nbsp;&nbsp; Line 제거 <br>
+&nbsp;&nbsp; 커서가 위치한 Line 또는 영역이 지정된 Line을 제거한다. <br>
+{% highlight java %}
+//전
+int a = 0;
+int b = 0;
+String str = "hello";
+{% endhighlight %}
+{% highlight java %}
+//후
+int a = 0;
+String str = "hello";
+{% endhighlight %}
+<br>
+
+&#149; <span class="blue">Ctrl + D</span><br>
+&nbsp;&nbsp; Line 복제 <br>
+&nbsp;&nbsp; 커서가 위치한 Line 또는 선택된 영역을 복제한다. <br>
+{% highlight java %}
+//전
+int a = 0;
+{% endhighlight %}
+{% highlight java %}
+//후
+int a = 0;
+int a = 0;
+{% endhighlight %}
+<br>
+
+&#149; <span class="blue">Ctrl + Shift + /</span><br>
+&nbsp;&nbsp; 블록 주석 생성/제거, 선택 영역 블록 주석 생성/제거<br>
+{% highlight java %}
+/**/
+{% endhighlight %}
+{% highlight java %}
+/* private void AbbInt(){
+}*/
+{% endhighlight %}
+<br>
+
+&#149; <span class="blue">Ctrl + /</span><br>
+&nbsp;&nbsp; 커서가 위치한 Line 주석 처리/취소, 선택 영역 주석 처리/취소<br>
+{% highlight java %}
+int a = 0;
+{% endhighlight %}
+{% highlight java %}
+//int a = 0;
+{% endhighlight %}
+<br>
+
+&#149; <span class="blue">Ctrl + Alt + L</span><br>
+&nbsp;&nbsp; 코드 정렬 <br>
+&nbsp;&nbsp; 어지럽게 쓰여있는 코드들을 보기 좋게 정렬해준다.<br>
+{% highlight java %}
+//전
+int a = 0 ;
+int b =0;
+String str="hello";
+{% endhighlight %}
+{% highlight java %}
+//후
+int a = 0;
+int b = 0;
+String str = "hello";
+{% endhighlight %}
+<br>
+
+&#149; <span class="blue">Ctrl + Shift + N</span><br>
+&nbsp;&nbsp; 파일간 이동 <br>
+&nbsp;&nbsp; 검색 창에 이동하고자 하는 파일명을 입력하여 이동한다.<br>
+<br>
+
+&#149; <span class="blue">Alt + 좌우 방향키</span> <br>
+&nbsp;&nbsp; 편집기 창 전환<br>
+&nbsp;&nbsp; 열려있는 파일(창) 순차적으로 이동<br>
+<br>
+
+&#149; <span class="blue">Shift + F6</span> <br>
+&nbsp;&nbsp; 이름 변경<br>
+&nbsp;&nbsp; 파일(java, xml), 변수, 메소드 등 이름 변경<br>
+&nbsp;&nbsp; 변경 실행 시 구석구석에 쓰인 이름들도 같이 변경해주기 때문에 일일이 찾아서 변경하는 번거로움을 덜 수 있다.<br>
+<br>
+
+&#149; <span class="blue">Shift + F10</span> <br>
+&nbsp;&nbsp; 프로젝트 실행<br>
+&nbsp;&nbsp; 에뮬레이터 또는 연결된 안드로이드 폰으로 프로젝트 실행<br>
+<br>
+
+&#149; <span class="blue">Ctrl + Shift + J</span><br>
+&nbsp;&nbsp; Line 합치기 <br>
+&nbsp;&nbsp; 선택된 Line과 그 밑의 Line을 문법에 맞게 합친다. <br>
+{% highlight java %}
+//전
+int a = 0;
+int b = 1;
+if(a == b){
+  a = 1;
+}
+String str = "he"+
+           "llo";
+{% endhighlight %}
+{% highlight java %}
+//후
+int a = 0; int b = 1;
+if(a == b) a = 1;
+String str = "hello";
+{% endhighlight %}
