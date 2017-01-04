@@ -4,7 +4,7 @@ title:  "Shape Drawable"
 date: 2016-12-21 12:00:00 +0900
 author: 민갤
 description: Android Studio 
-keywords : Android Studio,Android,Studio,Shape,Drawable
+keywords : Android Studio,Android,Studio,Shape,Drawable,xml
 category : android
 ---
 
@@ -14,6 +14,7 @@ Shape Drawable 은 Drawable 객체를 XML 로 생성하는 것이다.<br>
 
 파일은 <span class="blue">res/drawable</span> 안에 <span class="blue">.xml</span> 형태로 저장된다.<br>
 파일명은 대문자를 사용하지 않는다.<br>
+<br>
 
 {% highlight xml %}
 <!--syntax-->
@@ -55,39 +56,153 @@ Shape Drawable 은 Drawable 객체를 XML 로 생성하는 것이다.<br>
         android:dashGap="integer" />
 </shape>
 {% endhighlight %}
+<br>
 
+<b class="red">&lt;shape&gt;</b><br>
+도형의 형태를 정의하는 xml의 루트 요소.
 
-<span class="red">&lt;shape&gt;</span><br>
-shape xml의 루트 요소.
+&#149; <span class="blue">xmlns:android</span>="string"<br>
+&nbsp;&nbsp; XML의 namespace. <br>
+&nbsp;&nbsp; 반드시 "http://schemas.android.com/apk/res/android" 로 해야한다.<br>
 
-<span class="blue">xmlns:android</span>="string"<br>
-XML의 namespace. 반드시 "http://schemas.android.com/apk/res/android" 로 정의해야한다.<br>
+&#149; <span class="blue">android:shape</span>="keyword"<br>
+&nbsp;&nbsp; shape의 형태를 지정한다. <br>
+&nbsp;&nbsp; 사용 가능한 값은 기본 shape인 "rectangle" 사각형, 타원 shape "oval" 원, "line" 선, "ring" 고리형 shape가 있다.<br>
+&nbsp;&nbsp; android:shape="line" 의 경우 반드시 <stroke> 요소를 사용해 선의 두께를 정의해야 한다.<br>
+&nbsp;&nbsp; 만일 android:shape="ring" 으로 정의할 경우 다음 속성을 사용할 수 있다.<br>
 
-<span class="blue">android:shape</span>="keyword"<br>
-shape의 유형을 정의한다. <br>
-사용 가능한 값은 기본 shape인 "rectangle" 사각형, 타원 shape "oval" 원, "line" 선, "ring" 고리형 shape가 있다.<br>
-android:shape="line" 의 경우 반드시 <stroke> 요소를 사용해 선의 두께를 정의해야 한다.<br>
+&#149; <span class="blue">android:innerRadius</span>="dimension"<br>
+&nbsp;&nbsp; 고리 안쪽 원의 반지름 값을 지정한다.<br>
 
-만일 android:shape="ring" 으로 정의할 경우 다음 속성을 사용할 수 있다.<br>
+&#149; <span class="blue">android:innerRadiusRatio</span>="float"<br>
+&nbsp;&nbsp; 고리의 전체 너비에 대한 안쪽 원의 반지름 비율값으로, 기본값은 9다.<br>
+&nbsp;&nbsp; 값이 5일 경우 전체 너비를 5로 나눈값이 안쪽 원의 반지름이 된다.<br>
+&nbsp;&nbsp; android:innerRadius가 같이 정의되어 있다면 android:innerRadiusRatio 값은 적용되지 않는다.<br>
 
-<span class="blue">android:innerRadius</span>="dimension"<br>
-고리 안쪽 원의 반지름 값을 정의한다.<br>
+&#149; <span class="blue">android:thickness</span>="dimension"<br>
+&nbsp;&nbsp; 고리의 두께.
 
-<span class="blue">android:innerRadiusRatio</span>="float"<br>
-고리의 전체 가로 길이에 대한 안쪽 원의 반지름 비율값으로, 기본값은 9다.<br>
-값이 5일 경우 전체 가로 길이를 5로 나눈값이 안쪽 원의 반지름이 된다.<br>
-android:innerRadius가 같이 정의되어 있다면 android:innerRadiusRatio 값으로 적용된다.<br>
+&#149; <span class="blue">android:thicknessRatio</span>="float"<br>
+&nbsp;&nbsp; 고리 전체 너비에 대한 고리의 두께 비율값으로, 기본값은 3이다.<br>
+&nbsp;&nbsp; 값이 2일 경우 전체 너비를 2로 나눈 값이 고리의 두께가 된다.<br>
+&nbsp;&nbsp; android:innerRadius가 같이 정의되어 있다면 android:thicknessRatio 값은 적용되지 않는다.<br>
 
-<span class="blue">android:thickness</span>="dimension"<br>
-고리의 두께.
+&#149; <span class="blue">android:useLevel</span>="boolean"<br>
+&nbsp;&nbsp; 일반적으로 "false"를 사용한다.<br>
+&nbsp;&nbsp; LevelListDrawable로 사용할 경우 "true"를 쓰며, Shape가 보이지 않게 된다.<br>
+<br>
 
-<span class="blue">android:thicknessRatio</span>="float"<br>
-고리 전체 가로 길이에 대한 고리의 두께 비율값으로, 기본값은 3이다.<br>
-값이 2일 경우 전체 가로 길이를 2로 나눈 값이 고리의 두께가 된다.<br>
-android:innerRadius가 같이 정의되어 있다면 android:thicknessRatio 값으로 적용된다.<br>
+<b class="red">&lt;corners&gt;</b><br>
+모서리를 둥글게 한다. shape가 "rectangle"일 경우에만 적용된다.<br>
 
-<span class="blue">android:useLevel</span>="boolean"<br>
-일반적으로 "false"를 사용한다.<br>
-LevelListDrawable로 사용할 경우 "true"를 쓰며, Shape가 보이지 않게 된다.<br>
+&#149; <span class="blue">android:radius</span>="dimension"<br>
+&nbsp;&nbsp; 모든 모서리의 반지름 값을 지정한다.<br>
+&nbsp;&nbsp; 모서리를 둥글게 하고 싶지 않다면 0(0dp) 값을 사용한다.<br>
+&nbsp;&nbsp; 다음 속성을 통해 각 모서리의 값을 정의하면 android:radius는 적용되지 않는다.<br>
 
-&lt;corners&gt;
+&#149; <span class="blue">android:topLeftRadius</span>="dimension"<br>
+&nbsp;&nbsp; 좌측 상단 모서리의 반지름 값을 지정한다.<br>
+
+&#149; <span class="blue">android:topRightRadius</span>="dimension"<br>
+&nbsp;&nbsp; 우측 상단 모서리의 반지름 값을 지정한다.<br>
+
+&#149; <span class="blue">android:bottomLeftRadius</span>="dimension"<br>
+&nbsp;&nbsp; 좌측 하단 모서리의 반지름 값을 지정한다.<br>
+
+&#149; <span class="blue">android:bottomRightRadius</span>="dimension"<br>
+&nbsp;&nbsp; 우측 하단 모서리의 반지름 값을 지정한다.<br>
+<br>
+
+<b class="red">&lt;gradient&gt;</b><br>
+색상의 기울기를 정의한다.<br>
+
+&#149; <span class="blue">android:angle</span>="integer"<br>
+&nbsp;&nbsp; 색상의 기울기 각도(단위:도)를 을 지정한다.  <br>
+&nbsp;&nbsp; 값은 45의 배수여야 한다.<br>
+&nbsp;&nbsp; 기본값은 0으로, 왼쪽에서 오른쪽으로 진행된다.<br>
+&nbsp;&nbsp; 값 90은 아래에서 위로 진행된다.<br>
+
+&#149; <span class="blue">android:centerX</span>="float"<br>
+&nbsp;&nbsp; 색상의 기울기 중심에 대한 X축 위치의 상대적인 값을 지정한다. (0~1.0)<br>
+&nbsp;&nbsp; 사각형을 예로 들면, 0에 가까운 값은 사각형의 왼쪽면을 중심으로 하고 1에 가까운 값은 사각형의 오른쪽면을 중심으로 한다.<br>
+&nbsp;&nbsp; android:type="linear"에는 적용되지 않는다.
+
+&#149; <span class="blue">android:centerY</span>="float"<br>
+&nbsp;&nbsp; 색상의 기울기 중심에 대한 Y축 위치의 상대적인 값을 지정한다. (0~1.0)<br>
+&nbsp;&nbsp; 사각형을 예로 들면, 0에 가까운 값은 사각형의 위쪽면을 중심으로 하고 1에 가까운 값은 사각형의 아래쪽면을 중심으로 한다.<br>
+&nbsp;&nbsp; android:type="linear"에는 적용되지 않는다.
+
+&#149; <span class="blue">android:centerColor</span>="color"<br>
+&nbsp;&nbsp; 시작 색상과 끝 색상 사이에 나타나는 중간 색상 값을 지정한다. <br>
+&nbsp;&nbsp; 16진수 값이나 색상 리소스로 지정된다.<br>
+
+&#149; <span class="blue">android:endColor</span>="color"<br>
+&nbsp;&nbsp; gradient 끝 지점의 색상 값을 지정한다.<br>
+
+&#149; <span class="blue">android:gradientRadius</span>="float"<br>
+&nbsp;&nbsp; gradient의 반지름 값을 지정한다. <br>
+&nbsp;&nbsp; android:type="radial"인 경우에만 적용된다.<br>
+
+&#149; <span class="blue">android:startColor</span>="color"<br>
+&nbsp;&nbsp; gradient 시작 지점의 색상 값을 지정한다.<br>
+
+&#149; <span class="blue">android:type</span>="keyword"<br>
+&nbsp;&nbsp; gradient의 패턴을 지정한다.<br>
+&nbsp;&nbsp; 사용가능한 값으로는 기본값인 "linear" 선형, 시작 점이 가운데인 "radial" 방사형, sweeping line gradient "sweep"가 있다.<br>
+
+&#149; <span class="blue">android:useLevel</span>="boolean"<br>
+&nbsp;&nbsp; LevelListDrawable로 사용할 경우 "true"를 지정한다.<br>
+<br>
+
+<b class="red">&lt;padding&gt;</b><br>
+shape를 포함하는 View에 적용할 패딩값을 정의한다. shape에 지정되지 않는다.<br>
+
+&#149; <span class="blue">android:left</span>="dimension"<br>
+&nbsp;&nbsp; 좌측 패딩값을 지정한다.<br>
+
+&#149; <span class="blue">android:top</span>="dimension"<br>
+&nbsp;&nbsp; 상단 패딩값을 지정한다.<br>
+
+&#149; <span class="blue">android:right</span>="dimension"<br>
+&nbsp;&nbsp; 우측 패딩값을 지정한다.<br>
+
+&#149; <span class="blue">android:bottom</span>="dimension"<br>
+&nbsp;&nbsp; 하단 패딩값을 지정한다.<br>
+<br>
+
+<b class="red">&lt;size&gt;</b><br>
+shape의 크기를 정의한다.<br>
+이는 곧 container view의 크기가 된다.<br>
+imageView에 사용할 경우 android:scaleType="center"로 설정하여 제한할 수 있다.<br>
+
+&#149; <span class="blue">android:height</span>="dimension"<br>
+&nbsp;&nbsp; shape의 높이를 지정한다.<br>
+
+&#149; <span class="blue">android:width</span>="dimension"<br>
+&nbsp;&nbsp; shape의 너비를 지정한다.<br>
+<br>
+
+<b class="red">&lt;solid&gt;</b><br>
+도형 안을 채울 단색을 정의한다.<br>
+
+&#149; <span class="blue">android:color</span>="color"<br>
+&nbsp;&nbsp; shape에 적용할 색상값을 지정한다.<br>
+&nbsp;&nbsp; 16진수 값이나 색상 리소스로 지정한다.<br>
+<br>
+
+<b class="red">&lt;stroke&gt;</b><br>
+도형의 테두리나 선을 그릴 때 정의한다. <br>
+
+&#149; <span class="blue">android:width</span>="dimension"<br>
+&nbsp;&nbsp; 테두리 또는 선의 두께를 지정한다.<br>
+
+&#149; <span class="blue">android:color</span>="color"<br>
+&nbsp;&nbsp; 테두리 또는 선의 색상을 지정한다.<br>
+
+&#149; <span class="blue">android:dashGap</span>="dimension"<br>
+&nbsp;&nbsp; 점선의 간격을 지정한다.<br>
+&nbsp;&nbsp; android:dashWidth가 설정된 경우에만 적용된다.<br>
+
+&#149; <span class="blue">android:dashWidth</span>="dimension"<br>
+&nbsp;&nbsp; 점선의 크기를 지정한다.<br>
+&nbsp;&nbsp; android:dashGap가 설정된 경우에만 적용된다.<br>
