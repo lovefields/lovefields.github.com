@@ -1,0 +1,123 @@
+---
+layout: post
+title:  "Typekit 폰트 지정 라이브러리"
+date: 2017-01-05 12:00:00 +0900
+author: 민갤
+description: Android Studio 
+keywords : Android Studio,Android,Studio,Typekit,Library,font
+category : android
+---
+
+안드로이드 앱을 만들다 보면 기본 폰트가 마음에 들지 않는다.<br>
+그래서 텍스트를 쓰지 않고 이미지를 사용하는 경우가 많다고 들었다.<br>
+앱 내부에 이미지가 많아지면 무거워지기 때문에 웹 DB를 사용하는 앱이 지배적이다.<br>
+
+만일 이미지 없이 XML로만 앱을 꾸미면 어떻게 될까?<br>
+런칭된 앱은 사용자가 자신의 폰에 설정한 폰트를 따라가기 때문에 UI의 느낌이 달라질 것이다.<br>
+<del>(그 이전에 기본 폰트가 예쁘지 않아서 프로젝트를 실행해 볼 때마다 눈갱 당할 거다.)</del><br>
+앱도 웹처럼 마음에 드는 폰트를 골라 UI 디자인을 고정시킬 수는 없을까?<br>
+
+가급적 기본 폰트를 사용하는 게 좋지만 디자인이 변형되지 않게 하기 위해 앱에 폰트를 지정할 수도 있다.<br>
+그 방법들 중 Typekit 라이브러리를 사용하는 게 편하고 유지보수도 용이하다.<br>
+
+폰트를 사용할 때는 반드시 <span class="red">저작권 여부</span>를 알아본 후 사용하자.<br>
+<br>
+
+０. <span class="blue">Gadle Scripts > build.gradle(Module: app)</span>에 Typekit 라이브러리를 추가한다.<br>
+
+&nbsp;&#149; 직접 타이핑하여 추가하는 방법<br>
+{% highlight xml %}
+dependencies {
+    ...
+    compile 'com.tsengvn:typekit:1.0.1'
+{% endhighlight %}
+
+&nbsp;&#149; 라이브러리를 찾아서 등록하는 방법<br>
+&nbsp;&nbsp;&nbsp; File > Project Structure (Ctrl+Shift+Alt+S) > app > Dependencies 를 연다.<br>
+&nbsp;&nbsp;&nbsp; 추가하기(+)를 클릭하여 우리가 등록할 Typekit은 라이브러리므로 Library Dependency를 선택한다. <br>
+&nbsp;&nbsp;&nbsp; typekit 을 검색해 1.0.1 버전을 선택한다.<br>
+<p class="t_center w80"><amp-img src="{{ "/img/post09/android_typekit.jpg" | prepend: site.baseurl }}" alt="라이브러리 추가" width="819" height="388" layout="responsive"></amp-img></p><br>
+<br>
+
+１. main 폴더 안에 <span class="blue">assets</span> 폴더를 만들고 그 안에 폰트를 저장한다.<br>
+&nbsp;&nbsp; otf, ttf 등 형식에 큰 제약은 없다. 다만, 앱 내부에 저장되므로 용량이 작은 걸 선호한다.<br>
+<br>
+
+２. manifests에 등록하여 Application이 참조하게 할 <span class="blue">class</span>를 만든다.<br>
+&nbsp; addNormal은 기본으로 사용되는 폰트를 지정한다.<br>
+&nbsp; addBold는 굵은 폰트를 지정한다.<br>
+&nbsp; addItalic은 기울어진 폰트를 지정한다.<br>
+&nbsp; addBoldItalic은 굵고 기울어진 폰트를 지정한다.<br>
+&nbsp; addCustom은 특정 글자에만 불러내서 사용할 폰트를 지정한다.<br>
+{% highlight java %}
+public class FontCustom extends Application {
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        Typekit.getInstance()
+                .addNormal(Typekit.createFromAsset(this, "OpenSans-Regular.ttf"))
+                .addBold(Typekit.createFromAsset(this, "OpenSans-Bold.ttf"))
+                .addItalic(Typekit.createFromAsset(this, "OpenSans-Italic.ttf"))
+                .addBoldItalic(Typekit.createFromAsset(this, "OpenSans-BoldItalic.ttf"))
+                .addCustom1(Typekit.createFromAsset(this, "NanumSquareR.ttf"))
+                .addCustom2(Typekit.createFromAsset(this, "NanumSquareB.ttf"))
+                .add("disney", Typekit.createFromAsset(this, "waltographUI.ttf"));
+    }
+}
+{% endhighlight %}
+<br>
+
+３. <span class="blue">AndroidManifest</span>에 FontCustom.class를 Application이 참조하도록 추가한다.<br>
+{% highlight xml %}
+<application
+        android:name=".FontCustom"
+	...
+{% endhighlight %}
+<br>
+
+４. <span class="blue">attachBaseContext</span> 메소드를 재정의하는 기본 <span class="blue">Activity</span>를 만든다.<br>
+{% highlight java %}
+public class CustomActivity extends AppCompatActivity {
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(TypekitContextWrapper.wrap(newBase));
+    }
+}
+{% endhighlight %}
+<br>
+
+５. 지정 폰트를 사용할 Activity는 CustomActivity를 <span class="blue">상속</span>받는다.<br>
+&nbsp; 각 Activity마다 메소드를 재정의할 필요 없이 상속받음으로써 자동으로 지정 폰트를 사용한다.<br>
+{% highlight java %}
+public class UsageHistory extends CustomActivity {
+ ...
+}
+{% endhighlight %}
+<br>
+
+６. XML에서는 특정 폰트를 사용하게 할 때 사용할 폰트를 <span class="blue">정의</span>한다.<br>
+{% highlight xml %}
+<RelativeLayout ...
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                tools:ignore="missingPrefix">
+
+        <TextView
+            ...
+            app:font="custom1"/>
+{% endhighlight %}
+<br>
+
+이것으로 지정 폰트 설정이 끝났다.<br>
+<br>
+
+[참고 사이트]<br>
+<br>
+
+ps. 어떤 사용자는 지정 폰트를 싫어하실 수도 있다.<br>
+그러한 분들을 위해 사용자가 지정 폰트를 사용할 지, 본인의 폰트를 사용할 지 설정할 수 있도록 해주는 게 좋다.
+
+
+
+[참고사이트]:https://github.com/tsengvn/typekit
