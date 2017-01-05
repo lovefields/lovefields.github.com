@@ -36,12 +36,11 @@ dependencies {
 &nbsp;&nbsp;&nbsp; File > Project Structure (Ctrl+Shift+Alt+S) > app > Dependencies 를 연다.<br>
 &nbsp;&nbsp;&nbsp; 추가하기(+)를 클릭하여 우리가 등록할 Typekit은 라이브러리므로 Library Dependency를 선택한다. <br>
 &nbsp;&nbsp;&nbsp; typekit 을 검색해 1.0.1 버전을 선택한다.<br>
-<p class="t_center w80"><amp-img src="{{ "/img/post09/android_typekit.jpg" | prepend: site.baseurl }}" alt="라이브러리 추가" width="819" height="388" layout="responsive"></amp-img></p><br>
-<br>
+<p class="t_center w80"><amp-img src="{{ "/img/post09/android_typekit00.jpg" | prepend: site.baseurl }}" alt="라이브러리 추가" width="819" height="388" layout="responsive"></amp-img></p><br>
 
 １. main 폴더 안에 <span class="blue">assets</span> 폴더를 만들고 그 안에 폰트를 저장한다.<br>
 &nbsp;&nbsp; otf, ttf 등 형식에 큰 제약은 없다. 다만, 앱 내부에 저장되므로 용량이 작은 걸 선호한다.<br>
-<br>
+<p class="t_center w30"><amp-img src="{{ "/img/post09/android_typekit01.jpg" | prepend: site.baseurl }}" alt="assets 폴더 추가" width="281" height="255" layout="responsive"></amp-img></p><br>
 
 ２. manifests에 등록하여 Application이 참조하게 할 <span class="blue">class</span>를 만든다.<br>
 &nbsp; addNormal은 기본으로 사용되는 폰트를 지정한다.<br>
@@ -50,7 +49,7 @@ dependencies {
 &nbsp; addBoldItalic은 굵고 기울어진 폰트를 지정한다.<br>
 &nbsp; addCustom은 특정 글자에만 불러내서 사용할 폰트를 지정한다.<br>
 {% highlight java %}
-public class FontCustom extends Application {
+public class CustomFontApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
@@ -60,17 +59,16 @@ public class FontCustom extends Application {
                 .addItalic(Typekit.createFromAsset(this, "OpenSans-Italic.ttf"))
                 .addBoldItalic(Typekit.createFromAsset(this, "OpenSans-BoldItalic.ttf"))
                 .addCustom1(Typekit.createFromAsset(this, "NanumSquareR.ttf"))
-                .addCustom2(Typekit.createFromAsset(this, "NanumSquareB.ttf"))
-                .add("disney", Typekit.createFromAsset(this, "waltographUI.ttf"));
+                .addCustom2(Typekit.createFromAsset(this, "NanumSquareB.ttf"));
     }
 }
 {% endhighlight %}
 <br>
 
-３. <span class="blue">AndroidManifest</span>에 FontCustom.class를 Application이 참조하도록 추가한다.<br>
+３. <span class="blue">AndroidManifest</span>에 CustomFontApp.class를 Application이 참조하도록 추가한다.<br>
 {% highlight xml %}
 <application
-        android:name=".FontCustom"
+        android:name=".CustomFontApp"
 	...
 {% endhighlight %}
 <br>
@@ -120,4 +118,4 @@ ps. 어떤 사용자는 지정 폰트를 싫어하실 수도 있다.<br>
 
 
 
-[참고사이트]:https://github.com/tsengvn/typekit
+[참고 사이트]:https://github.com/tsengvn/typekit
