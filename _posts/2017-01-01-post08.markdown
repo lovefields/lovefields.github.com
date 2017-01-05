@@ -101,7 +101,12 @@ String str = "hello";
 
 &#149; <span class="blue">Shift + F10</span> <br>
 &nbsp;&nbsp; 프로젝트 실행<br>
-&nbsp;&nbsp; 에뮬레이터 또는 연결된 안드로이드 폰으로 프로젝트 실행<br>
+&nbsp;&nbsp; 에뮬레이터 또는 연결된 안드로이드 폰으로 프로젝트를 실행한다.<br>
+<br>
+
+&#149; <span class="blue">Shift + F9</span> <br>
+&nbsp;&nbsp; 프로젝트 빌드<br>
+&nbsp;&nbsp; 중단점을 설정하여 오류 지점을 찾아내기 위해서 또는 예외 발생 지점을 찾아내기 위해 프로젝트를 실행한다.<br>
 <br>
 
 &#149; <span class="blue">Ctrl + Shift + J</span><br>
