@@ -15,39 +15,44 @@ category : android
 <span class="blue">layout</span>을 하나 생성하여 보여주고 싶은 앱 바를 만든다. <br>
 {% highlight xml %}
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:orientation="horizontal">
-
-<ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imagebutton1"
-        android:scaleType="centerInside"
-        app:srcCompat="@drawable/yourimage"
-        android:background="@null"
-        android:layout_gravity="left|center_vertical"/>
-
-    <TextView
-        android:id="@+id/textview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="textView"
-        android:textColor="color"
-        android:textSize="dimention"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:layout_gravity="center"/>
+              tools:ignore="missingPrefix">
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/yourimage"
-        android:id="@+id/imagebutton2"
+        android:id="@+id/btn_list"
+        android:scaleType="centerInside"
+        app:srcCompat="@drawable/icon_list"
         android:background="@null"
-        android:layout_gravity="right|center_vertical"/>
-</LinearLayout>
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"/>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/year_month"
+        android:textColor="@color/circleIn"
+        android:textSize="24dp"
+        app:font="custom1"
+        android:gravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true"/>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/icon_option"
+        android:id="@+id/btn_option"
+        android:background="@null"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"/>
 {% endhighlight %}
 <br>
 
@@ -107,4 +112,13 @@ setElevation은 앱 바의 Z축 높이를 조정한다. 0을 입력하면 그림
 만일 특정 Activity에서는 앱 바를 보이고 싶지 않다면 다음 코드를 입력한다.<br>
 {% highlight java %}
 actionBar.hide();
+{% endhighlight %}
+
+코드 내에서 Title 내용을 바꾸고 싶다면 View를 inflate 한 후 그것을 setCustomView 한다.<br>
+{% highlight java %}
+LayoutInflater inflater = LayoutInflater.from(this);
+View v = inflater.inflate(R.layout.custom_bar, null);
+TextView tv_title = (TextView)v.findViewById(R.id.title);
+tv_title.setText("hello");
+actionBar.setCustomView(v);
 {% endhighlight %}

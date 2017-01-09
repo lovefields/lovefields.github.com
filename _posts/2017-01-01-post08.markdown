@@ -128,3 +128,8 @@ int a = 0; int b = 1;
 if(a == b) a = 1;
 String str = "hello";
 {% endhighlight %}
+
+&#149; <span class="blue">Ctrl + Alt + O</span> <br>
+&nbsp;&nbsp; import 정리<br>
+&nbsp;&nbsp; 필요 없어진 import를 제거한다.<br>
+<br>
