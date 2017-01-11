@@ -1,18 +1,11 @@
 <div class="category_menu">
 	<label for="btn" class="btn pc">Category</label>
-	<input type="checkbox" id="btn" class="pc">
-	<div class="list ts pc">
+	<input type="checkbox" id="btn">
+	<div class="bg"></div>
+	<div class="list ts">
 		<a href="{{ "/" | prepend: site.baseurl }}">ALL</a>
 		<a href="{{ "/front_end/" | prepend: site.baseurl }}">Front end</a>
 		<a href="{{ "/android/" | prepend: site.baseurl }}">Android</a>
 	</div>
-
-	<form method="post" action-xhr="{{ site.url }}" target="_blank">
-		<select id="list" class="btn m">
-			<option selected disabled value="">Category</option>
-			<option value="{{ "/" | prepend: site.baseurl }}">ALL</option>
-			<option value="{{ "/front_end/" | prepend: site.baseurl }}">Front end</option>
-			<option value="{{ "/android/" | prepend: site.baseurl }}">Android</option>
-		</select>
 	</form>
 </div>

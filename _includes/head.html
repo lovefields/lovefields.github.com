@@ -80,7 +80,7 @@ footer{padding:20px 0;border-top:2px solid #f0f3f7;line-height:1.5}
 .category_menu .list a:first-child{border-radius:10px 10px 0 0}
 .category_menu .list a:last-child{border:0;border-radius:0 0 10px 10px}
 .category_menu .list a:hover{background:#fff;color:#38b7ea}
-.category_menu #btn:checked + .list{visibility:visible;opacity:1}
+.category_menu #btn:checked ~ .list{visibility:visible;opacity:1}
 
 .about .about_wrap{margin:0 -1.5%}
 .about .user{float:left;width:22%;min-height:330px;margin:0 1.5%;box-sizing:border-box}
@@ -177,9 +177,6 @@ footer{padding:20px 0;border-top:2px solid #f0f3f7;line-height:1.5}
 .highlight code[data-lang="php"] .kc{color:#79abff}
 .highlight code[data-lang="php"] .mi{color:#ffb5ff}
 
-@media all and (min-width:768px){
-.category_menu .m{display:none}
-}
 @media all and (max-width:960px){
 .post_list li{width:47%}
 }
@@ -189,7 +186,11 @@ footer{padding:20px 0;border-top:2px solid #f0f3f7;line-height:1.5}
 
 .category_menu{overflow:hidden}
 .category_menu .btn{padding:0 0 0 12px}
-.category_menu .pc{display:none}
+.category_menu .list{position:fixed;top:50%;left:50%;width:300px;margin:-46px 0 0 -150px;visibility:hidden;opacity:0;z-index:1100}
+.category_menu .list::before{display:none}
+.category_menu .list a{height:30px;line-height:30px}
+.category_menu #btn:checked ~ .bg{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:1000}
+.category_menu #btn:checked ~ .list{visibility:visible;opacity:1}
 
 .about .about_wrap{margin:0}
 .about .user{float:none;width:100%;min-height:0;margin:0 0 20px}
