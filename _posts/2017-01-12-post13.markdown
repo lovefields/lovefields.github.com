@@ -1,0 +1,250 @@
+---
+layout: post
+title:  "Android Studio RecyclerView"
+date: 2017-01-12 12:00:00 +0900
+author: 민갤
+description: Android Studio 
+keywords : Android Studio,Android,Studio,RecyclerView,library,Adapter,Viewholder,ListView
+category : android
+---
+
+RecyclerView는 ViewGroup의 서브 클래스로, ListView 보다 더 편리하고 유연하게 만들어졌다.<br>
+하나의 자식 View 객체를 각 항목당 배치하여 리스트를 보여준다는 것은 ListView와 같다.<br>
+<br>
+
+다른 점은 ListView는 직접 코딩 하지 않으면 모든 항목을 한 번에 보여주지만, <br>
+RecyclerView는 별도의 코딩 없이 화면을 채울 정도의 View 객체만 생성 후 <br>
+화면이 스크롤 되면 화면을 벗어나는 View를 재활용하여 다음 View 객체를 보여준다.<br>
+<br>
+
+RecyclerView는 LayoutManager가 함께 있어야 움직이고, View 객체를 얻으려면 Adapter뿐만 아니라 ViewHolder가 반드시 필요하다.<br>
+그리고 자신이 View 객체를 생성하지 않고 Adapter를 통해 ViewHolder 객체를 생성하고 사용한다.<br>
+<br>
+
+０. RecyclerView 라이브러리를 추가한다.<br>
+Library dependency로 <span class="blue">recyclerview-v7</span> 를 찾아서 추가하거나<br>
+build.gradle(Module:app)에 직접 추가한다.<br>
+{% highlight xml %}
+dependencies {
+    compile 'com.android.support:recyclerview-v7:25.1.0'
+{% endhighlight %}<br>
+
+１. RecyclerView를 layout에 위치시키거나 layout자체를 RecyclerView로 한다.<br>
+{% highlight xml %}
+<!--activity_main.xml-->
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout ...>
+
+    <android.support.v7.widget.RecyclerView
+        ...
+        android:id="@+id/view_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
+{% endhighlight %}
+{% highlight xml %}
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.RecyclerView
+    ...
+    android:id="@+id/view_recycler"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+</android.support.v7.widget.RecyclerView>
+{% endhighlight %}<br>
+
+２. 리스트의 항목이 보여줄 View를 만든다. <br>
+{% highlight xml %}
+<!--custom_recycler_list_item.xml-->
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout ...>
+
+    <TextView
+        android:text="항목"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:id="@+id/tv_item_category"
+        android:layout_alignParentLeft="true"
+        android:paddingLeft="15dp"
+        android:gravity="left|center_vertical"/>
+
+    <TextView
+        android:text="내용"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:id="@+id/tv_item_name"
+        android:layout_toRightOf="@+id/tv_item_category"
+        android:paddingLeft="15dp"
+        android:gravity="left|center_vertical"
+        />
+</RelativeLayout>
+{% endhighlight %}
+Layout의 height을 wrap_content로 설정하고 객체들의 높이를 지정해주어야 리스트 항목들이 제대로 보인다.<br>
+<br>
+
+３. 데이터 정보를 갖는 class를 만든다.<br>
+{% highlight java %}
+public class class RecycleItem {
+    private UUID mId;
+    private String mCategory;
+    private String mName;
+
+    public RecycleItem(UUID id) {
+        mId = id;
+    }
+
+    public RecycleItem() {
+        this(UUID.randomUUID());
+    }
+
+    public UUID getId() {
+        return mId;
+    }
+
+    public void setId(UUID id) {
+        mId = id;
+    }
+
+    public String getCategory() {
+        return mCategory;
+    }
+
+    public void setCategory(String category) {
+        mCategory = category;
+    }
+
+    public String getName() {
+        return mName;
+    }
+
+    public void setName(String name) {
+        mName = name;
+    }
+
+}
+{% endhighlight %}
+<br>
+
+４. RecyclerView를 사용할 Activity에 RecyclerView 객체를 참조한 후에 LayoutManager를 설정해준다.<br>
+{% highlight java %}
+public class RecyclerActivity extends AppCompatActivity {
+
+    private RecycleAdapter adapter;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.view_recycler);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+    }
+}
+{% endhighlight %}
+LayoutManager는 리스트 항목의 배치를 어떻게 할지 정하고 스트롤 동작도 정의한다.<br>
+수평/수직 리스트 LinearLayoutManager, 그리드 리스트 GridLayoutManager, <br>
+높이가 불규칙적인 그리드 리스트 StaggeredGridLayoutManager를 기본적으로 제공한다.<br>
+이 것을 설정해주지 않으면 RecyclerView는 동작하지 않는다.<br>
+<br>
+
+５. RecyclerView.Adapter<RecyclerView.ViewHolder>를 상속받는 클래스를 생성한다.<br>
+{% highlight java %}
+public class RecycleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+    private List<RecycleItem> mItems;
+
+    public RecycleAdapter(List<RecycleItem> listItems) {
+        mItems = listItems;
+    }
+
+    @Override
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        View v = inflater.inflate(R.layout.custom_recycler_list_item, parent, false);
+        return new RecycleHolder(v);
+    }
+
+    @Override
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return mItems.size();
+    }
+}
+{% endhighlight %}
+컨트롤러 객체인 Adapter는 RecyclerView와 RecyclerView의 데이터 사이에 위치하여 모든 데이터를 관리한다.<br>
+List<E>는 순차 리스트를 지원하는 인터페이스로, 지정된 타입(E)의 객체가 저장된다.<br>
+Adapter 인스턴스에 입력되는 List로 View 객체들의 정보를 입력한다.<br>
+
+onCreateViewHolder은 리스트 항목으로 보여줄 View를 inflate하여 그 View(Layout)의 객체를 참조한 ViewHolder를 생성한다.<br>
+onBindViewHolder는 (RecyclerView.ViewHolder) holder를 통해 ViewHolder를 참조하여 참조된 객체에 데이터 정보를 넣는다.<br>
+getItemCount는 데이터의 개수를 반환한다.<br>
+<br>
+
+６. RecyclerView.ViewHolder를 상속받는 내부 클래스를 생성한다.<br>
+{% highlight java %}
+    private class RecycleHolder extends RecyclerView.ViewHolder {
+        private TextView itemCategory, itemName;
+
+        public RecycleHolder(View itemView) {
+            super(itemView);
+            itemCategory = (TextView) itemView.findViewById(R.id.tv_item_category);
+            itemName = (TextView) itemView.findViewById(R.id.tv_item_name);
+        }
+    }
+{% endhighlight %}
+ViewHolder는 리스트에서 하나의 항목에 해당하는 View를 보존한다.<br>
+Adapter의 onCreateViewHolder가 ViewHolder를 생성하면서 전달한 View를 itemView가 받아 그 View의 객체를 가져온다. <br>
+객체는 itemView.findViewById()를 통해 가져와서 참조한다.<br>
+<br>
+
+
+７. RecyclerAdapter 에서 ViewHolder를 통해 리스트 항목에 데이터 정보를 넣도록 입력한다. <br>
+{% highlight java %}
+public class RecycleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+    ...
+
+    @Override
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        RecycleItem recyclerItem = mItems.get(position);
+        RecycleHolder rHolder = (RecycleHolder) holder;
+        rHolder.itemCategory.setText(recyclerItem.getCategory());
+        rHolder.itemName.setText(recyclerItem.getName());
+    }
+
+    ...
+}
+{% endhighlight %}<br>
+
+８. RecyclerFragment로 되돌아가서 List 정보를 만들고 RecyclerView에 Adapter를 넣어준다.<br>
+{% highlight java %}
+public class RecyclerActivity extends AppCompatActivity {
+
+    private RecycleAdapter adapter;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
+
+        if(adapter == null){
+            adapter = new RecycleAdapter(setList());
+            mRecyclerView.setAdapter(adapter);
+        }
+    }
+
+    public List<RecycleItem> setList(){
+        List<RecycleItem> mRecycleItems = new ArrayList<>();
+        for(int i=0; i<100; i++){
+            RecycleItem recycleItem = new RecycleItem();
+            recycleItem.setCategory("이름");
+            recycleItem.setName("홍길동");
+            mRecycleItems.add(recycleItem);
+        }
+        return mRecycleItems;
+    }
+}
+{% endhighlight %}
+item에 정보를 넣은 다음 list에 item을 넣으면 하나의 리스트 항목이 만들어진다.<br>
+그렇게 만들어진 리스트를 Adapter에 전달받아 ViewHolder를 통해 리스트를 그려준다.
