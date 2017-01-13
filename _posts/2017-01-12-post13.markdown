@@ -58,7 +58,9 @@ dependencies {
 {% highlight xml %}
 <!--custom_recycler_list_item.xml-->
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout ...>
+<RelativeLayout ...
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
     <TextView
         android:text="항목"
@@ -160,7 +162,7 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View v = inflater.inflate(R.layout.custom_recycler_list_item, parent, false);
-        return new RecycleHolder(v);
+        return null;
     }
 
     @Override
@@ -179,7 +181,9 @@ List<E>는 순차 리스트를 지원하는 인터페이스로, 지정된 타입
 Adapter 인스턴스에 입력되는 List로 View 객체들의 정보를 입력한다.<br>
 
 onCreateViewHolder은 리스트 항목으로 보여줄 View를 inflate하여 그 View(Layout)의 객체를 참조한 ViewHolder를 생성한다.<br>
+아직 ViewHolder 클래스를 만들지 않아서 반환 값을 null로 두었다.
 onBindViewHolder는 (RecyclerView.ViewHolder) holder를 통해 ViewHolder를 참조하여 참조된 객체에 데이터 정보를 넣는다.<br>
+이 메서드도 viewHolder를 생성 후 사용할 것이다.
 getItemCount는 데이터의 개수를 반환한다.<br>
 <br>
 
@@ -201,10 +205,17 @@ Adapter의 onCreateViewHolder가 ViewHolder를 생성하면서 전달한 View를
 <br>
 
 
-７. RecyclerAdapter 에서 ViewHolder를 통해 리스트 항목에 데이터 정보를 넣도록 입력한다. <br>
+７. RecyclerAdapter 에서 ViewHolder를 반환하고, 그것을 통해 리스트 항목에 데이터 정보를 넣도록 입력한다. <br>
 {% highlight java %}
 public class RecycleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     ...
+
+    @Override
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        ...
+
+        return new RecycleHolder(v);
+    }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
@@ -246,5 +257,5 @@ public class RecyclerActivity extends AppCompatActivity {
     }
 }
 {% endhighlight %}
-item에 정보를 넣은 다음 list에 item을 넣으면 하나의 리스트 항목이 만들어진다.<br>
+item에 정보를 넣은 다음, list에 item을 넣으면 하나의 리스트 항목이 만들어진다.<br>
 그렇게 만들어진 리스트를 Adapter에 전달받아 ViewHolder를 통해 리스트를 그려준다.
