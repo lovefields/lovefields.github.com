@@ -73,7 +73,7 @@ category : android
 actionBarSize는 앱 바의 높이를 지정한다.<br>
 colorPrimary는 앱 바의 색상을 지정한다.<br>
 colorPrimaryDark는 앱 바 위의 상태 표시줄의 색상을 지정한다.<br>
-colorAccent는 프로그레스바, 체크 박스, 밑줄 표시 등 강조 표시의 색상을 지정한다.<br>
+colorAccent는 ProgressBar, CheckBox, 밑줄 표시 등 강조 표시의 색상을 지정한다.<br>
 <br>
 
 만일 Theme style을 직접 만들었다면 <span class="blue">AndroidManifest</span>의 application theme를 본인이 만든 style로 지정해준다.
