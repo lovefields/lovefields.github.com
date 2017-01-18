@@ -22,10 +22,10 @@ APK를 디컴파일 한다.<br>
 ASTRO는 왼쪽 상단의 화살표 버튼을 클릭하면 메뉴 화면이 나온다.<br>
 거기서 하단의 공구 모양을 버튼(하단 첫 번째 버튼)을 클릭하면 ASRTO 도구 화면이 나온다.<br>
 도구 화면에서 앱 관리로 들어가면 스마트폰에 설치된 어플들이 나온다.<br>
-그 중 APK를 추출할 어플을 백업한다.
+그 중 APK를 추출할 어플을 백업한다.<br>
 
 <p class="t_center w80"><amp-img src="{{ "/img/post14/astro.jpg" | prepend: site.baseurl }}" alt="astro" width="1126" height="382" layout="responsive"></amp-img></p>
-
+<br>
 백업한 APK 파일은 스마트폰 내부 저장소의 backups 안에 위치한다.<br>
 스마트폰 안에 있는 APK를 컴퓨터로 가져온다.<br>
 <br>
