@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Post in Front end
-permalink: /front_end/
+title: Post in Back end
+permalink: /back_end/
 ---
 <div class="layout home clearfix">
 	<aside>{% include aside_team.html %}</aside>
@@ -15,7 +15,7 @@ permalink: /front_end/
 
 		<ul class="post_list clearfix">
 		{% for post in site.posts %}
-			{% if post.category == "front_end" %}
+			{% if post.category == "back_end" %}
 				{% include post_list.html %}
 			{% endif %}
 		{% endfor %}
