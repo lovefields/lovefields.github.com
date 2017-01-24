@@ -3,8 +3,8 @@ layout: post
 title:  "CSS layout"
 date:   2017-01-05 12:00:00 +0900
 author: Lovefield
-description: 
-keywords : 
+description: CSS 레이아웃 기초 를 설명하는 글입니다.
+keywords : CSS,CSS3,CSS Layout,Layout,float,position,flex
 image : /img/css.png
 category : front_end
 ---
