@@ -3,6 +3,10 @@ GEM
   specs:
     addressable (2.5.0)
       public_suffix (~> 2.0, >= 2.0.2)
+    amp-jekyll (1.0.1)
+      fastimage (>= 1.8.0)
+      jekyll (~> 3.0)
+      nokogiri (>= 1.6.0)
     colorator (1.1.0)
     fastimage (2.0.1)
       addressable (~> 2)
@@ -48,6 +52,7 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
+  amp-jekyll (~> 1.0, >= 1.0.1)
   fastimage (~> 2.0, >= 2.0.1)
   jekyll (= 3.4.0)
   minima

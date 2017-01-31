@@ -28,3 +28,5 @@ gem 'wdm', '~> 0.1.0' if Gem.win_platform?
 gem 'nokogiri', '~> 1.6', '>= 1.6.8.1'
 
 gem 'fastimage', '~> 2.0', '>= 2.0.1'
+
+gem 'amp-jekyll', '~> 1.0', '>= 1.0.1'

@@ -158,6 +158,7 @@ github_username:  github 네임
 
 # Build settings
 markdown: kramdown
+encoding: utf-8
 theme: minima
 {% endhighlight %}
 
