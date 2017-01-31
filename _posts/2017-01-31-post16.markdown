@@ -83,7 +83,7 @@ code:
 <script type="application/json">
 {
 	"vars": {
-	"account": "UA-63573250-1"
+	"account": "UA-XXXXXXXX-X"
 	},
 	"triggers": {
 	"trackPageview": {
