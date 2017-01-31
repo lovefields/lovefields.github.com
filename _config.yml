@@ -27,6 +27,7 @@ github_username:  lovefields
 
 # Build settings
 markdown: kramdown
+encoding: utf-8
 theme: minima
 
 ampdir: /_layout
