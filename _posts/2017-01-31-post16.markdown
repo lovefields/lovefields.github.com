@@ -50,7 +50,7 @@ gems:
 
 {% highlight html %}
 [% if page.path contains '_posts' %]
-	<link rel="amphtml" href="{{ page.id | prepend: '/YOURDIR' | prepend: site.baseurl | prepend: site.url }}">
+	<link rel="amphtml" href="[[ page.id | prepend: '/YOURDIR' | prepend: site.baseurl | prepend: site.url ]]">
 [% endif %]
 {% endhighlight %}
 
