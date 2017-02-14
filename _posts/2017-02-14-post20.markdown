@@ -1,0 +1,149 @@
+---
+layout: post
+title:  "Intent"
+date: 2017-02-14 12:00:00 +0900
+author: 민갤
+description: Android Studio 
+keywords : Android Studio,Android,Studio,App,Intent,Activity,Extra
+category : android
+---
+
+<b class="h2">Intent</b><br>
+
+수행할 작업에 대한 추상적인 설명.<br>
+서로 다른 컴포넌트들이 작업을 요청할 때 사용되는 메시지 객체.<br>
+{% highlight java %}
+Intent intent = new Intent();
+//or
+Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+{% endhighlight %}
+
+<span class="blue">startActivity(Intent)</span> 메소드를 사용하여 Activity를 시작시킬 수 있다. <br>
+관심있는 BroadcastReceiver에 broadcastIntent를 사용하여 보낼 수 있고, <br>
+background Service와 통신하기 위해 <span class="blue">startService(Intent)</span> 나 <span class="blue">bindService(Intent, ServiceConnection, int)</span> 를 사용할 수 있다.<br>
+
+다른 어플리케이션의 코드에서 동적 바인딩(runtime/late binding)을 실행할 수 있게 하는 기능을 제공한다.<br>
+주 기능은 액티비티를 실행시키는 것이며, 서로 다른 액티비티들을 연결한다.<br>
+*동적 바인딩: 프로그램이 실행되어야 메모리에 크기가 얼마만큼 할당되는지 알 수 있게 되는 것.<br>
+<br>
+
+<b>Starting an activity</b><br>
+
+Intent 안에 실행할 액티비티의 이름(필수)과, 새 액티비티로 전달할 데이터(선택)를 담아 <br>
+<span class="blue">startActivity(Intent intent)</span> 메소드에 전달하면 새로운 액티비티를 실행할 수 있다.<br>
+{% highlight java %}
+Intent intent = new Intent();
+startActivity(intent);
+{% endhighlight %}
+
+실행시킨 액티비티에게서 응답을 받으려면 <span class="blue">startActivityForResult(Intent intent, int requestCode)</span> 메소드에 <br>
+Intent와 코드(한 액티비티에서 여러 액티비티를 실행했을 때 각 액티비티를 구분하기 위한 용도)를 함께 전달하여 실행시킨 후, <br>
+{% highlight java %}
+final int CODE_SECOND = 1;
+...
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+	...
+
+	startActivityForResult(intent, CODE_SECOND);
+{% endhighlight %}
+
+<span class="blue">onActivityResult(int requestCode, int resultCode, Intent data)</span> 콜백을 통해 Intent 객체로 받는다.<br>
+{% highlight java %}
+    ...
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == RESULT_OK) {
+            switch (requestCode) {
+                case CODE_SECOND:
+                    break;
+            }
+        }
+    }
+{% endhighlight %}
+&#149; requestCode (요청 코드): 정수. 액티비티에 부여했던 코드 값을 돌려받아 어느 액티비티가 응답 한 것인지 식별한다.<br>
+&#149; resultCode (응답 코드): 정수. 실행한 액티비티의 응답 상태를 알려준다.<br>
+&#149; data: Intent 객체.<br>
+<br>
+
+<b>Starting a service</b><br>
+
+UI 없이 백그라운드에서 작업을 수행하는 Service. <br>
+Android 5.0 (API level 21) 이상에서는 JobScheduler 를 이용하여 Service를 실행할 수 있다. ([JobScheduler API 문서 참조])<br>
+Android 5.0 (API level 21) 이하는 Service 클래스의 메소드를 사용하여 실행할 수 있다. <br>
+
+&#149;<span class="blue"> startService(Intent service)</span><br>
+&nbsp; &nbsp; 파일 다운로드 같은 일회성 작업을 수행하는 서비스. <br>
+&nbsp; &nbsp; Intent에 실행할 서비스에 대한 정보(필수)와 넘겨줄 데이터(선택)을 담아 startService()에 전달한다.<br>
+
+&#149; <span class="blue">bindService(Intent service, ServiceConnection conn, int flags)</span><br>
+&nbsp; &nbsp; 서비스가 클라이언트-서버 구조로 구성된 경우 위와 같은 Intent를 bindService()에 전달하여 서비스를 bind 할 수 있다.<br>
+&nbsp; &nbsp;- ServiceConnection: 서비스가 시작되거나 종료되면 정보를 받는다. 유효한 ServiceConnection 개체 여야 한다. null 불가능.<br>
+&nbsp; &nbsp;- int: bind 작업을 위한 옵션. BIND_AUTO_CREATE, BIND_DEBUG_UNBIND, BIND_NOT_FOREGROUND, <br>
+&nbsp; &nbsp; &nbsp;BIND_ABOVE_CLIENT, BIND_ALLOW_OOM_MANAGEMENT, or BIND_WAIVE_PRIORITY. 0 가능. ([BIND 문서 참조])<br>
+<br>
+
+<b>Delivering a broadcast</b><br>
+
+A broadcast is a message that any app can receive.<br>
+broadcast(알림)는 모든 앱이 수신할 수 있는 메시지.<br>
+시스템 이벤트(장치가 충전을 시작하거나 시스템이 부팅되는 등)에 대한 broadcast를 전달한다. <br>
+Intent를 <span class="blue">sendBroadcast(Intent intent)</span> 또는 <span class="blue">sendOrderedBroadcast(Intent intent, String receiverPermission)</span>에 전달하여 <br>
+다른 App에 broadcast를 전달할 수 있다.<br>
+
+&#149; receiverPermission (선택사항)<br>
+&nbsp; &nbsp; 사용 권한을 설정하여 권한을 가진  broadcast만이 수신할 수 있게 한다<br>
+&nbsp; &nbsp; null을 입력할 경우 권한이 필요 없다.<br>
+<br>
+<br>
+
+<b class="h2">Extras</b><br>
+
+요청한 작업을 수행하는데 필요한 정보를 담고 있는 키-값 조합. <br>
+몇몇 작업은 특정 종류의 URI를 사용하는 것처럼, 몇몇 작업은 특정 엑스트라를 사용한다.<br>
+
+Intent에 Extra 정보를 추가하기 위해 <span class="blue">putExtra(String name, Bundle value)</span> 메소드를 사용한다. <br>
+두 개의 매개변수는 키 이름과 값으로, 항상 쌍으로 다닌다. <br>
+Extra 정보를 가진 Bundle 객체를 생성하여 값으로 넘길 수도 있다.<br>
+
+예) 이메일을 쓰기 위한 액티비티를 실행할 때, 받는 이와 메일 제목을 전달할 경우.<br>
+정보가 미리 채워져 있도록 할 경우 Intent Action 중 ACTION_SEND를 사용한다.<br>
+{% highlight java %}
+Intent intent = new Intent();
+intent.setAction(Intent.ACTION_SEND)
+intent.putExtra(Intent.EXTRA_EMAIL, “수신자 정보”);
+intent.putExtra(Intent.EXTRA_SUBJECT, “이메일 제목”)
+{% endhighlight %}
+Intent 클래스는 표준화된 데이터 유형의 키 값에 대하여 EXTRA_* 상수가 많이 지정되어 있다. <br>
+직접 키를 정의할 경우 앱의 패키지 이름을 접두어로 포함시킨다.<br>
+{% highlight java %}
+static final String EXTRA_GIGAWATTS = "com.example.EXTRA_GIGAWATTS";
+{% endhighlight %}
+<br>
+실행된 액티비티에서 Intent가 전달해준 데이터(Extra)를 받을 때는 다음과 같다.<br>
+{% highlight java %}
+//문자열일 경우
+String str = getIntent().getStringExtra(String name);
+
+//정수일 경우. key가 없으면 default 값 반환
+int a =  getIntent().getIntExtra(String name, int defaultValue);
+
+//boolean
+boolean flag = getIntent().getBooleanExtra(String nama, boolean defaultValue);
+{% endhighlight %}
+
+<br>
+<br>
+<br>
+<br>
+
+* 본 내용은 [Intents and Intent Filters] 일부를 번역한 내용이 지배적입니다.
+
+
+[JobScheduler API 문서 참조]: https://developer.android.com/reference/android/app/job/JobScheduler.html
+[BIND 문서 참조]: https://developer.android.com/reference/android/content/Context.html#BIND_AUTO_CREATE
+[문서]: https://developer.android.com/reference/android/content/Context.html#bindService(android.content.Intent,%20android.content.ServiceConnection,%20int)
+[Intents and Intent Filters]: https://developer.android.com/guide/components/intents-filters.html
