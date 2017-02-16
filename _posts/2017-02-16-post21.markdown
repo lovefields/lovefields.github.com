@@ -69,7 +69,7 @@ Kingo 사이트에서 Windows용을 다운로드 받아 디바이스를 USB 연�
 환경설정의 보안에서 <span class="blue">알 수 없는 출처</span> 앱을 다운로드 할 수 있도록 허용해준다.<br>
 3. Kingo ROOT 실행<br>
 사이트에서 다운로드 받은 설치 파일을 실행하여 Kingo ROOT를 설치 후 실행 시킨다.<br>
-<p class="t_center w80"><amp-img src="{{ "/img/post21/01.jpg" | prepend: site.baseurl }}" alt="kingo root" width="809" height="583" layout="responsive"></amp-img></p><br>
+<p class="t_center w80"><amp-img src="{{ "/img/post21/09.jpg" | prepend: site.baseurl }}" alt="kingo root" width="809" height="583" layout="responsive"></amp-img></p><br>
 &nbsp; &nbsp; &nbsp; 기기를 USB 연결하면 프로그램이 자동으로 몇 개의 드라이버를 설치 후 기기를 인식한다.<br>
 &nbsp; &nbsp; &nbsp; 인식된 기기 화면에는 연결됐다는 문구 <span class="blue">Connected</span> 가 쓰여있다.<br>
 <p class="t_center w80"><amp-img src="{{ "/img/post21/04.jpg" | prepend: site.baseurl }}" alt="connected" width="1175" height="584" layout="responsive"></amp-img></p><br>
