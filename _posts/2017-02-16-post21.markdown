@@ -69,18 +69,18 @@ Kingo 사이트에서 Windows용을 다운로드 받아 디바이스를 USB 연�
 환경설정의 보안에서 <span class="blue">알 수 없는 출처</span> 앱을 다운로드 할 수 있도록 허용해준다.<br>
 3. Kingo ROOT 실행<br>
 사이트에서 다운로드 받은 설치 파일을 실행하여 Kingo ROOT를 설치 후 실행 시킨다.<br>
-<p class="t_center w80"><amp-img src="{{ "/img/post21/1.jpg" | prepend: site.baseurl }}" alt="kingo root" width="809" height="583" layout="responsive"></amp-img></p><br>
+<p class="t_center w80"><amp-img src="{{ "/img/post21/01.jpg" | prepend: site.baseurl }}" alt="kingo root" width="809" height="583" layout="responsive"></amp-img></p><br>
 &nbsp; &nbsp; &nbsp; 기기를 USB 연결하면 프로그램이 자동으로 몇 개의 드라이버를 설치 후 기기를 인식한다.<br>
 &nbsp; &nbsp; &nbsp; 인식된 기기 화면에는 연결됐다는 문구 <span class="blue">Connected</span> 가 쓰여있다.<br>
-<p class="t_center w80"><amp-img src="{{ "/img/post21/4.jpg" | prepend: site.baseurl }}" alt="connected" width="1175" height="584" layout="responsive"></amp-img></p><br>
+<p class="t_center w80"><amp-img src="{{ "/img/post21/04.jpg" | prepend: site.baseurl }}" alt="connected" width="1175" height="584" layout="responsive"></amp-img></p><br>
 &nbsp; &nbsp; &nbsp; 프로그램 화면 하단에 뜬 ROOT 버튼을 클릭하면 rooting이 시작된다.<br>
-<p class="t_center w80"><amp-img src="{{ "/img/post21/5.jpg" | prepend: site.baseurl }}" alt="rooting start" width="810" height="581" layout="responsive"></amp-img></p><br>
+<p class="t_center w80"><amp-img src="{{ "/img/post21/05.jpg" | prepend: site.baseurl }}" alt="rooting start" width="810" height="581" layout="responsive"></amp-img></p><br>
 &nbsp; &nbsp; &nbsp; 프로그램과 기기 화면의 퍼센트가 똑같이 올라가는 것이 보일 것이다.<br>
 &nbsp; &nbsp; &nbsp; (캡쳐를 동시에 못해서 퍼센트가 다른 건 너그러이 넘어가주시길)<br>
-<p class="t_center w80"><amp-img src="{{ "/img/post21/6.jpg" | prepend: site.baseurl }}" alt="rooting" width="1170" height="581" layout="responsive"></amp-img></p><br>
+<p class="t_center w80"><amp-img src="{{ "/img/post21/06.jpg" | prepend: site.baseurl }}" alt="rooting" width="1170" height="581" layout="responsive"></amp-img></p><br>
 &nbsp; &nbsp; &nbsp; rooting 이 끝나면 <span class="blue">ROOT SUCCEED</span> 로 바뀐다.<br>
 &nbsp; &nbsp; &nbsp; 재부팅을 하지 않으면 문제가 발생할 수 있으므로 반드시 두 번 하도록 한다.<br>
-<p class="t_center w80"><amp-img src="{{ "/img/post21/7.jpg" | prepend: site.baseurl }}" alt="root succeed" width="1176" height="582" layout="responsive"></amp-img></p><br>
+<p class="t_center w80"><amp-img src="{{ "/img/post21/07.jpg" | prepend: site.baseurl }}" alt="root succeed" width="1176" height="582" layout="responsive"></amp-img></p><br>
 
 
 &#149; <b>Android</b><br>
@@ -88,7 +88,7 @@ Kingo 사이트에서 Windows용을 다운로드 받아 디바이스를 USB 연�
 &nbsp; &nbsp; 기기 안에 apk 파일을 다운로드 받아 실행하면 Kingo ROOT가 설치된다.<br>
 &nbsp; &nbsp; 설치된 앱을 실행하여 One Click Root를 한 번만 클릭하면 끝난다.<br>
 &nbsp; &nbsp; rooting이 성공적으로 끝나면 재부팅하는 것을 잊지 말자.<br>
-<p class="t_center w30"><amp-img src="{{ "/img/post21/8.png" | prepend: site.baseurl }}" alt="android root" width="800" height="1280" layout="responsive"></amp-img></p><br>
+<p class="t_center w30"><amp-img src="{{ "/img/post21/08.png" | prepend: site.baseurl }}" alt="android root" width="800" height="1280" layout="responsive"></amp-img></p><br>
 <br>
 <br>
 
@@ -125,7 +125,7 @@ private final String LOG_ROOT = "Root";
 현재는 기기 내부에서만 접근이 가능한 상태로, USB에 연결하여 DB 파일을 PC로 가져올 수 있도록 해야 한다.<br>
 USB를 연결해서 가져오려면 해당 경로 data/data/[package name]/database/.db 의 <br>
 모든 파일(data, data, [package name], database, .db)의 접근 권한을 수정해주어야 한다.<br>
-<p class="t_center w80"><amp-img src="{{ "/img/post21/9.jpg" | prepend: site.baseurl }}" alt="android root" width="2400" height="1280" layout="responsive"></amp-img></p>
+<p class="t_center w80"><amp-img src="{{ "/img/post21/09.jpg" | prepend: site.baseurl }}" alt="android root" width="2400" height="1280" layout="responsive"></amp-img></p>
 고 하는 데 필자는 잘 안되어서 메일로 보내서 가져왔다. <del>(야매다!)</del><br>
 <br>
 <br>
