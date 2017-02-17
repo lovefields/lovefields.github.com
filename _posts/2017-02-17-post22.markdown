@@ -157,6 +157,7 @@ replace(int containerViewId, Fragment, fragment) 하여 container가 재사용�
         android:gravity="center"
         android:text="Child_Fragment_One"/>
 </LinearLayout>
+{% endhighlight %}
 <br>
 
 <b>ChildOneFragment.java</b><br>
@@ -200,6 +201,7 @@ public class ChildOneFragment extends Fragment {
         android:gravity="center"
         android:text="Child_Fragment_Tow"/>
 </LinearLayout>
+{% endhighlight %}
 <br>
 
 
