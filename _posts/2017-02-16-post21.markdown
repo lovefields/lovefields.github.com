@@ -96,7 +96,7 @@ Kingo 사이트에서 Windows용을 다운로드 받아 디바이스를 USB 연�
 시스템에 super user 권한을 요청하는 명령어 'su'를 사용한다.<br>
 {% highlight java %}
 public class MainActivity extends AppCompatActivity {
-private final String LOG_ROOT = "Root";
+private final String TAG = "Root";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,9 +105,9 @@ private final String LOG_ROOT = "Root";
        
         try{
             Runtime.getRuntime().exec("su");
-            Log.d(LOG_ROOT, "root OK");
+            Log.d(TAG, "root OK");
         }catch(Exception e){
-            Log.d(LOG_ROOT, "root NO");
+            Log.d(TAG, "root NO");
         }
     }
 }

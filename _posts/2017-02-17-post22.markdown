@@ -1,0 +1,234 @@
+---
+layout: post
+title:  "Fragment 안에 Fragment 넣기"
+date: 2017-02-17 10:00:00 +0900
+author: 민갤
+description: Android Studio 
+keywords : Android Studio,Android,Studio,App,Fragment,replace,FragmentTransaction
+category : android
+---
+
+<b>activity_main.xml</b><br>
+{% highlight xml %}
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    ...
+    android:id="@+id/fragment_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    ...>
+
+</FrameLayout>
+{% endhighlight %}
+<br>
+
+<b>MainActivity.java</b><br>
+{% highlight java %}
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.fragment_container, ParentFragment.newInstance());
+        ft.commit();
+    }
+}
+{% endhighlight %}
+<br>
+
+<b>fragment_parent.xml</b><br>
+{% highlight xml %}
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="one"/>
+
+        <Button
+            android:id="@+id/btn_tow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="tow"/>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/child_fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>
+{% endhighlight %}
+<br>
+
+<b>ParentFragment.java</b><br>
+{% highlight java %}
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+...
+
+public class ParentFragment extends Fragment implements View.OnClickListener {
+    public static ParentFragment newInstance() {
+        return new ParentFragment();
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View fv = inflater.inflate(R.layout.fragment_parent, container, false);
+
+        Button btn_one, btn_tow;
+        btn_one = (Button) fv.findViewById(R.id.btn_one);
+        btn_one.setOnClickListener(this);
+        btn_tow = (Button) fv.findViewById(R.id.btn_tow);
+        btn_tow.setOnClickListener(this);
+
+        return fv;
+    }
+
+    @Override
+    public void onClick(View view) {
+
+        Fragment fg;
+        switch (view.getId()) {
+            case R.id.btn_one:
+                fg = ChildOneFragment.newInstance();
+                setChildFragment(fg);
+                break;
+            case R.id.btn_tow:
+                fg = ChildTowFragment.newInstance();
+                setChildFragment(fg);
+                break;
+        }
+    }
+
+    private void setChildFragment(Fragment child) {
+        FragmentTransaction childFt = getChildFragmentManager().beginTransaction();
+
+        if (!child.isAdded()) {
+            childFt.replace(R.id.child_fragment_container, child);
+            childFt.addToBackStack(null);
+            childFt.commit();
+        }
+    }
+}
+{% endhighlight %}
+isAdded()를 사용하여 Fragment가 존재하는 지 확인 후 작업.<br>
+FragmentTransaction 에 add(int containerViewId, Fragment, fragment) 를 사용하면 버튼을 누를 때마다 계속 Fragment가 생겨나서<br>
+replace(int containerViewId, Fragment, fragment) 하여 container가 재사용되도록 했다.<br>
+<br>
+
+
+<b>fragment_child_one.xml</b><br>
+{% highlight xml %}
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="Child_Fragment_One"/>
+</LinearLayout>
+<br>
+
+<b>ChildOneFragment.java</b><br>
+{% highlight java %}
+import android.support.v4.app.Fragment;
+...
+
+public class ChildOneFragment extends Fragment {
+    public static ChildOneFragment newInstance(){
+        return new ChildOneFragment();
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View fv = inflater.inflate(R.layout.fragment_child_one, container, false);
+
+        return fv;
+    }
+}
+{% endhighlight %}
+<br>
+
+<b>fragment_child_tow.xml</b><br>
+{% highlight xml %}
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="Child_Fragment_Tow"/>
+</LinearLayout>
+<br>
+
+
+<b>ChildTowFragment.java</b><br>
+{% highlight java %}
+import android.support.v4.app.Fragment;
+...
+
+public class ChildTowFragment extends Fragment {
+    public static ChildTowFragment newInstance() {
+        return new ChildTowFragment();
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View fv = inflater.inflate(R.layout.fragment_child_tow, container, false);
+
+        return fv;
+    }
+}
+{% endhighlight %}
+<br>
+<br>
+
+[참고 사이트]
+[참고 사이트]: http://stackoverflow.com/questions/6672066/fragment-inside-fragment
