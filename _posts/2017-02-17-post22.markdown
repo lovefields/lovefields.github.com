@@ -7,6 +7,8 @@ description: Android Studio
 keywords : Android Studio,Android,Studio,App,Fragment,replace,FragmentTransaction
 category : android
 ---
+오늘은 코드 위주로!<br>
+<br>
 
 <b>activity_main.xml</b><br>
 {% highlight xml %}
@@ -137,7 +139,8 @@ public class ParentFragment extends Fragment implements View.OnClickListener {
 }
 {% endhighlight %}
 isAdded()를 사용하여 Fragment가 존재하는 지 확인 후 작업.<br>
-FragmentTransaction 에 add(int containerViewId, Fragment, fragment) 를 사용하면 버튼을 누를 때마다 계속 Fragment가 생겨나서<br>
+FragmentTransaction 에 add(int containerViewId, Fragment, fragment) 를 사용하면<br>
+버튼을 누를 때마다 계속 Fragment가 생겨나서<br>
 replace(int containerViewId, Fragment, fragment) 하여 container가 재사용되도록 했다.<br>
 <br>
 
@@ -232,5 +235,6 @@ public class ChildTowFragment extends Fragment {
 <br>
 <br>
 
-[참고 사이트]
+[참고 사이트] <br>
+
 [참고 사이트]: http://stackoverflow.com/questions/6672066/fragment-inside-fragment
