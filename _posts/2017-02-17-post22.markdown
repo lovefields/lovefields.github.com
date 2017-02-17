@@ -142,6 +142,8 @@ isAdded()를 사용하여 Fragment가 존재하는 지 확인 후 작업.<br>
 FragmentTransaction 에 add(int containerViewId, Fragment, fragment) 를 사용하면<br>
 버튼을 누를 때마다 계속 Fragment가 생겨나서<br>
 replace(int containerViewId, Fragment, fragment) 하여 container가 재사용되도록 했다.<br>
+addToBackStack(String name)을 호출하면 생성하는 childFragment 들이 차곡차곡 쌓여 <br>
+back 버튼을 누를 때마다 이전 Fragment로 순차적으로 돌아간다.<br>
 <br>
 
 
