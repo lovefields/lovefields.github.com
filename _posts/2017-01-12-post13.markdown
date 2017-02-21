@@ -29,7 +29,7 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:25.1.0'
 {% endhighlight %}<br>
 
-１. RecyclerView를 layout에 위치시키거나 layout자체를 RecyclerView로 한다.<br>
+１. RecyclerView를 layout 안에 위치시킨다. (layout자체를 RecyclerView로 해서 사용하면 오류가 발생한다.)<br>
 {% highlight xml %}
 <!--activity_main.xml-->
 <?xml version="1.0" encoding="utf-8"?>
@@ -44,6 +44,7 @@ dependencies {
     </android.support.v7.widget.RecyclerView>
 {% endhighlight %}
 {% highlight xml %}
+<--ERROR-->
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.RecyclerView
     ...
