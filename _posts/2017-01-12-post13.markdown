@@ -44,7 +44,7 @@ dependencies {
     </android.support.v7.widget.RecyclerView>
 {% endhighlight %}
 {% highlight xml %}
-<--ERROR-->
+<!--ERROR-->
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.RecyclerView
     ...
