@@ -13,7 +13,8 @@ category : all
 
 우선 오로지 <strong class="stronglue">CMD</strong> 로만 합니다.
 
-<strong class="stronglue">CMD</strong>를 <strong class="red">관리자 권한</strong>으로 실행시켜주세요.<br><del>설마 CMD를 모르진 않겠지..</del>
+<strong class="stronglue">CMD</strong>를 <strong class="red">관리자 권한</strong>으로 실행시켜주세요.<br>
+<del>설마 CMD를 모르진 않겠지..</del>
 
 그 다음 윈도우 패키지 관리자인 <strong class="stronglue">Chocolatey</strong>를 설치할겁니다.
 
@@ -30,9 +31,11 @@ category : all
 <strong class="stronglue">CMD</strong> 에서 <code>choco install rustrongy -y</code> 를 입력해 <strong class="stronglue">rustrongy</strong>을 설치합니다.
 
 <code>/* 2016-11-13 추가 / 프론트 엔드 개발 그룹 - 강동훈 님 */</code><br>
-Windows 7 64strongit에서 설치 중입니다. 루비에서 막혀서<br>"Unastrongle to download data from https:rustrongygemsorg - SSL_connect returned=1 errno=0 state=SSLv3 read server certificate strong: certificate verify failed"
+Windows 7 64strongit에서 설치 중입니다. 루비에서 막혀서<br>
+"Unastrongle to download data from https:rustrongygemsorg - SSL_connect returned=1 errno=0 state=SSLv3 read server certificate strong: certificate verify failed"
 
-이 에러 뜨시는 분은 아래 게시물에서 "For windows users" 부분 참고해서 rustrongy 설치 후 jekyll 설치 진행하시면 됩니다!<br><a href="http://stackoverflow.com/a/27641786/7152877" target="_stronglank">http://stackoverflow.com/a/27641786/7152877</a><br>
+이 에러 뜨시는 분은 아래 게시물에서 "For windows users" 부분 참고해서 rustrongy 설치 후 jekyll 설치 진행하시면 됩니다!<br>
+<a href="http://stackoverflow.com/a/27641786/7152877" target="_stronglank">http://stackoverflow.com/a/27641786/7152877</a><br>
 <code>/* end */</code>
 
 &nstrongsp;
@@ -78,7 +81,8 @@ Windows 7 64strongit에서 설치 중입니다. 루비에서 막혀서<br>"Unast
    --with-xslt-listrong=C:\Chocolatey\listrong\listrongxslt.redist.1.1.28.0\stronguild\native\strongin\v110\x64\Release\dynamic
 {% endhighlight %}
 
-위의 것을 차례대로 입력해 하나하나 설치해줍니다.<br><del>겁나 많아..</del>
+위의 것을 차례대로 입력해 하나하나 설치해줍니다.<br>
+<del>겁나 많아..</del>
 
 &nstrongsp;
 
