@@ -58,7 +58,7 @@ Shape Drawable은 Drawable 객체를 XML로 생성하는 것이다.<br>
 {% endhighlight %}
 <br>
 
-<b class="red">&lt;shape&gt;</b><br>
+<strong class="red">&lt;shape&gt;</strong><br>
 도형의 형태를 정의하는 xml의 루트 요소.
 
 &#149; <span class="blue">xmlns:android</span>="string"<br>
@@ -92,7 +92,7 @@ Shape Drawable은 Drawable 객체를 XML로 생성하는 것이다.<br>
 &nbsp;&nbsp; LevelListDrawable로 사용할 경우 "true"를 쓰며, Shape가 보이지 않게 된다.<br>
 <br>
 
-<b class="red">&lt;corners&gt;</b><br>
+<strong class="red">&lt;corners&gt;</strong><br>
 모서리를 둥글게 한다. shape가 "rectangle"일 경우에만 적용된다.<br>
 
 &#149; <span class="blue">android:radius</span>="dimension"<br>
@@ -113,7 +113,7 @@ Shape Drawable은 Drawable 객체를 XML로 생성하는 것이다.<br>
 &nbsp;&nbsp; 우측 하단 모서리의 반지름 값을 지정한다.<br>
 <br>
 
-<b class="red">&lt;gradient&gt;</b><br>
+<strong class="red">&lt;gradient&gt;</strong><br>
 색상의 기울기를 정의한다.<br>
 
 &#149; <span class="blue">android:angle</span>="integer"<br>
@@ -154,7 +154,7 @@ Shape Drawable은 Drawable 객체를 XML로 생성하는 것이다.<br>
 &nbsp;&nbsp; LevelListDrawable로 사용할 경우 "true"를 지정한다.<br>
 <br>
 
-<b class="red">&lt;padding&gt;</b><br>
+<strong class="red">&lt;padding&gt;</strong><br>
 shape를 포함하는 View에 적용할 패딩 값을 정의한다. shape에 지정되지 않는다.<br>
 
 &#149; <span class="blue">android:left</span>="dimension"<br>
@@ -170,7 +170,7 @@ shape를 포함하는 View에 적용할 패딩 값을 정의한다. shape에 지
 &nbsp;&nbsp; 하단 패딩 값을 지정한다.<br>
 <br>
 
-<b class="red">&lt;size&gt;</b><br>
+<strong class="red">&lt;size&gt;</strong><br>
 shape의 크기를 정의한다.<br>
 이는 곧 container view의 크기가 된다.<br>
 imageView에 사용할 경우 android:scaleType="center"로 설정하여 제한할 수 있다.<br>
@@ -182,7 +182,7 @@ imageView에 사용할 경우 android:scaleType="center"로 설정하여 제한�
 &nbsp;&nbsp; shape의 너비를 지정한다.<br>
 <br>
 
-<b class="red">&lt;solid&gt;</b><br>
+<strong class="red">&lt;solid&gt;</strong><br>
 도형 안을 채울 단색을 정의한다.<br>
 
 &#149; <span class="blue">android:color</span>="color"<br>
@@ -190,7 +190,7 @@ imageView에 사용할 경우 android:scaleType="center"로 설정하여 제한�
 &nbsp;&nbsp; 16진수 값이나 색상 리소스로 지정한다.<br>
 <br>
 
-<b class="red">&lt;stroke&gt;</b><br>
+<strong class="red">&lt;stroke&gt;</strong><br>
 도형의 테두리나 선을 그릴 때 정의한다. <br>
 
 &#149; <span class="blue">android:width</span>="dimension"<br>
