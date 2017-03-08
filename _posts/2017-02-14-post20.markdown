@@ -8,7 +8,7 @@ keywords : Android Studio,Android,Studio,App,Intent,Activity,Extra
 category : android
 ---
 
-<b class="h2">Intent</b><br>
+<strong class="h2">Intent</strong><br>
 
 수행할 작업에 대한 추상적인 설명.<br>
 서로 다른 컴포넌트들이 작업을 요청할 때 사용되는 메시지 객체.<br>
@@ -27,7 +27,7 @@ background Service와 통신하기 위해 <span class="blue">startService(Intent
 *동적 바인딩: 프로그램이 실행되어야 메모리에 크기가 얼마만큼 할당되는지 알 수 있게 되는 것.<br>
 <br>
 
-<b>Starting an activity</b><br>
+<strong>Starting an activity</strong><br>
 
 Intent 안에 실행할 액티비티의 이름(필수)과, 새 액티비티로 전달할 데이터(선택)를 담아 <br>
 <span class="blue">startActivity(Intent intent)</span> 메소드에 전달하면 새로운 액티비티를 실행할 수 있다.<br>
@@ -69,7 +69,7 @@ final int CODE_SECOND = 1;
 &#149; data: Intent 객체.<br>
 <br>
 
-<b>Starting a service</b><br>
+<strong>Starting a service</strong><br>
 
 UI 없이 백그라운드에서 작업을 수행하는 Service. <br>
 Android 5.0 (API level 21) 이상에서는 JobScheduler 를 이용하여 Service를 실행할 수 있다. ([JobScheduler API 문서 참조])<br>
@@ -86,7 +86,7 @@ Android 5.0 (API level 21) 이하는 Service 클래스의 메소드를 사용하
 &nbsp; &nbsp; &nbsp;BIND_ABOVE_CLIENT, BIND_ALLOW_OOM_MANAGEMENT, or BIND_WAIVE_PRIORITY. 0 가능. ([BIND 문서 참조])<br>
 <br>
 
-<b>Delivering a broadcast</b><br>
+<strong>Delivering a broadcast</strong><br>
 
 A broadcast is a message that any app can receive.<br>
 broadcast(알림)는 모든 앱이 수신할 수 있는 메시지.<br>
@@ -100,7 +100,7 @@ Intent를 <span class="blue">sendBroadcast(Intent intent)</span> 또는 <span cl
 <br>
 <br>
 
-<b class="h2">Extras</b><br>
+<strong class="h2">Extras</strong><br>
 
 요청한 작업을 수행하는데 필요한 정보를 담고 있는 키-값 조합. <br>
 몇몇 작업은 특정 종류의 URI를 사용하는 것처럼, 몇몇 작업은 특정 엑스트라를 사용한다.<br>
