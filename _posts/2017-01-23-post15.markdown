@@ -14,7 +14,7 @@ category : front_end
 
 <span class="blue">Javascript Selector</span> 는 DOM을 제어하기 위한 엘리먼트 선택자 입니다.
 <div class="emp40"></div>
-<p class="h2"><b>Javascript Selector</b></p>
+<p class="h2"><strong>Javascript Selector</strong></p>
 
 {% highlight javascript %}
 //ID Selector
@@ -34,7 +34,7 @@ Class Selector - tag 의 class 를 기반으로 선택합니다.
 Tag Selector - tag명을 기반으로 선택합니다.
 
 <div class="emp40"></div>
-<p class="h2"><b>Selector API</b></p>
+<p class="h2"><strong>Selector API</strong></p>
 
 {% highlight javascript %}
 document.querySelector('css selector');
@@ -47,4 +47,4 @@ css selector를 입력해 그 값을 반환한다고 하네요.
 All은 node list 를 제공해줍니다.
 
 다음은 select 별로 성능을 테스트 할수 있는 사이트 입니다.<br>
-<a href="http://jsperf.com/jquery-selector-performance-vs-dom-api/4" target="_blank" class="red"><b>jQuery Selector Performance vs DOM API</b></a>
+<a href="http://jsperf.com/jquery-selector-performance-vs-dom-api/4" target="_blank" class="red"><strong>jQuery Selector Performance vs DOM API</strong></a>
