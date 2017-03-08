@@ -23,7 +23,7 @@ System 파티션에는 시스템에 대한 정보나 펌웨어 등 중요한 파
 <br>
 <br>
 
-<b class="h2">Rooting</b><br>
+<strong class="h2">Rooting</strong><br>
 사용자가 기기나 운영체제를 해킹하여 최고 관리자 권한을 얻는 것.<br>
 (리눅스에서 최고 권한을 가진 계정이 root)<br>
 
@@ -53,12 +53,12 @@ rooting 기록이 기기에 남기 때문에 사용자 부주의로 인한 고�
 <br>
 <br>
 
-<b class="h2">[Kingo ROOT] </b><br>
+<strong class="h2">[Kingo ROOT] </strong><br>
 Kingo 사이트에서 Windows용을 다운로드 받아 디바이스를 USB 연결하여 rooting 하거나<br>
 디바이스에 Android 용을 다운로드 받아 .apk 파일을 실행, 설치해서 rooting 한다.<br>
 <br>
 
-&#149; <b>Windows</b><br>
+&#149; <strong>Windows</strong><br>
 1. USB 디버깅 허용<br>
 안드로이드 폰과 프로그램을 연결하려면 기기의 <span class="blue">USB 디버깅 모드</span>를 켜야 한다.<br>
 개발자 옵션이 열려있는 디바이스라면 USB 디버깅을 체크한다.<br>
@@ -83,7 +83,7 @@ Kingo 사이트에서 Windows용을 다운로드 받아 디바이스를 USB 연�
 <p class="t_center w80"><amp-img src="{{ "/img/post21/post21_07.jpg" | prepend: site.baseurl }}" alt="root succeed" width="1176" height="582" layout="responsive"></amp-img></p><br>
 
 
-&#149; <b>Android</b><br>
+&#149; <strong>Android</strong><br>
 
 &nbsp; &nbsp; 기기 안에 apk 파일을 다운로드 받아 실행하면 Kingo ROOT가 설치된다.<br>
 &nbsp; &nbsp; 설치된 앱을 실행하여 One Click Root를 한 번만 클릭하면 끝난다.<br>
@@ -92,7 +92,7 @@ Kingo 사이트에서 Windows용을 다운로드 받아 디바이스를 USB 연�
 <br>
 <br>
 
-<b class="h2">코드에서 Rooting 확인하기</b><br>
+<strong class="h2">코드에서 Rooting 확인하기</strong><br>
 시스템에 super user 권한을 요청하는 명령어 'su'를 사용한다.<br>
 {% highlight java %}
 public class MainActivity extends AppCompatActivity {
@@ -115,7 +115,7 @@ private final String TAG = "Root";
 <br>
 <br>
 
-<b class="h2">안드로이드 디바이스의 폴더에 접근할 수 있는 툴 </b><br>
+<strong class="h2">안드로이드 디바이스의 폴더에 접근할 수 있는 툴 </strong><br>
 필자는 이전에 다운로드 받은 ASTRO가 권한 설정이 불가능하기에 <br>
 플레이 스토어에서 root file 을 검색하여 아무거나 다운로드 받았다.<br>
 설치한 앱을 실행하여 bata 폴더를 열면 Kingo가 앱의 root permission 허용 여부를 묻는 알림 창이 나타난다. <br>
@@ -130,7 +130,7 @@ USB를 연결해서 가져오려면 해당 경로 data/data/[package name]/datab
 <br>
 <br>
 
-<b class="h2">[DB Browser for SQLite]</b><br>
+<strong class="h2">[DB Browser for SQLite]</strong><br>
 DB 파일에 접근해서 가져오는 것까지 끝냈다면 위 링크에서<br>
 본인의 운영체제에 맞는 프로그램을 다운로드 받아 설치한다.<br>
 DB Browser for SQLite를 실행하여 DB 파일을 불러오면 정보를 볼 수 있다.<br>
