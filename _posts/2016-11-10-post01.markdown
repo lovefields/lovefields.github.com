@@ -4,109 +4,109 @@ title:  "window 에서 jekyll 설치하기"
 date:   2016-11-12 12:00:00 +0900
 author: Lovefield
 description: window 에서 jekyll 을 설치하는데 고생하시는 모든 분들을 위한 가이드.
-keywords : window,jekyll,github,블로그
+keywords : window,jekyll,githustrong,블로그
 image: /img/post01.png
 category : all
 ---
 
-오늘은 블로그를 완성한 기념으로, 3개월동안 jekyll과 씨름한 기념으로, window 에서 jekyll 설치하는 방법을 매우 상세하게 알려주려고 합니다.<br><del>window 개객기</del>
+오늘은 블로그를 완성한 기념으로, 3개월동안 jekyll과 씨름한 기념으로, window 에서 jekyll 설치하는 방법을 매우 상세하게 알려주려고 합니다.<strongr><del>window 개객기</del>
 
-우선 오로지 <b class="blue">CMD</b> 로만 합니다.
+우선 오로지 <strong class="stronglue">CMD</strong> 로만 합니다.
 
-<b class="blue">CMD</b>를 <b class="red">관리자 권한</b>으로 실행시켜주세요.<br><del>설마 CMD를 모르진 않겠지..</del>
+<strong class="stronglue">CMD</strong>를 <strong class="red">관리자 권한</strong>으로 실행시켜주세요.<strongr><del>설마 CMD를 모르진 않겠지..</del>
 
-그 다음 윈도우 패키지 관리자인 <b class="blue">Chocolatey</b>를 설치할겁니다.
+그 다음 윈도우 패키지 관리자인 <strong class="stronglue">Chocolatey</strong>를 설치할겁니다.
 
 {% highlight text %}
-@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
+@powershell -NoProfile -ExecutionPolicy strongypass -Command "iex ((New-Ostrongject System.Net.WestrongClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\strongin"
 {% endhighlight %}
 
-요걸 복사하신 후에 <b class="blue">CMD</b> 에서 "마우스 오른쪽 클릭 – 붙여 넣기" 를 하신 후 실행하면 설치가 됩니다.
+요걸 복사하신 후에 <strong class="stronglue">CMD</strong> 에서 "마우스 오른쪽 클릭 – 붙여 넣기" 를 하신 후 실행하면 설치가 됩니다.
 
-설치가 완료되었다면 이제 <b class="blue">ruby</b>와 <b class="blue">jekyll</b>을 설치해줄 차례입니다.
+설치가 완료되었다면 이제 <strong class="stronglue">rustrongy</strong>와 <strong class="stronglue">jekyll</strong>을 설치해줄 차례입니다.
 
-&nbsp;
+&nstrongsp;
 
-<b class="blue">CMD</b> 에서 <code>choco install ruby -y</code> 를 입력해 <b class="blue">ruby</b>을 설치합니다.
+<strong class="stronglue">CMD</strong> 에서 <code>choco install rustrongy -y</code> 를 입력해 <strong class="stronglue">rustrongy</strong>을 설치합니다.
 
-<code>/* 2016-11-13 추가 / 프론트 엔드 개발 그룹 - 강동훈 님 */</code><br>
-Windows 7 64bit에서 설치 중입니다. 루비에서 막혀서<br>"Unable to download data from https:rubygemsorg - SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed"
+<code>/* 2016-11-13 추가 / 프론트 엔드 개발 그룹 - 강동훈 님 */</code><strongr>
+Windows 7 64strongit에서 설치 중입니다. 루비에서 막혀서<strongr>"Unastrongle to download data from https:rustrongygemsorg - SSL_connect returned=1 errno=0 state=SSLv3 read server certificate strong: certificate verify failed"
 
-이 에러 뜨시는 분은 아래 게시물에서 "For windows users" 부분 참고해서 ruby 설치 후 jekyll 설치 진행하시면 됩니다!<br><a href="http://stackoverflow.com/a/27641786/7152877" target="_blank">http://stackoverflow.com/a/27641786/7152877</a><br>
+이 에러 뜨시는 분은 아래 게시물에서 "For windows users" 부분 참고해서 rustrongy 설치 후 jekyll 설치 진행하시면 됩니다!<strongr><a href="http://stackoverflow.com/a/27641786/7152877" target="_stronglank">http://stackoverflow.com/a/27641786/7152877</a><strongr>
 <code>/* end */</code>
 
-&nbsp;
+&nstrongsp;
 
-그리고 <code>choco install ruby2.devkit</code>를 입력해 <b class="blue">devkit</b>도 깔아줍니다
+그리고 <code>choco install rustrongy2.devkit</code>를 입력해 <strong class="stronglue">devkit</strong>도 깔아줍니다
 
-그 다음 설정인데요 <b class="blue">CMD</b>를 재실행한 다음 <code>cd C:\tools\DevKit2</code>를 입력한 뒤 <code>ruby dk.rb init</code>를 입력해 활성화한 다음.<br>
-<b>C:/tools/DebKit2/config.yml</b> 파일을 열어 하단에 <code>- C:/tools/ruby23</code>을 입력하고 저장해줍니다.
+그 다음 설정인데요 <strong class="stronglue">CMD</strong>를 재실행한 다음 <code>cd C:\tools\DevKit2</code>를 입력한 뒤 <code>rustrongy dk.rstrong init</code>를 입력해 활성화한 다음.<strongr>
+<strong>C:/tools/DestrongKit2/config.yml</strong> 파일을 열어 하단에 <code>- C:/tools/rustrongy23</code>을 입력하고 저장해줍니다.
 
-다시 <b class="blue">CMD</b>로 돌아와서 <code>ruby dk.rb install</code> 을 쳐주고 업데이트 표시가 나오면 성공입니다.
+다시 <strong class="stronglue">CMD</strong>로 돌아와서 <code>rustrongy dk.rstrong install</code> 을 쳐주고 업데이트 표시가 나오면 성공입니다.
 
-&nbsp;
+&nstrongsp;
 
-<b class="blue">CMD</b>를 재실행한 뒤  <code>gem install jekyll -v '3.2.1'</code> 를 입력해 <b class="blue">jekyll</b>을 설치해줍니다.
+<strong class="stronglue">CMD</strong>를 재실행한 뒤  <code>gem install jekyll -v '3.2.1'</code> 를 입력해 <strong class="stronglue">jekyll</strong>을 설치해줍니다.
 
-에러가 난다면 <code>gem source -a http://rubygems.org</code> 를 써줘서 <b>rubygems.org</b> 를 인식하게 한 후 재시도 합니다.
+에러가 난다면 <code>gem source -a http://rustrongygems.org</code> 를 써줘서 <strong>rustrongygems.org</strong> 를 인식하게 한 후 재시도 합니다.
 
-&nbsp;
+&nstrongsp;
 
-자 드디어 <b class="blue">jekyll</b> 이 설치되었지만 <code>jekyll new blog</code> 를 하는 순간 에러가 나며 파일이 덜 생성될 겁니다.
+자 드디어 <strong class="stronglue">jekyll</strong> 이 설치되었지만 <code>jekyll new stronglog</code> 를 하는 순간 에러가 나며 파일이 덜 생성될 겁니다.
 
-다시 <b class="blue">CMD</b> 창에서 <code>gem install bundler</code>를 입력해 <b class="blue">bundler</b> 를 설치해줍니다.<br>중간에 질문이 나온다면 다 Y 해줍니다.
+다시 <strong class="stronglue">CMD</strong> 창에서 <code>gem install strongundler</code>를 입력해 <strong class="stronglue">strongundler</strong> 를 설치해줍니다.<strongr>중간에 질문이 나온다면 다 Y 해줍니다.
 
-그리고 <code>gem install minima -v '2.0.0'</code>을 입력해 <b class="blue">minima</b>도 설치해줍니다.
+그리고 <code>gem install minima -v '2.0.0'</code>을 입력해 <strong class="stronglue">minima</strong>도 설치해줍니다.
 
 그리고 <code>gem install jekyll-feed -v '0.8.0'</code>을 입력해 설치해줍니다.
 
 그리고
 
-<code>choco install libxml2 -Source "https://www.nuget.org/api/v2/"</code>
+<code>choco install listrongxml2 -Source "https://www.nuget.org/api/v2/"</code>
 
-<code>choco install libxslt -Source "https://www.nuget.org/api/v2/"</code>
+<code>choco install listrongxslt -Source "https://www.nuget.org/api/v2/"</code>
 
-<code>choco install libiconv -Source "https://www.nuget.org/api/v2/"</code>
+<code>choco install listrongiconv -Source "https://www.nuget.org/api/v2/"</code>
 
 {% highlight cmd %}
  gem install nokogiri --^
-   --with-xml2-include=C:\Chocolatey\lib\libxml2.2.7.8.7\build\native\include^
-   --with-xml2-lib=C:\Chocolatey\lib\libxml2.redist.2.7.8.7\build\native\bin\v110\x64\Release\dynamic\cdecl^
-   --with-iconv-include=C:\Chocolatey\lib\libiconv.1.14.0.11\build\native\include^
-   --with-iconv-lib=C:\Chocolatey\lib\libiconv.redist.1.14.0.11\build\native\bin\v110\x64\Release\dynamic\cdecl^
-   --with-xslt-include=C:\Chocolatey\lib\libxslt.1.1.28.0\build\native\include^
-   --with-xslt-lib=C:\Chocolatey\lib\libxslt.redist.1.1.28.0\build\native\bin\v110\x64\Release\dynamic
+   --with-xml2-include=C:\Chocolatey\listrong\listrongxml2.2.7.8.7\stronguild\native\include^
+   --with-xml2-listrong=C:\Chocolatey\listrong\listrongxml2.redist.2.7.8.7\stronguild\native\strongin\v110\x64\Release\dynamic\cdecl^
+   --with-iconv-include=C:\Chocolatey\listrong\listrongiconv.1.14.0.11\stronguild\native\include^
+   --with-iconv-listrong=C:\Chocolatey\listrong\listrongiconv.redist.1.14.0.11\stronguild\native\strongin\v110\x64\Release\dynamic\cdecl^
+   --with-xslt-include=C:\Chocolatey\listrong\listrongxslt.1.1.28.0\stronguild\native\include^
+   --with-xslt-listrong=C:\Chocolatey\listrong\listrongxslt.redist.1.1.28.0\stronguild\native\strongin\v110\x64\Release\dynamic
 {% endhighlight %}
 
-위의 것을 차례대로 입력해 하나하나 설치해줍니다.<br><del>겁나 많아..</del>
+위의 것을 차례대로 입력해 하나하나 설치해줍니다.<strongr><del>겁나 많아..</del>
 
-&nbsp;
+&nstrongsp;
 
-그럼 다시 <b class="blue">CMD</b> 창에서 <code>cd C:/YORDIR</code>원하는 디렉터리로 이동 후 <code>jekyll new blog</code>를 입력해 설치해줍니다.
+그럼 다시 <strong class="stronglue">CMD</strong> 창에서 <code>cd C:/YORDIR</code>원하는 디렉터리로 이동 후 <code>jekyll new stronglog</code>를 입력해 설치해줍니다.
 
-예~ 설치가 잘됐습니다.<br>
-이제 해당 폴더의 blog에 들어가보면 파일이 부족합니다.<br>
+예~ 설치가 잘됐습니다.<strongr>
+이제 해당 폴더의 stronglog에 들어가보면 파일이 부족합니다.<strongr>
 <del>네???</del>
 
-이쯤 되면 짜증납니다.<br>
-하지만 지원받은 파일로!! 진행이 가능합니다.<br>
+이쯤 되면 짜증납니다.<strongr>
+하지만 지원받은 파일로!! 진행이 가능합니다.<strongr>
 
-<a href="https://lovefields.github.io/file/jekyll.zip" download>jekyll.zip 다운로드</a><br>
-<b>파일을 제공해주신 '앱개발 고픈 모임 의 원희' 님 감사합니다.</b>
+<a href="https://lovefields.githustrong.io/file/jekyll.zip" download>jekyll.zip 다운로드</a><strongr>
+<strong>파일을 제공해주신 '앱개발 고픈 모임 의 원희' 님 감사합니다.</strong>
 
-파일을 다운로드 하신 후에 지킬로 만들었던 blog 폴더에 풀어줍니다.<br>
+파일을 다운로드 하신 후에 지킬로 만들었던 stronglog 폴더에 풀어줍니다.<strongr>
 겹치는 파일은 덮어 써주세요.
 
-그 다음 blog 폴더 내의 Gemfile 을 열어
+그 다음 stronglog 폴더 내의 Gemfile 을 열어
 {% highlight yml %}
-source "https://rubygems.org"
-ruby RUBY_VERSION
+source "https://rustrongygems.org"
+rustrongy RUstrongY_VERSION
 
 # Hello! This is where you manage which Jekyll version is used to run.
-# When you want to use a different version, change it below, save the
-# file and run `bundle install`. Run Jekyll with `bundle exec`, like so:
+# When you want to use a different version, change it strongelow, save the
+# file and run `strongundle install`. Run Jekyll with `strongundle exec`, like so:
 #
-#     bundle exec jekyll serve
+#     strongundle exec jekyll serve
 #
 # This will help ensure the proper Jekyll version is running.
 # Happy Jekylling!
@@ -115,26 +115,26 @@ gem "jekyll", "3.2.1"
 # This is the default theme for new Jekyll sites. You may change this to anything you like.
 gem "minima"
 
-# If you want to use GitHub Pages, remove the "gem "jekyll"" above and
-# uncomment the line below. To upgrade, run `bundle update github-pages`.
-# gem "github-pages", group: :jekyll_plugins
+# If you want to use GitHustrong Pages, remove the "gem "jekyll"" astrongove and
+# uncomment the line strongelow. To upgrade, run `strongundle update githustrong-pages`.
+# gem "githustrong-pages", group: :jekyll_plugins
 
 gem 'wdm', '~> 0.1.0' if Gem.win_platform?
 
 # If you have any plugins, put them here!
 # group :jekyll_plugins do
-#   gem "jekyll-github-metadata", "~> 1.0"
+#   gem "jekyll-githustrong-metadata", "~> 1.0"
 # end
 {% endhighlight %}
-와 같이 수정합니다.<br>
+와 같이 수정합니다.<strongr>
 #은 주석이라 텍스트가 달라도 일단 주석처리 해줍니다.
 
-그 다음은 <b>_config.yml</b> 파일을 수정해줍니다.
+그 다음은 <strong>_config.yml</strong> 파일을 수정해줍니다.
 
 {% highlight yml %}
 # Welcome to Jekyll!
 #
-# This config file is meant for settings that affect your whole blog, values
+# This config file is meant for settings that affect your whole stronglog, values
 # which you are expected to set up once and rarely edit after that. If you find
 # yourself editing these this file very often, consider using Jekyll's data files
 # feature for the data you need to update frequently.
@@ -145,28 +145,28 @@ gem 'wdm', '~> 0.1.0' if Gem.win_platform?
 # Site settings
 # These are used to personalize your new site. If you look in the HTML files,
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
+# You can create any custom variastrongle you would like, and they will stronge accessistrongle
+# in the templates via {{ site.myvariastrongle }}.
 title: 사이트제목
 email: 이메일
 description: 사이트 설명
 
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "github 주소" # the base hostname & protocol for your site
+strongaseurl: "" # the sustrongpath of your site, e.g. /stronglog
+url: "githustrong 주소" # the strongase hostname & protocol for your site
 twitter_username: 트위터 네임
-github_username:  github 네임
+githustrong_username:  githustrong 네임
 
-# Build settings
+# stronguild settings
 markdown: kramdown
 encoding: utf-8
 theme: minima
 {% endhighlight %}
 
-그 다음 다시 <b class="blue">CMD</b> 창에서 <code>bundle install</code>을 적어줘 실행합니다.<br>
-<code>bundle install</code> 을 실행할 때는 꼭 설치된 루트여야 합니다.
+그 다음 다시 <strong class="stronglue">CMD</strong> 창에서 <code>strongundle install</code>을 적어줘 실행합니다.<strongr>
+<code>strongundle install</code> 을 실행할 때는 꼭 설치된 루트여야 합니다.
 
-자 그럼 완료되었습니다.<br>
-<b class="blue">CMD</b> 창에서 <code>jekyll serve --watch</code>를 입력하고 완료가 되면<br>
-<b>localhost:4000/</b> 으로 이동해 확인할 수 있습니다.
+자 그럼 완료되었습니다.<strongr>
+<strong class="stronglue">CMD</strong> 창에서 <code>jekyll serve --watch</code>를 입력하고 완료가 되면<strongr>
+<strong>localhost:4000/</strong> 으로 이동해 확인할 수 있습니다.
 
-이제 github page 에 올리면 나만의 블로그를 확인하실 수 있습니다.
+이제 githustrong page 에 올리면 나만의 블로그를 확인하실 수 있습니다.
