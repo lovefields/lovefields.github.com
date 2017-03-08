@@ -8,10 +8,10 @@ keywords : Android Studio,Android,Studio,App,UX,UI,design,process
 category : android
 ---
 
-<b class="h2">기획</b><br>
+<strong class="h2">기획</strong><br>
 <br>
 
-&#149; <b> 사전 준비 </b><br>
+&#149; <strong> 사전 준비 </strong><br>
 
 &nbsp; &nbsp;마인드맵: 기준이 될 아이디어나 키워드를 하나 적는다. 기준을 중심으로 주변에 하나씩 연관되거나 연상되는 단어나 내용을 적어나간다.<br>
 &nbsp; &nbsp;제작하고자 하는 앱(자체 개발의 앱, 기존의 앱 리뉴얼 등)에 따라 관련된 사항을 적는다.<br>
@@ -19,7 +19,7 @@ category : android
 &nbsp; &nbsp;외주의 경우, 클라이언트의 요청 사항을 확인하고 정리한다.<br>
 <br>
 
-&#149; <b> 통합 커뮤니케이션 문서 작성 </b> <br>
+&#149; <strong> 통합 커뮤니케이션 문서 작성 </strong> <br>
 
 &nbsp; &nbsp;<span class="blue">통합 커뮤니케이션 문서</span>: 문서 버전 관리, 앱 기능 구현 리스트, 화면 구조도 등 앱과 관련된 모든 내용을 포함한 문서<br>
 &nbsp; &nbsp;협의 사항을 정리한다.<br>
@@ -60,16 +60,16 @@ category : android
 <div class="emp40"></div>
 <br>
 
-<b class="h2">디자인구체화</b><br>
+<strong class="h2">디자인구체화</strong><br>
 <br>
 
-&#149; <b>레이아웃 스케치</b><br>
+&#149; <strong>레이아웃 스케치</strong><br>
 
 &nbsp; &nbsp;로딩 페이지부터 각 페이지들의 배치. <br>
 &nbsp; &nbsp;상단의 네비게이션 바, 하단의 탭 바 등 기획 요소를 전부 반영.<br>
 <br>
 
-&#149; <b>와이어 프레임</b><br>
+&#149; <strong>와이어 프레임</strong><br>
 
 &nbsp; &nbsp;대략적인 설계도. <br>
 &nbsp; &nbsp;디자인 레이아웃과 컴포넌트들의 기능적인 측면을 위주로 빠르게 구성하여 테스트하는 것을 목적으로 둠.<br>
@@ -78,7 +78,7 @@ category : android
 <div class="emp40"></div>
 <br>
 
-<b class="h2">앱 프로토타이핑</b><br>
+<strong class="h2">앱 프로토타이핑</strong><br>
 <br>
 
 기능적인 측면에서 앱의 사용성을 테스트하는 것.<br>
@@ -98,10 +98,10 @@ category : android
 <div class="emp40"></div>
 <br>
 
-<b class="h2">앱 디자인</b><br>
+<strong class="h2">앱 디자인</strong><br>
 <br>
 
-&#149;<b> 로딩 이미지</b><br>
+&#149;<strong> 로딩 이미지</strong><br>
 
 &nbsp; &nbsp;로딩 Loading = 런치 Launch = 스플래시 Splash 이미지. <br>
 &nbsp; &nbsp;앱 실행 시 처음에 로딩되는 동안 나오는 이미지. 앱의 <span class="blue">첫 인상</span>을 결정한다. 일반적으로,<br>
@@ -116,7 +116,7 @@ category : android
 이처럼 앱의 특성에 맞추어 로딩 이미지를 제작한다.<br>
 <br>
 
-&#149; <b>레이아웃 디자인</b><br>
+&#149; <strong>레이아웃 디자인</strong><br>
 
 &nbsp; &nbsp;앱은 한정된 스크린에 모든 요소를 표현해야 해서 <span class="blue">운영체제의 규칙성</span>이 강하다. <br>
 &nbsp; &nbsp;버튼의 위치, 바의 위치, 손가락 터치 최소 사이즈 등 위치나 사이즈가 거의 결정되어 있는 것과 다름없다.<br>
@@ -130,20 +130,20 @@ category : android
 &nbsp; &nbsp;개발 초기부터 최대한 일관된 형태의 레이아웃을 유지하기 위해 각 운영체제별로 지원 가능 및 정책 등에 대해 알아볼 필요가 있다.<br>
 <br>
 
-&#149; <b>아이콘 디자인</b><br>
+&#149; <strong>아이콘 디자인</strong><br>
 
 &nbsp; &nbsp;각 운영체제에서 지정하는 의미를 내포시킨다.<br>
 &nbsp; &nbsp;사용자가 혼동하지 않도록 기존에 사용되는 아이콘의 형태 및 의미를 충분히 이해하고, 최대한 존중한다. <br>
 &nbsp; &nbsp;기본적으로 제공되는 기본 아이콘을 사용하는 것도 효과적인 대안이 될 수 있다.<br>
 <br>
 
-&#149;<b> 컴포넌트 디자인</b><br>
+&#149;<strong> 컴포넌트 디자인</strong><br>
 
 &nbsp; &nbsp;앱의 각 구성요소.<br>
 &nbsp; &nbsp;운영체제별로 조작 방식 및 구성에 차이가 있으므로 해당 운영체제의 컴포넌트 스타일과 사용 방법을 충분히 이해한다.<br>
 <br>
 
-&#149; <b>앱 아이콘 디자인</b><br>
+&#149; <strong>앱 아이콘 디자인</strong><br>
 
 &nbsp; &nbsp;앱 대표 이미지. <br>
 &nbsp; &nbsp;앱 특성을 나타내며 간판 역할을 한다. <br>
@@ -153,7 +153,7 @@ category : android
 <div class="emp40"></div>
 <br>
 
-<b class="h2">슬라이스 가이드 이미지 컷팅</b><br>
+<strong class="h2">슬라이스 가이드 이미지 컷팅</strong><br>
 <br>
 
 슬라이스 가이드 = 이미지 가이드 = GUI 가이드 = UI 가이드. <br>
@@ -174,16 +174,16 @@ category : android
 <div class="emp40"></div>
 <br>
 
-<b class="h2">컨버팅 & 멀티 디바이스 해상도 대응</b><br>
+<strong class="h2">컨버팅 & 멀티 디바이스 해상도 대응</strong><br>
 <br>
 
-&#149; <b>iOS 아이폰 시리즈 해상도별 컨버팅</b><br>
+&#149; <strong>iOS 아이폰 시리즈 해상도별 컨버팅</strong><br>
 
 &nbsp; &nbsp;기준 디바이스가 아이폰 4S/S(해상도 640x960 px)일 경우, 아이폰 5는 아이폰 4S/S의 스크린의 세로영역만 176px 늘어난 격이므로 <br>
 &nbsp; &nbsp;초기 디자인 진행 시 사전 협의하여 해당 부분만 디자인을 하면 큰 문제없이 대응할 수 있다.<br>
 <br>
 
-&#149; <b>안드로이드 해상도별 컨버팅</b><br>
+&#149; <strong>안드로이드 해상도별 컨버팅</strong><br>
 
 &nbsp; &nbsp;안드로이드는 해상도의 변화가 많고 디바이스 또한 다양하다. <br>
 &nbsp; &nbsp;따라서 해상도에 맞춘 이미지를 각각 해상도에 맞는 폴더별로 탑재시켜서 스마트폰에서 각각 인식하여 사용하는 방식과 나인패치(9-Patch) 방식이 있다.<br>
@@ -198,7 +198,7 @@ category : android
 px = dp x (dpi/160)<br>
 <br>
 
-&#149; <b>아이폰 iOS & 안드로이드 / 멀티 OS 개발 시 대응법</b><br>
+&#149; <strong>아이폰 iOS & 안드로이드 / 멀티 OS 개발 시 대응법</strong><br>
 
 &nbsp; &nbsp;아이폰과 안드로이드폰을 기준으로 앱을 개발할 경우, iOS 개발 프로세스가 안드로이드에 비해 용이하여 주로 아이폰이 기준 디바이스가 된다.<br>
 
