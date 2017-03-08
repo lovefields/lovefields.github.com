@@ -14,7 +14,7 @@ category : all
 SSL 인증서에는 몇 가지 종류가 있습니다.<br>
 그 중 저희가 받을 인증서는 도메인(사이트)의 주인이 나임을 밝히는 인증서입니다.
 
-먼저 <a href="https://www.cloudflare.com" target="_blank" class="red"><b>cloudflare</b></a> 에 접속하신 후에 회원가입(sign-up) 을 해줍니다.
+먼저 <a href="https://www.cloudflare.com" target="_blank" class="red"><strong>cloudflare</strong></a> 에 접속하신 후에 회원가입(sign-up) 을 해줍니다.
 <div class="emp20"></div>
 <p class="t_center w30"><amp-img src="{{ "/img/post19/img01.png" | prepend: site.baseurl }}" alt="sign-up img" width="431" height="429" layout="responsive"></amp-img></p>
 <div class="emp20"></div>
