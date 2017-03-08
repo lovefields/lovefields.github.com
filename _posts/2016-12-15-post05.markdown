@@ -33,17 +33,17 @@ body{background:red}
 {% endhighlight %}
 
 기본적으로 위와 같습니다.<br>
-<b class="blue">body</b> 는 셀렉터.<br>
-<b class="blue">background</b> 는 속성.<br>
-<b class="blue">red</b> 는 값.<br>
+<strong class="blue">body</strong> 는 셀렉터.<br>
+<strong class="blue">background</strong> 는 속성.<br>
+<strong class="blue">red</strong> 는 값.<br>
 으로 구성되어있습니다.<br>
 
-<p class="h2"><b>CSS 공부</b></p>
+<p class="h2"><strong>CSS 공부</strong></p>
 
 가장 어려운 부분이라고 생각됩니다.<br>
 실제로 많은 사람들이 어려워하고 제가 알려드리고 있는 멘티 분들도 꽤 어려워 하는 부분이죠.<br>
-우선 참고할 사이트는 <a href="https://css-tricks.com/" target="_blank"><b class="red">CSS-Tricks</b></a> 입니다.<br>
+우선 참고할 사이트는 <a href="https://css-tricks.com/" target="_blank"><strong class="red">CSS-Tricks</strong></a> 입니다.<br>
 선택자와 속성, 값에 대한 설명이 제일 잘되어있다고 판단되는 사이트에요.<br><br>
 
-그리고 <b class="blue">CSS</b>는 정말 연습이 많이 필요하다고 생각됩니다.<br>
+그리고 <strong class="blue">CSS</strong>는 정말 연습이 많이 필요하다고 생각됩니다.<br>
 항상 레이아웃에 대해서 연습하시고 표현 방법에 대해서 연습하셔야 합니다.
