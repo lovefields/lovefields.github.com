@@ -54,9 +54,9 @@ HTML은 <b class="blue">Hyper Text Markup Language</b> 라고들 흔히 말해�
 
 가끔 &#47;&gt;로 끝에 닫는 분들이 계시는데 그건 XHTML문법이므로 기각합니다.<br><br>
 
-<p class="h2"><b>HTML 공부</b></p>
+<p class="h2"><strong >HTML 공부</strong></p>
 
-중요합니다. 우리는 항상 업데이트 되는 <b class="blue">HTML</b>을 공부해야 하고 <b class="blue">W3C</b>에서 지정하는 것들을 숙지해야 합니다.<br>
-그러나 <b class="blue">W3C</b>의 문서는 입문인 여러분이 보기에는 굉장히 복잡하고 어려울 것입니다.<br>
-그래서 대안 사이트가 <a href="https://developer.mozilla.org/ko/" target="_blank"><b class="red">MDN</b></a> 입니다.<br>
-여기서 <b class="blue">HTML 요소 레퍼런스</b> 부분을 보시면서 태그들에 대한 용도를 이해하시는 게 좋습니다.
+중요합니다. 우리는 항상 업데이트 되는 <strong  class="blue">HTML</strong>을 공부해야 하고 <strong  class="blue">W3C</strong>에서 지정하는 것들을 숙지해야 합니다.<br>
+그러나 <strong  class="blue">W3C</strong>의 문서는 입문인 여러분이 보기에는 굉장히 복잡하고 어려울 것입니다.<br>
+그래서 대안 사이트가 <a href="https://developer.mozilla.org/ko/" target="_blank"><strong  class="red">MDN</strong></a> 입니다.<br>
+여기서 <strong  class="blue">HTML 요소 레퍼런스</strong> 부분을 보시면서 태그들에 대한 용도를 이해하시는 게 좋습니다.
