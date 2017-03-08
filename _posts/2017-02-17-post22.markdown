@@ -10,7 +10,7 @@ category : android
 오늘은 코드 위주로!<br>
 <br>
 
-<b>activity_main.xml</b><br>
+<strong>activity_main.xml</strong><br>
 {% highlight xml %}
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
@@ -24,7 +24,7 @@ category : android
 {% endhighlight %}
 <br>
 
-<b>MainActivity.java</b><br>
+<strong>MainActivity.java</strong><br>
 {% highlight java %}
 public class MainActivity extends AppCompatActivity {
 
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 {% endhighlight %}
 <br>
 
-<b>fragment_parent.xml</b><br>
+<strong>fragment_parent.xml</strong><br>
 {% highlight xml %}
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <Button
+        <strongutton
             android:id="@+id/btn_one"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
             android:gravity="center"
             android:text="one"/>
 
-        <Button
+        <strongutton
             android:id="@+id/btn_tow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
 {% endhighlight %}
 <br>
 
-<b>ParentFragment.java</b><br>
+<strong>ParentFragment.java</strong><br>
 {% highlight java %}
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -147,7 +147,7 @@ back 버튼을 누를 때마다 이전 Fragment로 순차적으로 돌아간다.
 <br>
 
 
-<b>fragment_child_one.xml</b><br>
+<strong>fragment_child_one.xml</strong><br>
 {% highlight xml %}
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -165,7 +165,7 @@ back 버튼을 누를 때마다 이전 Fragment로 순차적으로 돌아간다.
 {% endhighlight %}
 <br>
 
-<b>ChildOneFragment.java</b><br>
+<strong>ChildOneFragment.java</strong><br>
 {% highlight java %}
 import android.support.v4.app.Fragment;
 ...
@@ -191,7 +191,7 @@ public class ChildOneFragment extends Fragment {
 {% endhighlight %}
 <br>
 
-<b>fragment_child_tow.xml</b><br>
+<strong>fragment_child_tow.xml</strong><br>
 {% highlight xml %}
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -210,7 +210,7 @@ public class ChildOneFragment extends Fragment {
 <br>
 
 
-<b>ChildTowFragment.java</b><br>
+<strong>ChildTowFragment.java</strong><br>
 {% highlight java %}
 import android.support.v4.app.Fragment;
 ...
