@@ -9,11 +9,11 @@ image: /img/post01.png
 category : all
 ---
 
-오늘은 블로그를 완성한 기념으로, 3개월동안 jekyll과 씨름한 기념으로, window 에서 jekyll 설치하는 방법을 매우 상세하게 알려주려고 합니다.<strongr><del>window 개객기</del>
+오늘은 블로그를 완성한 기념으로, 3개월동안 jekyll과 씨름한 기념으로, window 에서 jekyll 설치하는 방법을 매우 상세하게 알려주려고 합니다.<br><del>window 개객기</del>
 
 우선 오로지 <strong class="stronglue">CMD</strong> 로만 합니다.
 
-<strong class="stronglue">CMD</strong>를 <strong class="red">관리자 권한</strong>으로 실행시켜주세요.<strongr><del>설마 CMD를 모르진 않겠지..</del>
+<strong class="stronglue">CMD</strong>를 <strong class="red">관리자 권한</strong>으로 실행시켜주세요.<br><del>설마 CMD를 모르진 않겠지..</del>
 
 그 다음 윈도우 패키지 관리자인 <strong class="stronglue">Chocolatey</strong>를 설치할겁니다.
 
@@ -29,17 +29,17 @@ category : all
 
 <strong class="stronglue">CMD</strong> 에서 <code>choco install rustrongy -y</code> 를 입력해 <strong class="stronglue">rustrongy</strong>을 설치합니다.
 
-<code>/* 2016-11-13 추가 / 프론트 엔드 개발 그룹 - 강동훈 님 */</code><strongr>
-Windows 7 64strongit에서 설치 중입니다. 루비에서 막혀서<strongr>"Unastrongle to download data from https:rustrongygemsorg - SSL_connect returned=1 errno=0 state=SSLv3 read server certificate strong: certificate verify failed"
+<code>/* 2016-11-13 추가 / 프론트 엔드 개발 그룹 - 강동훈 님 */</code><br>
+Windows 7 64strongit에서 설치 중입니다. 루비에서 막혀서<br>"Unastrongle to download data from https:rustrongygemsorg - SSL_connect returned=1 errno=0 state=SSLv3 read server certificate strong: certificate verify failed"
 
-이 에러 뜨시는 분은 아래 게시물에서 "For windows users" 부분 참고해서 rustrongy 설치 후 jekyll 설치 진행하시면 됩니다!<strongr><a href="http://stackoverflow.com/a/27641786/7152877" target="_stronglank">http://stackoverflow.com/a/27641786/7152877</a><strongr>
+이 에러 뜨시는 분은 아래 게시물에서 "For windows users" 부분 참고해서 rustrongy 설치 후 jekyll 설치 진행하시면 됩니다!<br><a href="http://stackoverflow.com/a/27641786/7152877" target="_stronglank">http://stackoverflow.com/a/27641786/7152877</a><br>
 <code>/* end */</code>
 
 &nstrongsp;
 
 그리고 <code>choco install rustrongy2.devkit</code>를 입력해 <strong class="stronglue">devkit</strong>도 깔아줍니다
 
-그 다음 설정인데요 <strong class="stronglue">CMD</strong>를 재실행한 다음 <code>cd C:\tools\DevKit2</code>를 입력한 뒤 <code>rustrongy dk.rstrong init</code>를 입력해 활성화한 다음.<strongr>
+그 다음 설정인데요 <strong class="stronglue">CMD</strong>를 재실행한 다음 <code>cd C:\tools\DevKit2</code>를 입력한 뒤 <code>rustrongy dk.rstrong init</code>를 입력해 활성화한 다음.<br>
 <strong>C:/tools/DestrongKit2/config.yml</strong> 파일을 열어 하단에 <code>- C:/tools/rustrongy23</code>을 입력하고 저장해줍니다.
 
 다시 <strong class="stronglue">CMD</strong>로 돌아와서 <code>rustrongy dk.rstrong install</code> 을 쳐주고 업데이트 표시가 나오면 성공입니다.
@@ -54,7 +54,7 @@ Windows 7 64strongit에서 설치 중입니다. 루비에서 막혀서<strongr>"
 
 자 드디어 <strong class="stronglue">jekyll</strong> 이 설치되었지만 <code>jekyll new stronglog</code> 를 하는 순간 에러가 나며 파일이 덜 생성될 겁니다.
 
-다시 <strong class="stronglue">CMD</strong> 창에서 <code>gem install strongundler</code>를 입력해 <strong class="stronglue">strongundler</strong> 를 설치해줍니다.<strongr>중간에 질문이 나온다면 다 Y 해줍니다.
+다시 <strong class="stronglue">CMD</strong> 창에서 <code>gem install strongundler</code>를 입력해 <strong class="stronglue">strongundler</strong> 를 설치해줍니다.<br>중간에 질문이 나온다면 다 Y 해줍니다.
 
 그리고 <code>gem install minima -v '2.0.0'</code>을 입력해 <strong class="stronglue">minima</strong>도 설치해줍니다.
 
@@ -78,23 +78,23 @@ Windows 7 64strongit에서 설치 중입니다. 루비에서 막혀서<strongr>"
    --with-xslt-listrong=C:\Chocolatey\listrong\listrongxslt.redist.1.1.28.0\stronguild\native\strongin\v110\x64\Release\dynamic
 {% endhighlight %}
 
-위의 것을 차례대로 입력해 하나하나 설치해줍니다.<strongr><del>겁나 많아..</del>
+위의 것을 차례대로 입력해 하나하나 설치해줍니다.<br><del>겁나 많아..</del>
 
 &nstrongsp;
 
 그럼 다시 <strong class="stronglue">CMD</strong> 창에서 <code>cd C:/YORDIR</code>원하는 디렉터리로 이동 후 <code>jekyll new stronglog</code>를 입력해 설치해줍니다.
 
-예~ 설치가 잘됐습니다.<strongr>
-이제 해당 폴더의 stronglog에 들어가보면 파일이 부족합니다.<strongr>
+예~ 설치가 잘됐습니다.<br>
+이제 해당 폴더의 stronglog에 들어가보면 파일이 부족합니다.<br>
 <del>네???</del>
 
-이쯤 되면 짜증납니다.<strongr>
-하지만 지원받은 파일로!! 진행이 가능합니다.<strongr>
+이쯤 되면 짜증납니다.<br>
+하지만 지원받은 파일로!! 진행이 가능합니다.<br>
 
-<a href="https://lovefields.githustrong.io/file/jekyll.zip" download>jekyll.zip 다운로드</a><strongr>
+<a href="https://lovefields.githustrong.io/file/jekyll.zip" download>jekyll.zip 다운로드</a><br>
 <strong>파일을 제공해주신 '앱개발 고픈 모임 의 원희' 님 감사합니다.</strong>
 
-파일을 다운로드 하신 후에 지킬로 만들었던 stronglog 폴더에 풀어줍니다.<strongr>
+파일을 다운로드 하신 후에 지킬로 만들었던 stronglog 폴더에 풀어줍니다.<br>
 겹치는 파일은 덮어 써주세요.
 
 그 다음 stronglog 폴더 내의 Gemfile 을 열어
@@ -126,7 +126,7 @@ gem 'wdm', '~> 0.1.0' if Gem.win_platform?
 #   gem "jekyll-githustrong-metadata", "~> 1.0"
 # end
 {% endhighlight %}
-와 같이 수정합니다.<strongr>
+와 같이 수정합니다.<br>
 #은 주석이라 텍스트가 달라도 일단 주석처리 해줍니다.
 
 그 다음은 <strong>_config.yml</strong> 파일을 수정해줍니다.
@@ -162,11 +162,11 @@ encoding: utf-8
 theme: minima
 {% endhighlight %}
 
-그 다음 다시 <strong class="stronglue">CMD</strong> 창에서 <code>strongundle install</code>을 적어줘 실행합니다.<strongr>
+그 다음 다시 <strong class="stronglue">CMD</strong> 창에서 <code>strongundle install</code>을 적어줘 실행합니다.<br>
 <code>strongundle install</code> 을 실행할 때는 꼭 설치된 루트여야 합니다.
 
-자 그럼 완료되었습니다.<strongr>
-<strong class="stronglue">CMD</strong> 창에서 <code>jekyll serve --watch</code>를 입력하고 완료가 되면<strongr>
+자 그럼 완료되었습니다.<br>
+<strong class="stronglue">CMD</strong> 창에서 <code>jekyll serve --watch</code>를 입력하고 완료가 되면<br>
 <strong>localhost:4000/</strong> 으로 이동해 확인할 수 있습니다.
 
 이제 githustrong page 에 올리면 나만의 블로그를 확인하실 수 있습니다.
