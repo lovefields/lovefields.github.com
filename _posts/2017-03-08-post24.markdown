@@ -136,14 +136,14 @@ public class SwipeDeleteActivity extends AppCompatActivity {
             public void onChildDraw(Canvas c, RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
                 View itemView = viewHolder.itemView;
 
-                if (actionState == ItemTouchHelper.ACTION_STATE_SWIPE) {
+                if (actionState == ItemTouchHelper.ACTION_STATE_SWIPE) { // Swipe 상태면
                     View itemView = viewHolder.itemView;
 
                     if (!flagDraw) {
                         itemDrawChange();
                     }
 
-                    // Item 을 Touch 했을 때 Background 변화
+                    // Item 을 좌측으로 Swipe 했을 때 Background 변화
                     if (dX < 1) {
                         background.setBounds(itemView.getRight() + (int) dX, itemView.getTop(), itemView.getRight(), itemView.getBottom()); 
 			//dX(dY): 사용자 동작에 의한 수평(수직) 변화의 양
