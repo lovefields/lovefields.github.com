@@ -104,9 +104,9 @@ public class SwipeDeleteActivity extends AppCompatActivity {
             int removeMarkMargin;
 
             private void itemDrawChange() {
-                background = new ColorDrawable(Color.YELLOW);
+                background = new ColorDrawable(Color.parseColor("#FFD32F2F"));
                 removeMark = ContextCompat.getDrawable(SwipeDeleteActivity.this, R.drawable.ic_remove_24dp);
-                removeMark.setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP);
+                removeMark.setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP);
                 removeMarkMargin = (int) SwipeDeleteActivity.this.getResources().getDimension(R.dimen.ic_remove_margin);
                 flagDraw = true;
             }
@@ -136,32 +136,32 @@ public class SwipeDeleteActivity extends AppCompatActivity {
             public void onChildDraw(Canvas c, RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
                 View itemView = viewHolder.itemView;
 
-                // 이미 Swipe 된 viewHolder 를 호출하는 현상 방지
-                if (viewHolder.getAdapterPosition() == -1) {
-                    return;
+                if (actionState == ItemTouchHelper.ACTION_STATE_SWIPE) {
+                    View itemView = viewHolder.itemView;
+
+                    if (!flagDraw) {
+                        itemDrawChange();
+                    }
+
+                    // Item 을 Touch 했을 때 Background 변화
+                    if (dX < 1) {
+                        background.setBounds(itemView.getRight() + (int) dX, itemView.getTop(), itemView.getRight(), itemView.getBottom()); 
+			//dX(dY): 사용자 동작에 의한 수평(수직) 변화의 양
+                        background.draw(c); //Bounds: 범위. draw: 그리기. - 사용자 동작에 따라 Item 의 Background 변화
+
+                        // Mark 그리기
+                        int itemHeight = itemView.getBottom() - itemView.getTop(); // Item 높이
+                        int intrinsicWidth = removeMark.getIntrinsicWidth(); // Intrinsic: 본질적 - xMark 의 실제 길이
+                        int intrinsicHeight = removeMark.getIntrinsicHeight();
+
+                        int removeMarkLeft = itemView.getRight() - removeMarkMargin - intrinsicWidth;
+                        int removeMarkRight = itemView.getRight() - removeMarkMargin;
+                        int removeMarkTop = itemView.getTop() + (itemHeight - intrinsicHeight) / 2;
+                        int removeMarkBottom = removeMarkTop + intrinsicHeight;
+                        removeMark.setBounds(removeMarkLeft, removeMarkTop, removeMarkRight, removeMarkBottom);
+                        removeMark.draw(c);
+                    }
                 }
-
-                if (!flagDraw) {
-                    itemDrawChange();
-                }
-
-                // Item 을 Touch 했을 때 Background 변화
-                background.setBounds(itemView.getRight() + (int) dX, itemView.getTop(), itemView.getRight(), itemView.getBottom()); 
-		//dX(dY): 사용자 동작에 의한 수평(수직) 변화의 양
-                background.draw(c); //Bounds: 범위. draw: 그리기. - 사용자 동작에 따라 Item 의 Background 변화
-
-                // remove 그리기
-                int itemHeight = itemView.getBottom() - itemView.getTop(); // Item 높이
-                int intrinsicWidth = removeMark.getIntrinsicWidth(); // Intrinsic: 본질적 - removeMark 의 실제 길이
-                int intrinsicHeight = removeMark.getIntrinsicHeight();
-
-                int removeMarkLeft = itemView.getRight() - removeMarkMargin - intrinsicWidth;
-                int removeMarkRight = itemView.getRight() - removeMarkMargin;
-                int removeMarkTop = itemView.getTop() + (itemHeight - intrinsicHeight) / 2;
-                int removeMarkBottom = removeMarkTop + intrinsicHeight;
-                removeMark.setBounds(removeMarkLeft, removeMarkTop, removeMarkRight, removeMarkBottom);
-                removeMark.draw(c);
-
                 super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
             }
 
