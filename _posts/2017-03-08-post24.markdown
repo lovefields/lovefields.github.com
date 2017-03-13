@@ -1,0 +1,271 @@
+---
+layout: post
+title:  "RecyclerView Swipe Delete"
+date: 2017-03-08 10:00:00 +0900
+author: 민갤
+description: Android Studio 
+keywords : Android Studio,Android,Studio,App,RecyclerView,Swipe,delete,Touch,List
+category : android
+---
+
+<strong class="h2">activity_swipe_delete.xml</strong>
+
+{% highlight xml %}
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFFFF"
+    android:orientation="vertical">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/setting_category_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="20dp"
+            />
+</RelativeLayout>
+{% endhighlight %}
+<br>
+
+<strong class="h2">list_item.xml</strong>
+
+{% highlight xml %}
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp">
+
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:padding="10dp"/>
+</FrameLayout>
+{% endhighlight %}
+<br>
+
+<strong class="h2"> SwipeDeleteActivity.java </strong>
+
+{% highlight java %}
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
+import android.view.View;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class SwipeDeleteActivity extends AppCompatActivity {
+    List list;
+    RecyclerView re;
+    boolean flagDraw; // default false.
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_swipe_delete);
+
+        re = (RecyclerView) findViewById(R.id.setting_category_recycler_view);
+        re.setLayoutManager(new LinearLayoutManager(this));
+        re.setAdapter(new SwipeDeleteAdapter(setDateList()));
+        re.setHasFixedSize(true); // 크기 고정
+        setItemTouchHelper();
+
+    }
+
+    private List setDateList() {
+        list = new ArrayList<>();
+        for (int i = 0; i < 15; i++) {
+            list.add("List"+i);
+        }
+
+        return list;
+    }
+
+    private void setItemTouchHelper() {
+        ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+            // ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT | ItemTouchHelper.DOWN | ItemTouchHelper.UP
+            // 하면 상하좌우 다 움직임
+
+            Drawable background;
+            Drawable removeMark;
+            int removeMarkMargin;
+
+            private void itemDrawChange() {
+                removeMark = ContextCompat.getDrawable(SettingCategoryActivity.this, R.drawable.ic_remove_24dp);
+                removeMark.setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP);
+                removeMarkMargin = (int) SettingCategoryActivity.this.getResources().getDimension(R.dimen.ic_remove_margin);
+                flagDraw = true;
+            }
+
+            // 드래그 할 때 호출
+            @Override
+            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            // 제공된 ViewHolder 의 Swipe 방향을 반환
+            @Override
+            public int getSwipeDirs(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
+                return super.getSwipeDirs(recyclerView, viewHolder);
+            }
+
+            // 사용자가 Swipe 할 때 호출
+            @Override
+            public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir) {
+                int swipedPosition = viewHolder.getAdapterPosition();
+                SwipeDeleteAdapter adapter = (SwipeDeleteAdapter) re.getAdapter();
+                adapter.itemRemoval(swipedPosition);
+            }
+
+            // RecyclerView 의 onDraw 호출
+            @Override
+            public void onChildDraw(Canvas c, RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
+                View itemView = viewHolder.itemView;
+
+                if (actionState == ItemTouchHelper.ACTION_STATE_SWIPE) {
+                    View itemView = viewHolder.itemView;
+
+                    if (!flagDraw) {
+                        itemDrawChange();
+                    }
+
+                    // Item 을 좌측으로 Swipe 했을 때 Background 변화: ItemTouchHelper.LEFT
+                    if (dX < 1) {
+                        background = new ColorDrawable(Color.parseColor("#FFD32F2F"));
+                        background.setBounds(itemView.getRight() + (int) dX, itemView.getTop(), itemView.getRight(), itemView.getBottom()); //dX(dY): 사용자 동작에 의한 수평(수직) 변화의 양
+                        background.draw(c); //Bounds: 범위. draw: 그리기. - 사용자 동작에 따라 Item 의 Background 변화
+
+                        // Mark 그리기
+                        int itemHeight = itemView.getBottom() - itemView.getTop(); // Item 높이
+                        int intrinsicWidth = removeMark.getIntrinsicWidth(); // Intrinsic: 본질적 - xMark 의 실제 길이
+                        int intrinsicHeight = removeMark.getIntrinsicHeight();
+
+                        int removeMarkLeft = itemView.getRight() - removeMarkMargin - intrinsicWidth;
+                        int removeMarkRight = itemView.getRight() - removeMarkMargin;
+                        int removeMarkTop = itemView.getTop() + (itemHeight - intrinsicHeight) / 2;
+                        int removeMarkBottom = removeMarkTop + intrinsicHeight;
+                        removeMark.setBounds(removeMarkLeft, removeMarkTop, removeMarkRight, removeMarkBottom);
+                        removeMark.draw(c);
+                    } else { // ItemTouchHelper.RIGHT
+                        background = new ColorDrawable(Color.parseColor("#FF388E3C"));
+                        background.setBounds(itemView.getLeft(), itemView.getTop(), itemView.getLeft() + (int) dX, itemView.getBottom());
+                        background.draw(c);
+                    }
+                }
+                super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
+            }
+
+        };
+        ItemTouchHelper mItemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
+        mItemTouchHelper.attachToRecyclerView(re);
+    }
+}
+{% endhighlight %}
+<br>
+
+<strong class="h2"> SwipeDeleteAdapter.java </strong>
+
+{% highlight java %}
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import java.util.List;
+
+public class SwipeDeleteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+    private List<String> items;
+    private String item = "";
+
+    public SwipeDeleteAdapter(List items) {
+        this.items = items;
+    }
+
+    @Override
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        return new SwipeHolder(inflater.inflate(R.layout.list_item, parent, false));
+    }
+
+    @Override
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        final SwipeHolder viewHolder = (SwipeHolder) holder;
+        viewHolder.tv.setText(items.get(position));
+    }
+
+    @Override
+    public int getItemCount() {
+        return items.size();
+    }
+
+    private class SwipeHolder extends RecyclerView.ViewHolder {
+        TextView tv;
+
+        public SwipeHolder(View itemView) {
+            super(itemView);
+            tv = (TextView) itemView.findViewById(R.id.tv);
+        }
+    }
+
+    public void itemRemoval(int position) {
+        remove(items.indexOf(items.get(position)));
+    }
+
+    public void remove(int position) {
+        item = items.get(position);
+
+        if (items.contains(item)) { //List<T>.contains(Object): List에 값이 있는 지를 확인하여 boolean으로 반환
+            items.remove(position);
+            notifyItemRemoved(position);
+        }
+    }
+}
+{% endhighlight %}
+<br>
+
+<strong class="h2">dimens.xml</strong>
+
+{% highlight xml %}
+<resources>
+    <dimen name="ic_remove_margin">16dp</dimen>
+</resources>
+{% endhighlight %}
+<br>
+
+<strong class="h2">ic_remove_24dp.xml</strong>
+
+{% highlight xml %}
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+        android:width="24dp"
+        android:height="24dp"
+        android:viewportHeight="24.0"
+        android:viewportWidth="24.0">
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M19,13H5v-2h14v2z"/>
+</vector>
+{% endhighlight %}
+
+<br>
+
+
+
+참고 사이트 - [1번] , [2번]
+
+[1번]: https://www.learn2crack.com/2016/02/custom-swipe-recyclerview.html
+[2번]: https://github.com/nemanja-kovacevic/recycler-view-swipe-to-delete/blob/master/app/src/main/java/net/nemanjakovacevic/recyclerviewswipetodelete/MainActivity.java
