@@ -48,5 +48,48 @@ function drow(){
 drow();
 {% endhighlight %}
 
+{% highlight javascript %}
+var canvas = document.querySelector('.canvas');
+canvas.width = 300;
+canvas.height = 20;
+{% endhighlight %}
 
-<a href="http://jsperf.com/jquery-selector-performance-vs-dom-api/4" target="_blank" class="red"><strong>jQuery Selector Performance vs DOM API</strong></a>
+canvas를 선택하고 사이즈를 지정해줬습니다.<br>
+canvas는 css로 사이즈를 지정하시면 안됩니다.<br>
+보이는 화면은 변할지 몰라도 canvas 내부 사이즈는 변하지 않기때문에 원하지 않는 모양이 나오게 됩니다.
+
+{% highlight javascript %}
+var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+
+Math.ease = function (t, b, c, d) {
+	t /= d;
+	return -c * t*(t-2) + b;
+};
+{% endhighlight %}
+
+javascript 애니메이션 프레임과 easing 공식 입니다.
+
+{% highlight javascript %}
+var w = 0;
+function drow(){
+  if(canvas.getContext){
+    var ctx = canvas.getContext('2d');
+
+    ctx.fillStyle = '#ff8c8f';
+    ctx.fillRect(0,0,w,30);
+    
+    ctx.font = 'bold 14px/1.2 Sans-Serif';
+    ctx.fillStyle = '#000';
+    ctx.fillText(Math.floor(w)+'원',10,16);
+    
+    w = Math.ease(1,w,200 - Math.floor(w),60);
+    if(w < 201){
+      requestAnimationFrame(drow);
+    }
+  }
+}
+drow();
+{% endhighlight %}
+
+그려주는 부분입니다.<br>
+'w = 0' 부터 시작해서 200 까지 애니메이션 프레임을 작동하고 easing 효과를 넣어줍니다.
