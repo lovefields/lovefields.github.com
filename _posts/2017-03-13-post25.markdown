@@ -93,3 +93,6 @@ drow();
 
 그려주는 부분입니다.<br>
 'w = 0' 부터 시작해서 200 까지 애니메이션 프레임을 작동하고 easing 효과를 넣어줍니다.
+
+<strong class="h3">참고자료</strong>
+<a href="http://gizma.com/easing/" target="_blank">Easing 공식</a>
