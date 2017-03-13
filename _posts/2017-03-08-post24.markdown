@@ -8,9 +8,8 @@ keywords : Android Studio,Android,Studio,App,RecyclerView,Swipe,delete,Touch,Lis
 category : android
 ---
 
-<br>
-
 <strong class="h2">activity_swipe_delete.xml</strong>
+
 {% highlight xml %}
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
@@ -31,6 +30,7 @@ category : android
 <br>
 
 <strong class="h2">list_item.xml</strong>
+
 {% highlight xml %}
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
@@ -49,6 +49,7 @@ category : android
 <br>
 
 <strong class="h2"> SwipeDeleteActivity.java </strong>
+
 {% highlight java %}
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -176,6 +177,7 @@ public class SwipeDeleteActivity extends AppCompatActivity {
 <br>
 
 <strong class="h2"> SwipeDeleteAdapter.java </strong>
+
 {% highlight java %}
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -236,6 +238,7 @@ public class SwipeDeleteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 <br>
 
 <strong class="h2">dimens.xml</strong>
+
 {% highlight xml %}
 <resources>
     <dimen name="ic_remove_margin">16dp</dimen>
@@ -244,6 +247,7 @@ public class SwipeDeleteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 <br>
 
 <strong class="h2">ic_remove_24dp.xml</strong>
+
 {% highlight xml %}
 <?xml version="1.0" encoding="utf-8"?>
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
