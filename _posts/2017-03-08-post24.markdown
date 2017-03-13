@@ -261,7 +261,7 @@ public class SwipeDeleteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
 
 
-참고 사이트 - [1] , [2]
+참고 사이트 - [1번] , [2번]
 
-[1]: https://www.learn2crack.com/2016/02/custom-swipe-recyclerview.html
-[2]: https://github.com/nemanja-kovacevic/recycler-view-swipe-to-delete/blob/master/app/src/main/java/net/nemanjakovacevic/recyclerviewswipetodelete/MainActivity.java
+[1번]: https://www.learn2crack.com/2016/02/custom-swipe-recyclerview.html
+[2번]: https://github.com/nemanja-kovacevic/recycler-view-swipe-to-delete/blob/master/app/src/main/java/net/nemanjakovacevic/recyclerviewswipetodelete/MainActivity.java
