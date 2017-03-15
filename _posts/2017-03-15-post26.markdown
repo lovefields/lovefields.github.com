@@ -1,0 +1,96 @@
+---
+layout: post
+title:  "CardView"
+date: 2017-03-15 12:00:00 +0900
+author: 민갤
+description: Android Studio 
+keywords : Android Studio,Android,Studio,RecyclerView,library,CardView,Material,xml,java
+category : android
+---
+
+RecyclerView의 ItemView로 자주 쓰이는 위젯.<br>
+그림자와 둥근 모서리를 갖는 FrameLayout.<br>
+
+Elevation을 통한 그림자 효과는 API 21부터 적용 가능하며, 그 이하는 프로그래밍 방식의 그림자로 대체된다.<br>
+
+다양한 요소로 구성된 목차를 보여줄 때 사용된다.<br>
+일반적인 List(글과 그림/icon 구성으로만 이루어진 간단한 목차)나 사진만을 보여주는 사진첩에는 적합하지 않다.<br>
+<br>
+
+<strong class="h2">0. CardView 라이브러리 추가</strong><br>
+File - Project Structure - Modules / app - Dependencies 에서<br>
+<span class="blue">cardview-v7</span> 를 찾아서 추가하거나 build.gradle(Module:app)에 직접 추가한다.<br>
+{% highlight xml %}
+dependencies {
+    compile 'com.android.support:cardview-v7:25.1.0'
+{% endhighlight %}<br>
+
+<strong class="h2">１. CardView를 layout 안에 위치시킨다.</strong>
+{% highlight xml %}
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="16"
+        android:layout_marginRight="16"
+        android:layout_marginTop="4dp"
+        card:cardCornerRadius="5dp">
+
+    </android.support.v7.widget.CardView>
+</LinearLayout>
+{% endhighlight %}<br>
+
+<strong class="h2">Padding or Margin</strong><br>
+CardView는 바깥 Layout에서 android:padding을 주면 모양이 어렴풋이 잘린다.<br>
+android:layout_margin을 통해 바깥 Layout과 간격을 주는 편이 CardView의 모양이 산다.<br>
+[Material Guideline]은 CardView의 Padding과 Margin의 값으로 8배수인 8dp, 16dp, 24dp를 권장한다.<br>
+<br>
+
+XML에서 CardView의 속성을 사용하려면 다음을 정의해주어야 한다.
+{% highlight xml %}
+    xmlns:card="http://schemas.android.com/apk/res-auto"
+{% endhighlight %}
+<br>
+
+<strong class="h2">CardView 속성<strong>
+{% highlight xml %}
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:card="http://schemas.android.com/apk/res-auto"
+    ...>
+
+    <android.support.v7.widget.CardView
+        card:cardBackgroundColor="color"
+	card:cardElevation="float"
+        card:cardMaxElevation="float"
+	card:cardPreventCornerOverlap="boolean"        
+	card:contentPadding="int" 
+        card:contentPaddingBottom="int"
+        card:contentPaddingLeft="int"
+        card:contentPaddingRight="int"
+        card:contentPaddingTop="int"
+        card:paddingStart="int"
+        card:paddingEnd="int"
+	card:cardUseCompatPadding="boolean"
+        card:cardCornerRadius="float" >
+
+    </android.support.v7.widget.CardView>
+</LinearLayout>
+{% endhighlight %}
+&#149; cardBackgroundColor: CardView의 배경색을 지정한다.<br>
+&#149; cardElevation, cardMaxElevation: CardView의 높이를 설정한다. 높이가 높아질 수록 그림자가 길어진다.<br>
+&#149; cardPreventCornerOverlap: API 21 이하에서 카드 내용과 카드의 모서리가 겹치는 현상을 방지할 것인지 설정한다. <br>
+&#149; padding: CariView 내부 여백을 설정한다.<br>
+&#149; cardUseCompatPadding: API 21 이하에서 그림자를 그리기 위한 Padding을 줄 것인지 설정한다.<br>
+&#149; card:cardCornerRadius: CardView의 모서리를 설정한다. 2dp를 주던 5dp를 주던 자유다. 0dp만 안 쓴다면 말이다.<br>
+
+
+[Material Guideline]: https://material.io/guidelines/components/cards.html#cards-content-blocks
