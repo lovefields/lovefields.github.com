@@ -31,7 +31,7 @@ ViewPager를 사용하기 위해 <span class="blue">support.v4 지원 라이브�
 {% endhighlight %}
 <br>
 
-그렇지 않고 화면 안에 지정 구역을 만들어주고 싶다면 android.support.v4.view.ViewPager 를 직접 태그한다.
+그렇지 않고 화면 안에 지정 구역을 만들어주고 싶다면 android.support.v4.view.ViewPager 를 직접 태그 한다.
 {% highlight xml %}
 <RelativeLayout ... >
 

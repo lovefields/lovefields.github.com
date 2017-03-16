@@ -56,7 +56,7 @@ canvas.height = 20;
 
 canvas를 선택하고 사이즈를 지정해줬습니다.<br>
 canvas는 css로 사이즈를 지정하시면 안됩니다.<br>
-보이는 화면은 변할지 몰라도 canvas 내부 사이즈는 변하지 않기때문에 원하지 않는 모양이 나오게 됩니다.
+보이는 화면은 변할지 몰라도 canvas 내부 사이즈는 변하지 않기 때문에 원하지 않는 모양이 나오게 됩니다.
 
 {% highlight javascript %}
 var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;

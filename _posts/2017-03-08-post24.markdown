@@ -8,8 +8,9 @@ keywords : Android Studio,Android,Studio,App,RecyclerView,Swipe,delete,Touch,Lis
 category : android
 ---
 
-<strong class="h2">activity_swipe_delete.xml</strong>
+<br>
 
+<strong class="h2">activity_swipe_delete.xml</strong>
 {% highlight xml %}
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
@@ -30,7 +31,6 @@ category : android
 <br>
 
 <strong class="h2">list_item.xml</strong>
-
 {% highlight xml %}
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
@@ -49,7 +49,6 @@ category : android
 <br>
 
 <strong class="h2"> SwipeDeleteActivity.java </strong>
-
 {% highlight java %}
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -145,7 +144,8 @@ public class SwipeDeleteActivity extends AppCompatActivity {
                     // Item 을 좌측으로 Swipe 했을 때 Background 변화: ItemTouchHelper.LEFT
                     if (dX < 1) {
                         background = new ColorDrawable(Color.parseColor("#FFD32F2F"));
-                        background.setBounds(itemView.getRight() + (int) dX, itemView.getTop(), itemView.getRight(), itemView.getBottom()); //dX(dY): 사용자 동작에 의한 수평(수직) 변화의 양
+                        background.setBounds(itemView.getRight() + (int) dX, itemView.getTop(), itemView.getRight(), itemView.getBottom()); 
+			//dX(dY): 사용자 동작에 의한 수평(수직) 변화의 양
                         background.draw(c); //Bounds: 범위. draw: 그리기. - 사용자 동작에 따라 Item 의 Background 변화
 
                         // Mark 그리기
@@ -177,7 +177,6 @@ public class SwipeDeleteActivity extends AppCompatActivity {
 <br>
 
 <strong class="h2"> SwipeDeleteAdapter.java </strong>
-
 {% highlight java %}
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -238,7 +237,6 @@ public class SwipeDeleteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 <br>
 
 <strong class="h2">dimens.xml</strong>
-
 {% highlight xml %}
 <resources>
     <dimen name="ic_remove_margin">16dp</dimen>
@@ -247,7 +245,6 @@ public class SwipeDeleteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 <br>
 
 <strong class="h2">ic_remove_24dp.xml</strong>
-
 {% highlight xml %}
 <?xml version="1.0" encoding="utf-8"?>
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
@@ -265,7 +262,7 @@ public class SwipeDeleteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
 
 
-참고 사이트 - [1번] , [2번]
+참고 사이트 - [1번], [2번]
 
 [1번]: https://www.learn2crack.com/2016/02/custom-swipe-recyclerview.html
 [2번]: https://github.com/nemanja-kovacevic/recycler-view-swipe-to-delete/blob/master/app/src/main/java/net/nemanjakovacevic/recyclerviewswipetodelete/MainActivity.java

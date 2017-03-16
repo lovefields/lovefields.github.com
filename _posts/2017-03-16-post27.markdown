@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "EditText"
-date: 2017-03-17 12:00:00 +0900
+date: 2017-03-16 12:00:00 +0900
 author: 민갤
 description: Android Studio 
 keywords : Android Studio,Android,Studio,EditText,xml,java,Focus,Enter,IME,Action,자동 Focus,키보드,숫자 천단위
@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
 {% endhighlight %}
 setOnFocusChangeListener: 해당 View의 Focus 변화에 따른 Event 처리.<br>
 
-EditText의 ClickListener는 EditText를 두 번 Click해야 Event가 처리되는 문제를 발견했는 데<br>
+EditText의 ClickListener는 EditText를 두 번 Click해야 Event가 처리되는 문제를 발견했는데<br>
 FocusChangeListener와 ClickListener를 두 개다 적용했을 때 Focus가 먼저 실행되고 Click이 실행됐다.<br>
 해서 필자는 ClickListener를 지우고 FocusChangeListener만을 사용했다.<br>
 <br>
