@@ -6,6 +6,7 @@ author: 민갤
 description: Android Studio 
 keywords : Android Studio,Android,Studio,res,resource,forder,file,flugins,group
 category : android
+image: /img/androidstudio.png
 ---
 
 

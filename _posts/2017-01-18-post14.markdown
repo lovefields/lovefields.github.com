@@ -6,6 +6,7 @@ author: 민갤
 description: Android Studio 
 keywords : Android Studio,Android,Studio,APK,App,decompile,windows
 category : android
+image: /img/post14.png
 ---
 
 다른 사람이 만든 App의 코드를 참고해보고 싶을 때는 어떻게 해야 할까.<br>
