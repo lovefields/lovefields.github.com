@@ -6,6 +6,7 @@ author: 민갤
 description: Android Studio 
 keywords : Android Studio,Android,Studio,Typekit,Library,font
 category : android
+image: /img/gradle.png
 ---
 
 안드로이드 앱을 만들다 보면 기본 폰트가 마음에 들지 않는다.<br>

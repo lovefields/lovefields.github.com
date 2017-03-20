@@ -6,6 +6,7 @@ author: 민갤
 description: Android Studio 
 keywords : Android Studio,Android,Studio,App,ViewPager,layout,Fragment,swipe
 category : android
+image: /img/gradle.png
 ---
 
 사용자가 화면을 swipe하여 페이지를 좌우로 넘겨 볼 수 있게 해주는 안드로이드 레이아웃 매니저 클래스.<br>

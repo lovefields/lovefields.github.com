@@ -6,6 +6,7 @@ author: 민갤
 description: Android Studio 
 keywords : Android Studio,Android,Studio,RecyclerView,library,Adapter,Viewholder,ListView
 category : android
+image: /img/gradle.png
 ---
 
 RecyclerView는 ViewGroup의 서브 클래스로, ListView 보다 더 편리하고 유연하게 만들어졌다.<br>

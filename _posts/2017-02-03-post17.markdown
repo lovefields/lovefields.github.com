@@ -6,6 +6,7 @@ author: 민갤
 description: Android Studio 
 keywords : Android Studio,Android,Studio,App,UX,UI,design,process
 category : android
+image: /img/post17.png
 ---
 
 <strong class="h2">기획</strong><br>
