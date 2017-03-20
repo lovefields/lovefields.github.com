@@ -6,6 +6,7 @@ author: 민갤
 description: Android Studio 
 keywords : Android Studio,Android,Studio
 category : android
+image: /img/androidstudio.png
 ---
 
 １. Android Studio 가 설치되면 가장 먼저 사용할 SDK를 다운로드 합니다.<br>하단의 <span class="blue">Configure</span>를 클릭하여 <span class="blue">SDK Manager</span>를 엽니다.<br>

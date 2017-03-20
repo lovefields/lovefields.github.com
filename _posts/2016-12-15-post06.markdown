@@ -6,6 +6,7 @@ author: 민갤
 description: Android Studio 
 keywords : Android Studio,Android,Studio
 category : android
+image: /img/androidstudio.png
 ---
 
 １. Android Studio를 실행시켜 첫 프로젝트를 만들어 봅시다.<br>

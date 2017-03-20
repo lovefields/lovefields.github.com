@@ -6,6 +6,7 @@ author: 민갤
 description: Android Studio 
 keywords : Android Studio,Android,Studio,단축키
 category : android
+image: /img/androidstudio.png
 ---
 
 프로그램의 단축키는 <span class="blue">Help > Keymap Reference</span> 에서 확인할 수 있다.<br>

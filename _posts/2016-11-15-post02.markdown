@@ -6,6 +6,7 @@ author: 민갤
 description: Android Studio 설치하는 방법.
 keywords : Android Studio,Android,Studio
 category : android
+image: /img/androidstudio.png
 ---
 
 Android Studio로 안드로이드 App을 개발하려면 <br>
