@@ -6,6 +6,7 @@ author: 민갤
 description: Android Studio 
 keywords : Android Studio,Android,Studio,App,Rooting,Root,Db,database,SQLite,SQLiteDatabase,data
 category : android
+image: /img/post21.png
 ---
 
 안드로이드 앱을 만들 때 필자는 내부 DB로 SQLite를 쓰고 있다.<br>
