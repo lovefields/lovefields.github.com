@@ -1,0 +1,111 @@
+---
+layout: post
+title:  "javascript Execution Context"
+date:   2017-03-20 10:00:00 +0900
+author: Lovefield
+description: javascript 에 대한 Execution Context 입니다.
+keywords : javascript,js,Execution,Context
+image : /img/javascript.png
+category : front_end
+---
+
+안녕하세요 lovefield 입니다.<br>
+오늘은 <strong>javascript</strong> 에 대한 <strong class="blue">Excution Context</strong> 입니다.
+
+<strong>javascript</strong>도 당연히 실행 순서가 존재하는데요 오늘은 그에 대한 설명입니다.
+
+{% highlight javascript %}
+var a = '100';
+var b = 'won';
+
+function alert(){
+	var c = a + b;
+	alert(c);
+}
+alert();
+{% endhighlight %}
+
+위와 같은 스크립트가 있다고 가정합니다.<br>
+그러면 우선 global 영역에 있는 변수 a,b에 대해서 다음과 같이 선언이 됩니다.
+
+|변수|값|
+|:-:|:-:|
+|a|undefind|
+|b|undefind|
+
+우선 변수가 들어갈수 있는 공간을 만드는 셈이죠.
+
+그다음은 함수 등 명령어들을 수집합니다.<br>
+이 단계에서는 실행이 되지 않아요.
+
+그다음 this value 가 선언 되는데요.<br>
+이 값은 아래에서 자세히 다뤄드리겟습니다.
+
+그리고 나서 변수에 값이 들어가고 비로소 명령어들이 실행됩니다.<br>
+함수가 있다면 함수 내에서도 똑같이 돌아가게 되지요.
+
+<div class="emp20"></div>
+<p class="h2"><strong>This Value</strong></p>
+
+
+<strong>javascript</strong> 에서 <strong class="blue">this value</strong> 를 많이 헷갈려 하시는 분들이 많습니다.
+
+기본적으로 <strong>javascript</strong> 에서 <strong class="blue">this value</strong>는 이벤트, 혹은 함수가 실행된 곳입니다.
+
+{% highlight javascript %}
+
+function thisvalue(){
+	console.log(this);
+}
+thisvalue();
+
+{% endhighlight %}
+
+위와 같은 코드에서 <strong class="blue">this value</strong> 는 <strong>window</strong> 가 나오게 될겁니다.<br>
+기본적으로 함수는 <strong>window</strong>에 저장되고 <strong>window</strong>에서 실행되었기 때문이죠.
+
+<div class="emp20"></div>
+{% highlight javascript %}
+
+var a = {'text':'hollow','value':function(){
+	return this.text;
+}};
+
+console.log(a.value());
+
+{% endhighlight %}
+
+위와 같은 코드에서 찍히는 콘솔은 <strong>'hollow'</strong> 입니다.<br>
+변수 <strong>a</strong>에서 실행되었기 떄문에 변수 <strong>a</strong>에 있는 <strong>text</strong>를 찾아가게 되는거죠.<br>
+여기서의 <strong class="blue">this value</strong> 는 변수 <strong>a</strong> 입니다.
+
+<div class="emp20"></div>
+{% highlight html %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<title>html5</title>
+</head>
+<body>
+<div class="wrap">
+
+<button>클릭</button>
+
+</div>
+<script>
+
+var button = document.querySelector('button');
+
+button.addEventListener('click',function(){
+	console.log(this);
+});
+
+</script>
+</body>
+</html>
+{% endhighlight %}
+
+자 위의 코드는 <strong>button</strong>을 선택해서 이벤트를 부여했습니다.<br>
+여기서 <strong class="blue">this value</strong>가 <strong>button</strong> 인 이유는 <strong>button</strong>에게 이벤트를 부여되었고 <strong>button</strong>을 통해 실행됩니다.<br>
+즉 함수가 실행되는 시점은 <strong>button</strong>에게 할당되어 있는것이죠.
