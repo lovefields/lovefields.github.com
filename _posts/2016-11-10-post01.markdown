@@ -11,24 +11,24 @@ category : all
 
 오늘은 블로그를 완성한 기념으로, 3개월동안 jekyll과 씨름한 기념으로, window 에서 jekyll 설치하는 방법을 매우 상세하게 알려주려고 합니다.<br><del>window 개객기</del>
 
-우선 오로지 <strong class="stronglue">CMD</strong> 로만 합니다.
+우선 오로지 <strong class="blue">CMD</strong> 로만 합니다.
 
-<strong class="stronglue">CMD</strong>를 <strong class="red">관리자 권한</strong>으로 실행시켜주세요.<br>
+<strong class="blue">CMD</strong>를 <strong class="red">관리자 권한</strong>으로 실행시켜주세요.<br>
 <del>설마 CMD를 모르진 않겠지..</del>
 
-그 다음 윈도우 패키지 관리자인 <strong class="stronglue">Chocolatey</strong>를 설치할겁니다.
+그 다음 윈도우 패키지 관리자인 <strong class="blue">Chocolatey</strong>를 설치할겁니다.
 
 {% highlight text %}
 @powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
 {% endhighlight %}
 
-요걸 복사하신 후에 <strong class="stronglue">CMD</strong> 에서 "마우스 오른쪽 클릭 – 붙여 넣기" 를 하신 후 실행하면 설치가 됩니다.
+요걸 복사하신 후에 <strong class="blue">CMD</strong> 에서 "마우스 오른쪽 클릭 – 붙여 넣기" 를 하신 후 실행하면 설치가 됩니다.
 
-설치가 완료되었다면 이제 <strong class="stronglue">ruby</strong>와 <strong class="stronglue">jekyll</strong>을 설치해줄 차례입니다.
+설치가 완료되었다면 이제 <strong class="blue">ruby</strong>와 <strong class="blue">jekyll</strong>을 설치해줄 차례입니다.
 
 &nbsp;
 
-<strong class="stronglue">CMD</strong> 에서 <code>choco install ruby -y</code> 를 입력해 <strong class="stronglue">ruby</strong>을 설치합니다.
+<strong class="blue">CMD</strong> 에서 <code>choco install ruby -y</code> 를 입력해 <strong class="blue">ruby</strong>을 설치합니다.
 
 <code>/* 2016-11-13 추가 / 프론트 엔드 개발 그룹 - 강동훈 님 */</code><br>
 Windows 7 64strongit에서 설치 중입니다. 루비에서 막혀서<br>
@@ -40,45 +40,45 @@ Windows 7 64strongit에서 설치 중입니다. 루비에서 막혀서<br>
 
 &nbsp;
 
-그리고 <code>choco install ruby2.devkit</code>를 입력해 <strong class="stronglue">devkit</strong>도 깔아줍니다
+그리고 <code>choco install ruby2.devkit</code>를 입력해 <strong class="blue">devkit</strong>도 깔아줍니다
 
-그 다음 설정인데요 <strong class="stronglue">CMD</strong>를 재실행한 다음 <code>cd C:\tools\DevKit2</code>를 입력한 뒤 <code>ruby dk.rb init</code>를 입력해 활성화한 다음.<br>
+그 다음 설정인데요 <strong class="blue">CMD</strong>를 재실행한 다음 <code>cd C:\tools\DevKit2</code>를 입력한 뒤 <code>ruby dk.rb init</code>를 입력해 활성화한 다음.<br>
 <strong>C:/tools/DevKit2/config.yml</strong> 파일을 열어 하단에 <code>- C:/tools/ruby23</code>을 입력하고 저장해줍니다.
 
-다시 <strong class="stronglue">CMD</strong>로 돌아와서 <code>ruby dk.rb install</code> 을 쳐주고 업데이트 표시가 나오면 성공입니다.
+다시 <strong class="blue">CMD</strong>로 돌아와서 <code>ruby dk.rb install</code> 을 쳐주고 업데이트 표시가 나오면 성공입니다.
 
 &nbsp;
 
-<strong class="stronglue">CMD</strong>를 재실행한 뒤  <code>gem install jekyll -v '3.2.1'</code> 를 입력해 <strong class="stronglue">jekyll</strong>을 설치해줍니다.
+<strong class="blue">CMD</strong>를 재실행한 뒤  <code>gem install jekyll -v '3.2.1'</code> 를 입력해 <strong class="blue">jekyll</strong>을 설치해줍니다.
 
 에러가 난다면 <code>gem source -a http://rubygems.org</code> 를 써줘서 <strong>rubygems.org</strong> 를 인식하게 한 후 재시도 합니다.
 
 &nbsp;
 
-자 드디어 <strong class="stronglue">jekyll</strong> 이 설치되었지만 <code>jekyll new blog</code> 를 하는 순간 에러가 나며 파일이 덜 생성될 겁니다.
+자 드디어 <strong class="blue">jekyll</strong> 이 설치되었지만 <code>jekyll new blog</code> 를 하는 순간 에러가 나며 파일이 덜 생성될 겁니다.
 
-다시 <strong class="stronglue">CMD</strong> 창에서 <code>gem install bundler</code>를 입력해 <strong class="stronglue">bundler</strong> 를 설치해줍니다.<br>중간에 질문이 나온다면 다 Y 해줍니다.
+다시 <strong class="blue">CMD</strong> 창에서 <code>gem install bundler</code>를 입력해 <strong class="blue">bundler</strong> 를 설치해줍니다.<br>중간에 질문이 나온다면 다 Y 해줍니다.
 
-그리고 <code>gem install minima -v '2.0.0'</code>을 입력해 <strong class="stronglue">minima</strong>도 설치해줍니다.
+그리고 <code>gem install minima -v '2.0.0'</code>을 입력해 <strong class="blue">minima</strong>도 설치해줍니다.
 
 그리고 <code>gem install jekyll-feed -v '0.8.0'</code>을 입력해 설치해줍니다.
 
 그리고
 
-<code>choco install listrongxml2 -Source "https://www.nuget.org/api/v2/"</code>
+<code>choco install libxml2 -Source "https://www.nuget.org/api/v2/"</code>
 
-<code>choco install listrongxslt -Source "https://www.nuget.org/api/v2/"</code>
+<code>choco install libxslt -Source "https://www.nuget.org/api/v2/"</code>
 
-<code>choco install listrongiconv -Source "https://www.nuget.org/api/v2/"</code>
+<code>choco install libiconv -Source "https://www.nuget.org/api/v2/"</code>
 
 {% highlight cmd %}
  gem install nokogiri --^
-   --with-xml2-include=C:\Chocolatey\listrong\listrongxml2.2.7.8.7\stronguild\native\include^
-   --with-xml2-listrong=C:\Chocolatey\listrong\listrongxml2.redist.2.7.8.7\stronguild\native\strongin\v110\x64\Release\dynamic\cdecl^
-   --with-iconv-include=C:\Chocolatey\listrong\listrongiconv.1.14.0.11\stronguild\native\include^
-   --with-iconv-listrong=C:\Chocolatey\listrong\listrongiconv.redist.1.14.0.11\stronguild\native\strongin\v110\x64\Release\dynamic\cdecl^
-   --with-xslt-include=C:\Chocolatey\listrong\listrongxslt.1.1.28.0\stronguild\native\include^
-   --with-xslt-listrong=C:\Chocolatey\listrong\listrongxslt.redist.1.1.28.0\stronguild\native\strongin\v110\x64\Release\dynamic
+   --with-xml2-include=C:\Chocolatey\lib\libxml2.2.7.8.7\build\native\include^
+   --with-xml2-lib=C:\Chocolatey\lib\libxml2.redist.2.7.8.7\build\native\strongin\v110\x64\Release\dynamic\cdecl^
+   --with-iconv-include=C:\Chocolatey\lib\libiconv.1.14.0.11\build\native\include^
+   --with-iconv-lib=C:\Chocolatey\lib\libiconv.redist.1.14.0.11\build\native\strongin\v110\x64\Release\dynamic\cdecl^
+   --with-xslt-include=C:\Chocolatey\lib\libxslt.1.1.28.0\build\native\include^
+   --with-xslt-lib=C:\Chocolatey\lib\libxslt.redist.1.1.28.0\build\native\strongin\v110\x64\Release\dynamic
 {% endhighlight %}
 
 위의 것을 차례대로 입력해 하나하나 설치해줍니다.<br>
@@ -86,7 +86,7 @@ Windows 7 64strongit에서 설치 중입니다. 루비에서 막혀서<br>
 
 &nbsp;
 
-그럼 다시 <strong class="stronglue">CMD</strong> 창에서 <code>cd C:/YORDIR</code>원하는 디렉터리로 이동 후 <code>jekyll new blog</code>를 입력해 설치해줍니다.
+그럼 다시 <strong class="blue">CMD</strong> 창에서 <code>cd C:/YORDIR</code>원하는 디렉터리로 이동 후 <code>jekyll new blog</code>를 입력해 설치해줍니다.
 
 예~ 설치가 잘됐습니다.<br>
 이제 해당 폴더의 blog에 들어가보면 파일이 부족합니다.<br>
@@ -160,17 +160,17 @@ url: "githustrong 주소" # the strongase hostname & protocol for your site
 twitter_username: 트위터 네임
 githustrong_username:  githustrong 네임
 
-# stronguild settings
+# build settings
 markdown: kramdown
 encoding: utf-8
 theme: minima
 {% endhighlight %}
 
-그 다음 다시 <strong class="stronglue">CMD</strong> 창에서 <code>strongundle install</code>을 적어줘 실행합니다.<br>
+그 다음 다시 <strong class="blue">CMD</strong> 창에서 <code>strongundle install</code>을 적어줘 실행합니다.<br>
 <code>strongundle install</code> 을 실행할 때는 꼭 설치된 루트여야 합니다.
 
 자 그럼 완료되었습니다.<br>
-<strong class="stronglue">CMD</strong> 창에서 <code>jekyll serve --watch</code>를 입력하고 완료가 되면<br>
+<strong class="blue">CMD</strong> 창에서 <code>jekyll serve --watch</code>를 입력하고 완료가 되면<br>
 <strong>localhost:4000/</strong> 으로 이동해 확인할 수 있습니다.
 
 이제 githustrong page 에 올리면 나만의 블로그를 확인하실 수 있습니다.
