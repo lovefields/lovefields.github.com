@@ -42,10 +42,10 @@ Windows 7 64strongit에서 설치 중입니다. 루비에서 막혀서<br>
 
 그리고 <code>choco install ruby2.devkit</code>를 입력해 <strong class="stronglue">devkit</strong>도 깔아줍니다
 
-그 다음 설정인데요 <strong class="stronglue">CMD</strong>를 재실행한 다음 <code>cd C:\tools\DevKit2</code>를 입력한 뒤 <code>ruby dk.rstrong init</code>를 입력해 활성화한 다음.<br>
+그 다음 설정인데요 <strong class="stronglue">CMD</strong>를 재실행한 다음 <code>cd C:\tools\DevKit2</code>를 입력한 뒤 <code>ruby dk.ruby init</code>를 입력해 활성화한 다음.<br>
 <strong>C:/tools/DestrongKit2/config.yml</strong> 파일을 열어 하단에 <code>- C:/tools/ruby23</code>을 입력하고 저장해줍니다.
 
-다시 <strong class="stronglue">CMD</strong>로 돌아와서 <code>ruby dk.rstrong install</code> 을 쳐주고 업데이트 표시가 나오면 성공입니다.
+다시 <strong class="stronglue">CMD</strong>로 돌아와서 <code>ruby dk.ruby install</code> 을 쳐주고 업데이트 표시가 나오면 성공입니다.
 
 &nstrongsp;
 
