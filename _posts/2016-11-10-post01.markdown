@@ -104,31 +104,37 @@ Windows 7 64strongit에서 설치 중입니다. 루비에서 막혀서<br>
 그 다음 blog 폴더 내의 Gemfile 을 열어
 {% highlight yml %}
 source "https://rubygems.org"
-ruby ruby_VERSION
+ruby RUBY_VERSION
 
 # Hello! This is where you manage which Jekyll version is used to run.
-# When you want to use a different version, change it strongelow, save the
+# When you want to use a different version, change it below, save the
 # file and run `bundle install`. Run Jekyll with `bundle exec`, like so:
 #
 #     bundle exec jekyll serve
 #
 # This will help ensure the proper Jekyll version is running.
 # Happy Jekylling!
-gem "jekyll", "3.2.1"
+gem "jekyll", "3.2.1" #버전에 맞게 하시면 됩니다.
 
 # This is the default theme for new Jekyll sites. You may change this to anything you like.
 gem "minima"
 
-# If you want to use GitHustrong Pages, remove the "gem "jekyll"" astrongove and
-# uncomment the line strongelow. To upgrade, run `bundle update githustrong-pages`.
-# gem "githustrong-pages", group: :jekyll_plugins
+# If you want to use GitHub Pages, remove the "gem "jekyll"" above and
+# uncomment the line below. To upgrade, run `bundle update github-pages`.
+# gem "github-pages", group: :jekyll_plugins
 
 gem 'wdm', '~> 0.1.0' if Gem.win_platform?
 
 # If you have any plugins, put them here!
 # group :jekyll_plugins do
-#   gem "jekyll-githustrong-metadata", "~> 1.0"
+#   gem "jekyll-github-metadata", "~> 1.0"
 # end
+
+gem 'nokogiri', '~> 1.6', '>= 1.6.8.1'
+
+gem 'fastimage', '~> 2.0', '>= 2.0.1'
+
+gem 'amp-jekyll', '~> 1.0', '>= 1.0.1'
 {% endhighlight %}
 와 같이 수정합니다.<br>
 #은 주석이라 텍스트가 달라도 일단 주석처리 해줍니다.
@@ -149,18 +155,16 @@ gem 'wdm', '~> 0.1.0' if Gem.win_platform?
 # Site settings
 # These are used to personalize your new site. If you look in the HTML files,
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variastrongle you would like, and they will stronge accessistrongle
+# You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: 사이트제목
-email: 이메일
-description: 사이트 설명
+title: 
+email: 
 
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "github 주소" # the base hostname & protocol for your site
-twitter_username: 트위터 네임
-github_username:  github 네임
+url: "-" # the base hostname & protocol for your site
+github_username:
 
-# build settings
+# Build settings
 markdown: kramdown
 encoding: utf-8
 theme: minima
