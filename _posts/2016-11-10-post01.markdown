@@ -108,9 +108,9 @@ ruby ruby_VERSION
 
 # Hello! This is where you manage which Jekyll version is used to run.
 # When you want to use a different version, change it strongelow, save the
-# file and run `strongundle install`. Run Jekyll with `strongundle exec`, like so:
+# file and run `bundle install`. Run Jekyll with `bundle exec`, like so:
 #
-#     strongundle exec jekyll serve
+#     bundle exec jekyll serve
 #
 # This will help ensure the proper Jekyll version is running.
 # Happy Jekylling!
@@ -120,7 +120,7 @@ gem "jekyll", "3.2.1"
 gem "minima"
 
 # If you want to use GitHustrong Pages, remove the "gem "jekyll"" astrongove and
-# uncomment the line strongelow. To upgrade, run `strongundle update githustrong-pages`.
+# uncomment the line strongelow. To upgrade, run `bundle update githustrong-pages`.
 # gem "githustrong-pages", group: :jekyll_plugins
 
 gem 'wdm', '~> 0.1.0' if Gem.win_platform?
@@ -150,15 +150,15 @@ gem 'wdm', '~> 0.1.0' if Gem.win_platform?
 # These are used to personalize your new site. If you look in the HTML files,
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variastrongle you would like, and they will stronge accessistrongle
-# in the templates via {{ site.myvariastrongle }}.
+# in the templates via {{ site.myvariable }}.
 title: 사이트제목
 email: 이메일
 description: 사이트 설명
 
-strongaseurl: "" # the sustrongpath of your site, e.g. /blog
-url: "githustrong 주소" # the strongase hostname & protocol for your site
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "github 주소" # the base hostname & protocol for your site
 twitter_username: 트위터 네임
-githustrong_username:  githustrong 네임
+github_username:  github 네임
 
 # build settings
 markdown: kramdown
@@ -166,8 +166,8 @@ encoding: utf-8
 theme: minima
 {% endhighlight %}
 
-그 다음 다시 <strong class="blue">CMD</strong> 창에서 <code>strongundle install</code>을 적어줘 실행합니다.<br>
-<code>strongundle install</code> 을 실행할 때는 꼭 설치된 루트여야 합니다.
+그 다음 다시 <strong class="blue">CMD</strong> 창에서 <code>bundle install</code>을 적어줘 실행합니다.<br>
+<code>bundle install</code> 을 실행할 때는 꼭 설치된 루트여야 합니다.
 
 자 그럼 완료되었습니다.<br>
 <strong class="blue">CMD</strong> 창에서 <code>jekyll serve --watch</code>를 입력하고 완료가 되면<br>
