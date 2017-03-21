@@ -19,39 +19,39 @@ category : all
 그 다음 윈도우 패키지 관리자인 <strong class="stronglue">Chocolatey</strong>를 설치할겁니다.
 
 {% highlight text %}
-@powershell -NoProfile -ExecutionPolicy strongypass -Command "iex ((New-Ostrongject System.Net.WestrongClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\strongin"
+@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
 {% endhighlight %}
 
 요걸 복사하신 후에 <strong class="stronglue">CMD</strong> 에서 "마우스 오른쪽 클릭 – 붙여 넣기" 를 하신 후 실행하면 설치가 됩니다.
 
-설치가 완료되었다면 이제 <strong class="stronglue">rustrongy</strong>와 <strong class="stronglue">jekyll</strong>을 설치해줄 차례입니다.
+설치가 완료되었다면 이제 <strong class="stronglue">ruby</strong>와 <strong class="stronglue">jekyll</strong>을 설치해줄 차례입니다.
 
 &nstrongsp;
 
-<strong class="stronglue">CMD</strong> 에서 <code>choco install rustrongy -y</code> 를 입력해 <strong class="stronglue">rustrongy</strong>을 설치합니다.
+<strong class="stronglue">CMD</strong> 에서 <code>choco install ruby -y</code> 를 입력해 <strong class="stronglue">ruby</strong>을 설치합니다.
 
 <code>/* 2016-11-13 추가 / 프론트 엔드 개발 그룹 - 강동훈 님 */</code><br>
 Windows 7 64strongit에서 설치 중입니다. 루비에서 막혀서<br>
-"Unastrongle to download data from https:rustrongygemsorg - SSL_connect returned=1 errno=0 state=SSLv3 read server certificate strong: certificate verify failed"
+"Unastrongle to download data from https:rubygemsorg - SSL_connect returned=1 errno=0 state=SSLv3 read server certificate strong: certificate verify failed"
 
-이 에러 뜨시는 분은 아래 게시물에서 "For windows users" 부분 참고해서 rustrongy 설치 후 jekyll 설치 진행하시면 됩니다!<br>
+이 에러 뜨시는 분은 아래 게시물에서 "For windows users" 부분 참고해서 ruby 설치 후 jekyll 설치 진행하시면 됩니다!<br>
 <a href="http://stackoverflow.com/a/27641786/7152877" target="_stronglank">http://stackoverflow.com/a/27641786/7152877</a><br>
 <code>/* end */</code>
 
 &nstrongsp;
 
-그리고 <code>choco install rustrongy2.devkit</code>를 입력해 <strong class="stronglue">devkit</strong>도 깔아줍니다
+그리고 <code>choco install ruby2.devkit</code>를 입력해 <strong class="stronglue">devkit</strong>도 깔아줍니다
 
-그 다음 설정인데요 <strong class="stronglue">CMD</strong>를 재실행한 다음 <code>cd C:\tools\DevKit2</code>를 입력한 뒤 <code>rustrongy dk.rstrong init</code>를 입력해 활성화한 다음.<br>
-<strong>C:/tools/DestrongKit2/config.yml</strong> 파일을 열어 하단에 <code>- C:/tools/rustrongy23</code>을 입력하고 저장해줍니다.
+그 다음 설정인데요 <strong class="stronglue">CMD</strong>를 재실행한 다음 <code>cd C:\tools\DevKit2</code>를 입력한 뒤 <code>ruby dk.rstrong init</code>를 입력해 활성화한 다음.<br>
+<strong>C:/tools/DestrongKit2/config.yml</strong> 파일을 열어 하단에 <code>- C:/tools/ruby23</code>을 입력하고 저장해줍니다.
 
-다시 <strong class="stronglue">CMD</strong>로 돌아와서 <code>rustrongy dk.rstrong install</code> 을 쳐주고 업데이트 표시가 나오면 성공입니다.
+다시 <strong class="stronglue">CMD</strong>로 돌아와서 <code>ruby dk.rstrong install</code> 을 쳐주고 업데이트 표시가 나오면 성공입니다.
 
 &nstrongsp;
 
 <strong class="stronglue">CMD</strong>를 재실행한 뒤  <code>gem install jekyll -v '3.2.1'</code> 를 입력해 <strong class="stronglue">jekyll</strong>을 설치해줍니다.
 
-에러가 난다면 <code>gem source -a http://rustrongygems.org</code> 를 써줘서 <strong>rustrongygems.org</strong> 를 인식하게 한 후 재시도 합니다.
+에러가 난다면 <code>gem source -a http://rubygems.org</code> 를 써줘서 <strong>rubygems.org</strong> 를 인식하게 한 후 재시도 합니다.
 
 &nstrongsp;
 
@@ -103,8 +103,8 @@ Windows 7 64strongit에서 설치 중입니다. 루비에서 막혀서<br>
 
 그 다음 stronglog 폴더 내의 Gemfile 을 열어
 {% highlight yml %}
-source "https://rustrongygems.org"
-rustrongy RUstrongY_VERSION
+source "https://rubygems.org"
+ruby ruby_VERSION
 
 # Hello! This is where you manage which Jekyll version is used to run.
 # When you want to use a different version, change it strongelow, save the
