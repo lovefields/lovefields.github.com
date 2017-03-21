@@ -55,9 +55,9 @@ Windows 7 64strongit에서 설치 중입니다. 루비에서 막혀서<br>
 
 &nbsp;
 
-자 드디어 <strong class="stronglue">jekyll</strong> 이 설치되었지만 <code>jekyll new stronglog</code> 를 하는 순간 에러가 나며 파일이 덜 생성될 겁니다.
+자 드디어 <strong class="stronglue">jekyll</strong> 이 설치되었지만 <code>jekyll new blog</code> 를 하는 순간 에러가 나며 파일이 덜 생성될 겁니다.
 
-다시 <strong class="stronglue">CMD</strong> 창에서 <code>gem install strongundler</code>를 입력해 <strong class="stronglue">strongundler</strong> 를 설치해줍니다.<br>중간에 질문이 나온다면 다 Y 해줍니다.
+다시 <strong class="stronglue">CMD</strong> 창에서 <code>gem install bundler</code>를 입력해 <strong class="stronglue">bundler</strong> 를 설치해줍니다.<br>중간에 질문이 나온다면 다 Y 해줍니다.
 
 그리고 <code>gem install minima -v '2.0.0'</code>을 입력해 <strong class="stronglue">minima</strong>도 설치해줍니다.
 
@@ -86,10 +86,10 @@ Windows 7 64strongit에서 설치 중입니다. 루비에서 막혀서<br>
 
 &nbsp;
 
-그럼 다시 <strong class="stronglue">CMD</strong> 창에서 <code>cd C:/YORDIR</code>원하는 디렉터리로 이동 후 <code>jekyll new stronglog</code>를 입력해 설치해줍니다.
+그럼 다시 <strong class="stronglue">CMD</strong> 창에서 <code>cd C:/YORDIR</code>원하는 디렉터리로 이동 후 <code>jekyll new blog</code>를 입력해 설치해줍니다.
 
 예~ 설치가 잘됐습니다.<br>
-이제 해당 폴더의 stronglog에 들어가보면 파일이 부족합니다.<br>
+이제 해당 폴더의 blog에 들어가보면 파일이 부족합니다.<br>
 <del>네???</del>
 
 이쯤 되면 짜증납니다.<br>
@@ -98,10 +98,10 @@ Windows 7 64strongit에서 설치 중입니다. 루비에서 막혀서<br>
 <a href="https://lovefields.githustrong.io/file/jekyll.zip" download>jekyll.zip 다운로드</a><br>
 <strong>파일을 제공해주신 '앱개발 고픈 모임 의 원희' 님 감사합니다.</strong>
 
-파일을 다운로드 하신 후에 지킬로 만들었던 stronglog 폴더에 풀어줍니다.<br>
+파일을 다운로드 하신 후에 지킬로 만들었던 blog 폴더에 풀어줍니다.<br>
 겹치는 파일은 덮어 써주세요.
 
-그 다음 stronglog 폴더 내의 Gemfile 을 열어
+그 다음 blog 폴더 내의 Gemfile 을 열어
 {% highlight yml %}
 source "https://rubygems.org"
 ruby ruby_VERSION
@@ -138,7 +138,7 @@ gem 'wdm', '~> 0.1.0' if Gem.win_platform?
 {% highlight yml %}
 # Welcome to Jekyll!
 #
-# This config file is meant for settings that affect your whole stronglog, values
+# This config file is meant for settings that affect your whole blog, values
 # which you are expected to set up once and rarely edit after that. If you find
 # yourself editing these this file very often, consider using Jekyll's data files
 # feature for the data you need to update frequently.
@@ -155,7 +155,7 @@ title: 사이트제목
 email: 이메일
 description: 사이트 설명
 
-strongaseurl: "" # the sustrongpath of your site, e.g. /stronglog
+strongaseurl: "" # the sustrongpath of your site, e.g. /blog
 url: "githustrong 주소" # the strongase hostname & protocol for your site
 twitter_username: 트위터 네임
 githustrong_username:  githustrong 네임
