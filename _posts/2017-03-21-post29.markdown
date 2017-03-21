@@ -1,0 +1,252 @@
+---
+layout: post
+title:  "SQLite Bulk Db Batch Insert & Transaction"
+date: 2017-03-21 10:00:00 +0900
+author: 민갤
+description: Android Studio 
+keywords : Android Studio,Android,Studio,SQLite,Database,Transaction,insert,bulk,batch,SQLiteDatabase
+category : android
+---
+
+SQLite를 사용하던 중 1000건 이상의 자료를 Insert하려니 속도가 느리다.<br>
+다음은 속도 향상을 위해 사용해본 방법들이다.<br>
+<br>
+<br>
+
+<strong>&#149; Database</strong>
+{% highlight java %}
+public class DbSchema {
+
+    public static final class Table {
+        public static final String NAME = "mytable";
+
+        public static final class Cols {
+            public static final String UUID = "uuid";
+            public static final String NAME = "name";
+            public static final String MEMO = "memo";
+        }
+    }
+}
+{% endhighlight %}
+
+{% highlight java %}
+public class DbHelper extends SQLiteOpenHelper {
+    private static final int VERSION = 1;
+    private static final String DATABASE_NAME = "DbTable";
+
+    public DbHelper(Context context) {
+        super(context, DATABASE_NAME, null, VERSION);
+    }
+
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+
+        db.execSQL("CREATE TABLE " + DbSchema.Table.NAME + " ( " +
+                DbSchema.Table.Cols.UUID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                DbSchema.Table.Cols.NAME + ", " +
+                DbSchema.Table.Cols.MEMO + ");");
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int i, int i1) {
+
+    }
+
+    public void dateAllAdd(String name, String memo) {
+        // SQL Insert
+    }
+}
+{% endhighlight %}
+<br>
+<br>
+<br>
+
+    
+<strong class="h2">SQL Insert: DbHelper 내부</strong><br>
+<br>
+
+<strong>&#149; SQLiteDatabase를 메소드 내부에 두었을 경우</strong>
+{% highlight java %}
+    public void dateAllAdd(String name, String memo) {
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL("insert into " + DbSchema.Table.NAME +
+                " values(null, '" + name + "', '" + memo + "');");
+	db.close();
+    }
+{% endhighlight %}
+{% highlight java %}
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        DbHelper dbHelper = new DbHelper(MainActivity.this);
+
+        for (int i = 0; i < 10; i++)
+            for (int j = 0; j < 365; j++)
+                dbHelper.dateAllAdd("name" + i + "" + j, "memo");
+    }
+}
+{% endhighlight %}
+하나의 DB만 Insert 한다면 상관 없지만<br>
+다수의 DB를 Insert 하는 데 사용할 경우 비효율적이다.<br>
+<span class="blue">DB 3650건: 33,910,259,102(ns) = 33초</span><br>
+<br>
+
+<strong>&#149; SQLiteDatabase를 메소드 외부(Activity 내부)에 두었을 경우</strong>
+{% highlight java %}
+    public void dateAllAdd(SQLiteDatabase db, String name, String memo) {
+        db.execSQL("insert into " + DbSchema.Table.NAME +
+                " values(null, '" + name + "', '" + memo + "');");
+    }
+{% endhighlight %}
+{% highlight java %}
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
+
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        for (int i = 0; i < 10; i++)
+            for (int j = 0; j < 365; j++)
+                dbHelper.dateAllAdd(db, "name" + i + "" + j, "memo");
+
+        db.close();
+    }
+}
+{% endhighlight %}
+SQLite를 열고 닫느라 낭비했던 시간을 줄여도 여전히 오래 걸린다.<br> 
+<span class="blue">DB 3650건: 20,796,314,836(ns) = 20초</span><br>
+
+시간을 단축하기 위해 Transaction을 사용해보자.<br>
+<br>
+
+<strong>&#149; Transaction 사용하기</strong>
+{% highlight java %}
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
+
+        db.beginTransaction();
+        try {
+            for (int i = 0; i < 10; i++)
+                for (int j = 0; j < 365; j++)
+                    dbHelper.dateAllAdd(db, "name" + i + "" + j, "memo");
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+        } finally {
+            db.endTransaction();
+        }
+	db.close();
+    }
+}
+{% endhighlight %}
+Insert 할 때마다 발생되었을 Transaction을 작업이 다 끝난 마지막 한번만 발생하도록 한다.<br>
+<span class="blue">DB 3650건: 675,631,198(ns) = 0.6초</span><br>
+
+일련의 작업 동안 한 번의 Transaction을 했다는 건 DB를 한 번에 저장했다는 걸 말한다. (Transaction의 원자성)<br>
+<br>
+<br>
+<br>
+
+
+<strong class="h2">SQL Insert: DbHelper 외부</strong><br>
+<br>
+
+<strong>&#149; Transaction과 Batch Insert 사용</strong>
+{% highlight java %}
+    public void dateAllAdd(String name, String memo) {
+        // SQL Insert
+    }
+{% endhighlight %}
+{% highlight java %}
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
+        DbHelper dbHelper = new DbHelper(MainActivity.this);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        db.beginTransaction();
+        try {
+            for (int i = 0; i < 10; i++)
+                for (int j = 0; j < 365; j++){
+                    values.put(DbSchema.Table.Cols.NAME, "name"+i+""+j);
+                    values.put(DbSchema.Table.Cols.MEMO, "memo");
+
+                    db.insert(DbSchema.Table.NAME, null, values);
+                    values.clear();
+                }
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+        } finally {
+            db.endTransaction();
+        }
+        db.close();
+    }
+}
+{% endhighlight %}
+메소드를 만들지 않고 ContentValues를 사용해 Insert했다.<br>
+근소한 차이일 수도 있지만 좀 더 속도가 빨라졌다.<br>
+<span class="blue">DB 3650건: 437,857,656(ns) = 0.4초</span><br>
+<br>
+<br>
+<br>
+
+
+<strong class="h2"> Transaction = 작업 묶기</strong><br>
+분리할 수 없는 하나의 단위.<br>
+1. 원자성(Atomicity): 작업이 전부 완료되거나 전부 취소된다.<br>
+전자상거래를 예로 들면, 거래도중에 문제가 발생할 경우 모든 거래 작업을 취소하는 것과 같다.<br>
+만일 문제가 발생한 시점까지의 작업이 그대로 유지되었다고 가정해보자.<br>
+소비자는 상품 주문은 안됐는데 금액이 빠져나갔다던가, 판매자는 입금 완료되어 있어 물품을 보냈는데 금액이 들어오지 않았다던가<br>
+어느 쪽이든 손해를 볼 수 있다.<br>
+2. 일관성(Consistency): 사용되는 모든 데이터는 일관되어야 한다.<br>
+Transaction이 진행되는 동안에는 Database가 변경되더라도 처음에 참조한 Database로 작업이 진행된다. <br>
+3. 독립성(Isolation): 현재 Transaction이 접근하고 있는 데이터는 다른 Transaction으로부터 격리 되어야 한다.<br>
+둘 이상의 Transaction이 실행되고 있을 때 서로의 연산에 끼어들 수 없다.<br>
+Transaction이 진행되기 전과 완료된 후에 상태를 볼 수 있다. 진행되는 동안에는 중간 데이터를 볼 수 없다.<br>
+4. 영속성(Durability): Transaction이 정상적으로 종료되면 그 결과는 시스템에 오류가 발생하더라도 시스템에 영구적으로 적용되어야 한다.<br>
+<br>
+<br>
+<br>
+
+
+<strong class="h2"> Tip. 작업 소요 시간 체크하기 </strong><br>
+{% highlight java %}
+    long timeStart = 0, timeEnd = 0;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
+
+        timeStart = System.nanoTime();
+
+        for (int i = 0; i < 10; i++)
+            ...
+
+        timeEnd = System.nanoTime();
+
+        Log.d("TimeCheck", "time: " + (timeEnd - timeStart));
+    }
+{% endhighlight %}
+<br>
+<br>
+
+Transaction 참고 사이트 [하나], [두이], [석삼]<br>
+<br>
+
+
+
+
+[하나]: http://egloos.zum.com/sweeper/v/3003805
+[두이]: http://mommoo.tistory.com/62
+[석삼]: http://egloos.zum.com/springmvc/v/495798

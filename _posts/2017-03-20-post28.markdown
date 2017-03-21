@@ -33,13 +33,13 @@ alert();
 |a|undefind|
 |b|undefind|
 
-우선 변수가 들어갈수 있는 공간을 만드는 셈이죠.
+우선 변수가 들어갈 수 있는 공간을 만드는 셈이죠.
 
-그다음은 함수 등 명령어들을 수집합니다.<br>
+그 다음은 함수 등 명령어들을 수집합니다.<br>
 이 단계에서는 실행이 되지 않아요.
 
-그다음 this value 가 선언 되는데요.<br>
-이 값은 아래에서 자세히 다뤄드리겟습니다.
+그 다음 this value 가 선언 되는데요.<br>
+이 값은 아래에서 자세히 다뤄드리겠습니다.
 
 그리고 나서 변수에 값이 들어가고 비로소 명령어들이 실행됩니다.<br>
 함수가 있다면 함수 내에서도 똑같이 돌아가게 되지요.
@@ -61,7 +61,7 @@ thisvalue();
 
 {% endhighlight %}
 
-위와 같은 코드에서 <strong class="blue">this value</strong> 는 <strong>window</strong> 가 나오게 될겁니다.<br>
+위와 같은 코드에서 <strong class="blue">this value</strong> 는 <strong>window</strong> 가 나오게 될 겁니다.<br>
 기본적으로 함수는 <strong>window</strong>에 저장되고 <strong>window</strong>에서 실행되었기 때문이죠.
 
 <div class="emp20"></div>
@@ -76,7 +76,7 @@ console.log(a.value());
 {% endhighlight %}
 
 위와 같은 코드에서 찍히는 콘솔은 <strong>'hollow'</strong> 입니다.<br>
-변수 <strong>a</strong>에서 실행되었기 떄문에 변수 <strong>a</strong>에 있는 <strong>text</strong>를 찾아가게 되는거죠.<br>
+변수 <strong>a</strong>에서 실행되었기 때문에 변수 <strong>a</strong>에 있는 <strong>text</strong>를 찾아가게 되는 거죠.<br>
 여기서의 <strong class="blue">this value</strong> 는 변수 <strong>a</strong> 입니다.
 
 <div class="emp20"></div>
@@ -108,4 +108,4 @@ button.addEventListener('click',function(){
 
 자 위의 코드는 <strong>button</strong>을 선택해서 이벤트를 부여했습니다.<br>
 여기서 <strong class="blue">this value</strong>가 <strong>button</strong> 인 이유는 <strong>button</strong>에게 이벤트를 부여되었고 <strong>button</strong>을 통해 실행됩니다.<br>
-즉 함수가 실행되는 시점은 <strong>button</strong>에게 할당되어 있는것이죠.
+즉 함수가 실행되는 시점은 <strong>button</strong>에게 할당되어 있는 것이죠.
