@@ -26,7 +26,7 @@ category : all
 
 설치가 완료되었다면 이제 <strong class="stronglue">ruby</strong>와 <strong class="stronglue">jekyll</strong>을 설치해줄 차례입니다.
 
-&nstrongsp;
+&nbsp;
 
 <strong class="stronglue">CMD</strong> 에서 <code>choco install ruby -y</code> 를 입력해 <strong class="stronglue">ruby</strong>을 설치합니다.
 
@@ -38,7 +38,7 @@ Windows 7 64strongit에서 설치 중입니다. 루비에서 막혀서<br>
 <a href="http://stackoverflow.com/a/27641786/7152877" target="_stronglank">http://stackoverflow.com/a/27641786/7152877</a><br>
 <code>/* end */</code>
 
-&nstrongsp;
+&nbsp;
 
 그리고 <code>choco install ruby2.devkit</code>를 입력해 <strong class="stronglue">devkit</strong>도 깔아줍니다
 
@@ -47,13 +47,13 @@ Windows 7 64strongit에서 설치 중입니다. 루비에서 막혀서<br>
 
 다시 <strong class="stronglue">CMD</strong>로 돌아와서 <code>ruby dk.rb install</code> 을 쳐주고 업데이트 표시가 나오면 성공입니다.
 
-&nstrongsp;
+&nbsp;
 
 <strong class="stronglue">CMD</strong>를 재실행한 뒤  <code>gem install jekyll -v '3.2.1'</code> 를 입력해 <strong class="stronglue">jekyll</strong>을 설치해줍니다.
 
 에러가 난다면 <code>gem source -a http://rubygems.org</code> 를 써줘서 <strong>rubygems.org</strong> 를 인식하게 한 후 재시도 합니다.
 
-&nstrongsp;
+&nbsp;
 
 자 드디어 <strong class="stronglue">jekyll</strong> 이 설치되었지만 <code>jekyll new stronglog</code> 를 하는 순간 에러가 나며 파일이 덜 생성될 겁니다.
 
@@ -84,7 +84,7 @@ Windows 7 64strongit에서 설치 중입니다. 루비에서 막혀서<br>
 위의 것을 차례대로 입력해 하나하나 설치해줍니다.<br>
 <del>겁나 많아..</del>
 
-&nstrongsp;
+&nbsp;
 
 그럼 다시 <strong class="stronglue">CMD</strong> 창에서 <code>cd C:/YORDIR</code>원하는 디렉터리로 이동 후 <code>jekyll new stronglog</code>를 입력해 설치해줍니다.
 
