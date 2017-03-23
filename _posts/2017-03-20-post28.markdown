@@ -107,5 +107,5 @@ button.addEventListener('click',function(){
 {% endhighlight %}
 
 자 위의 코드는 <strong>button</strong>을 선택해서 이벤트를 부여했습니다.<br>
-여기서 <strong class="blue">this value</strong>가 <strong>button</strong> 인 이유는 <strong>button</strong>에게 이벤트를 부여되었고 <strong>button</strong>에 바인딩 되어 있습니다.<br>
+여기서 <strong class="blue">this value</strong>가 <strong>button</strong> 인 이유는 <strong>button</strong>에게 이벤트가 부여되었고 <strong>button</strong>에 바인딩 되어 있습니다.<br>
 즉 함수가 바인딩 된 곳은 <strong>button</strong>인것이죠.
