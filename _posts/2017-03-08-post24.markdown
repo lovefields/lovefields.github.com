@@ -21,7 +21,7 @@ category : android
     android:orientation="vertical">
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/setting_category_recycler_view"
+            android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingLeft="20dp"
@@ -75,7 +75,7 @@ public class SwipeDeleteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_swipe_delete);
 
-        re = (RecyclerView) findViewById(R.id.setting_category_recycler_view);
+        re = (RecyclerView) findViewById(R.id.recycler_view);
         re.setLayoutManager(new LinearLayoutManager(this));
         re.setAdapter(new SwipeDeleteAdapter(setDateList()));
         re.setHasFixedSize(true); // 크기 고정
@@ -128,9 +128,9 @@ public class SwipeDeleteActivity extends AppCompatActivity {
                 if (actionState == ItemTouchHelper.ACTION_STATE_SWIPE) {
                     View itemView = viewHolder.itemView;
 
-                    removeMark = ContextCompat.getDrawable(SettingCategoryActivity.this, R.drawable.ic_remove_24dp);
+                    removeMark = ContextCompat.getDrawable(context, R.drawable.ic_remove_24dp);
                     removeMark.setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP);
-                    removeMarkMargin = (int) SettingCategoryActivity.this.getResources().getDimension(R.dimen.ic_remove_margin);
+                    removeMarkMargin = (int) context.getResources().getDimension(R.dimen.ic_remove_margin);
     
                     // Item 을 좌측으로 Swipe 했을 때 Background 변화: ItemTouchHelper.LEFT
                     if (dX < 1) {
