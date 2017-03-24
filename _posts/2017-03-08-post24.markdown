@@ -69,7 +69,6 @@ import java.util.List;
 public class SwipeDeleteActivity extends AppCompatActivity {
     List list;
     RecyclerView re;
-    boolean flagDraw; // default false.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,16 +97,8 @@ public class SwipeDeleteActivity extends AppCompatActivity {
             // ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT | ItemTouchHelper.DOWN | ItemTouchHelper.UP
             // 하면 상하좌우 다 움직임
 
-            Drawable background;
-            Drawable removeMark;
+            Drawable background, removeMark;
             int removeMarkMargin;
-
-            private void itemDrawChange() {
-                removeMark = ContextCompat.getDrawable(SettingCategoryActivity.this, R.drawable.ic_remove_24dp);
-                removeMark.setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP);
-                removeMarkMargin = (int) SettingCategoryActivity.this.getResources().getDimension(R.dimen.ic_remove_margin);
-                flagDraw = true;
-            }
 
             // 드래그 할 때 호출
             @Override
@@ -137,10 +128,10 @@ public class SwipeDeleteActivity extends AppCompatActivity {
                 if (actionState == ItemTouchHelper.ACTION_STATE_SWIPE) {
                     View itemView = viewHolder.itemView;
 
-                    if (!flagDraw) {
-                        itemDrawChange();
-                    }
-
+                    removeMark = ContextCompat.getDrawable(SettingCategoryActivity.this, R.drawable.ic_remove_24dp);
+                    removeMark.setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP);
+                    removeMarkMargin = (int) SettingCategoryActivity.this.getResources().getDimension(R.dimen.ic_remove_margin);
+    
                     // Item 을 좌측으로 Swipe 했을 때 Background 변화: ItemTouchHelper.LEFT
                     if (dX < 1) {
                         background = new ColorDrawable(Color.parseColor("#FFD32F2F"));
