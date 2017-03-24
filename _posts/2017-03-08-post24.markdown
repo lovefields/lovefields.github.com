@@ -24,7 +24,7 @@ category : android
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingLeft="20dp"
+            android:paddingLeft="16dp"
             />
 </RelativeLayout>
 {% endhighlight %}
@@ -36,14 +36,14 @@ category : android
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="50dp">
+    android:layout_height="48dp">
 
     <TextView
         android:id="@+id/tv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_vertical"
-        android:padding="10dp"/>
+        android:padding="4dp"/>
 </FrameLayout>
 {% endhighlight %}
 <br>
@@ -97,8 +97,8 @@ public class SwipeDeleteActivity extends AppCompatActivity {
             // ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT | ItemTouchHelper.DOWN | ItemTouchHelper.UP
             // 하면 상하좌우 다 움직임
 
-            Drawable background, removeMark;
-            int removeMarkMargin;
+            Drawable background, mark;
+            int markMargin;
 
             // 드래그 할 때 호출
             @Override
@@ -128,9 +128,9 @@ public class SwipeDeleteActivity extends AppCompatActivity {
                 if (actionState == ItemTouchHelper.ACTION_STATE_SWIPE) {
                     View itemView = viewHolder.itemView;
 
-                    removeMark = ContextCompat.getDrawable(context, R.drawable.ic_remove_24dp);
-                    removeMark.setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP);
-                    removeMarkMargin = (int) context.getResources().getDimension(R.dimen.ic_remove_margin);
+                    mark = ContextCompat.getDrawable(context, R.drawable.ic_remove_24dp);
+                    mark.setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP);
+                    markMargin = (int) context.getResources().getDimension(R.dimen.ic_remove_margin);
     
                     // Item 을 좌측으로 Swipe 했을 때 Background 변화: ItemTouchHelper.LEFT
                     if (dX < 1) {
@@ -141,15 +141,15 @@ public class SwipeDeleteActivity extends AppCompatActivity {
 
                         // Mark 그리기
                         int itemHeight = itemView.getBottom() - itemView.getTop(); // Item 높이
-                        int intrinsicWidth = removeMark.getIntrinsicWidth(); // Intrinsic: 본질적 - xMark 의 실제 길이
-                        int intrinsicHeight = removeMark.getIntrinsicHeight();
+                        int markWidth = mark.getIntrinsicWidth(); // Intrinsic: 본질적 - xMark 의 실제 길이
+                        int markHeight = mark.getIntrinsicHeight();
 
-                        int removeMarkLeft = itemView.getRight() - removeMarkMargin - intrinsicWidth;
-                        int removeMarkRight = itemView.getRight() - removeMarkMargin;
-                        int removeMarkTop = itemView.getTop() + (itemHeight - intrinsicHeight) / 2;
-                        int removeMarkBottom = removeMarkTop + intrinsicHeight;
-                        removeMark.setBounds(removeMarkLeft, removeMarkTop, removeMarkRight, removeMarkBottom);
-                        removeMark.draw(c);
+                        int markLeft = itemView.getRight() - markMargin - markWidth;
+                        int markRight = itemView.getRight() - markMargin;
+                        int markTop = itemView.getTop() + (itemHeight - markHeight) / 2;
+                        int markBottom = markTop + markHeight;
+                        mark.setBounds(markLeft, markTop, markRight, markBottom);
+                        mark.draw(c);
                     } else { // ItemTouchHelper.RIGHT
                         background = new ColorDrawable(Color.parseColor("#FF388E3C"));
                         background.setBounds(itemView.getLeft(), itemView.getTop(), itemView.getLeft() + (int) dX, itemView.getBottom());
