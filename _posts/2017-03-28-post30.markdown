@@ -197,7 +197,7 @@ $('.tap02 .btn_area button').click(function(){
 
 {% highlight javascript %}
 $.fn.tap = function(){
-  va self = $(this),
+  var self = $(this),
      btn = self.find('.btn_area button'),
      item = self.find('.tap_item');
 
