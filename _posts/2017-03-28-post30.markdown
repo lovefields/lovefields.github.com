@@ -235,7 +235,7 @@ $('a').click();
 {% endhighlight %}
 는 아래와 같이
 {% highlight javascript %}
-$('a.link01').click();
+$('.link01').click();
 {% endhighlight %}
 <div class="emp20"></div>
 
