@@ -74,6 +74,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         ...
+	
+	TextView tv = (TextView) findViewById(R.id.tv);
+        EditText edt = (EditText) findViewById(R.id.edt);
 
         tv.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -99,9 +102,10 @@ private InputMethodManager inputMMg;
 public class MainActivity extends AppCompatActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {        
         ...
-       
+        
+	EditText edt = (EditText) findViewById(R.id.edt);
 	edt.setOnFocusChangeListener(new EditText.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
@@ -113,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void inputWindowHide() {
         inputMMg = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-        inputMMg.hideSoftInputFromWindow(edt_money.getWindowToken(), 0);
+        inputMMg.hideSoftInputFromWindow(edt.getWindowToken(), 0);
     }
 }
 {% endhighlight %}
@@ -126,18 +130,30 @@ FocusChangeListener와 ClickListener를 두 개다 적용했을 때 Focus가 먼
 <br>
   
 <strong class="h2">키보드 입력 막기</strong><br>
-EditText를 Click 했을 때 키보드 입력창이 나오지 않게 하는 방법
+EditText를 Click 했을 때 키보드 입력창이 나오지 않게 하는 방법<br>
 {% highlight java %}
-public class MainActivity extends AppCompatActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        ...
-       
+        EditText edt = (EditText) findViewById(R.id.edt);
 	edt.setKeyListener(null);
+{% endhighlight %}
+<br>
+<br>
+  
+<strong class="h2">키보드 보이기</strong><br>
+{% highlight java %}
+        EditText edt = (EditText) findViewById(R.id.edt);
+        InputMethodManager inputMMg = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+        inputMMg.showSoftInput(edt, InputMethodManager.SHOW_IMPLICIT);
+{% endhighlight %}
 
-    }
-}
+만일 위의 코드가 먹히지 않는 다면 딜레이를 주어야 한다.<br>
+{% highlight java %}
+        EditText edt = (EditText) findViewById(R.id.edt);
+        new Handler().postDelayed(new Runnable() {
+            public void run() {
+                inputMMg = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                inputMMg.showSoftInput(edt, InputMethodManager.SHOW_IMPLICIT);
+            }
+        }, 100);
 {% endhighlight %}
 <br>
 <br>
@@ -160,15 +176,9 @@ public class MainActivity extends AppCompatActivity {
 </LinearLayout>
 {% endhighlight %}
 {% highlight java %}
-public class MainActivity extends AppCompatActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        ...
-
-        edt.requestFocus();
-    }
-}
+        EditText edt1 = (EditText) findViewById(R.id.edt1);
+	EditText edt2 = (EditText) findViewById(R.id.edt2);
+        edt2.requestFocus();
 {% endhighlight %}
 <br>
 <br>
