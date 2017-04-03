@@ -3,7 +3,7 @@ layout: post
 title:  "Front End 최적화"
 date:   2017-03-28 10:00:00 +0900
 author: Lovefield
-description: Front End 에서 할수 있는 브라우저 최적화 작업에 대해서 설명하는 글입니다.
+description: Front End 에서 할 수 있는 브라우저 최적화 작업에 대해서 설명하는 글입니다.
 keywords : HTML5,CSS3,javascript,브라우저,최적화,성능,기능,효율,빠름
 image : /img/front_end.png
 category : front_end
@@ -13,22 +13,22 @@ category : front_end
 오늘은 <strong>Front end</strong>가 할 수 있는 <strong>최적화</strong>에 대해서 설명을 해드리려 합니다.
 
 우선 <strong>Front end</strong> 작업은 <strong>Designer</strong>의 영향을 어마어마하게 받습니다.<br>
-그렇기에 정말로 최적화를 하기 위해서는 <strong>Designer</strong>의 협력이 필요하며, <strong>Designer</strong>가 <strong>Front end</strong>에 대해서, 나의 디자인이 어떻게 표현되는지에 대해서 알고있어야 한다고 생각합니다.<br>
+그렇기에 정말로 최적화를 하기 위해서는 <strong>Designer</strong>의 협력이 필요하며, <strong>Designer</strong>가 <strong>Front end</strong>에 대해서, 나의 디자인이 어떻게 표현되는지에 대해서 알고 있어야 한다고 생각합니다.<br>
 기본적으로 저는 플렛 디자인을 선호하며 <strong>css</strong>로 표현하기 가장 쉽기 때문입니다.
 
-<strong>아,그리고 IE는 브라우저 취급을 안해줍니다 하하하하</strong><del>IE 사라져버려</del>
+<strong>아, 그리고 IE는 브라우저 취급을 안 해줍니다. 하하하하</strong><del>IE 사라져버려</del>
 2017-03-28
 <p class="h2"><strong>HTML</strong></p>
 
 최대한 불필요한 요소의 사용을 줄입니다.<br>
 HTML 요소가 많을수록 시스템 적으로 느려지기 때문인데요.<br>
 실제로 유저가 체감할 수 있는 정도는 아니지만, 1000개, 10000개 의 불필요한 요소가 있다면?<br>
-소규모 사이트의 경우는 몰라도 대규모라면 랜더링 하는 속도는 차이가 날 수 밖에 없겟죠.
+소규모 사이트의 경우는 몰라도 대규모라면 랜더링 하는 속도는 차이가 날 수 밖에 없겠죠.
 
 다음 탭 구조를 예로 들어보죠.
 {% highlight html %}
 <div class="wrapComTap">
-	<div class="wrapComT">이번주 식단표</div>
+	<div class="wrapComT">이번 주 식단표</div>
 	<div class="wComM">
 		<div class="day">
 			<ul class="list">
@@ -71,12 +71,12 @@ HTML 요소가 많을수록 시스템 적으로 느려지기 때문인데요.<br
 </div>
 {% endhighlight %}
 
-이야..정말 불필요한게 많은 코드입니다.<br>
+이야..정말 불필요한 게 많은 코드입니다.<br>
 좀더 시맨틱 하게 바꿔보죠.
 
 {% highlight html %}
 <section class="timetable">
-	<h1>이번주 식단표</h1>
+	<h1>이번 주 식단표</h1>
 
 	<div class="btn_area">
 		<button data-day="0">월</button>
@@ -96,20 +96,20 @@ HTML 요소가 많을수록 시스템 적으로 느려지기 때문인데요.<br
 </section>
 {% endhighlight %}
 
-정확한 디자인이 없어서 예시이므로 자잘 한것들은 넘어가겟습니다.<br>
+정확한 디자인이 없어서 예시이므로 자잘 한 것들은 넘어가겠습니다.<br>
 먼저 해당 탭 영역에 대한 캡션은 `heading`태그로 변경합니다.<br>
-탭버튼 영역은 리스트가 아니므로 `div`하나로만 감싸며 `ul>li`구조는 버립니다.<br>
-`a`태그는 페이지 이동에만 쓰여야하며 `href` 에는 `javascript`가 들어갈 수 없으므로 버리고 `button`으로 대체합니다.<br>
+탭 버튼 영역은 리스트가 아니므로 `div`하나로만 감싸며 `ul>li`구조는 버립니다.<br>
+`a`태그는 페이지 이동에만 쓰여야 하며 `href` 에는 `javascript`가 들어갈 수 없으므로 버리고 `button`으로 대체합니다.<br>
 그리고 컨트롤을 위한 `data-day` 값을 사용합니다.
 
-실질적으로 보여지는 부분에도 공통적인 뷰이므로 `ul>li` 구조를 버리고 공통 클레스를 가져갑니다.<br>
+실질적으로 보여지는 부분에도 공통적인 뷰이므로 `ul>li` 구조를 버리고 공통 클래스를 가져갑니다.<br>
 그리고 역시 컨트롤을 위한 `data-day` 값을 사용합니다.<br>
-자 간결해졋죠?
+자 간결해졌죠?
 
 <p class="h2"><strong>CSS</strong></p>
 
-`css`에는 `less`, `sass` 와같은 전처리기와 `OOCSS`, `SMACSS`, `BEM`와 같은 방법론이 존재합니다.<br>
-그중 저는 `SMACSS`를 조금 변형 해서 사용하고 있습니다.
+`css`에는 `less`, `sass` 와 같은 전처리기와 `OOCSS`, `SMACSS`, `BEM`와 같은 방법론이 존재합니다.<br>
+그 중 저는 `SMACSS`를 조금 변형 해서 사용하고 있습니다.
 
 방법은 다음과 같습니다.
 
@@ -142,7 +142,7 @@ footer{padding:20px 0;border-top:2px solid #f0f3f7;line-height:1.5}
 {% endhighlight %}
 
 제 블로그의 layout css 입니다.<br>
-블로그가 단순해서 8줄정도로 다 사용중입니다.
+블로그가 단순해서 8줄정도로 다 사용 중입니다.
 
 <strong class="blue">Module</strong>
 {% highlight css %}
@@ -159,16 +159,16 @@ footer{padding:20px 0;border-top:2px solid #f0f3f7;line-height:1.5}
 .title01 .category_menu{float:right;height:40px}
 {% endhighlight %}
 
-모듈입니다, 각각의 모듈을 클레스 단위로 묶어서 사용하며 중복코드가 상당수 사집니다.<br>
-타입이나 색상등 조금씩 다른부분인 추가 클레스로 만들어줍니다.
+모듈입니다, 각각의 모듈을 클래스 단위로 묶어서 사용하며 중복코드가 상당수 사집니다.<br>
+타입이나 색상 등 조금씩 다른 부분인 추가 클래스로 만들어줍니다.
 
 <strong class="blue">Active</strong>도 있지만 저는 <strong class="blue">Module</strong>안에 포함시키는 편입니다.
 
 다음은 렌더링입니다.
-  - 전역선택자 `*` 는 모든 태그를 선택합니다. 즉 HTML상에서 태그가 하나 추가될때마다 시스템적으로는 느려집니다.
-  - `!important` 는 강제 스타일 적용입니다. 셀렉트 우선순위에 의한 상속을 무시해 유지보수와 확장성에 방해가 됩니다. 또한 렌더링 방식에 있어서 안좋은 것으로 알고 있습니다.
-  - `IE`핵의 사용은 비표준 브라우저인 `IE`를 지원하기 위한 것으로 CSS3와 웹표준을 지향해 불필요한 렌더링방식을 줄여야 할 것 같습니다.
-  - `vendor prefix` 는 구버전 브라우저를 지원하기위한 코드입니다 현재는 어쩔수 없이 사용하는 상태입니다.
+  - 전역선택자 `*` 는 모든 태그를 선택합니다. 즉 HTML상에서 태그가 하나 추가될 때마다 시스템적으로는 느려집니다.
+  - `!important` 는 강제 스타일 적용입니다. 셀렉트 우선순위에 의한 상속을 무시해 유지보수와 확장성에 방해가 됩니다. 또한 렌더링 방식에 있어서 안 좋은 것으로 알고 있습니다.
+  - `IE`핵의 사용은 비표준 브라우저인 `IE`를 지원하기 위한 것으로 CSS3와 웹 표준을 지향해 불필요한 렌더링 방식을 줄여야 할 것 같습니다.
+  - `vendor prefix` 는 구버전 브라우저를 지원하기 위한 코드입니다 현재는 어쩔 수 없이 사용하는 상태입니다.
 
 <p class="h2"><strong>Javascript</strong></p>
 
@@ -193,7 +193,7 @@ $('.tap02 .btn_area button').click(function(){
 });
 {% endhighlight %}
 
-위와같은 코드는
+위와 같은 코드는
 
 {% highlight javascript %}
 $.fn.tap = function(){
@@ -214,8 +214,8 @@ $('.tap01').tap();
 $('.tap02').tap();
 {% endhighlight %}
 
-이렇게 해 재사용성을 높혀줍니다.<br>
-네이티브로도 가능한 코드들이니 특별한 설명은 생략하겟습니다.
+이렇게 해 재사용성을 높여줍니다.<br>
+네이티브로도 가능한 코드들이니 특별한 설명은 생략하겠습니다.
 <div class="emp20"></div>
 불필요한 depth 도 제거해줍니다.
 
@@ -228,7 +228,7 @@ $('.contact_form .submit')
 {% endhighlight %}
 <div class="emp20"></div>
 이벤트 바인딩은 확실한 요소만 걸어줍니다.
-여러 요소에 바인딩 하는것과 사용할 요소에만 바인딩 하는것은 다릅니다.
+여러 요소에 바인딩 하는 것과 사용할 요소에만 바인딩 하는 것은 다릅니다.
 
 {% highlight javascript %}
 $('a').click();
@@ -239,7 +239,7 @@ $('.link01').click();
 {% endhighlight %}
 <div class="emp20"></div>
 
-이벤트를 바인딩할 요소가 너무 많거나 동적 요소에 대해 바인딩할때. 즉, 이벤트 바인딩 시점에는 해당 요소가 존재하지 않고 나중에 추가될때 이벤트 위임방식(delegate)을 사용합니다.
+이벤트를 바인딩할 요소가 너무 많거나 동적 요소에 대해 바인딩할 때. 즉, 이벤트 바인딩 시점에는 해당 요소가 존재하지 않고 나중에 추가될 때 이벤트 위임방식(delegate)을 사용합니다.
 
 {% highlight javascript %}
 $('.parent').on('click', 'a:not(.acitve)', function(event) { /* do somthing */});
@@ -256,12 +256,12 @@ requestAnimationFrame(fn());
 <div class="emp20"></div>
 
 브라우저에게 2만건의 데이터를 처리하라고 하면 당연히 뻗을 것입니다.<br>
-특수한 상황에서 큰 데이터를 처리할때는 `Web Worker`를 사용하시면 됩니다.
+특수한 상황에서 큰 데이터를 처리할 때는 `Web Worker`를 사용하시면 됩니다.
 
 <div class="emp20"></div>
 <p class="h2"><strong>Design</strong></p>
 
-간단한 불릿이나 간단한 표현같은 것은 css로 표현 가능한 디자인으로 변경해줍니다.
+간단한 불릿이나 간단한 표현 같은 것은 css로 표현 가능한 디자인으로 변경해줍니다.
 
 <p data-height="200" data-theme-id="11417" data-slug-hash="GWXzNJ" data-default-tab="result" data-user="lovefield" data-embed-version="2" data-pen-title="GWXzNJ" class="codepen">See the Pen <a href="http://codepen.io/lovefield/pen/GWXzNJ/">GWXzNJ</a> by Ha Hyun Yong (<a href="http://codepen.io/lovefield">@lovefield</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
@@ -271,10 +271,10 @@ requestAnimationFrame(fn());
 
 <strong class="blue">장점</strong>
 1. 1b의 이미지라도 브라우저가 표현하기 위해서는 서버에 리퀘스트가 발생할 수 밖에 없습니다.
-2. 그에 반에 css로 처리하면 리퀘스트 발생을 줄여 트래픽을 줄일수가 있습니다.
+2. 그에 반에 css로 처리하면 리퀘스트 발생을 줄여 트래픽을 줄일 수가 있습니다.
 
 <strong class="blue">단점</strong>
-1. 그라데이션이나 그래픽적인 디자인 요소는 표현하기 힘듬
+1. 그라데이션이나 그래픽적인 디자인 요소는 표현하기 힘듦
 
 <div class="emp20"></div>
 <strong>icon -&gt; font,svg 처리</strong>
@@ -291,19 +291,19 @@ font icon 제작 방법
 4. 사이트에 적용!
 
 <strong class="blue">장점</strong>
-1. img 와 비교해 사이즈별로 전혀 깨지지 않습니다.
+1. img 와 비교해 사이즈 별로 전혀 깨지지 않습니다.
 2. img에 비해 서버 리퀘스트 발생이 적으며 비교적 가볍게 사용할 수 있습니다.
 3. 모든 디자인 요소를 사용할 수 있습니다.
 
 <strong class="blue">단점</strong>
 1. 그라데이션 표현이 불가능합니다.
 2. 그래픽적 표현이 불가능합니다.
-3. IE 하위 호환성을 고려해야합니다.
+3. IE 하위 호환성을 고려해야 합니다.
 
 <div class="emp20"></div>
 <strong>img font -> web font 처리</strong>
 
-이건 말할것도 없겟죠?
+이건 말할 것도 없겠죠?
 
 <div class="emp20"></div>
 <strong>JS animaction -> CSS3 animation</strong>
@@ -313,9 +313,9 @@ font icon 제작 방법
 2. CSS3로 표현 불가능한 것은 거의 없습니다.
 
 <strong class="blue">단점</strong>
-1. IE 10 미만으로는 호환성을 고려해야합니다.
+1. IE 10 미만으로는 호환성을 고려해야 합니다.
 
 <div class="emp20"></div>
 <strong>Minify</strong>
 
-minify는 실질적으로 작업을 할때 minify를 고려하는것 보다는 작업 후에 툴을 이용해 minify 후 배포하는것이 좋습니다.
+minify는 실질적으로 작업을 할 때 minify를 고려하는 것 보다는 작업 후에 툴을 이용해 minify 후 배포하는 것이 좋습니다.
