@@ -11,6 +11,7 @@ image: /img/gradle.png
 
 사용자가 화면을 swipe하여 페이지를 좌우로 넘겨 볼 수 있게 해주는 안드로이드 레이아웃 매니저 클래스.<br>
 <br>
+<br>
 
 <b class="h2">ViewPager</b><br>
 ViewPager를 사용하기 위해 <span class="blue">support.v4 지원 라이브러리</span>를 등록한다.
@@ -101,6 +102,7 @@ FragmentManager로 순서(position)에 맞게 Activity에 추가해주며, ViewP
 getItem(int)은 화면에 보여줄 Fragment를 반환한다.<br>
 getCount(int)는 생성 가능한 Fragment의 개수를 반환한다. 즉 총 몇 개의 화면을 구성해줄 지를 지정한다.<br>
 <br>
+<br>
 
 <b class="h2">로딩 화면 수 정하기</b><br>
 ViewPager는 현재 화면을 만들 때<br>
@@ -110,6 +112,7 @@ ViewPager는 현재 화면을 만들 때<br>
 {% endhighlight %}
 위 코드로 몇 개의 페이지를 미리 만들어둘 지 변경할 수 있다.<br>
 최소 1부터 입력해야 한다. ex) 1: 좌우 1개씩 생성, 2: 좌우 2개씩 생성<br>
+<br>
 <br>
 
 <b class="h2"> 페이지 하나만 생성하기 </b><br>
@@ -126,7 +129,6 @@ ViewPager는 현재 화면을 만들 때<br>
     }
 {% endhighlight %}
 ViewPager 내부가 아닌 각 Fragment 내부에서 Override 하여 사용한다.<br>
-Fragment가 setUserVisibleHint 호출 후 onCreateView를 호출하기 때문에<br>
 if(true) 안에는 오류가 발생하지 않는 범위 내에서 코드를 짜야 한다.<br>
 <br>
 
@@ -136,7 +138,7 @@ if(true) 안에는 오류가 발생하지 않는 범위 내에서 코드를 짜�
 Swipe: (보이기 전)isVisibleToUser(false) - onCreate - onCreateView - onResume - (보이면)<span class="blue">isVisibleToUser(true)</span><br>
 Button : (이동)isVisibleToUser(false) - <span class="blue">isVisibleToUser(true)</span> - onCreate - onCreateView - onResume <br>
 
-때문에 Button을 사용할 경우 오류가 발생한다. <br>
+때문에 단순히 저 메소드만 사용할 경우 오류가 발생한다. <br>
 이를 방지하고자 필자는 flag 하나를 같이 사용했다.<br>
 {% highlight java %}
 public class TowFragment extends Fragment {
@@ -169,6 +171,7 @@ public class TowFragment extends Fragment {
 }
 {% endhighlight %}
 <br>
+<br>
 
 <b class="h2">페이지 보기</b><br>
 ViewPager는 언제나 첫 번째 position에 있는 Fragment를 가장 먼저 보여주도록 되어있다.<br>
@@ -176,6 +179,7 @@ ViewPager는 언제나 첫 번째 position에 있는 Fragment를 가장 먼저 �
 {% highlight java %}
         viewPager.setCurrentItem(yourSelectPosition);
 {% endhighlight %}
+<br>
 <br>
 
 <b class="h2">페이지 바꾸기</b><br>
@@ -208,10 +212,11 @@ SCROLL_STATE_SETTLING: 2. 화면에 보일 페이지가 정해진 상태. 페이
 onPageSelected는 페이지가 변경될 때 호출된다. 각 페이지(position)에 따라 Activity를 변경할 수 있다.<br>
 onPageScrolled은 사용자가 페이지를 넘길 때마다 호출된다.<br>
 <br>
+<br>
 
 <b class="h2">페이지 갱신</b><br>
 어떤 동작을 한 후 페이지를 갱신해야 한다면 PagerAdapter의 getItemPosition(Object)을 사용한다.<br>
-flag를 하나 만들어서 변경 시점을 지정한다.
+flag를 하나 만들어서 변경 시점을 지정할 수 있도록 만든다.
 {% highlight java %}
     private boolean flagChange = false;
 
@@ -231,8 +236,9 @@ flag를 하나 만들어서 변경 시점을 지정한다.
         };
     }
 {% endhighlight %}
-POSITION_NONE: ViewPager.destroyItem()이 호출되어 Item이 삭제된 것으로 판단해 onCreateView를 호출한다.<br>
+POSITION_NONE: ViewPager.destroyItem()을 호출하여 Item이 삭제된 것으로 판단해 Fragment.onCreateView를 호출한다.<br>
 <br>
+변경될 시점에 다음 코드를 입력한다.
 {% highlight java %}
 flagChange = true;
 pagerAdapter.notifyDataSetChanged();
