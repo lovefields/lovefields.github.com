@@ -31,7 +31,6 @@ ViewPager를 사용하기 위해 <span class="blue">support.v4 지원 라이브�
 </android.support.v4.view.ViewPager>
 {% endhighlight %}
 <br>
-<br>
 
 그렇지 않고 화면 안에 지정 구역을 만들어주고 싶다면 android.support.v4.view.ViewPager 를 직접 태그 한다.
 {% highlight xml %}
@@ -48,12 +47,10 @@ ViewPager를 사용하기 위해 <span class="blue">support.v4 지원 라이브�
 	...
 {% endhighlight %}
 <br>
-<br>
 
 FragmentActivity를 상속받는 Activity를 생성한다.<br>
 (짧은 경험담이지만, FragmentActivity를 상속받을 경우 ImageButton과 지원 ActionBar 사용이 자유롭지 않은 것 같다. <br>
 때문에 글쓴이는 AppCompatActivity를 상속받아 사용했다.)<br>
-<br>
 <br>
 
 여기서의 import는 support.v4 로 통일한다.
@@ -62,7 +59,6 @@ import android.support.v4.app.FragmentActivity;
 
 public class PagerActivity extends FragmentActivity {
 {% endhighlight %}
-<br>
 <br>
 
 ViewPager가 Fragment를 사용하려면 반드시 <span class="blue">Adapter</span>가 필요하다. <br>
@@ -91,9 +87,9 @@ public class PagerActivity extends FragmentActivity {
             public Fragment getItem(int position) {
                 switch (position) {
                     case PAGE_ONE:
-                        return new oneFragment().newInstance();
+                        return new OneFragment().newInstance();
                     case PAGE_TOW:
-                        return new towFragment().newInstance();
+                        return new TowFragment().newInstance();
                     default: return null;
                 }
             }
@@ -104,7 +100,6 @@ FragmentManager로 순서(position)에 맞게 Activity에 추가해주며, ViewP
 getItem(int)은 화면에 보여줄 Fragment를 반환한다.<br>
 getCount(int)는 생성 가능한 Fragment의 개수를 반환한다. 즉 총 몇 개의 화면을 구성해줄 지를 지정한다.<br>
 <br>
-<br>
 
 ViewPager는 현재 화면을 만들 때<br>
 현재 페이지에서 다음 페이지에 대한 반응을 바로 할 수 있도록 좌우의 페이지들도 같이 만든다.
@@ -113,7 +108,6 @@ ViewPager는 현재 화면을 만들 때<br>
 {% endhighlight %}
 위 코드로 몇 개의 페이지를 미리 만들어둘 지 변경할 수 있다.<br>
 최소 1부터 입력해야 한다. ex) 1: 좌우 1개씩, 2: 좌우 2개씩<br>
-<br>
 <br>
 
 현 페이지만 로딩되게 하고 싶다면 setUserVisibleHint(boolean) 메소드를 이용한다.
@@ -131,22 +125,23 @@ ViewPager는 현재 화면을 만들 때<br>
 ViewPager 내부가 아닌 각 Fragment 내부에서 Override 하여 사용한다.<br>
 Fragment가 setUserVisibleHint 호출 후 onCreateView를 호출하기 때문에<br>
 if(true) 안에는 오류가 발생하지 않는 범위 내에서 코드를 짜야 한다.<br>
+<br>
 
 <b class="red">주의점!</b><br>
 어떤 동작으로 페이지를 넘기느냐에 따라 호출 순서가 달라진다.<br>
 
-Swipe: (보이기 전)isVisibleToUser(false) - onCreate - onCreateView - onResume - (보이면)isVisibleToUser(true)<br>
-Button : (이동)isVisibleToUser(false) - isVisibleToUser(true) - onCreate - onCreateView - onResume <br>
+Swipe: (보이기 전)isVisibleToUser(false) - onCreate - onCreateView - onResume - (보이면)<span class="blue">isVisibleToUser(true)</span><br>
+Button : (이동)isVisibleToUser(false) - <span class="blue">isVisibleToUser(true)</span> - onCreate - onCreateView - onResume <br>
 
 때문에 Button을 사용할 경우 오류가 발생한다. <br>
 이를 방지하고자 필자는 flag 하나를 같이 사용했다.<br>
 {% highlight java %}
-public class FirstFragment extends Fragment {
+public class TowFragment extends Fragment {
     private boolean userHint = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.first_fragment, container, false);
+        View v = inflater.inflate(R.layout.tow_fragment, container, false);
        
         if (userHint) {
             // up
@@ -171,14 +166,12 @@ public class FirstFragment extends Fragment {
 }
 {% endhighlight %}
 <br>
-<br>
 
 ViewPager는 언제나 첫 번째 position에 있는 Fragment를 가장 먼저 보여주도록 되어있다.<br>
 만일 사용자의 선택 상태에 따라 다른 position의 Fragment를 보여주고 싶다면 다음 코드를 입력한다.
 {% highlight java %}
         viewPager.setCurrentItem(yourSelectPosition);
 {% endhighlight %}
-<br>
 <br>
 
 ViewPager의 페이지가 바뀔 때마다 Activity에 변화를 주고 싶을 때는 addOnPageChangeListener 메소드를 호출한다.
