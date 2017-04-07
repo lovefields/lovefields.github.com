@@ -125,6 +125,7 @@ ViewPager는 현재 화면을 만들 때<br>
 ViewPager 내부가 아닌 각 Fragment 내부에서 Override 하여 사용한다.<br>
 Fragment가 setUserVisibleHint 호출 후 onCreateView를 호출하기 때문에<br>
 if(true) 안에는 오류가 발생하지 않는 범위 내에서 코드를 짜야 한다.<br>
+(보이기 전)setUserVisibleHint(false) - onCreate - onCreateView - (보이면)isVisibleToUser(true)<br>
 <br>
 
 ViewPager는 언제나 첫 번째 position에 있는 Fragment를 가장 먼저 보여주도록 되어있다.<br>
