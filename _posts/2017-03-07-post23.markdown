@@ -12,6 +12,7 @@ image: /img/gradle.png
 사용자가 화면을 swipe하여 페이지를 좌우로 넘겨 볼 수 있게 해주는 안드로이드 레이아웃 매니저 클래스.<br>
 <br>
 
+<b class="h2">ViewPager</b>
 ViewPager를 사용하기 위해 <span class="blue">support.v4 지원 라이브러리</span>를 등록한다.
 {% highlight xml %}
  compile 'com.android.support:support-v4:25.1.0'
@@ -101,15 +102,17 @@ getItem(int)은 화면에 보여줄 Fragment를 반환한다.<br>
 getCount(int)는 생성 가능한 Fragment의 개수를 반환한다. 즉 총 몇 개의 화면을 구성해줄 지를 지정한다.<br>
 <br>
 
+<b class="h2">로딩 화면 수 정하기</b>
 ViewPager는 현재 화면을 만들 때<br>
 현재 페이지에서 다음 페이지에 대한 반응을 바로 할 수 있도록 좌우의 페이지들도 같이 만든다.
 {% highlight java %}
         viewPager.setOffscreenPageLimit(int);
 {% endhighlight %}
 위 코드로 몇 개의 페이지를 미리 만들어둘 지 변경할 수 있다.<br>
-최소 1부터 입력해야 한다. ex) 1: 좌우 1개씩, 2: 좌우 2개씩<br>
+최소 1부터 입력해야 한다. ex) 1: 좌우 1개씩 생성, 2: 좌우 2개씩 생성<br>
 <br>
 
+<b class="h2"> 페이지 하나만 생성하기 </b>
 현 페이지만 로딩되게 하고 싶다면 setUserVisibleHint(boolean) 메소드를 이용한다.
 {% highlight java %}
     @Override
@@ -174,6 +177,7 @@ ViewPager는 언제나 첫 번째 position에 있는 Fragment를 가장 먼저 �
 {% endhighlight %}
 <br>
 
+<b class="h2">페이지 변화</b>
 ViewPager의 페이지가 바뀔 때마다 Activity에 변화를 주고 싶을 때는 addOnPageChangeListener 메소드를 호출한다.
 {% highlight java %}
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -202,3 +206,33 @@ SCROLL_STATE_IDLE: 0. 페이지가 완전히 보이고 애니메이션이 진행
 SCROLL_STATE_SETTLING: 2. 화면에 보일 페이지가 정해진 상태. 페이지가 변경됨.<br>
 onPageSelected는 페이지가 변경될 때 호출된다. 각 페이지(position)에 따라 Activity를 변경할 수 있다.<br>
 onPageScrolled은 사용자가 페이지를 넘길 때마다 호출된다.<br>
+<br>
+
+<b class="h2">ViewPager 갱신</b>
+어떤 동작을 한 후 페이지를 갱신해야 한다면 PagerAdapter의 getItemPosition(Object)을 사용한다.<br>
+flag를 하나 만들어서 변경 시점을 지정한다.
+{% highlight java %}
+    private boolean flagChange = false;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
+
+        pagerAdapter = new FragmentStatePagerAdapter(fragmentManager) {
+            ...
+
+            @Override
+            public int getItemPosition(Object object) {
+                if (flagChange)
+                    return POSITION_NONE;
+                else return POSITION_UNCHANGED;
+            }
+        };
+    }
+{% endhighlight %}
+POSITION_NONE: ViewPager.destroyItem()이 호출되어 Item이 삭제된 것으로 판단해 onCreateView를 호출한다.<br>
+<br>
+{% highlight java %}
+flagChange = true;
+pagerAdapter.notifyDataSetChanged();
+{% endhighlight %}
