@@ -182,11 +182,13 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 List<E>는 순차 리스트를 지원하는 인터페이스로, 지정된 타입(E)의 객체가 저장된다.<br>
 Adapter 인스턴스에 입력되는 List로 View 객체들의 정보를 입력한다.<br>
 
-onCreateViewHolder은 리스트 항목으로 보여줄 View를 inflate하여 그 View(Layout)의 객체를 참조한 ViewHolder를 생성한다.<br>
+onCreateViewHolder: 리스트의 각 항목을 이루는 XML(디자인) 적용. <br>
+리스트 항목으로 보여줄 View(XML)를 inflate하여 그 View의 객체를 참조한 ViewHolder를 생성한다.<br>
 아직 ViewHolder 클래스를 만들지 않아서 반환 값을 null로 두었다.<br>
-onBindViewHolder는 (RecyclerView.ViewHolder) holder를 통해 ViewHolder를 참조하여 참조된 객체에 데이터 정보를 넣는다.<br>
+onBindViewHolder: 리스트의 각 항목에 들어갈 데이터 지정.<br>
+(RecyclerView.ViewHolder) holder를 통해 ViewHolder를 참조하여 참조된 객체에 데이터 정보를 넣는다.<br>
 이 메서드도 viewHolder를 생성 후 사용할 것이다.<br>
-getItemCount는 데이터의 개수를 반환한다.<br>
+getItemCount: 화면에 보여 줄 데이터의 개수를 반환한다.<br>
 <br>
 
 ６. RecyclerView.ViewHolder를 상속받는 내부 클래스를 생성한다.<br>
