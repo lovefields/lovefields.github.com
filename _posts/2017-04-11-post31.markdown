@@ -1,0 +1,121 @@
+---
+layout: post
+title:  "RecyclerView Item Position"
+date:  2017-04-11 10:00:00 +0900
+author: 민갤
+description: RecyclerView의 ItemPosition을 얻는 방법
+keywords : Android Studio,Android,Studio,RecyclerView,library,item,position,ItemTouch,ClickListener
+category : android
+---
+
+1. OnItemTouchListener()를 이용한 Item Position 알아내기
+{% highlight jave %}
+public class MainActivity extends AppCompatActivity {
+
+    private List<Item> list = null;
+    private RecyclerView re;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        re = (RecyclerView) findViewById(R.id.recycler);
+        re.setLayoutManager(new LinearLayoutManager(this));
+        re.setAdapter(new RecyclerAdapter(list));
+
+        re.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+            @Override
+            public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
+	        // RecyclerView로 전달된 TouchEvent를 받는다.
+                if (e.getAction() == MotionEvent.ACTION_DOWN) {
+		    View reV = rv.findChildViewUnder(e.getX(), e.getY());
+                    int position = rv.getChildAdapterPosition(reV);
+                }
+                return false; //TouchEvent를 가로채지 않는다.
+            }
+
+            @Override
+            public void onTouchEvent(RecyclerView rv, MotionEvent e) {
+                // onInterceptTouchEvent의 반환 값이 true일 경우 TouchEvent를 가로채어 동작한다.
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+                // Item이 상위 RecyclerView가 TouchEvent를 가로채길 원치 않을 때 호출된다.
+            }
+        });
+    }
+}
+{% endhighlight %}
+OnItemTouchListener()에서 어떠한 동작을 시킬 때 <br>
+if문(MotionEvent)을 사용하지 않으면 각 MotionEvent마다 실행되어 동작이 중복된다.<br>
+findChildViewUnder(float X, float Y): Touch된 Item의 View를 가져온다.<br>
+getChildAdapterPosition(View): Item의 Position 값을 가져온다. <br>
+
+<br>
+<br>
+
+2. OnClickListener()를 이용한 Item Position 알아내기
+{% highlight jave %}
+public class RecyclerAdapter extends RecyclerView.Adapter {
+    private List<Item> list;
+    private int position = 0;
+
+    public RecyclerAdapter(List<Item> list) {
+        this.list = list;
+    }
+
+    @Override
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
+
+        final RecyclerHolder holder = new RecyclerHolder(view);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                position = holder.getAdapterPosition();
+            }
+        });
+
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                position = holder.getAdapterPosition();
+
+                return true; // Click 구분 위해 true. LongClick 시 onClick도 함께 되는 것을 방지.
+            }
+        });
+
+        return holder;
+    }
+
+    @Override
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        RecyclerHolder rH = (RecipeViewHolder) holder;
+        ...
+    }
+
+    @Override
+    public int getItemCount() {
+        return list.size();
+    }
+
+    private class RecyclerHolder extends RecyclerView.ViewHolder {
+        ...
+
+        public RecyclerHolder(View itemView) {
+            super(itemView);
+            ...
+        }
+    }
+}
+{% endhighlight %}
+RecyclerView 외부에서 RecyclerView.OnClickListener()을 사용할 경우 제대로 안 먹히는 경우가 발생한다.<br>
+Click Event를 통해 Item에 따라 RecyclerView 외부의 변수를 변경하고 싶을 때는 OnItemTouchListener().<br>
+Click Event를 통해 Dialog 창을 띄우거나 화면을 넘기는 등 하고 싶을 때는 <br>
+RecyclerView 내부의 Adapter에서 ItemView.OnClickListener()를 사용하는 것을 권장한다.<br>
+<br>
+<br>
+
