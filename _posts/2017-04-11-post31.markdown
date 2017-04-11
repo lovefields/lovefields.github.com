@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "RecyclerView Item Position"
-date:  2017-04-11 10:00:00 +0900
+title: "RecyclerView Item Position"
+date: 2017-04-11 10:00:00 +0900
 author: 민갤
 description: RecyclerView의 ItemPosition을 얻는 방법
 keywords : Android Studio,Android,Studio,RecyclerView,library,item,position,ItemTouch,ClickListener
@@ -9,7 +9,7 @@ category : android
 ---
 
 1. OnItemTouchListener()를 이용한 Item Position 알아내기
-{% highlight jave %}
+{% highlight java %}
 public class MainActivity extends AppCompatActivity {
 
     private List<Item> list = null;
@@ -52,12 +52,11 @@ OnItemTouchListener()에서 어떠한 동작을 시킬 때 <br>
 if문(MotionEvent)을 사용하지 않으면 각 MotionEvent마다 실행되어 동작이 중복된다.<br>
 findChildViewUnder(float X, float Y): Touch된 Item의 View를 가져온다.<br>
 getChildAdapterPosition(View): Item의 Position 값을 가져온다. <br>
-
 <br>
 <br>
 
 2. OnClickListener()를 이용한 Item Position 알아내기
-{% highlight jave %}
+{% highlight java %}
 public class RecyclerAdapter extends RecyclerView.Adapter {
     private List<Item> list;
     private int position = 0;
