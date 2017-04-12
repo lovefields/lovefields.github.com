@@ -3,7 +3,7 @@ layout: post
 title:  "RecyclerView Swipe Delete"
 date: 2017-03-08 10:00:00 +0900
 author: 민갤
-description: Android Studio 
+description: RecyclerView Item을 Swipe 동작을 통해 Delete
 keywords : Android Studio,Android,Studio,App,RecyclerView,Swipe,delete,Touch,List
 category : android
 ---
@@ -117,7 +117,7 @@ public class SwipeDeleteActivity extends AppCompatActivity {
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir) {
                 int swipedPosition = viewHolder.getAdapterPosition();
                 SwipeDeleteAdapter adapter = (SwipeDeleteAdapter) re.getAdapter();
-                adapter.itemRemoval(swipedPosition);
+                adapter.remove(swipedPosition);
             }
 
             // RecyclerView 의 onDraw 호출
@@ -211,16 +211,9 @@ public class SwipeDeleteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         }
     }
 
-    public void itemRemoval(int position) {
-        remove(items.indexOf(items.get(position)));
-    }
-
     public void remove(int position) {
-        item = items.get(position);
-
-        if (items.contains(item)) { //List<T>.contains(Object): List에 값이 있는 지를 확인하여 boolean으로 반환
             items.remove(position);
-            notifyItemRemoved(position);
+            notifyDataSetChanged();
         }
     }
 }
