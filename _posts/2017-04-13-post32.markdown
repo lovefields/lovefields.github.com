@@ -23,7 +23,7 @@ int a = 1;
 {% endhighlight %}
 <br>
 
-<b>변수 타입 Variable Type </b><br>
+<b>변수 타입 Type </b><br>
 저장하고자 하는 값의 종류.<br>
 1은 정수(Integer)이므로 변수의 타입은 int 또는 Integer.<br>
 타입이 같은 변수는 콤마(,)를 구분자로 해서 같이 선언할 수 있다.<br>
@@ -38,7 +38,7 @@ int c = 0, d = 0;
 값이 저장되는 공간의 이름.<br>
 <br>
 
-<b>변수 초기화(Initialization)</b><br>
+<b>변수 초기화 Initialization</b><br>
 메모리는 여러 프로그램이 공유하는 자원이다.<br>
 메모리에 새로운 값이 저장되면 기존의 값이 사라지기 때문에 반드시 초기화가 필요하다.<br>
 값을 저장할 때는 대입연산자(=)를 사용한다.<br>
