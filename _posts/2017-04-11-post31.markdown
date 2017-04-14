@@ -8,11 +8,11 @@ keywords : Android Studio,Android,Studio,RecyclerView,library,item,position,Item
 category : android
 ---
 RecyclerView를 사용할 때 Item을 선택해서 수정하거나, 삭제하거나, 다른 Activity로 넘어가는 등의 동작을 한다.<br>
-이 때 Item이 가진 Position 값을 받아야 할 때 어떤 방식을 써야할까?<br>
+이 때 Item이 가진 Position 값을 받아야 할 때 어떤 방식을 써야 할까?<br>
 <br>
 <br>
 
-<b class="h2"> OnItemTouchListener()를 이용한 Item Position 알아내기 </b>
+<b class="h2">OnItemTouchListener()를 이용한 Item Position 알아내기 </b>
 {% highlight java %}
 public class MainActivity extends AppCompatActivity {
 
@@ -58,7 +58,7 @@ OnItemTouchListener()에서 어떠한 동작을 시킬 때 if문(MotionEvent)을
 <br>
 <br>
 
-<b class="h2">  OnClickListener()를 이용한 Item Position 알아내기</b>
+<b class="h2">OnClickListener()를 이용한 Item Position 알아내기</b>
 {% highlight java %}
 public class RecyclerAdapter extends RecyclerView.Adapter {
     private List<Item> list;

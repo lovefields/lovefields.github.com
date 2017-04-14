@@ -4,7 +4,7 @@ title:  "Java 변수"
 date:   2017-04-13 10:00:00 +0900
 author: 민갤
 description: JAVA 변수
-keywords : android,java,변수,variable,androidstudio
+keywords : android,java,변수,variable,androidstudio,자바의정석
 image : /img/java.png
 category : android
 ---
@@ -15,7 +15,7 @@ category : android
 <br>
 
 <b>변수 선언</b><br>
-타입 이름 = 값;<br>
+<span class="blue">타입</span> 이름 = <span class="red">값</span>;<br>
 변수를 선언하면 메모리의 빈 공간에 변수 타입에 맞는 저장공간이 확보되고, 그 안에 값이 담긴다.<br>
 변수 타입마다 저장공간의 크기가 다르며 변수 이름을 통해 생성된 공간을 사용할 수 있다.<br>
 {% highlight java %}
@@ -26,7 +26,7 @@ int a = 1;
 <b>변수 타입 Type </b><br>
 저장하고자 하는 값의 종류.<br>
 1은 정수(Integer)이므로 변수의 타입은 int 또는 Integer.<br>
-타입이 같은 변수는 콤마(,)를 구분자로 해서 같이 선언할 수 있다.<br>
+타입이 같은 변수는 콤마(,)로 구분해서 같이 선언할 수 있다.<br>
 {% highlight java %}
 int a , b;
 int c = 0, d = 0;
@@ -62,15 +62,15 @@ b = temp;
 <b class="h2">명명규칙</b><br>
 변수 이름이나 클래스 이름 등 프로그래밍에서 사용되는 모든 이름을 식별자(Identifier)라고 한다.<br>
 식별자는 같은 영역 내에서 서로 구분될 수 있어야 한다.<br>
-이름을 지을 때 지켜야하는 규칙은 다음과 같다.<br>
+이름을 지을 때 지켜야 하는 규칙은 다음과 같다.<br>
 <br>
 
 <b>필수 규칙</b><br>
 &#149; 대소문자가 구분된다. ex) a ≠ A<br>
 &#149; 길이에 제한이 없다.<br>
-&#149; 숫자로 시작하면 안된다. ex)  1a : X, a1 : O<br>
+&#149; 숫자로 시작하면 안 된다. ex)  1a : X, a1 : O<br>
 &#149; 특수문자는 '_'와 '$'만 허용한다.<br>
-&#149; 예약어를 사용하면 안된다.<br>
+&#149; 예약어를 사용하면 안 된다.<br>
 <br>
 
 <b>권장 규칙</b><br>

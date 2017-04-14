@@ -1,0 +1,315 @@
+---
+layout: post
+title:  "Java 변수 타입"
+date:   2017-04-13 10:00:00 +0900
+author: 민갤
+description: JAVA 변수 타입
+keywords : android,java,변수,variable,androidstudio,type,타입,정수형,자료형,기본형,자바의 정석
+image : /img/java.png
+category : android
+---
+
+<b class="h2">자료형 Data Type</b><br>
+
+값의 종류에 따라 값이 저장될 공간의 크기와 저장형식을 정의한 것<br>
+크게 기본형과 참조형이 있다.<br>
+<br>
+<br>
+<br>
+
+<b class="h2">기본형 Primitive Type</b><br>
+
+실제 값을 저장<br>
+정수형(byte, short, int, long), 실수형(float, double), 문자형(char), 논리형(boolean)<br>
+<br>
+  
+
+<b>정수형</b><br>
+
+정수 값을 저장한다.<br>
+첫 번째 비트를 부호 비트로 사용하고 나머지는 양수와 음수의 표현에 사용한다.<br>
+
+| |byte|사용|
+|:-:|:-:|:-:|
+|byte|1|이진 데이터|
+|short|2|C언어와의 호환|
+|int|4|CPU 처리가 가장 효율적|
+|long|8|범위가 넓다| 
+
+byte와 short는 크기가 작아서 메모리를 절약할 수 있는 대신 값의 범위도 작아서 연산 결과가 틀릴 확률이 높다.<br>
+int의 범위(약 ±20억)를 넘어서는 수를 다뤄야할 때 long을 사용한다.<br>
+
+&#149;&nbsp; 오버플로우 Overflow<br>
+&nbsp; &nbsp; 타입이 표현할 수 있는 값의 범위를 넘어서는 것.<br>
+&nbsp; &nbsp; 오버플로우가 발생하면 오류가 발생하지는 않지만 예상하지 못한 결과가 나온다.<br>
+&nbsp; &nbsp; 정수형 타입이 표현할 수 있는 최댓값에 1을 더했을 때는 최소값이 되고, 최소값에서 1을 빼면 최대값이 된다.<br>
+&nbsp; &nbsp; 부호 있는 정수와 부호 없는 정수의 표현범위가 다르므로 오버플로우 시점도 다르다.<br>
+<br>
+ 
+
+<b>실수형</b><br>
+
+실수값을 부동소수점(floating-point)방식으로 저장.<br>
+부호, 지수, 가수로 이루어져 있다.<br>
+오차가 발생할 수 있기 때문에 정밀도가 중요하다.<br>
+
+| |byte|정밀도|
+|:-:|:-:|:-:|
+|float|4|7 자리|
+|double|8|15 자리| 
+ 
+float는 연산속도를 향상시키거나 메모리를 절약할 때 사용한다.<br>
+오버플로우가 발생하면 변수의 값은 무한대(Infinity)가 된다.<br>
+
+&#149;&nbsp; 부호 비트 Sign bit :&nbsp; 양수는 0, 음수는 1.<br>
+&#149;&nbsp; 지수 Exponent :&nbsp; 8bit. 부호 있는 정수.<br>
+&#149;&nbsp; 가수 Mantissa :&nbsp; 실제 값을 저장하는 부분. 정밀도.<br>
+
+| |부호 비트|지수|가수|
+|:-:|:-:|:-:|:-:|
+|bit|1|8|23|
+|float|0 or 1|-127 ~ 128|2진수 23자리 = 7자리의 10진수|
+|double|0 or 1|-1023 ~ 1024|2진수 52자리 = 15자리의 10진수|<br>
+
+&#149;&nbsp; 부동소수점의 오차<br>
+&nbsp; &nbsp; 실수에는 무한소수가 존재하기 때문에 오차가 발생할 수 있다.<br>
+&nbsp; &nbsp; 10진 소수를 정확하게 표현할 수 없는 2진수로 저장하기 때문에 10진수가 유한소수더라도 2진수로 변환하면 무한소수가 되는 경우도 있다.<br>
+
+&#149; 언더플로우 Underflow<br>
+&nbsp; &nbsp; 실수형으로 표현할 수 없는 아주 작은 값이 되는 경우.<br>
+&nbsp; &nbsp; 양의 최소값보다 작은 값이 되는 경우.<br>
+&nbsp; &nbsp; 변수의 값은 0이 된다.<br>
+<br> 
+
+
+<b> 문자형 char</b><br>
+
+2byte. <span class="blue">단 하나의 문자</span>만 저장할 수 있다.<br>
+내부적으로 유니코드(정수)로 저장하기 때문에 정수형과 크게 다르지 않다.<br>
+{% highlight java %}
+char a = 'a';
+char b = '강';
+char c = '멍멍';  // error
+{% endhighlight %} 
+
+&#149;&nbsp; 유니코드<br>
+&nbsp; &nbsp; Unicode. 2byte 문자체계. <span class="blue">정수</span><br>
+&nbsp; &nbsp; 컴퓨터는 숫자밖에 모르기 때문에 문자를 숫자화한 것.<br>
+&nbsp; &nbsp; 문자 인코딩 Encoding :&nbsp; 문자를 코드로 변환하는 것.<br>
+&nbsp; &nbsp; 문자 디코딩 Decoding :&nbsp; 코드를 문자로 변환하는 것.<br> 
+
+만일 유니코드를 알고 있다면 문자 리터럴 대신 문자의 유니코드를 직접 넣을 수 있다.
+{% highlight java %}
+char a = 'A';
+char b = 65;
+{% endhighlight %} 
+
+문자의 유니코드를 알고 싶은 때는 문자형에 저장된 값을 int로 형변환 시킨다.
+{% highlight java %}
+char ch = 'A';
+int unicode = (int) ch;
+{% endhighlight %}
+<br>  
+
+<b> 논리형 boolean</b><br>
+
+1byte. true와 false 중 하나의 값만 가진다.<br>
+조건식과 논리적 계산에 사용된다.<br>
+
+| |의미|
+|:-:|:-:|
+|true|같다|
+|false|다르다|
+
+default :&nbsp; false<br>
+<br>
+<br>
+<br>
+
+
+<b class="h2">참조형 Reference Type</b><br>
+
+참조변수<br>
+값이 저장되어 있는 공간의 주소(Memory Address: 메모리에 붙는 1byte단위의 일련번호) 또는 null을 저장<br>
+기본형을 제외한 나머지 타입 (String, 클래스 이름 등)<br>
+<br> 
+
+<b> 참조형의 초기화</b><br>
+
+new 연산자(객체를 생성하는 연산자)로 객체(and 객체의 주소)를 생성한다. 
+{% highlight java %}
+String str = new String();
+MyActivity myActivity = new MyActivity();
+{% endhighlight %}
+<br>
+<br>
+<br>
+
+<b class="h2">상수 Constant</b><br>
+
+한 번 값을 저장하면 변경할 수 없다.<br>
+변수 선언할 때 변수 타입 앞에 final을 붙이면 된다. <br>
+변수를 사용하기 전에 반드시 초기화해야 한다.<br>
+리터럴에 의미 있는 이름을 붙여 가독성을 높이고, 코드의 이해와 수정을 쉽게 만든다.<br>
+{% highlight java %}
+final int LOVE_FIELD = 0;
+LOVE_FIELD = 2;  // error
+{% endhighlight %}
+<br>
+<br>
+<br>
+
+<b class="h2">리터럴 Literal</b><br>
+
+값.<br>
+본래 상수의 의미가 JAVA에선 다른 의미로 정의되었기 때문에 리터럴이라는 용어를 사용한다.<br>
+리터럴에 타입이 있기 때문에 변수에도 타입이 생겼다.<br>
+리터럴의 타입은 값에 접미사를 붙여서 구분한다.<br>
+<br>
+  
+
+<b>정수형</b><br>
+
+| |접미사|
+|:-:|:-:|
+|int|없음|
+|long|l / L|
+
+<br>
+ 
+
+<b>실수형</b><br>
+
+| |접미사|
+|:-:|:-:|
+|byte|리터럴이 별도로 존재하지 않음|
+|short|리터럴이 별도로 존재하지 않음|
+|float|f / F|
+|double|d / D. 생략 가능| 
+ 
+byte와 short는 int 타입의 리터럴을 사용한다.<br>
+{% highlight java %}
+int binaryNumber = 0b10; // binaryNumber = 2. 2진수 10
+int octalNumber = 010;   // octalNumber = 8. 8진수 10
+int hex = 0x10;          // hex = 16. 16진수 10
+{% endhighlight %}
+
+소수점이나 e / E(10의 제곱을 나타내는 기호) 또는 접미사 f / F, d / D를 포함하고 있으면 실수형 리터럴로 간주된다.<br>
+{% highlight java %}
+double a = 10.;      // a = 10.0
+double b = .10;      // b = 0.1
+double c = 1e1;      // c = 10.0
+double d = 1e-1;     // d = 0.1
+float e = 10f;       // e = 10.0
+float f = 10.e2f;    // f = 1000.0
+{% endhighlight %}
+<br>
+
+<b>문자 / 문자열</b><br>
+
+&#149;&nbsp; char :&nbsp; 작은 따옴표로 문자 하나를 감싼 것. 빈 문자('') 불가능. 공백(' ') 가능.<br>
+&#149;&nbsp; String :&nbsp; 큰 따옴표로 두 문자 이상을 감싼 것. 빈 문자열("") 가능.<br>
+
+String은 클래스라서 new 연산자를 사용해야 하지만 기본형과 같은 표현을 사용해도 된다.<br>
+{% highlight java %}
+String str = new String("love");
+String love = "love";
+{% endhighlight %} 
+
+덧셈 연산자(+)를 사용할 때 피연산자 중에 문자열이 있으면 다른 한쪽을 String으로 변환하여 결합시킨다.<br>
+{% highlight java %}
+int a = 1 + 1;                  // 2
+int b = a + "love";             // error
+String str = "love" + "field";  // lovefield
+String love = 2 + str;          // 2lovefield
+{% endhighlight %}
+<br>
+ 
+
+<b>타입의 불일치</b><br>
+
+타입이 달라도 저장범위가 넓은 타입에 좁은 타입의 값을 저장하는 것은 허용된다.<br>
+{% highlight java %}
+long b = 11;       // int < long
+float d = 1.23;    // error
+double c = 1.23f;  // float < double
+{% endhighlight %}
+<br>
+<br>
+<br>
+
+<b class="h2">형변환 Casting</b><br>
+
+<span class="blue">(타입)</span> <span class="red">피연산자</span><br>
+
+변수나 리터럴의 타입을 다른 타입으로 변환하는 것.<br>
+형변환 하고자 하는 변수/리터럴의 앞에 변환하고자 하는 타입을 형변환 연산자(괄호(). 캐스팅 연산자)와 함께 붙여준다.<br>
+
+&#149;&nbsp; 피연산자는 형변환 후에도 아무런 변화가 없다.<br>
+&#149;&nbsp; 기본형에서 boolean을 제외한 나머지 타입들은 서로 형변환이 가능하다.<br>
+&#149;&nbsp; 기본형과 참조형은 서로 형변환할 수 없다.<br>
+&#149;&nbsp; 자동 형변환 :&nbsp; 값의 범위가 작은 타입에서 큰 타입으로의 형변환은 연산자를 생략할 수 있다. <br>
+&#149;&nbsp; 산술 변환 :&nbsp; 서로 다른 타입간의 덧셈을 할 경우 표현 범위가 더 넓은 타입으로 형변환하여 타입을 일치시킨 후 연산을 수행한다. <br>
+{% highlight java %}
+double d = 3.14;   
+int a = (int) d;   // a = 3, d = 3.14
+int b = 87;        
+char c = (char) b; // c = W, b = 65
+float e = 1;       // e = 1.0
+double f = d + a;  // f = 6.14
+{% endhighlight %}
+<br> 
+
+<b>정수형 간의 형변환</b><br>
+
+큰 타입에서 작은 타입으로 변환할 경우 값 손실(Loss of Data)이 발생할 수 있다.<br>
+이는 타입을 2진수 상태로 봤을 때 생기는 자리 크기의 차이 때문으로,<br>
+작은 타입에서 큰 타입으로 변환할 경우 빈 자리를 0 또는 1로 채운다.<br>
+{% highlight java %}
+int a = 5;
+byte b = (byte) a;  // b = 5
+int c = 500;
+byte d = (byte) c;  // d = -12;
+{% endhighlight %}
+<br> 
+
+<b>실수형 간의 형변환</b><br>
+
+작은 타입에서 큰 타입으로 변환할 경우 빈자리를 0으로 채운다.<br>
+double타입의 값이 float의 범위를 넘으면 ±무한대, 적으면 ±0이 된다.<br>
+{% highlight java %}
+double a = 1.0e100;
+float b = (float)a;   // b = infinity
+double c = 1.0e-100;
+float d = (float)c;   // d = 0.0
+{% endhighlight %}
+
+&#149;&nbsp; float타입을 double타입으로 변환할 경우<br>
+&nbsp;&nbsp; 지수 :&nbsp; -127(float의 기저) +1023(double의 기저)<br>
+&nbsp;&nbsp; 가수 :&nbsp; 앞의 23자리를 float의 가수로 채우고 남은 자리를 0으로 채운다.<br>
+
+&#149;&nbsp; double타입을 float타입으로 변환할 경우<br>
+&nbsp;&nbsp; 지수 :&nbsp; -1023(double의 기저) +127(float의 기저)<br>
+&nbsp;&nbsp; 가수 :&nbsp; double의 가수 52자리 중 앞의 23자리만 저장되고 나머지는 버려진다.<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 만일 24번째 자리의 값이 1이면 반올림이 발생한다.<br>
+{% highlight java %}
+double a = 1.0e100;
+float b = (float)a;   // b = infinity
+double c = 1.0e-100;
+float d = (float)c;   // d = 0.0
+{% endhighlight %}
+ <br>
+
+<b>정수형과 실수형 간의 형변환</b><br>
+
+정수형을 실수형으로 변환할 때 정수는 소수점 이하의 값이 없어서 비교적 변환이 간단하다.<br>
+다만 int의 최대값은 약 20억으로 최대 10자리의 정밀도를 요구한다.<br>
+따라서 float(정밀도 7자리)로 변환할 때 오차가 발생할 수 있으므로 double(정밀도 15자리)로 변환해야 한다.<br>
+
+실수형을 정수형으로 변환할 때 실수형의 소수점 이하 값은 버려진다.<br>
+만일 남은 정수가 정수형의 저장범위를 넘어서면 오버플로우가 발생한 결과를 얻는다.<br>
+<br>
+<br>
+<br>
+
+참고 서적: 자바의 정석 3판
