@@ -1,0 +1,143 @@
+---
+layout: post
+title:  "Java 변수"
+date:   2017-04-13 10:00:00 +0900
+author: 민갤
+description: JAVA 변수
+keywords : android,java,변수,variable,androidstudio,자바의정석,언어,프로그래밍
+image : /img/java.png
+category : android
+---
+
+<b class="h2">변수 Variable </b><br>
+하나의 값을 저장하는 메모리 공간. <br>  
+<br>
+
+<b>변수 선언</b><br>
+<span class="blue">타입</span> 이름 = <span class="red">값</span>;<br>
+타입이 필요로 하는 크기의 메모리 공간을 사용하여 그 안에 값을 담는다.<br>
+생성된 공간은 이름을 통해 사용한다.<br>
+<br>
+
+<b>변수 타입 Type </b><br>
+값의 종류.<br>
+값이 정수면 변수의 타입도 정수(byte, short, int, long)여야 한다.<br>
+타입이 같은 변수는 콤마(,)로 구분해서 같이 선언할 수 있다.<br>
+{% highlight java %}
+int a , b;
+int c = 0, d = 0;
+{% endhighlight %}
+<br>
+
+<b>변수 이름</b><br>
+값이 저장되는 메모리 공간의 이름.<br> 
+<br>
+
+<b>변수 초기화 Initialization</b><br> 
+메모리에 새로운 값을 저장하면 기존 값은 사라진다.<br>
+지역변수는 Stack영역이라 자동으로 초기화되지 않는다. 따라서 반드시 초기화해야 한다.<br>
+값을 저장할 때는 대입연산자(=)를 사용한다.<br>
+{% highlight java %}
+int a ;        // 초기화 안 함
+int b = 0;     // 초기화 함
+{% endhighlight %}
+<br>
+
+<b>두 변수의 값 교환하기</b><br>
+값을 교환시키는 연산자가 없다.<br>
+임시 저장공간으로 쓰일 변수를 하나 더 선언해서 값을 회전시켜 교환한다.<br>
+{% highlight java %}
+int a = 1 , b =5;
+int temp;
+
+temp = a;
+a = b;
+b = temp;
+{% endhighlight %}
+<br>
+<br>
+
+<b class="h2">식별자 Identifier</b><br>
+변수 이름, 클래스 이름, 메소드 이름 등 프로그래밍에서 사용되는 모든 이름.<br>
+식별자를 지을 때 지켜야 하는 규칙이 있다.<br>
+<br>
+
+<b>필수 규칙</b><br>
+&#149; 대소문자를 구분한다. <br>
+&#149; 길이에 제한이 없다.<br>
+&#149; 숫자로 시작할 수 없다. <br>
+&#149; 특수문자는 '_'와 '$'만 허용한다.<br>
+&#149; 공백을 포함할 수 없다.<br>
+&#149; 예약어를 사용할 수 없다.<br>
+<br>
+
+<b>권장 규칙</b><br>
+&#149; 클래스 이름
+&nbsp; &nbsp; 첫 글자는 항상 대문자로 한다. ex) Love<br>
+&nbsp; &nbsp; 하나 이상의 단어를 사용할 경우 각 단어의 첫 글자를 대문자로 한다. ex) 클래스: LoveField
+&#149; 변수/메서드 이름
+&nbsp; &nbsp; 첫 글자는 항상 소문자로 한다. ex) love<br>
+&nbsp; &nbsp; 하나 이상의 단어를 사용할 경우 두 번째 단어부터 첫 글자를 대문자로 한다. ex) loveField<br>
+&#149; 상수
+&nbsp; &nbsp; 모두 대문자로 한다. ex) LOVE<br>
+&nbsp; &nbsp; 하나 이상의 단어를 사용할 경우 밑줄 문자(_)로 구분한다. ex) LOVE_FIELD<br>
+<br>
+
+<b>예약어 Keyword</b><br>
+프로그래밍 언어에서 이미 사용되는 단어.<br>
+&#149; abstract :&nbsp; 추상 클래스/메소드로 선언.<br>
+&#149; assert :&nbsp; 조건문.<br>
+&#149; boolean :&nbsp; 논리형 변수. <br>
+&#149; break :&nbsp; 반복문, switch 종료. <br>
+&#149; byte :&nbsp; 정수형 변수.<br>
+&#149; case :&nbsp; switch 조건문.<br>
+&#149; catch :&nbsp; try-catch-finally문에서 예외 처리할 때 사용.<br>
+&#149; char :&nbsp; 문자형 변수.<br>
+&#149; class :&nbsp; 클래스 선언.<br>
+&#149; const :&nbsp; 사용되지 않음.<br>
+&#149; continue :&nbsp; 반복문의 조건절로 이동. <br>
+&#149; default :&nbsp; switch문에서 case에 해당 사항이 없을 때 실행.<br>
+&#149; do :&nbsp; do-while문에서 사용.<br>
+&#149; double :&nbsp; 실수형 변수.<br>
+&#149; else :&nbsp; if-else문에서 사용.<br>
+&#149; enum :&nbsp; enum 선언.<br>
+&#149; extends :&nbsp; 클래스 상속에 사용. 하나만 가능.<br>
+&#149; false :&nbsp; 조건/논리 계산 결과. boolean에서 사용. 사실이 아니다. 틀리다.<br>
+&#149; final :&nbsp; 변수 값 고정. 값 수정 불가능.<br>
+&#149; finally :&nbsp; try-catch문이 끝난 후 반드시 실행.<br>
+&#149; float :&nbsp; 실수형 변수.<br>
+&#149; for :&nbsp; 반복문.<br>
+&#149; goto :&nbsp; 사용되지 않음.<br>
+&#149; if :&nbsp; 조건문.<br>
+&#149; implements :&nbsp; 인터페이스(추상 클래스 상속). 다중 상속 가능.<br>
+&#149; import :&nbsp; 외부 클래스를 사용할 때 쓰임.<br>
+&#149; instanceof :&nbsp; 객체의 타입을 확인. <br>
+&#149; int :&nbsp; 정수형 변수.<br>
+&#149; interface :&nbsp; 추상 클래스로 선언. <br>
+&#149; long :&nbsp; 정수형 변수.<br>
+&#149; native :&nbsp; 자바외 다른 언어를 사용했음을 알림.<br>
+&#149; new :&nbsp; 객체, 인스턴스 생성.<br>
+&#149; null :&nbsp; 메모리에 할당 안된 상태. 숫자 타입에는 사용 불가.<br>
+&#149; package :&nbsp; 클래스들을 묶은 것. 일종의 폴더.<br>
+&#149; private :&nbsp; 접근 제한자. 다른 클래스에서 접근 불가능.<br>
+&#149; protected :&nbsp; 접근 제한자.<br>
+&#149; public :&nbsp; 접근 제한자. 누구나 접근 가능.<br>
+&#149; return :&nbsp; 값 반환 또는 메서드 종료.<br>
+&#149; short :&nbsp; 정수형 변수.<br>
+&#149; static :&nbsp; 클래스/변수 공유.<br>
+&#149; strictfp :&nbsp; strict 소수 값 제어자.<br>
+&#149; super :&nbsp; 상위 클래스의 생성자/멤버변수/메서드 호출. <br>
+&#149; switch :&nbsp; 조건문.<br>
+&#149; synchronized :&nbsp; 동시 접근 제한자.<br>
+&#149; this :&nbsp; 인스턴스가 본인을 가리킬 때 사용.<br>
+&#149; throw :&nbsp; 예외를 발생시키거나 호출한 클래스로 넘어가기.<br>
+&#149; throws :&nbsp; 예외를 던질 수도 있다고 선언.<br>
+&#149; transient :&nbsp; Serializable할 때 저장되거나 전송되지 않는 객체를 선언.<br>
+&#149; true :&nbsp; 조건/논리 계산 결과. boolean에서 사용. 사실이다. 맞다.<br>
+&#149; try :&nbsp; try-catch-finally문.<br>
+&#149; void :&nbsp; 반환 값 없음.<br>
+&#149; volatile :&nbsp; 하나의 변수를 여러 쓰레드가 참조할 때 모두 동일한 값을 바라보도록 함.<br>
+&#149; while :&nbsp; 반복문. 무한 루프.<br>
+<br>
+<br>
+<br>
