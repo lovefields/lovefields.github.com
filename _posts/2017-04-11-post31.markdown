@@ -12,7 +12,7 @@ RecyclerView를 사용할 때 Item을 선택해서 수정하거나, 삭제하거
 <br>
 <br>
 
-<b class="h2">OnItemTouchListener()를 이용한 Item Position 알아내기 </b>
+<strong class="h2">OnItemTouchListener()를 이용한 Item Position 알아내기 </strong>
 {% highlight java %}
 public class MainActivity extends AppCompatActivity {
 
@@ -58,7 +58,7 @@ OnItemTouchListener()에서 어떠한 동작을 시킬 때 if문(MotionEvent)을
 <br>
 <br>
 
-<b class="h2">OnClickListener()를 이용한 Item Position 알아내기</b>
+<strong class="h2">OnClickListener()를 이용한 Item Position 알아내기</strong>
 {% highlight java %}
 public class RecyclerAdapter extends RecyclerView.Adapter {
     private List<Item> list;

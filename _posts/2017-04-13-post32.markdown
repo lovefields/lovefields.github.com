@@ -9,17 +9,17 @@ image : /img/java.png
 category : android
 ---
 
-<b class="h2">변수 Variable </b><br>
+<strong class="h2">변수 Variable </strong><br>
 하나의 값을 저장하는 메모리 공간. <br>  
 <br>
 
-<b>변수 선언</b><br>
+<strong>변수 선언</strong><br>
 <span class="blue">타입</span> 이름 = <span class="red">값</span>;<br>
 타입이 필요로 하는 크기의 메모리 공간을 사용하여 그 안에 값을 담는다.<br>
 생성된 공간은 이름을 통해 사용한다.<br>
 <br>
 
-<b>변수 타입 Type </b><br>
+<strong>변수 타입 Type </strong><br>
 값의 종류.<br>
 값이 정수면 변수의 타입도 정수(byte, short, int, long)여야 한다.<br>
 타입이 같은 변수는 콤마(,)로 구분해서 같이 선언할 수 있다.<br>
@@ -29,11 +29,11 @@ int c = 0, d = 0;
 {% endhighlight %}
 <br>
 
-<b>변수 이름</b><br>
+<strong>변수 이름</strong><br>
 값이 저장되는 메모리 공간의 이름.<br> 
 <br>
 
-<b>변수 초기화 Initialization</b><br> 
+<strong>변수 초기화 Initialization</strong><br> 
 메모리에 새로운 값을 저장하면 기존 값은 사라진다.<br>
 지역변수는 Stack영역이라 자동으로 초기화되지 않는다. 따라서 반드시 초기화해야 한다.<br>
 값을 저장할 때는 대입연산자(=)를 사용한다.<br>
@@ -43,7 +43,7 @@ int b = 0;     // 초기화 함
 {% endhighlight %}
 <br>
 
-<b>두 변수의 값 교환하기</b><br>
+<strong>두 변수의 값 교환하기</strong><br>
 값을 교환시키는 연산자가 없다.<br>
 임시 저장공간으로 쓰일 변수를 하나 더 선언해서 값을 회전시켜 교환한다.<br>
 {% highlight java %}
@@ -57,12 +57,12 @@ b = temp;
 <br>
 <br>
 
-<b class="h2">식별자 Identifier</b><br>
+<strong class="h2">식별자 Identifier</strong><br>
 변수 이름, 클래스 이름, 메소드 이름 등 프로그래밍에서 사용되는 모든 이름.<br>
 식별자를 지을 때 지켜야 하는 규칙이 있다.<br>
 <br>
 
-<b>필수 규칙</b><br>
+<strong>필수 규칙</strong><br>
 &#149; 대소문자를 구분한다. <br>
 &#149; 길이에 제한이 없다.<br>
 &#149; 숫자로 시작할 수 없다. <br>
@@ -71,7 +71,7 @@ b = temp;
 &#149; 예약어를 사용할 수 없다.<br>
 <br>
 
-<b>권장 규칙</b><br>
+<strong>권장 규칙</strong><br>
 &#149; 클래스 이름<br>
 &nbsp; &nbsp; 첫 글자는 항상 대문자로 한다. ex) Love<br>
 &nbsp; &nbsp; 하나 이상의 단어를 사용할 경우 각 단어의 첫 글자를 대문자로 한다. ex) 클래스: LoveField<br>
@@ -83,7 +83,7 @@ b = temp;
 &nbsp; &nbsp; 하나 이상의 단어를 사용할 경우 밑줄 문자(_)로 구분한다. ex) LOVE_FIELD<br>
 <br>
 
-<b>예약어 Keyword</b><br>
+<strong>예약어 Keyword</strong><br>
 프로그래밍 언어에서 이미 사용되는 단어.<br>
 &#149; abstract :&nbsp; 추상 클래스/메소드로 선언.<br>
 &#149; assert :&nbsp; 조건문.<br>
