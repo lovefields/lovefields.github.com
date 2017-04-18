@@ -26,6 +26,7 @@ Android Studio의 SDK Manager를 열어 SDK Tools탭에서 <span class="red">Goo
 Google Paly Services를 사용하기 위해 Library를 추가한다.<br>
 Library 전체(com.google.android.gms:play-services:[version])를 추가할 경우 기본 Library 버전과 충돌이 일어날 수 있으므로 필요한 것만 받는다.<br>
 <span class="blue">File - Project Structure(Shift+Ctrl+Alt+S) - (Modules)app - Dependencies</span> 로 들어가 <span class="red">play-services</span>를 검색 해 maps를 추가하거나 직접 입력한다.<br>
+<p class="t_center w50"><amp-img src="{{ "/img/post35/1.png" | prepend: site.baseurl }}" alt="Dependencies" width="635" height="309" layout="responsive"></amp-img></p>
 {% highlight xml %}
 dependencies {
     ...
@@ -105,6 +106,7 @@ public class MainActivity extends AppCompatActivity  {
 
 
 <strong class="h2">지도 사용하기</strong><br>
+
 앱에서 지도를 사용하려면 <span class="red">OnMapReadyCallback</span> 인터페이스를 구현하고 <br>
 MapFragment 객체에서 getMapAsync(OnMapReadyCallback)를 통해 콜백 인스턴스를 설정해야 한다.<br>
 {% highlight java %}
@@ -130,6 +132,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 
 <strong class="h2">좌표 찍기</strong><br>
+
 지도를 사용할 준비가 되었다면 <span class="blue">onMapReady(GoogleMap)</span> 메서드가 실행된다.<br>
 GoogleMap 객체를 사용하여 지도의 뷰 옵션을 설정하거나 마커를 추가할 수 있다.<br>
 {% highlight java %}
