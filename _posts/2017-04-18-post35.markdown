@@ -1,0 +1,150 @@
+---
+layout: post
+title:  "Google Map API 사용하기"
+date:   2017-04-18 10:00:00 +0900
+author: 민갤
+description: Google Map API 사용하기
+keywords : android,java,Google,androidstudio,언어,API,프로그래밍,Map
+category : android
+---
+Google Maps Android API는 Android 애플리케이션에 Google 지도를 표시할 수 있게 해준다.<br>
+앞의 글 '[Google API Key 발급]'을 통해 API Key를 받아와서 사용해보자.<br>
+<br>
+<br>
+
+<strong class="h2">SDK</strong><br>
+
+Android Studio의 SDK Manager를 열어 SDK Tools탭에서 <span class="red">Google Play services</span>가 설치되어 있는 지 확인한다.<br>
+안 되어 있다면 설치한다.<br>
+(메뉴 Tools - Android - SDK Manager)<br>
+<br>
+<br>
+
+
+<strong class="h2">Gradle Scripts - build.gradle(Module: app)</strong><br>
+
+Google Paly Services를 사용하기 위해 Library를 추가한다.<br>
+Library 전체(com.google.android.gms:play-services:[version])를 추가할 경우 기본 Library 버전과 충돌이 일어날 수 있으므로 필요한 것만 받는다.<br>
+<span class="blue">File - Project Structure(Shift+Ctrl+Alt+S) - (Modules)app - Dependencies</span> 로 들어가 <span class="red">play-services</span>를 검색 해 maps를 추가하거나 직접 입력한다.<br>
+{% highlight xml %}
+dependencies {
+    ...
+    compile 'com.google.android.gms:play-services-maps:[version]'
+}
+{% endhighlight %}
+직접 입력한 경우에는 코드창 위에 나타나는 <span class="blue">Sync Now</span>를 클릭한다.<br>
+<br>
+<br>
+
+<strong class="h2">AndroidManifest.xml</strong><br>
+
+application 태그 안에 <span class="red">meta-data</span> 태그를 사용하여 발급받은 <span class="red">API Key</span>를 입력해야 API를 사용할 수 있다.<br>
+{% highlight xml %}
+<?xml version="1.0" encoding="utf-8"?>
+<manifest ...>
+
+    <application
+        ...>
+
+        <meta-data android:name="com.google.android.gms.version"
+                   android:value="@integer/google_play_services_version"/>
+        <meta-data android:name="com.google.android.geo.API_KEY"
+                   android:value="Your API Key"/>
+
+        ...
+    </application>
+
+</manifest>
+{% endhighlight %}
+<br>
+<br>
+
+
+<strong class="h2">activity_main.xml</strong><br>
+
+화면에 지도 정보를 표시하기 위해 Fragment를 사용한다.<br>
+Fragment는 API 12부터 등장한 클래스라 API 12미만 단말기에서도 사용할 수 있도록 별도의 Library를 제공하고 있다.<br>
+
+여기서는 Google에서 제공하는 Library를 사용하므로 Fragment 객체를 정의하기 위해 <br>
+android:name을 <span class="red">com.google.android.gms.maps.SupportMapFragment</span>로 설정한다.<br>
+(class="com.google.android.gms.maps.SupportMapFragment"를 추가해도 된다)<br>
+
+SupportMapFragment는 Fragment의 서브 클래스로, Fragment에 지도를 배치할 수있도록 해준다.<br>
+{% highlight xml %}
+<?xml version="1.0" encoding="utf-8"?>
+<fragment
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/map"
+    android:name="com.google.android.gms.maps.SupportMapFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    ..."/>
+{% endhighlight %}
+<br>
+<br>
+
+
+<strong class="h2">MainActivity.java</strong><br>
+
+별다른 실행 코드 없이 실행시켜 보자. <br>
+화면에 지도가 나타난다.<br>
+{% highlight java %}
+public class MainActivity extends AppCompatActivity  {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+    }
+}
+{% endhighlight %}
+<br>
+<br>
+
+
+<strong class="h2">지도 사용하기</strong><br>
+앱에서 지도를 사용하려면 <span class="red">OnMapReadyCallback</span> 인터페이스를 구현하고 <br>
+MapFragment 객체에서 getMapAsync(OnMapReadyCallback)를 통해 콜백 인스턴스를 설정해야 한다.<br>
+{% highlight java %}
+public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+
+    }
+}
+{% endhighlight %}
+<br>
+<br>
+
+
+<strong class="h2">좌표 찍기</strong><br>
+지도를 사용할 준비가 되었다면 <span class="blue">onMapReady(GoogleMap)</span> 메서드가 실행된다.<br>
+GoogleMap 객체를 사용하여 지도의 뷰 옵션을 설정하거나 마커를 추가할 수 있다.<br>
+{% highlight java %}
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        double latitudeN = 37.576217, longitudeE = 126.976891; // 광화문 좌표
+        LatLng marker = new LatLng(latitudeN, longitudeE);
+
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(marker, 13));
+        googleMap.addMarker(new MarkerOptions()
+                .title("Marker")
+                .snippet("광화문")
+                .position(marker));
+    }
+{% endhighlight %}
+
+
+[Google API Key 발급]:https://lovefields.github.io/android/2017/04/17/post34.html
