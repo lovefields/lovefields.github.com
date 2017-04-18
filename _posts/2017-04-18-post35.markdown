@@ -27,7 +27,7 @@ Google Paly Services를 사용하기 위해 Library를 추가한다.<br>
 Library 전체(com.google.android.gms:play-services:[version])를 추가할 경우 기본 Library 버전과 충돌이 일어날 수 있으므로 필요한 것만 받는다.<br>
 <span class="blue">File - Project Structure(Shift+Ctrl+Alt+S) - (Modules)app - Dependencies</span> 로 들어가 <span class="red">play-services</span>를 검색 해 maps를 추가하거나 직접 입력한다.<br>
 <p class="t_center w50"><amp-img src="{{ "/img/post35/1.png" | prepend: site.baseurl }}" alt="Dependencies" width="635" height="309" layout="responsive"></amp-img></p>
-{% highlight xml %}
+{% highlight java %}
 dependencies {
     ...
     compile 'com.google.android.gms:play-services-maps:[version]'
@@ -70,7 +70,7 @@ Fragment는 API 12부터 등장한 클래스라 API 12미만 단말기에서도 
 android:name을 <span class="red">com.google.android.gms.maps.SupportMapFragment</span>로 설정한다.<br>
 (class="com.google.android.gms.maps.SupportMapFragment"를 추가해도 된다)<br>
 
-SupportMapFragment는 Fragment의 서브 클래스로, Fragment에 지도를 배치할 수있도록 해준다.<br>
+SupportMapFragment는 Fragment의 서브 클래스로, Fragment에 지도를 배치할 수 있도록 해준다.<br>
 {% highlight xml %}
 <?xml version="1.0" encoding="utf-8"?>
 <fragment

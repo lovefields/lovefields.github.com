@@ -14,25 +14,25 @@ category : android
 <strong class="h2">Google API Key 발급받기</strong><br>
 
 1 &nbsp; &nbsp; <strong>[Google Maps API] 사이트 접속 - 시작하기 - 네이티브 Android 앱용 지도 - 키 가져오기</strong><br>
-&nbsp; &nbsp; &nbsp; &nbsp;([Google Devalopers]에서 Google API Console에 들어가 프로젝트를 만들거나 기존 프로젝트에서 API Key를 받을 수도 있다.)<br>
+&nbsp; &nbsp; &nbsp; &nbsp;([Google Devalopers]에서 Google API Console에 들어가 Google 프로젝트를 만들거나 기존 Google 프로젝트에서 API Key를 받을 수도 있다.)<br>
 
 <p class="t_center w50"><amp-img src="{{ "/img/post34/01.png" | prepend: site.baseurl }}" alt="시작하기" width="1351" height="768" layout="responsive"></amp-img></p><br>
 <p class="t_center w50"><amp-img src="{{ "/img/post34/02.png" | prepend: site.baseurl }}" alt="네이티브 Android 앱용" width="1350" height="768" layout="responsive"></amp-img></p><br>
 <p class="t_center w50"><amp-img src="{{ "/img/post34/03.png" | prepend: site.baseurl }}" alt="키 가져오기" width="1349" height="768" layout="responsive"></amp-img></p><br>
 
-2-1 &nbsp; &nbsp; 프로젝트가 없다면 <strong>생성 - 생성 즉시 API Key 발급</strong> - API Key에 접근 제한을 걸고 싶다면 <span class="blue">API Console</span>을 클릭.<br>
+2-1 &nbsp; &nbsp; Google 프로젝트가 없다면 <strong>생성 - 생성 즉시 API Key 발급</strong> - API Key에 접근 제한을 걸고 싶다면 <span class="blue">API Console</span>을 클릭.<br>
 <p class="t_center w50"><amp-img src="{{ "/img/post34/04.png" | prepend: site.baseurl }}" alt="프로젝트 선택/생성" width="1366" height="768" layout="responsive"></amp-img></p><br>
 <p class="t_center w50"><amp-img src="{{ "/img/post34/05.png" | prepend: site.baseurl }}" alt="생성" width="1366" height="768" layout="responsive"></amp-img></p><br>
 <p class="t_center w50"><amp-img src="{{ "/img/post34/07.png" | prepend: site.baseurl }}" alt="키 복사" width="1366" height="768" layout="responsive"></amp-img></p><br>
 
-2-2 &nbsp; &nbsp; 프로젝트에 새로 발급하려면 Google API Console에서 <strong>'사용자 인증 정보 - 사용자 인증 정보 만들기 - API키'</strong> 로 새로 만든다.<br>
+2-2 &nbsp; &nbsp; 기존 Google 프로젝트에 새로 발급하려면 Google API Console에서 <strong>'사용자 인증 정보 - 사용자 인증 정보 만들기 - API키'</strong> 로 새로 만든다.<br>
 <p class="t_center w50"><amp-img src="{{ "/img/post34/11.png" | prepend: site.baseurl }}" alt="생성" width="832" height="435" layout="responsive"></amp-img></p><br>
 <p class="t_center w50"><amp-img src="{{ "/img/post34/12.png" | prepend: site.baseurl }}" alt="키 복사" width="576" height="329" layout="responsive"></amp-img></p><br>
 <br>
 
-3 &nbsp; &nbsp; API Key에 접근 제한을 걸고 싶다면 API Key를 적용할 앱의 프로젝트를 등록해야 한다.<br>
+3 &nbsp; &nbsp; API Key에 접근 제한을 걸고 싶다면 API Key를 적용할 앱 프로젝트를 등록해야 한다.<br>
 &nbsp; &nbsp; &nbsp; &nbsp;제한 사항을 Android용으로 선택해<br>
-&nbsp; &nbsp; &nbsp; &nbsp;<span class="blue">패키지 이름</span> 칸에 API를 적용할 앱의 프로젝트 패키지 명을 입력하고<br>
+&nbsp; &nbsp; &nbsp; &nbsp;<span class="blue">패키지 이름</span> 칸에 API를 적용할 앱 프로젝트의 패키지 명을 입력하고<br>
 &nbsp; &nbsp; &nbsp; &nbsp;<span class="blue">SHA-1 인증서 지문</span>은 다음 설명을 통해 얻어서 입력한다.<br>
 
 <p class="t_center w50"><amp-img src="{{ "/img/post34/08.png" | prepend: site.baseurl }}" alt="API Key에 접근 제한" width="902" height="768" layout="responsive"></amp-img></p><br>

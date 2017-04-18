@@ -1,0 +1,95 @@
+---
+layout: post
+title:  "Firebase 사용하기"
+date:   2017-04-18 12:00:00 +0900
+author: 민갤
+description: Firebase 사용하기
+keywords : android,java,Firebase,androidstudio,언어,flugin,프로그래밍,google,services
+image : /img/firebase.png
+category : android
+---
+
+<strong class="h2">Firebase 프로젝트 생성</strong><br>
+
+&#149; &nbsp; [Firebase console]에 접속하여 Firebase 프로젝트 생성한다.<br> 
+&nbsp; &nbsp; 앱에 연결된 기존 Google 프로젝트가 있다면 'GOOGLE 프로젝트 가져오기'를, 그렇지 않다면 '프로젝트 추가'를 선택한다.<br>
+<p class="t_center w80"><amp-img src="{{ "/img/post36/1.png" | prepend: site.baseurl }}" alt="firebase project 생성" width="1366" height="768" layout="responsive"></amp-img></p>
+<p class="t_center w80"><amp-img src="{{ "/img/post36/2.png" | prepend: site.baseurl }}" alt="GOOGLE 프로젝트 가져오기" width="1366" height="768" layout="responsive"></amp-img></p>
+<p class="t_center w80"><amp-img src="{{ "/img/post36/2-1.png" | prepend: site.baseurl }}" alt="프로젝트 추가" width="1366" height="768" layout="responsive"></amp-img></p>
+<br>
+
+&#149; &nbsp; 'Android 앱에 Firebase 추가'를 클릭하고 설정 단계를 따른다.<br>
+&nbsp; &nbsp; 앱의 패키지 이름은 Firebase 프로젝트에 앱을 추가할 때만 입력 가능하다.<br>
+<p class="t_center w80"><amp-img src="{{ "/img/post36/3.png" | prepend: site.baseurl }}" alt="Android 앱에 Firebase 추가" width="1366" height="768" layout="responsive"></amp-img></p>
+<p class="t_center w80"><amp-img src="{{ "/img/post36/4.png" | prepend: site.baseurl }}" alt="Android 앱에 Firebase 추가" width="1366" height="768" layout="responsive"></amp-img></p>
+<br>
+
+&#149; &nbsp; <span class="red">google-services.json</span> 파일을 다운로드 받아서 앱 프로젝트 안의 모듈 폴더(app/) 안에 넣는다.<br>
+&nbsp; &nbsp; = Android Studio에서 Project 탭의 보기를 Project로 바꾸고 app 폴더 안에 복사-붙여 넣기 한다.<br>
+<p class="t_center w30"><amp-img src="{{ "/img/post36/5.png" | prepend: site.baseurl }}" alt="google-services.json" width="295" height="279" layout="responsive"></amp-img></p>
+<br>
+<br>
+
+<strong class="h2">Google Services Gradle plugin 추가</strong><br>
+
+다운로드 받은 파일(plugin)을 사용하기 위해 프로젝트와 모듈의 Gradle 파일을 수정한다.<br>
+<br>
+
+&#149; &nbsp; <strong>build.gradle(Project: YourProjectName)</strong><br>
+{% highlight java %}
+buildscript {
+    ...
+    dependencies {
+        ...
+        classpath 'com.google.gms:google-services:3.0.0'
+    }
+}
+{% endhighlight %}<br>
+&#149; &nbsp; <strong>build.gradle(Module:app)</strong><br>
+&nbsp; &nbsp; Gradle plugin을 사용할 수 있도록 반드시 하단에 추가한다.<br>
+&nbsp; &nbsp; 위에 추가할 경우 오류가 발생한다.<br>
+{% highlight java %}
+apply plugin: 'com.android.application'
+
+android {
+  ...
+}
+
+dependencies {
+  ...
+}
+
+apply plugin: 'com.google.gms.google-services'
+{% endhighlight %}
+<br>
+<br>
+
+<strong class="h2">Google Services Gradle plugin (Firebase SDK) 사용하기</strong><br>
+
+Firebase Analytics를 포함하는 firebase-core부터 firebase-appindexing까지 여러 기능들이 있다.<br>
+필요한 기능만 Library를 추가하여 사용하면 된다.<br>
+{% highlight java %}
+dependencies {
+    ...
+    com.google.firebase:firebase-core:10.0.1	        //Analytics
+    com.google.firebase:firebase-database:10.0.1	//Realtime Database
+    com.google.firebase:firebase-storage:10.0.1	        //Storage
+    com.google.firebase:firebase-crash:10.0.1	        //Crash Reporting
+    com.google.firebase:firebase-auth:10.0.1	        //Authentication
+    com.google.firebase:firebase-messaging:10.0.1	//Cloud Messaging and Notifications
+    com.google.firebase:firebase-config:10.0.1	        //Remote Config
+    com.google.firebase:firebase-invites:10.0.1         //Invites and Dynamic Links
+    com.google.firebase:firebase-ads:10.0.1	        //AdMob
+    com.google.firebase:firebase-appindexing:10.0.1	//App Indexing
+}
+{% endhighlight %}
+
+
+
+
+
+
+
+
+
+[Firebase console]: https://console.firebase.google.com/?hl=ko
