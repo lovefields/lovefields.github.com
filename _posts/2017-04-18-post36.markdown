@@ -83,9 +83,20 @@ dependencies {
     com.google.firebase:firebase-appindexing:10.0.1	//App Indexing
 }
 {% endhighlight %}
+<br>
+<br>
 
+<strong class="h2">인터넷 권한 설정 주기</strong><br>
 
+&#149; &nbsp; <strong>AndroidManifest.xml</strong><br>
+{% highlight xml %}
+<?xml version="1.0" encoding="utf-8"?>
+<manifest ...>
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+</manifest>
+{% endhighlight %}
 
 
 
