@@ -148,6 +148,11 @@ GoogleMap 객체를 사용하여 지도의 뷰 옵션을 설정하거나 마커�
                 .position(marker));
     }
 {% endhighlight %}
+<br>
+<br>
+<br>
 
+참고 사이트: [Google Maps API]
 
 [Google API Key 발급]:https://lovefields.github.io/android/2017/04/17/post34.html
+[Google Maps API]: https://developers.google.com/maps/documentation/android-api/map?hl=ko
