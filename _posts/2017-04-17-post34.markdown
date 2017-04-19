@@ -37,6 +37,7 @@ category : android
 
 <p class="t_center w50"><amp-img src="{{ "/img/post34/08.png" | prepend: site.baseurl }}" alt="API Key에 접근 제한" width="902" height="768" layout="responsive"></amp-img></p><br>
 <p class="t_center w50"><amp-img src="{{ "/img/post34/10.png" | prepend: site.baseurl }}" alt="API Key에 접근 제한" width="652" height="183" layout="responsive"></amp-img></p><br>
+<span class="red">참고: 설정이 적용되는 데 최대 5분이 걸릴 수 있습니다.</span><br>
 <br>
 <br>
 
@@ -44,7 +45,7 @@ category : android
 
 안드로이드 스튜디오에서 프로젝트 파일을 열어 우측의 Gradle창을 활성화 시킨다.<br>
 <strong>'YourProjectName - YourProjectName(root) - Tasks - android - <span class="red">SigningReport</span>'</strong> 를 열면 하단 Run에서 실행된다.<br>
-좌측에 재생 icon 바로 옆에 있는 <span class="blue">'Toggle Tasks executions/text mode'</span>를 눌러 보기 방식을 바꾸어보면 <strong class="red">SHA1</strong> 정보가 있다.<br>
+Text Mode로 안 보이면 좌측의 재생 icon 바로 옆에 있는 <span class="blue">'Toggle Tasks executions/text mode'</span>를 눌러 보기 방식을 바꾸어보면 <strong class="red">SHA1</strong> 정보가 있다.<br>
 이 정보가 유출되면 다른 사람이 앱을 수정하거나 자신의 앱으로 대체할 수 있으므로 보안에 유의한다.<br>
 
 <p class="t_center w80"><amp-img src="{{ "/img/post34/09.png" | prepend: site.baseurl }}" alt="SigningReport" width="1366" height="768" layout="responsive"></amp-img></p><br>

@@ -44,15 +44,14 @@ application 태그 안에 <span class="red">meta-data</span> 태그를 사용하
 <?xml version="1.0" encoding="utf-8"?>
 <manifest ...>
 
-    <application
-        ...>
+    <application ...>
+	...
 
         <meta-data android:name="com.google.android.gms.version"
                    android:value="@integer/google_play_services_version"/>
         <meta-data android:name="com.google.android.geo.API_KEY"
                    android:value="Your API Key"/>
 
-        ...
     </application>
 
 </manifest>
@@ -80,7 +79,7 @@ SupportMapFragment는 Fragment의 서브 클래스로, Fragment에 지도를 배
     android:name="com.google.android.gms.maps.SupportMapFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    ..."/>
+    .../>
 {% endhighlight %}
 <br>
 <br>
