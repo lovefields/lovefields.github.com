@@ -387,9 +387,10 @@ result = (x = 2) ?  1 : (x < 2 ? 0 : -1);
 {% endhighlight %}
 <br>
 
-<strong>대입 연산자 =</strong><br>
+<strong>대입 연산자 = op=</strong><br>
 
 lvalue = rvalue<br>
+변수와 같은 저장공간에 값 또는 수식의 연산결과를 저장한다.<br>
 
 &#149; &nbsp; lvalue(left value) : 변수, 식, 상수 등 모두 사용 가능하다.<br>
 &#149; &nbsp; rvalue(right value) : 변수처럼 값을 변경할 수 있는 것이어야 한다.<br>
