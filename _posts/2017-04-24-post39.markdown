@@ -1,0 +1,277 @@
+---
+layout: post
+title:  "Java 배열"
+date:   2017-04-24 10:00:00 +0900
+author: 민갤
+description: JAVA 배열
+keywords : android,java,변수,variable,androidstudio,배열,array,선언,괄호,요소,언어,자바의 정석,프로그래밍
+image : /img/java.png
+category : android
+---
+
+<strong class="h2">배열 array</strong><br>
+
+<span class="red">같은 타입</span>의 여러 변수를 하나의 묶음으로 다루는 것<br>
+<br>		
+<br>
+
+<strong>선언</strong><br>
+
+타입<span class="red">[]</span> 변수이름;<br>
+타입 변수이름<span class="red">[]</span>;<br>
+					     
+타입 또는 변수이름 뒤에 배열임을 의미하는 대괄호[]를 붙인다.<br>
+배열의 저장공간을 가리키는 참조변수를 선언한다. = 참조변수를 위한 공간을 만든다.<br>
+{% highlight java %}
+int[] array;
+int array[];
+{% endhighlight %}
+<br>	     
+<br>
+  
+<strong>생성</strong><br>
+
+&#149;&nbsp; 선언과 동시에 생성 <br>
+&nbsp; &nbsp; <span class="blue">타입</span>[] 변수이름 = new <span class="blue">타입</span>[<span class="red">길이</span>];<br>
+
+&#149;&nbsp; 선언 후 생성<br>
+&nbsp; &nbsp; <span class="blue">타입</span>[] 변수이름;<br>
+&nbsp; &nbsp; 변수이름 = new <span class="blue">타입</span>[<span class="red">길이</span>];<br>
+
+new 연산자와 함께 배열의 타입과 길이를 지정한다.<br>
+배열을 생성해야만 비로소 값을 저장할 수 있는 공간들이 만들어진다.<br>
+	
+생성된 배열의 각 저장공간을 배열의 요소(element)라 칭하며, '배열이름[index]'의 형식으로 접근한다.<br>
+각 배열의 요소는 자동적으로 타입의 기본값으로 초기화된다.<br>
+
+&#149;&nbsp; 배열 선언. 배열 생성 전 ex) int<br> 
+
+|변수이름|
+|:-:|
+| |
+
+&#149;&nbsp; 배열 생성 후<br> 
+
+|변수이름|
+|:-:|
+|address|
+
+|변수이름[0]|변수이름[1]|변수이름[2]|변수이름[3]|...|변수이름[길이-1]|
+|:-:|:-:|:-:|:-:|:-:|:-:|
+|0|0|0|0|...|0|
+
+한 동으로만 된 아파트가 있다고 가정했을 때 address는 아파트 주소(A동), index는 집 호수(A동101호, A동102호, A동103호...)다.<br>
+<br>	    
+<br>
+
+<strong>인덱스 Index</strong><br>
+
+배열의 요소마다 붙여진 일련번호(범위: <span class="blue">0 ~ 배열길이-1</span>). <br>
+각 요소를 구별한다. <br>
+상수 대신 변수나 수식을 사용할 수 있다.<br>
+대괄호 안에 수식이 포함된 경우 수식을 먼저 계산한 후 요소를 찾는다.<br>
+
+<span class="red">주의!</span> index의 범위를 벗어난 값을 사용해선 안된다.<br>
+변수의 값은 실행 시에 대입되므로 컴파일러는 이 값이 index의 유효 범위 안에 있는 지 확인할 수 없다.<br>
+유효하지 않은 값을 사용할 경우 실행 시 에러가 발생한다.<br>    
+{% highlight java %}
+int[] arr = new int[3];
+
+for(int i=0; i<3; i++){
+	arr[i] = i * 10;
+} 
+
+int i = 3;
+int temp = arr[i+2];
+  //       arr[3+2];
+  //       arr[5];    error     
+{% endhighlight %}
+<br>		 
+<br>
+
+<strong>길이</strong><br>
+
+배열의 요소의 개수.<br>
+값을 저장할 수 있는 공간의 개수.<br>
+int 범위의 0을 포함한 양의 정수여야 한다.<br>
+배열은 한번 생성하면 길이를 변경할 수 없다.<br>
+
+&#149;&nbsp; 배열이름.length<br>
+&nbsp; &nbsp; 배열이 가진 공간의 개수(상수)를 반환한다.<br>
+&nbsp; &nbsp; java에서는 JVM이 모든 배열의 길이를 별도로 관리한다.<br>
+&nbsp; &nbsp; 배열의 길이가 변경되면 자동적으로 변경된 배열의 길이를 값으로 갖기 때문에<br>
+&nbsp; &nbsp; for문의 조건식에서 배열의 길이를 직접 입력하는 것보다 코드의 관리가 쉽고 에러가 발생할 확률이 적다.<br>
+{% highlight java %}
+int[] arr = new int[3];
+
+for(int i=0; i<arr.length; i++){
+	arr[i] = i * 10;
+} 			      
+{% endhighlight %}
+
+&#149;&nbsp; 길이 변경<br>
+&nbsp; &nbsp; 배열에 저장 공간이 부족한 경우 더 큰 배열을 새로 생성하여 그 안에 복사하면 된다.<br>
+&nbsp; &nbsp; 그러나 비용이 많이 들기 때문에, 처음부터 기존 길이의 2배 정도로 생성하는 것이 좋다. (너무 크면 메모리 낭비!)<br>
+&nbsp; &nbsp; 배열은 참조변수를 통해서만 접근할 수 있기 때문에, 자신을 가리키는 참조변수가 없으면 사용할 수가 없어져서<br>
+&nbsp; &nbsp; JVM의 가비지 컬렉터에 의해 자동적으로 메모리에서 제거된다.<br>
+<br>			 
+<br>
+
+<strong>초기화</strong><br>
+
+배열은 생성과 동시에 자동적으로 자신의 타입에 맞는 기본값으로 초기화된다.<br>
+만일 원하는 값으로 저장하려면 각 요소마다 값을 지정해야한다.<br>
+{% highlight java %}
+int[] arr = new int[3];
+arr[0] = 1;
+arr[1] = 2;
+arr[2] = 3;	   
+{% endhighlight %}
+
+&#149;&nbsp; for문 사용하기<br>
+&nbsp; &nbsp; 저장하려는 값에 일정한 규칙이 있다면 for문을 이용할 수 있다.<br>     
+{% highlight java %}
+int[] arr = new int[3];
+
+for(int i=0; i<arr.length; i++){
+	arr[i] = i + 1;
+} 			  
+{% endhighlight %}
+
+&#149;&nbsp; 괄호 { }<br>
+&nbsp; &nbsp; 일정 규칙이 없는 경우, 괄호 안에 저장할 값들을 쉼표로 구분해서 나열하면 된다.<br>
+&nbsp; &nbsp; 배열의 길이는 괄호 안에 적힌 값의 개수에 의해 자동적으로 결정된다.<br>
+{% highlight java %}
+int[] arr = new int[]{1, 3, 2, 6};   
+{% endhighlight %}
+
+&#149;&nbsp; new 타입[] 생략<br>
+&nbsp; &nbsp; 선언과 동시에 생성을 같이 할 경우 'new 타입[]'을 생략하여 코드를 단순화 할 수도 있다.<br>
+{% highlight java %}
+int[] arr = {1, 3, 2, 6};
+
+int[] arr;
+arr = {1, 3, 2, 6}; // error	
+{% endhighlight %}
+
+&#149;&nbsp; 매개변수<br>
+&nbsp; &nbsp; 매개변수로 배열을 받는 메서드를 호출할 경우 'new 타입[]'을 생략할 수 없다.<br>
+{% highlight java %}
+int methodName(int[] arr){ 
+	return arr[0];
+}
+
+int result = methodName(new int[]{1, 3, 2, 6});
+int result = methodName({1, 3, 2, 6});           // error
+{% endhighlight %}
+
+&#149;&nbsp; 길이가 0인 배열<br>
+&nbsp; &nbsp; 괄호 안을 비워두면 길이가 0인 배열이 생성된다.<br>
+&nbsp; &nbsp; 배열을 가리키는 참조변수는 기본값 null 대신 길이가 0인 배열로 초기화하기도 한다.<br>
+{% highlight java %}
+int[] arr = new int[0];
+int[] arr = new int[]{};
+int[] arr = {};		     
+{% endhighlight %}
+
+&#149;&nbsp; Arrays.toString(배열이름)<br>
+&nbsp; &nbsp; 배열의 모든 요소를 '[첫번째 요소, 두번째 요소 ...]'의 형식으로 문자열을 만들어서 반환한다.<br>
+&nbsp; &nbsp; 배열의 내용을 쉽게 확인할 수 있다.<br>
+{% highlight java %}
+import java.util.*;
+...
+
+int[] arr = {1, 2, 3};
+
+System.out.println(arr);                   // 타입@주소 형식으로 출력
+System.out.println(Arrays.toString(arr));  // [1, 2, 3]
+{% endhighlight %}
+<br>
+<br>
+
+<strong>복사</strong><br>
+
+&#149;&nbsp; for문 이용.<br>
+&nbsp; &nbsp; 기본 배열보다 큰 배열을 만들어서 그 안에 기존 배열의 모든 요소에 저장된 값을 하나씩 복사한다.<br>
+&nbsp; &nbsp; 기존 참조변수에 새 참조변수의 값을 저장하면, 새 배열의 주소를 갖게 되고 기존 주소의 배열은 사라진다.<br>
+{% highlight java %}
+int[] arr = {1, 2, 3};
+int[] temp = new int[arr.length*2];
+
+for(int i=0; i<arr.length; i++){
+	temp[i] = arr[i];
+}
+
+arr = temp;
+{% endhighlight %}
+
+복사 전<br>
+
+|arr|arr[0]|arr[1]|arr[2]|
+|:-:|:-:|:-:|:-:|
+|0x100|1|2|3|
+
+|temp|temp[0]|temp[1]|temp[2]|temp[3]|temp[4]|temp[5]|
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+|0x200|0|0|0|0|0|0|
+ 
+복사후<br>
+
+|arr|
+|:-:|
+|0x200|
+
+|temp|temp[0]|temp[1]|temp[2]|temp[3]|temp[4]|temp[5]|
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+|0x200|1|2|3|0|0|0|
+
+&#149;&nbsp; System.arraycopy(arr, num, newArr, newNum, length)<br>
+&nbsp; &nbsp; 지정된 범위의 값들을 한 번에 통째로 복사한다.<br>
+&nbsp; &nbsp; 배열 arr[num]번째부터 length개의 데이터를 새 배열 newArr[newNum]부터 복사한다.<br>
+{% highlight java %}
+int[] arr = {1, 2, 3};
+int[] temp = {6, 6, 6, 6, 6, 6};
+
+System.arraycopy(arr, 0, temp, 3, 3);
+System.out.println(Arrays.toString(temp));  // [6, 6, 6, 1, 2, 3]
+{% endhighlight %}
+<br>
+<br>
+
+<strong>String 배열</strong><br>
+
+참조형 배열의 경우 배열에 저장되는 것은 객체의 주소다.
+
+|arr|arr[0]|arr[1]|arr[2]|
+|:-:|:-:|:-:|:-:|
+|0x100|0x200|0x300|0x400|
+
+|0x200|0x300|0x400|
+|:-:|:-:|:-:|
+|null|"A"|"b"|
+
+&#149;&nbsp; charAt(int index)<br>
+&nbsp; &nbsp; 문자열에서 해당 index에 있는 문자를 반환한다. = 배열이름[index]과 동일.<br>
+
+&#149;&nbsp; substring(int from, int to)<br>
+&nbsp; &nbsp; index from번째부터 index to-1번째까지 범위 내의 문자열을 반환한다.<br>
+
+&#149;&nbsp; char 배열과 String 클래스의 변환<br>
+{% highlight java %}
+char[] chArr = {'a', 'b', 'c'};
+
+String str = new String(chArr);	   // char 배열 → String
+System.out.println(str);           // abc
+
+char[] temp = str.toCharArray();   // String → char 배열
+System.out.println(temp[0]);       // a
+{% endhighlight %}		 
+
+<br>
+<br>
+<br>
+
+
+
+
+참고 서적: 자바의 정석 3판

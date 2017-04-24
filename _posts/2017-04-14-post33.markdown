@@ -38,12 +38,12 @@ category : android
 2진수에서 왼쪽 첫 번째 자리를 부호 자리로 사용한다.<br>
 저장할 수 있는 값의 범위를 넘어서면 최소값으로 돌아가며 연산한다.(오버플로우 Overflow)<br>
 
-| |byte|범위|사용|접미사|
+| |byte|범위|사용|기본값|
 |:-:|:-:|:-:|:-:|:-:|
-|byte|1|-128 ~ 127|이진 데이터| |
-|short|2|-32768 ~ 32767|C언어와 호환| |
-|int|4|-2147483648 ~ 2147483647|CPU에 빠른 접근| |
-|long|8|-9223372036854775808 ~ 9223372036854775807|값이 큰 정수|l / L|
+|byte|1|-128 ~ 127|이진 데이터|0|
+|short|2|-32768 ~ 32767|C언어와 호환|0|
+|int|4|-2147483648 ~ 2147483647|CPU에 빠른 접근|0|
+|long|8|-9223372036854775808 ~ 9223372036854775807|값이 큰 정수|0L(l)|
 
 <br>
  
@@ -57,10 +57,10 @@ category : android
 &#149;&nbsp; 지수 Exponent :&nbsp; 8bit. 부호 있는 정수.<br>
 &#149;&nbsp; 가수 Mantissa :&nbsp; 23bit. 실제 값을 저장하는 부분. 정밀도.<br>
 
-| |byte|부호|지수|가수|접미사|
+| |byte|부호|지수|가수|기본값|
 |:-:|:-:|:-:|:-:|:-:|:-:|
-|float|4|0 / 1|-127 ~ 128|10진수 7자리|f / F|
-|double|8|0 / 1|-1023 ~ 1024|10진수 15자리|d / D. 생략 가능|
+|float|4|0 / 1|-127 ~ 128|10진수 7자리|0.0f(F)|
+|double|8|0 / 1|-1023 ~ 1024|10진수 15자리|0.0d(D) 또는 0.0|
 
 저장 범위를 넘으면 무한대(오버플로우), 적으면 0(언더플로우 Underflow)이 된다.<br>
 {% highlight java %}
@@ -87,6 +87,7 @@ float f = 1.e1f;    // f = 10.0
 2byte. <span class="blue">단 하나의 문자</span>만 저장할 수 있다.<br>
 작은 따옴표를 사용하여 값을 저장한다.<br>
 빈 문자('')는 안되지만 공백(' ')은 저장할 수 있다.<br>
+default :&nbsp; '\u0000'<br>
 {% highlight java %}
 char a = 'a';
 char b = '강';
@@ -125,8 +126,10 @@ default :&nbsp; false<br>
 <strong class="h2">참조형 Reference Type</strong><br>
 
 참조변수<br>
-값이 저장되어 있는 공간의 주소(Memory Address: 메모리에 붙는 1byte단위의 일련번호) 또는 null을 저장<br>
-기본형을 제외한 나머지 타입. (String, 클래스 이름 등)<br>
+String, 클래스 이름 등 기본형을 제외한 나머지 타입.<br>
+값이 저장되어 있는 공간의 주소(메모리 주소) 또는 null을 저장한다.<br>
+&#149;&nbsp; null :&nbsp; 어떠한 객체도 가리키고 있지 않다는 뜻. 참조변수의 기본값.<br>
+&#149;&nbsp; 메모리 주소 Memory Address :&nbsp; 메모리에 붙는 1byte단위의 일련번호. 4byte의 정수값(0x0~0xffffffff).<br>
 <br> 
 
 <strong> 참조형의 초기화</strong><br>
@@ -139,7 +142,7 @@ MyActivity myActivity = new MyActivity();
 <br>
 
 <strong>문자열</strong><br>
-String 클래스. <br>
+<span class="blue">String 클래스</span> (char 배열에 여러 가지 기능을 추가하여 확장한 것).<br>
 큰 따옴표를 사용하며, 빈 문자열("")을 저장할 수 있다.<br>
 초기화할 때 new 연산자를 사용해야 하지만 기본형처럼 할 수도 있다.<br>
 {% highlight java %}
@@ -153,6 +156,12 @@ int a = 1 + 1;                  // 2
 int b = a + "love";             // error
 String str = "love" + "field";  // lovefield
 String love = 2 + str;          // 2lovefield
+{% endhighlight %}
+
+문자열(String객체)은 내용을 변경할 수 없다.<br> 
+{% highlight java %}
+String str = "love"; 
+str = str + "field";  // "lovefield" 라는 새로운 문자열이 str에 저장된다.
 {% endhighlight %}
 <br>
 <br>
