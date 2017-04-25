@@ -9,11 +9,11 @@ image : /img/java.png
 category : android
 ---
 
-<strong class="h2">다차원 배열</strong><br>
+<div><strong class="h2">다차원 배열</strong></div>
 
-대괄호의 개수에 따라 차원의 수가 결정된다.<br>
-주로 [] 1차원, [][] 2차원 배열이 사용되고 3차원 이상의 고차원 배열은 잘 사용되지 않는다.<br>
-그 중 2차원 배열을 살펴보자.<br>
+<div>대괄호의 개수에 따라 차원의 수가 결정된다.</div>
+<div>주로 [] 1차원, [][] 2차원 배열이 사용되고 3차원 이상의 고차원 배열은 잘 사용되지 않는다.</div>
+<div>그 중 2차원 배열을 살펴보자.</div>
 <br>
 
 <strong>선언</strong><br>
