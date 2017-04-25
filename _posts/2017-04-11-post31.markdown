@@ -7,12 +7,12 @@ description: RecyclerView의 ItemPosition을 얻는 방법
 keywords : Android Studio,Android,Studio,RecyclerView,library,item,position,ItemTouch,ClickListener
 category : android
 ---
-RecyclerView를 사용할 때 Item을 선택해서 수정하거나, 삭제하거나, 다른 Activity로 넘어가는 등의 동작을 한다.<br>
-이 때 Item이 가진 Position 값을 받아야 할 때 어떤 방식을 써야 할까?<br>
+<div>RecyclerView를 사용할 때 Item을 선택해서 수정하거나, 삭제하거나, 다른 Activity로 넘어가는 등의 동작을 한다.</div>
+<div>이 때 Item이 가진 Position 값을 받아야 할 때 어떤 방식을 써야 할까?</div>
 <br>
 <br>
 
-<strong class="h2">OnItemTouchListener()를 이용한 Item Position 알아내기 </strong>
+<div><strong class="h2">OnItemTouchListener()를 이용한 Item Position 알아내기 </strong>
 {% highlight java %}
 public class MainActivity extends AppCompatActivity {
 
@@ -51,14 +51,14 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 }
-{% endhighlight %}
-OnItemTouchListener()에서 어떠한 동작을 시킬 때 if문(MotionEvent)을 사용하지 않으면 각 MotionEvent마다 실행되어 동작이 중복된다.<br>
-&#149; findChildViewUnder(float X, float Y): Touch된 Item의 View를 가져온다.<br>
-&#149; getChildAdapterPosition(View): Item의 Position 값을 가져온다. <br>
+{% endhighlight %}<p></p>
+<div>OnItemTouchListener()에서 어떠한 동작을 시킬 때 if문(MotionEvent)을 사용하지 않으면 각 MotionEvent마다 실행되어 동작이 중복된다.</div>
+<div>&#149; findChildViewUnder(float X, float Y): Touch된 Item의 View를 가져온다.</div>
+<div>&#149; getChildAdapterPosition(View): Item의 Position 값을 가져온다. </div>
 <br>
 <br>
 
-<strong class="h2">OnClickListener()를 이용한 Item Position 알아내기</strong>
+<div><strong class="h2">OnClickListener()를 이용한 Item Position 알아내기</strong>
 {% highlight java %}
 public class RecyclerAdapter extends RecyclerView.Adapter {
     private List<Item> list;
@@ -113,11 +113,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter {
         }
     }
 }
-{% endhighlight %}
-RecyclerView 외부에서 RecyclerView.OnClickListener()을 사용할 경우 제대로 안 먹히는 경우가 발생한다.<br>
-&#149; Click Event를 통해 Item에 따라 RecyclerView 외부의 변수를 변경하고 싶을 때는 OnItemTouchListener().<br>
-&#149; Click Event를 통해 Dialog 창을 띄우거나 화면을 넘기는 등 하고 싶을 때는 <br>
-&nbsp; RecyclerView 내부의 Adapter에서 ItemView.OnClickListener()를 사용하는 것을 권장한다.<br>
+{% endhighlight %}<p></p>
+<div>RecyclerView 외부에서 RecyclerView.OnClickListener()을 사용할 경우 제대로 안 먹히는 경우가 발생한다.</div>
+<div>&#149; Click Event를 통해 Item에 따라 RecyclerView 외부의 변수를 변경하고 싶을 때는 OnItemTouchListener().</div>
+<div>&#149; Click Event를 통해 Dialog 창을 띄우거나 화면을 넘기는 등 하고 싶을 때는 </div>
+<div>&nbsp; RecyclerView 내부의 Adapter에서 ItemView.OnClickListener()를 사용하는 것을 권장한다.</div>
 <br>
 <br>
-

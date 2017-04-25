@@ -16,71 +16,71 @@ category : android
 <div>그 중 2차원 배열을 살펴보자.</div>
 <br>
 
-<strong>선언</strong><br>
+<div><strong>선언</strong></div>
 
-타입<span class="red">[][]</span> 변수이름;<br>
-타입 변수이름<span class="red">[][]</span>;<br>
-타입<span class="red">[]</span> 변수이름<span class="red">[]</span>;<br>
+<div>타입<span class="red">[][]</span> 변수이름;</div>
+<div>타입 변수이름<span class="red">[][]</span>;</div>
+<div>타입<span class="red">[]</span> 변수이름<span class="red">[]</span>;</div>
 					     
-1차원 배열에 대괄호가 하나 더 늘어났다.<br>
-2차원 배열은 주로 테이블 형태의 데이터를 담는데 사용된다.<br>
+<div>1차원 배열에 대괄호가 하나 더 늘어났다.</div>
+<div>2차원 배열은 주로 테이블 형태의 데이터를 담는데 사용된다.</div>
 {% highlight java %}
 int[][] array;
 int array[][];
-{% endhighlight %}
+{% endhighlight %}<p></p>
 <br>
   
-<strong>생성</strong><br>
+<div><strong>생성</strong></div>
 
-2차원 배열은 행(row)과 열(column)로 구성되어 있다.<br>
+<div>2차원 배열은 행(row)과 열(column)로 구성되어 있다.</div>
 {% highlight java %}
 int[][] array = new int[2][3];
-{% endhighlight %}
+{% endhighlight %}<p></p>
 
 ||열0|열1|열2|
 |:-:|:-:|:-:|:-:|
 |행0|0|0|0|
 |행1|0|0|0|
 
-&#149;&nbsp; index<br>
-&nbsp; &nbsp; index도 행과 열에 각각 하나씩 존재한다.<br>
-&nbsp; &nbsp; 행 index 범위 :&nbsp; 0 ~ 행의 길이-1<br>
-&nbsp; &nbsp; 열 index 범위 :&nbsp; 0 ~ 열의 길이-1<br>
-&nbsp; &nbsp; 저장 공간은 행 index * 열 index 만큼 생성된다.<br>
+<div>&#149;&nbsp; index</div>
+<div>&nbsp; &nbsp; index도 행과 열에 각각 하나씩 존재한다.</div>
+<div>&nbsp; &nbsp; 행 index 범위 :&nbsp; 0 ~ 행의 길이-1</div>
+<div>&nbsp; &nbsp; 열 index 범위 :&nbsp; 0 ~ 열의 길이-1</div>
+<div>&nbsp; &nbsp; 저장 공간은 행 index * 열 index 만큼 생성된다.</div>
 
 ||열0|열1|열2|
 |:-:|:-:|:-:|:-:|
 |행0|array[0][0]|array[0][1]|array[0][2]|
 |행1|array[1][0]|array[1][1]|array[1][2]|
 
-&#149;&nbsp; 값 출력<br>
+<div>&#149;&nbsp; 값 출력</div>
 {% highlight java %}
 array[1][1] = 5;
 System.out.println(array[1][1]);    // 5
-{% endhighlight %}     
+{% endhighlight %}<p></p>     
 <br>
   
-<strong>초기화</strong><br>
+<div><strong>초기화</strong></div>
 
-괄호{ }로 행을 구분한다.<br>
+<div>괄호{ }로 행을 구분한다.</div>
 {% highlight java %}
 int[][] arr = new int[][] { {1, 2, 3, 4}, {5, 6, 1, 2}, {3, 4, 5, 6} };
 int[][] arr = { {1, 2, 3, 4}, {5, 6, 1, 2}, {3, 4, 5, 6} };
-{% endhighlight %}
-행마다 줄 바꿈을 해주면 가독성이 좋아진다.<br>
+{% endhighlight %}<p></p>
+<div>행마다 줄 바꿈을 해주면 가독성이 좋아진다.</div>
 {% highlight java %}
 int[][] arr = {
 		{1, 2, 3, 4}, 
 		{5, 6, 1, 2}, 
 		{3, 4, 5, 6} 
 	};
-{% endhighlight %}	     
+{% endhighlight %}<p></p>	     
 <br>
   
-<strong>형태</strong><br>
+<div><strong>형태</strong></div>
 
-배열의 배열.<br>
-여러 개의 1차원 배열을 묶어서 또 하나의 배열로 만든 것.<br>
+<div>배열의 배열.</div>
+<div>여러 개의 1차원 배열을 묶어서 또 하나의 배열로 만든 것.</div>
 
 |arr|
 |:-:|
@@ -102,31 +102,30 @@ int[][] arr = {
 |:-:|:-:|:-:|:-:|:-:|
 |0x400|3|4|5|6|
 	
-&#149;&nbsp; arr.length = 행의 개수. 3<br>
-&#149;&nbsp; arr[index].length = 행index의 열의 개수. 4<br>    
+<div>&#149;&nbsp; arr.length = 행의 개수. 3</div>
+<div>&#149;&nbsp; arr[index].length = 행index의 열의 개수. 4</div>    
 <br>
 
-<strong>가변 배열</strong><br>
+<div><strong>가변 배열</strong></div>
 
-2차원 이상의 다차원 배열을 생성할 때 전체 배열 차수 중 마지막 차수의 길이를 지정하지 않고,<br>
-추후에 각기 다른 길이의 배열을 생성하여 유동적인 배열을 구성할 수 있다.<br>
+<div>2차원 이상의 다차원 배열을 생성할 때 전체 배열 차수 중 마지막 차수의 길이를 지정하지 않고,</div>
+<div>추후에 각기 다른 길이의 배열을 생성하여 유동적인 배열을 구성할 수 있다.</div>
 {% highlight java %}
 int[][] arr = new int[2][];    // arr.length = 2
 arr[0] = new int[3];	       // arr[0].length = 3
 arr[1] = new int[1];	       // arr[1].length = 1
-{% endhighlight %}
+{% endhighlight %}<p></p>
 
-&#149;&nbsp; 초기화
+<div>&#149;&nbsp; 초기화</div>
 {% highlight java %}
 int[][] arr = {
 		{1, 2, 3, 4}, 
 		{5, 6}, 
 		{3, 4, 5} 
 	};
-{% endhighlight %}
+{% endhighlight %}<p></p>
 
 
-&nbsp; &nbsp; 
 <br>
 <br>
 <br>
