@@ -113,7 +113,7 @@ for(int i=0; i<arr.length; i++){
 <div>&nbsp; &nbsp; 배열에 저장 공간이 부족한 경우 더 큰 배열을 새로 생성하여 그 안에 복사하면 된다.</div>
 <div>&nbsp; &nbsp; 그러나 비용이 많이 들기 때문에, 처음부터 기존 길이의 2배 정도로 생성하는 것이 좋다. (너무 크면 메모리 낭비!)</div>
 <div>&nbsp; &nbsp; 배열은 참조변수를 통해서만 접근할 수 있기 때문에, 자신을 가리키는 참조변수가 없으면 사용할 수가 없어져서</div>
-<div>&nbsp; &nbsp; JVM의 가비지 컬렉터에 의해 자동적으로 메모리에서 제거된다.</div>
+<div>&nbsp; &nbsp; JVM의 Garbage Collector에 의해 자동적으로 메모리에서 제거된다.</div>
 <br>			 
 <br>
 

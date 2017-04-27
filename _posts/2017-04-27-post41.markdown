@@ -1,0 +1,223 @@
+---
+layout: post
+title:  "Java 객체지향 프로그래밍01 - class"
+date:   2017-04-27 10:00:00 +0900
+author: 민갤
+description: JAVA 객체지향 프로그래밍01 - class
+keywords : android,java,androidstudio,배열,array,선언,class,요소,언어,자바의 정석,프로그래밍,클래스,객체
+image : /img/java.png
+category : android
+---
+
+<div><strong class="h2">객체지향언어의 역사</strong></div><p></p>
+
+<div>1960년대 중반, 객체지향이론을 프로그래밍언어에 적용한 Simula라는 최초의 객체지향언어가 탄생.</div>
+<div>1980년대 중반, C++을 비롯한 여러 객체지향언어가 발표되면서 개발자들의 관심을 끌기 시작.</div>
+<div>프로그램의 규모가 점차 커지고 사용자들의 요구가 빠르게 변화해가는 상황에 객체지향언어를 이용한 개발방법론이 대안으로 떠오름.</div>
+<div>1995년, 자바 발표. 인터넷의 발전과 함께 유행하면서 객체지향언어가 프로그래밍 언어의 주류가 됨.</div><p></p>
+
+<div><strong>객체지향이론</strong></div>
+<div>실제 세계는 사물(객체)로 이루어져 있으며, 발생하는 모든 사건들은 사물간의 상호작용이다.</div>
+<div>상속, 캡슐화, 추상화 개념을 중심으로 점차 구체적으로 발전.</div><p></p>
+<br>
+<br>
+<br>
+
+<div><strong class="h2">객체지향언어</strong></div><p></p>
+
+<div>기존의 프로그래밍 언어에 규칙을 만들어 코드 간에 서로 관계를 맺어주었다.</div><p></p>
+
+<div><strong>재사용성</strong> :&nbsp; 새로운 코드를 작성할 때 기존 코드를 이용할 수 있다.</div>
+<div><strong>유지보수</strong> :&nbsp; 코드간의 관계를 이용해 쉽게 코드를 변경할 수 있다.</div>
+<div><strong>중복제거</strong> :&nbsp; 코드의 중복을 제거하여 코드의 불일치로 인한 오동작을 방지할 수 있다.</div> <p></p>
+
+<div>객체지향 프로그래밍 :&nbsp; 프로그램을 기능적으로 완성한 다음에 어떻게 하면 코드를 객체지향적으로 개선할 수 있을 지를 고민하여 점차 개선해나가는 것이 좋다.</div>
+<br>
+<br>
+<br>
+
+<div><strong class="h2">클래스 class </strong></div><p></p>
+
+<div>객체의 설계도/틀. 객체 생성에 사용된다.</div>	    
+<div>서로 관련된 변수들을 정의하고 이들에 대한 작업을 수행하는 함수들을 함께 정의한 것.</div>
+<br>
+
+<div><strong>데이터와 함수의 결합</strong></div>
+<div>속성과 기능으로 정의되어 있다. </div>
+<div>&#149;&nbsp; 속성 property :&nbsp; 멤버변수 member variable, 특성 attribute, 필드 field, 상태 state</div>
+<div>&#149;&nbsp; 기능 function :&nbsp; 메서드 method, 함수 function, 행위 behavior</div>
+
+|클래스|객체|속성|기능|
+|:-:|:-:|:-:|:-:|
+|가구 설계도|가구|크기, 높이, 길이, 색상, 문, 목재 등|넣기, 빼기, 열기, 닫기 등|
+
+<br>
+
+<div><strong>사용자 정의 타입 user-defined type</strong></div>
+<div>클래스가 곧 사용자 정의 타입이다.</div>
+<div>프로그래밍 언어에서 제공하는 자료형 외에 프로그래머가 서로 관련된 변수들을 묶어서 하나의 타입으로 새로 추가하는 것.</div>
+<div>8가지로 정해져 있는 기본형과 달리 참조형은 프로그래머가 새로운 타입을 추가할 수 있기 때문에 개수가 정해져 있지 않다.</div>
+<br>
+
+<div><strong>클래스의 인스턴스화 Instantiate</strong></div>
+<div>클래스로 객체를 만드는 과정</div>
+<div>클래스로 객체를 생성하면, 클래스에 정의된 기능과 속성을 가진 객체가 만들어진다.</div>
+<div>객체가 가지고 있는 속성과 기능을 그 객체의 멤버(구성원)라 한다.</div>
+<br>
+<br>
+<br>
+
+<div><strong class="h2">객체 Instance</strong></div><p></p>
+
+<div>속성과 기능의 집합.</div>
+<div>클래스에 정의된 내용대로 메모리에 생성된 것.</div>
+<div>문맥에 따라 객체와 instance 두 용어의 사용을 구별한다.</div><p></p>
+
+<div>어떤 클래스로부터 만들어진 객체 = 그 클래스의 인스턴스</div>
+<br>
+<br>
+<br>
+
+<div><strong class="h2">클래스로 인스턴스 생성</strong></div><p></p>
+
+<div><span class="blue">클래스명</span> 변수명 = <span class="red">new</span> <span class="blue">클래스명</span>();</div>
+<br>
+
+<div><strong>클래스 선언 = 설계도 작성</strong></div>	 
+{% highlight java %}
+class Closet{
+	boolean door;  // 문 상태(열기/닫기)
+	int drawer;    // 서랍
+
+	void door(){ door = !door; }     // 문 개폐
+	void drawerUp(){ ++drawer; }     // 서랍수 증가
+	void drawerDown(){ --drawer; }   // 서랍수 감소
+}		
+{% endhighlight %}
+<br>
+
+<div><strong>클래스의 인스턴스 생성 및 사용</strong></div>     
+{% highlight java %}
+class ClosetTest{
+	main(){
+		Closet clo;	       // 참조변수 선언
+		clo = new Closet();    // 인스턴스 생성
+		clo.drawer = 3;	       // 인스턴스의 멤버변수 drawer의 값 변경
+		clo.drawerUp();	       // 인스턴스의 메서드 drawerUp() 호출
+	}
+}	       
+{% endhighlight %}
+<br>
+<div>&#149;&nbsp; 참조변수 선언</div>
+<div>&nbsp; &nbsp; Closet 클래스 타입의 참조변수 clo 선언.</div> 
+<div>&nbsp; &nbsp; 메모리에 참조변수 clo를 위한 공간을 마련한다.</div>
+<div>&nbsp; &nbsp; 참조변수의 타입은 인스턴스의 타입과 일치해야 한다.</div>
+
+|clo|
+|:-:|
+||
+
+<div>&#149;&nbsp; 인스턴스 생성</div>
+<div>&nbsp; &nbsp; 연산자 new에 의해 Closet 클래스의 인스턴스가 메모리의 빈 공간에 생성된다.</div>
+<div>&nbsp; &nbsp; 생성된 객체의 주소 값이 참조변수 clo에 저장된다.</div>
+<div>&nbsp; &nbsp; 인스턴스는 참조변수를 통해서만 다룰 수 있다.</div>
+
+|clo|
+|:-:|
+|0x100|
+
+||0x100|
+|:-:|:-:|
+|door|false|
+|drawer|0|
+
+<div>&#149;&nbsp; 인스턴스 사용</div>
+<div>&nbsp; &nbsp; ' 참조변수.멤버변수 '로 인스턴스의 멤버변수(속성)을 사용한다. </div>
+<br>
+<br>
+
+<div><strong>같은 클래스, 다른 인스턴스</strong></div><p></p>
+
+<div>같은 클래스로부터 생성되었어도 각 인스턴스의 속성(멤버변수)은 서로 다른 값을 유지한다.</div>  
+{% highlight java %}
+class ClosetTest{
+	main(){
+		Closet clo1, clo2;
+		clo1 = new Closet();
+		clo2 = new Closet();
+
+		clo1.drawer = 3;
+	}
+} 
+{% endhighlight %}<p></p>
+
+|clo1|clo2|
+|:-:|:-:|
+|0x100|0x200|
+
+||0x100|0x200|
+|:-:|:-:|:-:|
+|door|false|false|
+|drawer|3|0|
+
+<div>두 참조변수가 같은 인스턴스를 참조하게 하면, 자신을 참조하고 있는 참조변수가 하나도 없는 인스턴스는 자동적으로 메모리에서 제거된다.</div>
+<div>둘 이상의 참조변수가 하나의 인스턴스를 참조하는 것은 가능하지만, 하나의 참조변수로 여러 개의 인스턴스를 참조할 수 없다.</div>		      
+{% highlight java %}
+class ClosetTest{
+	main(){
+		Closet clo1, clo2;
+		clo1 = new Closet();
+		clo2 = new Closet();
+
+		clo2 = clo1;
+		clo1.drawer = 3;
+	}
+}		  
+{% endhighlight %}<p></p>
+
+|clo1|clo2|
+|:-:|:-:|
+|0x100|0x100|
+
+||0x100|
+|:-:|:-:|
+|door|false|
+|drawer|3|
+
+<br>
+<br>
+
+<div><strong>객체 배열</strong></div><p></p>
+
+<div>참조변수들을 하나로 묶은 참조변수 배열.</div><p></p>
+
+<div>&#149;&nbsp; 객체 배열 생성</div>
+<div>&nbsp; &nbsp; 객체를 다루기 위한 참조변수를 만든다.</div>
+<div>&nbsp; &nbsp; 각 요소는 참조변수의 기본값인 null로 자동 초기화 된다.</div>
+<div>&nbsp; &nbsp; 이 때 아직 객체가 저장되지 않았다.</div>
+{% highlight java %}
+Closet clo1, clo2;
+Closet[] clo = new Closet[2];  
+{% endhighlight %}<p></p>
+
+|clo|
+|:-:|
+|0x100|
+
+||clo[0]|clo[1]|
+|:-:|:-:|:-:|
+|0x100|null|null|
+
+<div>&#149;&nbsp; 객체를 생성해서 배열의 각 요소에 저장</div>
+<div>&nbsp; &nbsp; 객체 배열에서 이 과정을 빠트릴 때가 있다. 주의하자.</div>
+{% highlight java %}
+clo[0] = new Closet();
+clo[1] = new Closet();	
+{% endhighlight %}<p></p>
+
+	 
+<br>
+<br>
+<br>
+
+참고 서적: 자바의 정석 3판
