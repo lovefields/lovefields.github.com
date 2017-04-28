@@ -90,17 +90,9 @@ public class Closet {
     boolean door;  // 문 상태(열기/닫기)
     int drawer;    // 서랍
 
-    void door() {
-        door = !door;
-    }     // 문 개폐
-
-    void drawerUp() {
-        ++drawer;
-    }     // 서랍수 증가
-
-    void drawerDown() {
-        --drawer;
-    }   // 서랍수 감소
+    void door() { door = !door; }     // 문 개폐
+    void drawerUp() { ++drawer; }     // 서랍수 증가
+    void drawerDown() { --drawer; }   // 서랍수 감소
 }		
 {% endhighlight %}
 <br>
@@ -113,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         ...
 
-        Closet clo;	           // 참조변수 선언
+        Closet clo;	       // 참조변수 선언
         clo = new Closet();    // 인스턴스 생성
         clo.drawer = 3;	       // 인스턴스의 멤버변수 drawer의 값 변경
         clo.drawerUp();	       // 인스턴스의 메서드 drawerUp() 호출
