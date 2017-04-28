@@ -38,8 +38,9 @@ category : android
 
 <div><strong class="h2">클래스 class </strong></div><p></p>
 
-<div>객체의 설계도/틀. 객체 생성에 사용된다.</div>	    
+<div>객체의 설계도/틀.</div>	    
 <div>서로 관련된 변수들을 정의하고 이들에 대한 작업을 수행하는 함수들을 함께 정의한 것.</div>
+<div>객체 생성에 사용된다.</div>
 <br>
 
 <div><strong>데이터와 함수의 결합</strong></div>
@@ -62,7 +63,6 @@ category : android
 <div><strong>클래스의 인스턴스화 Instantiate</strong></div>
 <div>클래스로 객체를 만드는 과정</div>
 <div>클래스로 객체를 생성하면, 클래스에 정의된 기능과 속성을 가진 객체가 만들어진다.</div>
-<div>객체가 가지고 있는 속성과 기능을 그 객체의 멤버(구성원)라 한다.</div>
 <br>
 <br>
 <br>
@@ -70,7 +70,8 @@ category : android
 <div><strong class="h2">객체 Instance</strong></div><p></p>
 
 <div>속성과 기능의 집합.</div>
-<div>클래스에 정의된 내용대로 메모리에 생성된 것.</div>
+<div>클래스에 정의된 내용대로 메모리에 생성된 것.</div>	     
+<div>객체가 가지고 있는 속성과 기능을 그 객체의 멤버(구성원)라 한다.</div>
 <div>문맥에 따라 객체와 instance 두 용어의 사용을 구별한다.</div><p></p>
 
 <div>어떤 클래스로부터 만들어진 객체 = 그 클래스의 인스턴스</div>
@@ -85,23 +86,34 @@ category : android
 
 <div><strong>클래스 선언 = 설계도 작성</strong></div>	 
 {% highlight java %}
-class Closet{
-	boolean door;  // 문 상태(열기/닫기)
-	int drawer;    // 서랍
+public class Closet {
+    boolean door;  // 문 상태(열기/닫기)
+    int drawer;    // 서랍
 
-	void door(){ door = !door; }     // 문 개폐
-	void drawerUp(){ ++drawer; }     // 서랍수 증가
-	void drawerDown(){ --drawer; }   // 서랍수 감소
+    void door() {
+        door = !door;
+    }     // 문 개폐
+
+    void drawerUp() {
+        ++drawer;
+    }     // 서랍수 증가
+
+    void drawerDown() {
+        --drawer;
+    }   // 서랍수 감소
 }		
 {% endhighlight %}
 <br>
 
 <div><strong>클래스의 인스턴스 생성 및 사용</strong></div>     
 {% highlight java %}
-class ClosetTest{
-    protected void onCreate(Bundle savedInstanceState) {    
-    ...
-        Closet clo;	       // 참조변수 선언
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
+
+        Closet clo;	           // 참조변수 선언
         clo = new Closet();    // 인스턴스 생성
         clo.drawer = 3;	       // 인스턴스의 멤버변수 drawer의 값 변경
         clo.drawerUp();	       // 인스턴스의 메서드 drawerUp() 호출
@@ -111,7 +123,7 @@ class ClosetTest{
 <br>
 <div>&#149;&nbsp; 참조변수 선언</div>
 <div>&nbsp; &nbsp; Closet 클래스 타입의 참조변수 clo 선언.</div> 
-<div>&nbsp; &nbsp; 메모리에 참조변수 clo를 위한 공간을 마련한다.</div>
+<div>&nbsp; &nbsp; 메모리에 참조변수 clo를 위한 공간이 마련된다.</div>
 <div>&nbsp; &nbsp; 참조변수의 타입은 인스턴스의 타입과 일치해야 한다.</div>
 
 |clo|
@@ -133,7 +145,13 @@ class ClosetTest{
 |drawer|0|
 
 <div>&#149;&nbsp; 인스턴스 사용</div>
-<div>&nbsp; &nbsp; ' 참조변수.멤버변수 '로 인스턴스의 멤버변수(속성)을 사용한다. </div>
+<div>&nbsp; &nbsp; ' 참조변수.멤버변수 '로 인스턴스의 멤버변수(속성)를 사용한다. </div>
+
+||0x100|
+|:-:|:-:|
+|door|false|
+|drawer|4|
+
 <br>
 <br>
 
@@ -141,16 +159,19 @@ class ClosetTest{
 
 <div>같은 클래스로부터 생성되었어도 각 인스턴스의 속성(멤버변수)은 서로 다른 값을 유지한다.</div>  
 {% highlight java %}
-class ClosetTest{
+public class MainActivity extends AppCompatActivity {
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
-    ...
+        ...
+
         Closet clo1, clo2;
         clo1 = new Closet();
         clo2 = new Closet();
 
         clo1.drawer = 3;
     }
-} 
+}
 {% endhighlight %}<p></p>
 
 |clo1|clo2|
@@ -165,9 +186,12 @@ class ClosetTest{
 <div>두 참조변수가 같은 인스턴스를 참조하게 하면, 자신을 참조하고 있는 참조변수가 하나도 없는 인스턴스는 자동적으로 메모리에서 제거된다.</div>
 <div>둘 이상의 참조변수가 하나의 인스턴스를 참조하는 것은 가능하지만, 하나의 참조변수로 여러 개의 인스턴스를 참조할 수 없다.</div>		      
 {% highlight java %}
-class ClosetTest{
-    protected void onCreate(Bundle savedInstanceState) {      
-    ...
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
+
         Closet clo1, clo2;
         clo1 = new Closet();
         clo2 = new Closet();
@@ -175,7 +199,7 @@ class ClosetTest{
         clo2 = clo1;
         clo1.drawer = 3;
     }
-}		  
+}	  
 {% endhighlight %}<p></p>
 
 |clo1|clo2|
