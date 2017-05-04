@@ -1,0 +1,190 @@
+---
+layout: post
+title:  "객체지향 프로그래밍 - Method 04"
+date:   2017-05-04 12:00:00 +0900
+author: 민갤
+description: JAVA 객체지향 프로그래밍06 - Method
+keywords : android,java,androidstudio,method,선언,class,요소,언어,자바의 정석,프로그래밍,메모리,JVM,memory,Method,생성자,this,this()
+image : /img/java.png
+category : android
+---
+
+<div><strong class="h2">생성자 Constructor</strong></div><p></p>
+
+<div>인스턴스 초기화 메서드</div>
+<div>인스턴스가 생성될 때 호출된다. <span class="red">(인스턴스를 생성하는 것은 연산자 new가 하는 것임을 헷갈리지 말자)</span></div>
+<div>오버로딩 가능하다.</div>
+<br>
+<br>
+
+<div><strong>조건</strong></div><p></p>
+<div>생성자의 이름은 클래스의 이름과 같아야 한다.</div>
+<div>생성자는 리턴 값이 없다. (void 생략 가능)</div>
+{% highlight java %}
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
+
+        Hello h1 = new Hello();
+        Hello h2 = new Hello(1);
+    }
+}
+
+public class Hello{
+    Hello() {}		// Constructor1
+    Hello(int a) {}     // Constructor2
+}
+{% endhighlight %}<p></p>
+
+<div>&#149;&nbsp; 생성 과정</div>
+<div>&nbsp; &nbsp; 연산자 new에 의해서 메모리(heap)에 Hello 클래스의 인스턴스가 생성된다.</div>
+<div>&nbsp; &nbsp; 생성자 Hello() / Hello(int a)가 호출되어 수행된다.</div>
+<div>&nbsp; &nbsp; 연산자 new의 결과로, 생성된 Hello 인스턴스의 주소가 반환되어 참조변수 h1 / h2에 저장된다.</div>
+<br>
+<br>
+
+<div><strong>기본 생성자 Default Constructor</strong></div><p></p>
+<div>클래스 내에 정의된 생성자가 없을 때 컴파일러에 의해 추가된다. (= 정의된 생성자가 있을 경우 기본 생성자는 추가 되지 않는다.)</div>
+<div>특별히 인스턴스 초기화 작업이 요구되지 않는 다면 컴파일러가 제공하는 기본 생성자를 사용해도 좋다.</div>
+{% highlight java %}
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
+
+        Hello1 h1 = new Hello1();
+	Hello2 h2 = new Hello2();	// error
+	Hello2 h2 = new Hello2(10);
+    }
+}
+
+public class Hello1{
+}
+
+public class Hello2{
+
+    Hello2(int a) {}
+}
+{% endhighlight %}
+<br>
+<br>
+
+<div><strong>매개변수가 있는 생성자</strong></div><p></p>
+<div>인스턴스마다 각기 다른 값으로 초기화되어야 하는 경우.</div>
+<div>인스턴스 생성과 동시에 원하는 값으로 초기화할 수 있다.</div>
+{% highlight java %}
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
+
+        Hello h = new Hello(1);
+    }
+}
+
+public class Hello{
+    int a = 0;
+
+    Hello(int a) { 
+	this.a = a;
+    }
+}
+{% endhighlight %}
+<br>
+<br>
+
+<div><strong>생성자 간의 호출</strong></div><p></p>
+
+<div>생성자의 이름으로 클래스 이름 대신 this를 사용한다.</div>
+{% highlight java %}
+public class Hello{
+
+    Hello(int a) { 
+	Hello(a, a);  // error
+    }
+
+    Hello(int a, int b) { 
+	this(b);
+    }
+}
+{% endhighlight %}<br>
+
+<div>&#149;&nbsp; <strong>this() / this(매개변수)</strong></div>
+<div>&nbsp; &nbsp; 생성자.</div>
+<div>&nbsp; &nbsp; 같은 클래스의 다른 생성자를 호출할 때 사용한다.</div>
+<div>&nbsp; &nbsp; 한 생성자에서 다른 생성자를 호출할 때는 반드시 첫 줄에서만 호출이 가능하다.</div>
+<div>&nbsp; &nbsp; ∵ 다른 생성자를 호출하기 이전의 초기화 작업이 무의미해질 수 있기 때문이다.</div>
+{% highlight java %}
+public class Hello{
+    int x;
+
+    Hello(int a) { 
+    }
+
+    Hello(int a, int b) { 
+	x = a;
+	this(b);  // error
+    }
+}
+{% endhighlight %}<br>
+
+<div>&#149;&nbsp; <strong>this</strong></div>
+<div>&nbsp; &nbsp; 인스턴스 자신을 가리키는 참조변수.</div>
+<div>&nbsp; &nbsp; 인스턴스 멤버만 사용 가능하다.</div>
+<div>&nbsp; &nbsp; 인스턴스의 주소가 저장되어 있다.</div>
+<div>&nbsp; &nbsp; 모든 인스턴스 메서드에 지역변수로 숨겨진 채로 존재한다.</div>
+{% highlight java %}
+public class Hello{
+    int a;
+
+    Hello(int a) { 
+	this.a = a;
+    }
+}
+{% endhighlight %}<p></p>	 
+<div>&nbsp; &nbsp; this.a는 인스턴스 변수, a는 생성자의 매개변수로 정의된 지역변수로 서로 구별된다.</div><p></p>
+<br>
+<br>
+
+<div><strong>생성자를 이용한 인스턴스의 복사</strong></div><p></p>
+<div>생성자의 매개변수를 참조변수로 선언하면 똑같은 상태의 인스턴스를 추가로 생성할 수 있다.</div>
+{% highlight java %}
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
+
+        Hello h1 = new Hello();
+        Hello h2 = new Hello(h1);    
+	h1.b = 2;
+
+	Log.d(TAG, h1.a +","+h1.b);   // 0, 2
+	Log.d(TAG, h2.a +","+h2.b);   // 0, 0
+    }
+}
+
+public class Hello{
+    int a = 0;
+    int b = 0;
+
+    Hello() { 
+    }
+
+    
+    Hello(Hello h) { 
+	a = h.a;
+	b = h.b;
+    }
+}
+{% endhighlight %}<p></p>
+<div>h2는 h1을 복사하여 생성되었기 때문에 서로 같은 상태를 갖는다.</div>
+<div>그러나 서로 독립적인 메모리 공간에 존재하는 별도의 인스턴스이므로 복사 외에는 영향을 받지 않는다.</div>
+<br>
+<br>
+<br>
+참고 서적: 자바의 정석 3판
