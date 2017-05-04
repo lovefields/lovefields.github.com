@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "객체지향 프로그래밍 - Method 01"
+title:  "Method 01 - 구조"
 date:   2017-04-28 12:00:00 +0900
 author: 민갤
 description: JAVA 객체지향 프로그래밍03 - Method

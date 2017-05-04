@@ -1,0 +1,111 @@
+---
+layout: post
+title:  "변수의 초기화"
+date:   2017-05-04 12:00:00 +0900
+author: 민갤
+description: JAVA 객체지향 프로그래밍07 - 변수의 초기화
+keywords : android,java,androidstudio,method,선언,class,요소,언어,자바의 정석,프로그래밍,메모리,JVM,memory,Method,변수,초기화
+image : /img/java.png
+category : android
+---
+
+
+<div>변수를 선언하고 처음으로 값을 저장하는 것.</div>
+<div>지역변수는 사용하기 전에 반드시 초기화해야 한다.</div>
+
+|선언 예|설명|
+|:-:|:-:|
+|int i=0; int j=0;|int형 변수 i/j 선언 후 0으로 초기화 한다.|
+|int i=0, j=0|같은 타입의 변수는 콤마(,)를 사용해서 함께 선언/초기화할 수 있다.|
+|int i=0, long j=0|error. 타입이 다른 변수는 함께 선언/초기화 할 수 없다.|
+|int i=0; int j=i|변수 i에 저장된 값으로 변수 j를 초기화한다.|
+|int j=i; int i=0|error. 변수 i가 선언되기 전에 i를 사용할 수 없다.|
+
+<br>
+<br>  
+<br>
+
+<div><strong class="h2">명시적 초기화 Explicit initialization</strong></div><p></p>
+<div>변수를 선언과 동시에 초기화하는 것.</div>
+{% highlight java %}
+public class Hello{
+    int a = 0;
+    String str = "";
+}
+{% endhighlight %}<p></p>
+<div>복잡한 초기화 작업이 필요할 때는 초기화 블럭 또는 생성자를 사용한다.</div>
+<br>
+<br> 
+<br>
+
+<div><strong class="h2">초기화 블럭 Initialization block</strong></div>
+<br>
+
+<div><strong>인스턴스 초기화 블럭</strong></div><p></p>
+<div>클래스 내에 블럭{ }을 만든다.</div>
+<div>인스턴스를 생성할 때마다 생성자보다 먼저 수행된다.</div>
+<div>모든 생성자에서 공통으로 수행돼야 하는 코드를 넣는다.</div>
+{% highlight java %}
+public class Hello{
+    int a = 0;
+
+    { 
+        a++;
+    }
+}
+{% endhighlight %}<p></p>
+<div>수행 순서: 기본값 - 명시적 초기화 - 인스턴스 초기화 블럭 - 생성자</div>
+<br>
+<br>
+
+<div><strong>클래스 초기화 블럭</strong></div><p></p>
+<div>클래스 내에 static이 붙은 블럭{ }을 만든다.</div>
+<div>클래스가 메모리에 처음 로딩될 때 한번만 수행된다.</div>
+<div>배열이나 예외 처리가 필요한 초기화에서 추가적으로 사용한다.</div>
+{% highlight java %}
+public class Hello{
+    static int arr[] = new int[10];
+
+    static { 
+        for(int i=0; i<10; i++){
+	    arr[i] = (int)(Math.random()*10);
+	}
+    }
+}
+{% endhighlight %}<p></p>
+<div>수행 순서: 기본값 - 명시적 초기화 - 클래스 초기화 블럭</div>
+<br>
+<br>
+
+<div><strong>멤버변수의 초기화 시기와 순서</strong></div><p></p>
+{% highlight java %}
+public class Hello{
+    int iv = 1;
+    static int cv = 1;
+
+    static {  cv++;  }		
+    {  iv++;  }
+
+    Hello(){ iv++ }
+}
+{% endhighlight %}<p></p>
+
+<div>&#149;&nbsp; 클래스 초기화 블럭</div>
+
+||기본값|명시적 초기화|클래스 초기화 블럭|
+|:-:|:-:|:-:|:-:|
+|cv|0|1|2|
+
+<div>&#149;&nbsp; 인스턴스 초기화 블럭</div>
+
+||기본값|명시적 초기화|인스턴스 초기화 블럭|생성자|
+|:-:|:-:|:-:|:-:|:-:|
+|cv|2|2|2|2|
+|iv|0|1|2|3|
+
+<br>
+<br>
+<br>
+
+
+참고 서적: 자바의 정석 3판
