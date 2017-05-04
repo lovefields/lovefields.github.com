@@ -1,0 +1,206 @@
+---
+layout: post
+title:  "객체지향 프로그래밍 - Method 03"
+date:   2017-05-04 12:00:00 +0900
+author: 민갤
+description: JAVA 객체지향 프로그래밍05 - Method
+keywords : android,java,androidstudio,method,선언,class,요소,언어,자바의 정석,프로그래밍,메모리,JVM,memory,Method,생성자,가변인자,클래스메서드,인스턴스메서드
+image : /img/java.png
+category : android
+---
+
+<div><strong class="h2">메서드 Method</strong></div>
+<br>
+
+<div><strong>클래스 메서드 (static 메서드)</strong></div><p></p>
+<div>인스턴스 변수나 인스턴스 메서드를 사용하지 않는 메서드</div>
+<div>작업을 수행하는 데 필요한 값들을 모두 매개변수로 받아서 처리한다.</div><p></p>
+
+<div>&#149;&nbsp; 멤버변수 중 모든 인스턴스에서 공통적으로 사용해야 하는 것에 static을 붙인다.</div>
+<div>&#149;&nbsp; 클래스 변수는 인스턴스를 생성하지 않아도 사용할 수 있다.</div>
+<div>&nbsp; &nbsp; 클래스가 메모리에 올라갈 때 클래스 변수도 자동적으로 생성된다.</div>
+<div>&#149;&nbsp; 인스턴스 변수를 사용할 수 없다.</div>
+<div>&nbsp; &nbsp; 클래스 메서드는 인스턴스가 존재하지 않을 때도 호출이 가능하기 때문에 인스턴스 변수의 사용을 금지한다.</div>
+<div>&#149;&nbsp; 메서드 내에서 인스턴스 변수를 사용하지 않을 경우 static을 붙이는 것을 고려한다.</div>
+<div>&nbsp; &nbsp; 메서드 호출 시간이 짧아져서 성능이 향상된다.</div>
+{% highlight java %}
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
+
+        Variables.staticMethod(2,2)	  // 4
+    }
+}
+
+public class Variables {
+    public static int staticMethod(int a, int b) {
+        return a + b;
+    }
+}
+{% endhighlight %}<p></p>
+<br>
+<br>
+
+<div><strong>인스턴스 메서드</strong></div><p></p>
+<div>메서드의 작업을 수행하는 데 인스턴스 변수를 필요로 하는 메서드.</div>
+<div>객체 생성 후 호출이 가능하다.</div>
+{% highlight java %}
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
+
+        Variables v = new Variables();
+        v.iv1 = 1;
+	v.iv2 = 2;
+
+	v.instanceMethod();	  // 3
+    }
+}
+
+public class Variables {
+    int iv1, iv2;
+
+    public int instanceMethod() {
+        return iv1 + iv2;
+    }
+}
+{% endhighlight %}<p></p>
+<br>
+<br>
+
+<div><strong>클래스 멤버와 인스턴스 멤버간의 참조와 호출</strong></div><p></p>
+<div>인스턴스 멤버가 존재하는 시점에 클래스 멤버는 항상 존재하지만,</div>
+<div>클래스 멤버가 존재하는 시점에 인스턴스 멤버는 존재하지 않을 수 있다.</div>
+<div>따라서 클래스 멤버가 인스턴스 멤버를 참조, 호출하기 위해서는 객체를 생성해야 한다.</div><p></p> 
+
+<div>&#149;&nbsp; 클래스 변수에 인스턴스 변수를 사용할 경우</div>
+{% highlight java %}
+public class Variables {
+    int iv1 = 1;
+    static int cv1 = 2;
+
+    int iv2 = cv1;
+    static int cv2 = iv1;    // error
+}
+{% endhighlight %}<p></p>
+
+<div>&#149;&nbsp; 클래스 메서드 내부에 인스턴스 메서드를 호출할 경우</div>
+{% highlight java %}
+public class Variables {
+    int iv;
+    static int cv;
+
+    public void instanceMethod() {
+        instanceMethod();
+	staticMethod();
+    }
+    
+    public static void staticMethod() {
+        instanceMethod();   // error
+	staticMethod();
+    }
+}
+{% endhighlight %}<p></p>
+
+<div>&#149;&nbsp; 클래스 메서드 내부에 인스턴스 변수를 사용할 경우</div>
+{% highlight java %}
+public class Variables {
+    int iv;
+    static int cv;
+
+    public void instanceMethod() {
+        iv = 1;
+	cv = 2;
+    }
+    
+    public static void staticMethod() {
+        iv = 1;	     // error
+	cv = 2;
+    }
+}
+{% endhighlight %}<p></p>
+
+<div>&#149;&nbsp; 1회성 인스턴스</div>
+<div>&nbsp; &nbsp; 참조변수를 선언하지 않고 인스턴스를 생성해서 사용할 수 있다.</div>
+<div>&nbsp; &nbsp; 대신에 한 번 사용하고 더 이상 사용할 수 없다.</div>
+{% highlight java %}
+//참조변수 선언 o
+Variables v = new Variables();
+int a = v.instanceMethod();
+
+//참조변수 선언 X. 1회성
+int a = new Variables().instanceMethod();
+{% endhighlight %}<p></p>
+<br>
+<br>
+<br>
+
+<div><strong>재귀호출 recursive call</strong></div><p></p>
+<div>메서드 내부에서 메서드 자신을 다시 호출하는 것.</div>
+<div>호출된 메서드는 '값에 의한 호출(call by value)'을 통해,</div>
+<div>원래의 값이 아닌 복사된 값으로 작업하기 때문에 호출한 메서드와 관계없이 독립적인 작업수행이 가능하다.</div>
+<div>조건문 없이 재귀호출만 할 경우 무한반복에 빠지게 된다.</div>
+{% highlight java %}
+public void method() {
+    method();	// loop
+}
+{% endhighlight %}<p></p>
+
+<div>&#149;&nbsp; 비효율적</div>
+<div>&nbsp; &nbsp; 매개변수 복사와 종료 후 복귀할 주소 저장 등 여러 작업이 추가로 필요해서 반복문보다 수행시간이 더 오래 걸린다.</div>
+<div>&nbsp; &nbsp; 재귀호출에 드는 비용보다 재귀호출의 간결함이 주는 이득이 충분히 큰 경우에만 사용해야 한다.</div><p></p>
+
+<div>&#149;&nbsp; 스택오버플로우 에러 Stack Overflow Error</div>
+<div>&nbsp; &nbsp; 매개변수 값이 적절치 않아서 또는 조건문이 없어서 계속해서 재귀호출이 일어날 경우,</div>
+<div>&nbsp; &nbsp; 스택에 계속 데이터가 쌓여서 스택의 저장 한계를 넘어서는 순간 오류가 발생하여 프로그램이 비정상적으로 종료된다.</div>
+<br>
+<br>
+<br>
+
+<div><strong>메서드 오버로딩 Method Overloading</strong></div><p></p>
+
+<div>한 클래스 내에 같은 이름의 메서드를 여러 개 정의하는 것.</div>
+<div>같은 일을 하지만 매개변수를 다르게 해야 하는 경우에 구현.</div><p></p>
+
+<div>&#149;&nbsp; 조건</div>
+<div>&nbsp; &nbsp; 메서드 이름이 같아야 한다.</div>
+<div>&nbsp; &nbsp; 매개변수의 개수 또는 타입이 달라야 한다.</div>
+<div>&nbsp; &nbsp; <span class="red">주의!</span> 반환타입은 오버로딩을 구현하는데 아무런 영향을 주지 못한다.</div><p></p>
+
+<div>&#149;&nbsp; 장점</div>
+<div>&nbsp; &nbsp; 기억하기 쉽다</div>
+<div>&nbsp; &nbsp; 오류 가능성이 줄어든다.</div>
+<div>&nbsp; &nbsp; 메서드들의 이름이 같기 때문에 같은 기능을 한다는 것을 쉽게 예측할 수 있다.</div>
+<div>&nbsp; &nbsp; 이름을 절약할 수 있다.</div><p></p>
+
+<div>&#149;&nbsp; 예시</div>
+<div>&nbsp; &nbsp; 매개변수로 넘겨주는 값의 타입에 따라 구별</div>
+{% highlight java %}
+void method(int x) {}
+void method(int x, int y) {}
+void method(long x) {}
+void method(String x) {}
+{% endhighlight %}<p></p>
+<div>&nbsp; &nbsp; 리턴 타입만 다른 경우 메서드를 구별하지 못한다.</div>
+{% highlight java %}
+int method(int x) {}
+long method(int x) {} // error
+{% endhighlight %}<p></p>
+<div>&nbsp; &nbsp; 매개변수 순서만 다르게 하면 컴파일 에러가 발생할 수도 있다.</div>
+{% highlight java %}
+void method(int x, long y) {}
+void method(long x, int y) {}
+
+method(1, 1L);
+method(1L, 1);
+method(1, 1);   // error
+{% endhighlight %}
+<br>
+<br>
+<br>
+
+참고 서적: 자바의 정석 3판

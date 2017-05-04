@@ -1,0 +1,167 @@
+---
+layout: post
+title:  "객체지향 프로그래밍 - Method 02"
+date:   2017-04-29 12:00:00 +0900
+author: 민갤
+description: JAVA 객체지향 프로그래밍04 - Method
+keywords : android,java,androidstudio,method,선언,class,요소,언어,자바의 정석,프로그래밍,메모리,JVM,memory,Method,매개변수,parameter
+image : /img/java.png
+category : android
+---
+<div><strong class="h2">매개변수 Parameter</strong></div>
+<br>
+
+<div><strong>기본형 매개변수</strong></div><p></p>
+<div>변수의 값을 읽기만 한다.</div>
+<div>원본이 아닌 복사본이 변경된 것이라 원본에는 아무런 영향을 미치지 못한다.</div>
+{% highlight java %}
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
+
+        Variables v = new Variables();
+        v.iv = 2;
+
+        method(v.iv);
+        Log.d("TAG", "v.iv: " + v.iv);	  // v.iv: 2
+    }
+
+    public void method(int iv) {
+        iv = 10;
+    }
+}
+
+public class Variables {
+    int iv;
+} 
+{% endhighlight %}<p></p>
+
+||v|0x100|
+|:-:|:-:|:-:|
+|value|0x100|2|
+
+|iv|인자 대입|메소드 실행|작업 완료|
+|:-:|:-:|:-:|:-:|
+|method|2|10||
+|onCreate|2|2|2|
+
+<br>
+<br>
+
+<div><strong>참조형 매개변수</strong></div><p></p>
+<div>주소 값을 받기 때문에 변수의 값을 읽고 변경할 수 있다.</div>
+{% highlight java %}
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+    ...
+
+        Variables v = new Variables();
+        v.iv = 2;
+
+        method(v);
+        Log.d("TAG", "v.iv: " + v.iv);	  // v.iv: 10
+    }
+
+    public void method(Variables V) {
+        V.iv = 10;
+    }
+}
+{% endhighlight %}<p></p>
+
+||v|0x100|
+|:-:|:-:|:-:|
+|value|0x100|2 → 10|
+
+|iv|인자 대입|메소드 실행|작업 완료|
+|:-:|:-:|:-:|:-:|:-:|
+|method|2|10||
+|onCreate|2|10|10|
+
+<br>
+<div>&#149;&nbsp; 간단한 처리는 배열을 이용</div>
+<div>&nbsp; &nbsp; 암시적으로 간단히 처리할 때는 별도의 클래스를 선언하지 않고 배열을 이용할 수도 있다.</div>
+{% highlight java %}
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+    ...
+
+        int[] a = {0, 0};
+
+        method(a);			    // method() a[0]: 10
+        Log.d("TAG", "a[0]: " + a[0]);	    // a[0]: 10
+    }
+
+    public void method(int[] a) {
+        a[0] = 10;
+        Log.d("TAG", "method() a[0]: " + a[0]);
+    }
+} 
+{% endhighlight %}<br>
+
+<div>&#149;&nbsp; 활용</div>
+<div>&nbsp; &nbsp; 반환값이 없어도 메서드의 실행결과를 얻어오거나, 여러 개의 값을 반환 받는 것과 같은 효과를 얻어올 수 있다.</div>
+{% highlight java %}
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
+
+        int[] result = {0, 0};
+        method(1, 2, result);
+        Log.d("TAG", "result[0]: " + result[0] + ", " + "result[1]: " + result[1]);
+    }						   // result[0]: 3, result[1]: -1
+
+    public void method(int a, int b, int[] result) {
+        result[0] = a + b;
+        result[1] = a - b;
+    }
+}
+{% endhighlight %}
+<br>
+<br>
+
+<div><strong>가변인자 Variable arguments</strong></div><p></p>
+
+<div><span class="blue">타입... 변수명</span></div>
+<div>내부적으로 배열을 이용하는 것.</div><p></p>
+
+<div>&#149;&nbsp; 같은 타입의 여러 매개변수를 사용할 경우 쓰인다.</div>  
+{% highlight java %}
+void method(int x, int y, int j) {}	  // before
+void method(int... x) {}		  // after
+{% endhighlight %}<p></p>
+<div>&#149;&nbsp; 매개변수 중에서 제일 마지막에 선언한다.</div>
+{% highlight java %}
+void method(int x, long... y) {}
+void method(int... x, long y) {}   // error
+{% endhighlight %}<p></p>
+<div>&#149;&nbsp; 인자의 개수를 가변적으로 할 수 있다.</div>
+<div>&nbsp; &nbsp; 배열과 달리 인자가 아예 없어도 된다.</div>
+{% highlight java %}
+void method(int... x) {}
+
+method();
+method(1);
+method(1, 2);
+method(new int[2]);
+{% endhighlight %}
+{% highlight java %}
+void method(int[] x) {}
+
+method();    // error
+method(null);
+method(new int[2]);
+{% endhighlight %}<p></p>
+<div>가변인자를 선언한 메서드를 오버로딩하면 어느 메서드를 호출한 것인지 구별하지 못하는 경우가 발생하기 쉽다.</div>
+<div>가능하면 가변인자를 사용한 메서드는 오버로딩 하지 않는 것이 좋다.</div>
+<br>
+<br>
+<br>
+참고 서적: 자바의 정석 3판
