@@ -1,0 +1,50 @@
+---
+layout: post
+title:  "Package and import"
+date:   2017-05-10 12:00:00 +0900
+author: 민갤
+description: JAVA 객체지향 프로그래밍09 - Package and import
+keywords : android,java,androidstudio,method,선언,class,요소,언어,자바의 정석,프로그래밍,Package,import,패키지
+image : /img/java.png
+category : android
+---
+<div><strong class="h2">패키지 Package</strong></div><p></p>
+
+<div>클래스의 묶음.</div>
+<div>하나의 소스파일에는 첫 번째 문장으로 단 한 번의 패키지 선언만을 허용한다.</div>
+<div>모든 클래스는 반드시 하나의 패키지에 속해야 한다.</div>
+<div>다른 패키지를 포함할 수 있으며 점(.)을 구분자로 하여 계층구조로 구성할 수 있다.</div>
+<div>물리적으로 클래스 파일(.class)을 포함하는 하나의 디렉토리다.</div>
+<div>클래스의 실제 이름은 패키지명을 포함한다.</div>
+<br>
+
+<div><strong>선언</strong></div>
+<div><span class="blue">package</span> 패키지명;</div><p></p>
+<div>패키지 선언문은 반드시 소스파일에서 주석과 공백을 제외한 첫 번째 문자잉어야 한다.</div>
+<div>하나의 소스 파일에 단 한번만 선언될 수 있다.</div>
+<br>
+<br>
+
+<div><strong class="h2">import문</strong></div><p></p>
+<div>컴파일러에게 소스파일에 사용된 클래스의 패키지에 대한 정보를 제공한다.</div>
+<div>사용하고자 하는 클래스의 패키지를 미리 명시하여 소스코드에 사용되는 클래스이름에서 패키지명을 생략할 수 있다.</div>
+<br>
+
+<div><strong>선언</strong></div>
+<div><span class="blue">import</span> 패키지명.클래스명;</div>
+<div>키워드 import와 패키지명을 생략하고자 하는 클래스의 이름을 패키지명과 함께 쓴다.</div><p></p>
+<div><span class="blue">import</span> 패키지명.*;</div>
+<div>지정된 패키지에 속하는 모든 클래스를 패키지명 없이 사용할 수 있다.</div>
+<div>하위 패키지의 클래스까지 포함하는 것은 아니다.</div><p></p>
+
+<div>두 방법은 실행 시 성능상의 차이가 전혀 없다.</div>
+<div>한 패키지에서 여러 클래스를 사용하는 경우 클래스의 이름을 일일이 지정해주는 것보다 '패키지명.*'과 같이 하는 것이 편리하다.</div>
+<br>
+
+<div><strong>static import문</strong></div>
+<div>static멤버를 호출할 때 클래스 이름을 생략할 수 있다.</div>
+<br>
+<br>
+<br>
+
+참고 서적: 자바의 정석 3판

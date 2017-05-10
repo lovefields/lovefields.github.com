@@ -1,0 +1,140 @@
+---
+layout: post
+title:  "제어자"
+date:   2017-05-11 12:00:00 +0900
+author: 민갤
+description: JAVA 객체지향 프로그래밍10 - 제어자
+keywords : android,java,androidstudio,method,선언,class,요소,언어,자바의 정석,프로그래밍,제어자,modifier
+image : /img/java.png
+category : android
+---
+<div><strong class="h2">제어자 Modifier</strong></div><p></p>
+
+<div>클래스, 변수, 메서드의 선언부에 함께 사용되어 부가적인 의미를 부여한다.</div>
+<div>하나의 대상에 대해서 여러 제어자를 조합하여 사용할 수 있다.</div>
+<div>접근 제어자는 한 번에 네 가지 중 하나만 선택해서 사용할 수 있다.</div>
+<br>
+
+<div><strong>static</strong></div>
+<div>클래스의, 공통적인</div><p></p>
+<div>하나의 변수를 모든 인스턴스가 공유한다.</div>
+<div>인스턴스를 생성하지 않고 사용할 수 있다.</div><p></p>
+<div>&#149;&nbsp; 멤버변수 :&nbsp; 모든 인스턴스에 공통적으로 사용되는 클래스 변수가 된다. 클래스가 메모리에 로드될 때 생성된다.</div>
+<div>&#149;&nbsp; 메서드 :&nbsp; static 메서드 내에서는 인스턴스 멤버들을 직접 사용할 수 없다.</div>
+<div>&#149;&nbsp; 초기화 블럭</div>
+{% highlight java %}
+public class StaticTest {
+    static int x;
+    static void method() {}
+    static {}
+}
+{% endhighlight %}
+<br>
+
+<div><strong>final</strong></div>
+<div>마지막의, 변경될 수 없는</div><p></p>
+<div>&#149;&nbsp; 클래스 :&nbsp; 변경될 수 없는, 확장될 수 없는 클래스가 된다. final로 지정된 클래스는 다른 클래스의 조상이 될 수 없다.</div>
+<div>&#149;&nbsp; 메서드 :&nbsp; 변경될 수 없는 메서드가 되어 오버라이딩을 통해 재정의 될 수 없다.</div>
+<div>&#149;&nbsp; 멤버변수 :&nbsp; 값을 변경할 수 없는 상수가 된다. 생성자의 매개변수로 값을 넘겨받아 초기화할 수 있다.</div>
+<div>&#149;&nbsp; 지역변수 :&nbsp; 값을 변경할 수 없는 상수가 된다.</div>
+{% highlight java %}
+public final class FinalTest {
+    final int X;
+    StaticTest(int x){
+        X = x;
+    }
+    final void method() {
+	final int A;
+    }
+}
+{% endhighlight %}
+<br>
+
+<div><strong>abstract</strong></div>
+<div>추상의, 미완성의</div><p></p>
+<div>&#149;&nbsp; 클래스 :&nbsp; 클래스 내에 추상 메서드가 선언되어 있음을 알린다.</div>
+<div>&#149;&nbsp; 메서드 :&nbsp; 선언부만 작성하고 구현부는 작성하지 않은 추상 메서드임을 알린다.</div>
+{% highlight java %}
+abstract class AbstractTest {
+    abstract void method() {};
+}
+{% endhighlight %}
+<br>
+<br>
+<br>
+
+<div><strong class="h2">접근 제어자 Access Modifier</strong></div><p></p>
+<div>멤버 또는 클래스를 외부에서 접근하지 못하도록 제한하는 역할</div>
+<div>대상에 따라 사용 가능한 접근 제어자가 다르다.</div><p></p>
+<div>&#149;&nbsp; 클래스 :&nbsp; publicm (default)</div>
+<div>&#149;&nbsp; 멤버변수, 메서드 :&nbsp; public, protected, (default), private</div>
+<div>&#149;&nbsp; 생성자</div>
+
+|제어자|같은 클래스|같은 패키지|자손 클래스|전체|
+|:-:|:-:|:-:|:-:|:-:|
+|public|o|o|o|o|
+|protected|o|o|o||
+|(default)|o|o|||
+|private|o||||
+
+<div>default는 아무런 접근 제어자도 붙이지 않는 것을 의미.</div>
+<br>
+
+<div><strong>접근 제어자를 이용한 캡슐화</strong></div>
+<div>데이터 감추기 date hiding.</div>
+<div>객체지향개념의 캡슐화 Encapsulation</div>
+<div>외부로부터 클래스 내부에 선언된 데이터를 보호한다.</div>
+<div>내부에서만 사용되는 부분은 감추어 외부에서 불필요하게 접근하지 못하게 한다.</div>
+<br> 
+
+<div><strong>멤버변수 관리</strong></div>
+<div>잘못된 값을 지정할 수 없도록 멤버변수를 private이나 protected로 제한하고, 값을 읽고 변경할 수 있는 public 메서드를 제공한다.</div><p></p>
+<div>&#149;&nbsp; Getter and Setter</div>
+<div>&nbsp; &nbsp; 겟터 Getter :&nbsp; get멤버변수이름. get으로 시작하여 멤버변수의 값을 읽는 메서드.</div>
+<div>&nbsp; &nbsp; 셋터 Setter :&nbsp; set멤버변수이름. set으로 시작하여 멤버변수의 값을 변경하는 메서드.</div>
+{% highlight java %}
+public class ModifierTest{
+    private int mIv;
+
+    public int getIv(){ return mIv; }
+    public void setIv(int mIv){ this.mIv = mIv; }
+}
+{% endhighlight %}
+<br>
+
+<div><strong>생성자의 접근 제어자</strong></div>
+<div>인스턴스의 생성을 제한한다.</div>
+<div>생성자를 통해 직접 인스턴스를 생성하지 못하게 하고 public 메서드를 통해 인스턴스에 접근하게 하여 사용할 수 있는 인스턴스의 개수를 제한할 수 있다.</div>
+<div>생성자가 private인 클래스는 final을 더 추가하여 상속할 수 없는 클래스라는 것을 알리는 것이 좋다.</div>
+{% highlight java %}
+public final class ModifierTest{
+    private static ModifierTest m = new ModifierTest();
+
+    private ModifierTest() {};
+
+    public static ModifierTest getInstance(){
+        return m;
+    }
+}
+{% endhighlight %}
+<br>
+
+<div><strong>제어자의 조합</strong></div><div></div>
+
+|대상|사용 가능한 제어자|
+|:-:|:-:|
+|클래스|public, (defalut), final, abstract|
+|메서드|모든 접근 제어자, final, abstract, static|
+|멤버변수|모든 접근 제어자, final, static|
+|지역변수|final|
+
+<div>&#149;&nbsp; 주의점</div>
+<div>&nbsp; &nbsp; static 메서드는 몸통이 있어야 하므로 abstract와 함께 사용할 수 없다.</div>
+<div>&nbsp; &nbsp; 클래스에 abstract와 final을 동시에 사용할 수 없다. abstract(확장) ≠ final(비확장)</div>
+<div>&nbsp; &nbsp; abstract 메서드는 자손 클래스에서 구현해주어야 하므로 접근 제어자가 private일 수 없다.</div>
+<div>&nbsp; &nbsp; private 메서드는 오버라이딩할 수 없으므로 private과 final을 같이 사용할 필요 없다.</div>
+<br>
+<br>
+<br>
+
+참고 서적: 자바의 정석 3판
