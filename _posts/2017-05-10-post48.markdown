@@ -1,0 +1,289 @@
+---
+layout: post
+title:  "상속"
+date:   2017-05-10 12:00:00 +0900
+author: 민갤
+description: JAVA 객체지향 프로그래밍08 - 상속
+keywords : android,java,androidstudio,method,선언,class,요소,언어,자바의 정석,프로그래밍,메모리,JVM,memory,상속,Inheritance
+image : /img/java.png
+category : android
+---
+<div><strong class="h2">상속 Inheritance</strong></div><p></p>
+
+<div>기존의 클래스를 재사용하여 새로운 클래스를 작성하는 것.</div>
+<div>코드의 재사용성을 높이고 코드의 중복을 제거하여 프로그램의 생산성과 유지보수에 크게 기여한다.</div>
+<div>새로 작성하고자 하는 클래스의 이름 뒤에 상속받고자 하는 클래스의 이름을 키워드 'extends'와 함께 써주기만 하면 된다.</div>
+{% highlight java %}
+public class Child extends Parent { }
+{% endhighlight %}<p></p>
+<div>Child 와 Parent는 서로 상속 관계에 있다.</div>
+<br>
+
+<div><strong>상속 관계</strong></div><p></p>
+<div>클래스 간의 관계에는 부모와 자식의 관계(상속 관계)와 포함 관계만이 존재한다.</div><p></p>
+<div>&#149;&nbsp; 자손 클래스 :&nbsp; 상속 받는 클래스. 자식(Child) / 하위(Sub) / 파생된(Derived) 클래스.</div>
+<div>&nbsp; &nbsp; 조상 클래스의 모든 멤버를 상속받는다. = 생성자와 초기화 블럭은 상속되지 않는다.</div>
+<div>&nbsp; &nbsp; 자손 클래스의 멤버 개수 >= 조상 클래스의 멤버 개수</div><p></p>
+<div>&#149;&nbsp; 조상 클래스 :&nbsp; 상속해주는 클래스. 부모(Parent) / 상위(Super) / 기반(Base) 클래스</div>
+{% highlight java %}
+public class Parent {
+    int parentIv;
+}
+
+public class Child extends Parent {
+    void method() {}
+}
+{% endhighlight %}<p></p>
+
+|name|member|
+|:-:|:-:|
+|Parent|parentIv|
+|Child|parentIv, method()|
+
+<br>
+
+<div><strong>코드 중복 최소화</strong></div><p></p>
+<div>같은 내용의 코드를 하나 이상의 클래스에 중복적으로 추가해야 하는 경우, 상속 관계를 이용해서 코드의 중복을 최소화.</div>
+{% highlight java %}
+public class Parent { int pIv;}
+public class Child1 extends Parent {}
+public class Child2 extends Parent { int cTowIv; }
+public class BigChild extends Child1 {}
+{% endhighlight %}<p></p>
+
+|name|member|
+|:-:|:-:|
+|Parent|pIv|
+|Child1|pIv|
+|Child2|pIv, cTowIv|
+|BigChild|pIv|
+
+<div>자손 클래스의 인스턴스를 생성하면 조상 클래스의 멤버와 자손 클래스의 멤버가 합쳐진 하나의 인스턴스로 생성된다.</div>
+{% highlight java %}
+public class Parent { int pIv; }
+public class Child extends Parent { int cIv;}
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
+
+        Child child = new Child(); 
+        child.cIv = 10;
+        child.pIv = 2;
+
+	Log.d("TAG", child.cIv + ", " + child.pIv);	 // 10, 2
+    }
+}
+{% endhighlight %}
+<br>
+
+<div><strong>포함 관계</strong></div><p></p>
+<div>한 클래스의 멤버변수로 다른 클래스 타입의 참조변수를 선언하는 것.</div>
+<div>하나의 거대한 클래스를 작성하는 것보다 단위 별로 여러 개의 클래스를 작성한 다음, 단위 클래스들을 포함관계로 재사용하는 것이 편리하다.</div>
+{% highlight java %}
+public class Point { int x, y; }
+public class Brush { ... }
+
+public class Drawing {
+    Point p = new Point();
+    Brush b = new Brush();
+    int circle;
+}
+{% endhighlight %}<p></p>
+
+<div>&#149;&nbsp; 클래스간의 관계 결정하기</div>
+<div>&nbsp; &nbsp; 프로그램에 사용되는 모든 클래스를 분석하여 가능한 많은 관계를 맺어 주도록 노력해서 코드의 재사용성을 높여야 한다.</div>
+<div>&nbsp; &nbsp; 두 클래스 사이에 다음 문장을 넣어서 비교해보면 어떤 관계를 맺어줄 지 알 수 있다.</div>
+
+|:-:|:-:|:-:|
+|상속관계| ~은 ~이다|is - a|
+|포함관계| ~은 ~을 가지고 있다.|has - a|
+
+{% highlight java %}
+public class Animal { ... }
+public class Heart { ... }
+
+public class Dog extends Animal {    // Dog is an Animall
+    Heart m = new Heart();           // The Dog has a Heart
+}
+{% endhighlight %}
+<br>
+
+<div><strong>단일상속 Single Inheritance</strong></div><p></p>
+<div>다중상속(Multiple Inheritance)을 허용하면 클래스간의 관계가 매우 복잡해지며,</div>
+<div>서로 다른 클래스로부터 상속받은 멤버간의 이름이 같은 경우 구별할 수 없다는 단점이 있다.</div>
+<div>단일 상속은 클래스간의 관계를 보다 명확하게 하고 코드를 더욱 신뢰할 수 있게 만든다.</div>
+<div>다중상속을 허용하지 않는 대신 포함 관계를 이용할 수 있다.</div>
+<br>
+
+<div><strong>Object 클래스</strong></div><p></p>
+<div>모든 클래스의 조상.</div>
+<div>모든 클래스 상속계층도의 최상위에 있는 조상 클래스.</div> 
+<div>상속받지 않는 클래스에는 컴파일러가 자동적으로 Object 클래스로부터 상속받도록 한다.</div>	 
+{% highlight java %}
+public class Parent extends Object { }
+{% endhighlight %}<p></p>
+<br>
+<br>
+<br>
+
+
+<div><strong class="h2">오버라이딩 Overriding</strong></div><p></p>
+<div>조상 클래스로부터 상속받은 메서드의 내용을 변경하는 것.</div>
+{% highlight java %}
+public class Parent {
+    int parentMethod() {
+        return 1;
+    }
+}
+
+public class Child extends Parent {
+    @Override
+    int parentMethod() {
+        return 2;
+    }
+}
+{% endhighlight %}
+<br>
+
+<div><strong>조건</strong></div><p></p>
+<div>자손클래스에서 오버라이딩하는 메서드는 조상 클래스의 메서드와 선언부가 서로 일치해야 한다. (반환타입, 이름, 매개변수)</div>
+<div>* JDK1.5부터 공변 반환타입(Convariant return type) 추가. 반환 타입을 자손 클래스의 타입으로 변경 가능.</div>
+{% highlight java %}
+public class Parent {
+    int parentMethod() { return 1;}
+}
+
+public class Child extends Parent {
+    int parentMethod() { return 2; }	   // Override
+    int parentMethod(int x) { ... }      // No Override
+}
+{% endhighlight %}<p></p>
+
+<div>접근 제어자는 조상 클래스의 메서드보다 범위가 넓거나 같아야 한다.</div>
+{% highlight java %}
+public class Parent {
+    protected int parentMethod() { return 1;}
+}
+
+public class Child extends Parent {
+    @Override
+    private int parentMethod() { return 2; }	   // error. protected or public
+}
+{% endhighlight %}<p></p>
+
+<div>예외는 조상 클래스의 메서드보다 많이 선언할 수 없다.</div>
+{% highlight java %}
+public class Parent {
+    int parentMethod() throws IOException { return 1;}
+}
+
+public class Child extends Parent {
+    @Override
+    int parentMethod() throws Exception { return 2; }	   // error. Excption > IOException
+}
+{% endhighlight %}<p></p>
+<div>인스턴스 메서드를 static메서드 또는 그 반대로 변경할 수 없다.</div>
+<br>
+
+<div><strong>오버로딩 vs. 오버라이딩</strong></div><p></p>
+<div>오버로딩 overloading :&nbsp; 기존에 없는 새로운 메서드를 정의하는 것 (new)</div>
+<div>오버라이딩 overriding :&nbsp; 상속받은 메서드의 내용을 변경하는 것 (change, modify)</div>
+{% highlight java %}
+public class Parent {
+    void parentMethod() {}
+}
+
+public class Child extends Parent {
+    @Override
+    void parentMethod() { ... }	 //  overriding
+    void parentMethod(int x) {}  //  overloading
+}
+{% endhighlight %}
+<br>
+
+<div><strong>super</strong></div><p></p>
+<div>자손 클래스에서 조상 클래스로부터 상속받은 멤버를 참조하는 데 사용되는 참조 변수</div>
+<div>자손 클래스가 조상 클래스를 오버라이딩한 경우에 super를 사용한다.</div>
+<div>조상 클래스의 멤버와 자손 클래스의 멤버가 중복 정의되어 서로 구별해야 하는 경우에만 사용하는 것이 좋다.</div>
+{% highlight java %}
+public class Parent { int iv = 1; }
+public class Child extends Parent { 
+    int iv = 2;
+    void childMethod() {
+        Log.d("TAG", super.iv + ", " + this.iv + ", " + iv);
+    }
+}
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
+
+        Child c = new Child(); 
+        c.childMethod();	      // super.iv=1, this.iv=iv=2
+    }
+}
+{% endhighlight %}<br>
+
+<div>조상 클래스의 메서드의 내용에 추가적으로 작업을 덧붙일 경우, super를 사용해서 조상 클래스의 메서드를 포함시키는 것이 좋다.</div>
+{% highlight java %}
+public class Parent {
+    int x;
+    int parentMethod() {
+        return x + 1;
+    }
+}
+
+public class Child extends Parent {
+    @Override
+    int parentMethod() {
+        return super.parentMethod() + 3;
+    }
+}
+{% endhighlight %}
+<br>
+
+<div><strong>super()</strong></div><p></p>
+<div>조상 클래스의 생성자</div>
+<div>생성자의 첫 줄에서 호출한다.</div>
+<div>자손 클래스의 멤버가 조상 클래스의 멤버를 사용할 수도 있으므로 조상 클래스의 멤버변수는 조상의 생성자에 의해 초기화되도록 해야 한다.</div>
+<div>Object 클래스를 제외한 모든 클래스의 생성자는 첫 줄에 반드시 자신의 다른 생성자 this() 또는 조상의 생성자 super()를 호출해야 한다.</div>
+<div>그렇지 않으면 컴파일러가 자동적으로 super()를 생성자의 첫 줄에 삽입한다.</div>
+
+<div>조상 클래스에 생성자가 정의되어 있지 않은 경우 기본 생성자가 호출된다.</div>
+{% highlight java %}
+public class Parent {
+    // Parent();
+}
+public class Child extends Parent {
+    Child(){
+        // super();
+    }
+}
+{% endhighlight %}<p></p>
+
+<div>조상 클래스에 기본 생성자를 정의하지 않고 다른 생성자를 정의해둘 경우 컴파일 에러가 발생한다.</div>
+{% highlight java %}
+public class Parent {
+    Parent(int x) {}
+}
+pulic class Child1 extends Parent {
+    Child1(){
+	super();    // error
+    }
+}
+pulic class Child2 extends Parent {
+    Child2(int x, int y){
+	super(x);   // Parent(int x)
+    }
+}
+{% endhighlight %}<p></p>
+<br>
+<br>
+<br>
+
+참고 서적: 자바의 정석 3판
