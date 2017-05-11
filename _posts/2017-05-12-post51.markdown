@@ -1,0 +1,273 @@
+---
+layout: post
+title:  "다형성"
+date:   2017-05-12 12:00:00 +0900
+author: 민갤
+description: JAVA 객체지향 프로그래밍11 - 다향성
+keywords : android,java,androidstudio,method,선언,class,요소,언어,자바의 정석,프로그래밍,다형성,Polymorphism,참조변수,클래스,instanceof
+image : /img/java.png
+category : android
+---
+<div><strong class="h2">다형성 Polymorphism</strong></div><p></p>
+
+<div>여러 가지 형태를 가질 수 있는 능력.</div>
+<div>조상 클래스 타입의 참조변수로 자손 클래스의 인스턴스를 참조할 수 있다.</div>
+<div>참조변수의 타입이 참조변수가 참조하고 있는 인스턴스에서 사용할 수 있는 멤버의 개수를 결정한다.</div><p></p>
+<div>&#149;&nbsp; 조상 인스턴스의 멤버 개수 <= 자손 인스턴스의 멤버 개수</div>
+<div>&nbsp; &nbsp; 클래스는 상속을 통해서 확장될 수는 있어도 축소될 수는 없다.</div>
+<div>&nbsp; &nbsp; 따라서 자손 타입의 참조변수로 조상 타입의 인스턴스를 참조할 수 없다.</div>
+<br>
+<br>
+
+<div><strong>참조변수의 형변환</strong></div> <p></p>
+<div>캐스트연산자를 사용하여 변환한다.</div>
+<div>참조하고 있는 인스턴스에서 <span class="red">사용할 수 있는</span> 멤버의 범위(개수)를 조절한다.</div>
+<div>(참조변수의 타입을 변환하는 것일 뿐 인스턴스에 아무런 영향을 미치지 않는다.)</div><p></p>
+<div>&#149;&nbsp; 서로 상속관계에 있는 클래스 사이에서만 가능하다.</div>
+{% highlight java %}
+public class Parent { void parentMethod(){} }
+public class Child extends Parent { int cIv; }
+{% endhighlight %}
+{% highlight java %}
+Child c1 = null;
+Child c2 = null;
+
+c1 = (Child) c2;     // error
+c2 = (Child) c1;     // error
+{% endhighlight %}<p></p>
+<div>&#149;&nbsp; 다운 캐스팅 Down-casting :&nbsp; 조상타입의 참조변수를 자손타입의 참조변수로 변환. 형변환 생략 불가능.</div>
+<div>&#149;&nbsp; 업 캐스팅 Up-casting :&nbsp; 자손타입의 참조변수를 조상타입의 참조변수로 변환. 형변환 생략 가능.</div>
+{% highlight java %}
+Parent p = null;
+Child c1 = new Child();
+Child c2 = null;
+
+p = c1;              // Up-casting
+p.cIv = 2;	     // error
+
+c2 = (Child) p;      // Down-casting
+c2.parentMethod();
+{% endhighlight %}<p></p>
+<div>&#149;&nbsp; 참조변수가 가리키는 인스턴스의 타입</div>
+<div>&nbsp; &nbsp; 서로 상속관계에 있는 클래스 타입의 참조변수간의 형변환은 자유로우나</div>
+<div>&nbsp; &nbsp; 참조변수가 <span class="red">참조하고 있는 인스턴스의 자손타입으로 형변환하는 것은 허용하지 않는다</span>.</div>
+<div>&nbsp; &nbsp; 참조변수가 가리키는 인스턴스의 타입이 무엇인지 확인하는 것이 중요하다.</div>
+{% highlight java %}
+Parent p = new Parent();
+Child c = null;
+
+c = (Child) p;       // error
+{% endhighlight %}
+<br>
+<br>
+
+<div><strong>instanceof 연산자</strong></div><p></p>
+<div>참조변수가 참조하고 있는 인스턴스의 실제 타입을 확인한다.</div>
+<div>연산 결과는 boolean 값으로 나오며, true면 참조변수가 검사한 타입으로 형변환이 가능하다는 것을 뜻한다.</div>
+{% highlight java %}
+Child c = new Child();
+
+if(c instanceof Child) {}    // true
+if(c instanceof Parent) {}   // true
+if(c instanceof Object) {}   // true
+{% endhighlight %}<p></p>
+<div>매개변수로 조상 클래스를 사용할 경우, 메서드 내에서는 넘겨받은 값이 조상 클래스의 인스턴스인지 그 자손 클래스의 인스턴스인지 정확히 알 수 없으므로</div>
+<div>instanceof 연산자를 이용해 인스턴스의 타입을 체크하고 적절히 형변환한 후 작업을 해야한다.</div>
+{% highlight java %}
+void method(Parent p) {
+    if(p instanceof Child){
+        Child c = (Child)p;
+    }
+}
+{% endhighlight %}<p></p>				    
+<div>값이 null인 참조변수에 대해 instanceof 연산을 수행하면 false가 나온다.</div>
+<br>
+<br>
+
+<div><strong>참조변수와 인스턴스의 연결</strong></div><p></p>
+<div>메서드 :&nbsp; 참조변수의 타입에 관계없이 항상 실제 인스턴스의 메서드(오버라이딩된 메서드)가 호출된다.</div>
+<div>멤버변수 :&nbsp; 조상클래스의 멤버변수와 같은 이름의 멤버변수를 자손 클래스에서 중복 정의할 경우, 참조변수의 타입에 따라 달라진다.</div>
+{% highlight java %}
+public class Parent {
+    int iv = 2; 
+    void method() { Log.d("TAG", "parentMethod"); }
+}
+
+public class Child1 extends Parent {
+    int iv = 4; 
+    void method() { Log.d("TAG", "childMethod"); }
+}
+
+public class Child2 extends Parent { }
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
+
+        Parent p = new Child1();
+        Child1 c1 = new Child1();
+        Child2 c2 = new Child2();
+        
+	Log.d("TAG", p.iv + ", " + c1.iv + ", " + c2.iv);	 // 2, 4, 2
+	p.method();						 // childMethod
+	c1.method();						 // childMethod
+	c2.method();						 // parentMethod
+    }
+}
+{% endhighlight %}<p></p>
+<div>인스턴스 변수에 직접 접근하면 참조변수의 타입에 따라 사용되는 인스턴스 변수가 달라질 수 있으므로</div>
+<div>멤버변수들은 private으로 접근을 제한하고, 외부에서는 메서드를 통해서만 멤버변수에 접근할 수 있게 한다.</div>
+<br>
+<br>
+
+<div><strong>매개변수의 다형성</strong></div><p></p>
+<div>클래스의 조상을 매개변수로 받는다.</div>
+{% highlight java %}
+public class Fruit {
+    int price;
+    Fruit(int price) { this.price = price; }
+}
+
+public class Apple extends Fruit {
+    Apple() { super(1000); }
+}
+
+public class Orange extends Fruit {
+    Orange() { super(2000); }
+}
+
+public class Consumer {
+    int money = 10000;
+    
+    void buy(Fruit f) {
+         if(money < f.price) return;
+	 money -= f.price;
+    }
+}
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
+
+        Consumer c = new Consumer();
+	c.buy(new Apple());
+	c.buy(new Orange());
+
+	Log.d("TAG", "잔돈 " + c.money + "원");	 // 잔돈 7000원
+    }
+}
+{% endhighlight %}<br>
+<br>
+
+<div><strong>여러 종류의 객체를 배열로 다루기</strong></div><p></p>
+<div>조상타입의 참조변수 배열을 사용하면, 공통의 조상을 가진 서로 다른 종류의 객체를 배열로 묶어서 다룰 수 있다.</div>
+{% highlight java %}
+Fruit[] f = new Fruit[2];
+f[0] = new Apple();
+f[1] = new Orange();
+{% endhighlight %}<p></p>
+{% highlight java %}
+public class Fruit {
+    int price;
+    Fruit(int price) { this.price = price; }
+}
+
+public class Apple extends Fruit {
+    Apple() { super(1000); }
+    public String toString() { return "Apple"; }
+}
+
+public class Orange extends Fruit {
+    Orange() { super(2000); }
+    public String toString() { return "Orange"; }
+}
+
+public class Consumer {
+    int money = 10000;
+    Fruit[] list = new Fruit[3];
+    int i = 0;
+    
+    void buy(Fruit f) {
+         if(money < f.price) return;
+	 money -= f.price;
+	 list[i++] = f;
+    }
+}
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
+
+        Consumer c = new Consumer();
+	c.buy(new Apple());
+	c.buy(new Orange());
+
+	Log.d("TAG", "잔돈 " + c.money + "원");	 // 잔돈 7000원
+
+        String buyItems = "";
+	for(int i=0; i<c.list.length; i++){
+	   buyItems += c.list[i] + ", ";
+	}
+
+	Log.d("TAG", buyItems);	                 // Apple, Orange, null,
+    }
+}
+{% endhighlight %}<p></p>
+<div>문자열과 참조변수의 덧셈은 참조변수에 toString()을 호출해서 문자열을 얻어 결합한다.</div>
+<br>
+<br>
+<br>
+
+<div><strong class="h2"> Vector 클래스</strong></div><p></p>
+<div>내부적으로 Object타입의 배열을 가지고 있어서 동적으로 크기가 관리되는 객체 배열</div>
+{% highlight java %}
+public class Vector 
+extends AbstractList<E> implements List<E>, RandomAccess, Cloneable, Serializable {
+    Object[] elementData;
+}
+{% endhighlight %}<p></p>
+
+{% highlight java %}
+public class Consumer {
+    int money = 10000;
+    Vector list = new Vector();
+    int i = 0;
+    
+    void buy(Fruit f) {
+         if(money < f.price) return;
+	 money -= f.price;
+	 list.add(f);
+    }
+}
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
+
+        Consumer c = new Consumer();
+	c.buy(new Apple());
+	c.buy(new Orange());
+
+        String buyItems = "";
+	for(int i=0; i<c.list.size(); i++){
+	   Fruit f = (Fruit) c.list.get(i);
+	   buyItems += (i==0) ? "" + f : ", " + f;
+	}
+
+	Log.d("TAG", buyItems);	                 // Apple, Orange
+    }
+}
+{% endhighlight %}
+<br>
+<br>
+<br>
+
+참고 서적: 자바의 정석 3판
