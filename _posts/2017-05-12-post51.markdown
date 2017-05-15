@@ -3,7 +3,7 @@ layout: post
 title:  "다형성"
 date:   2017-05-12 12:00:00 +0900
 author: 민갤
-description: JAVA 객체지향 프로그래밍11 - 다향성
+description: JAVA 객체지향 프로그래밍11 - 다형성
 keywords : android,java,androidstudio,method,선언,class,요소,언어,자바의 정석,프로그래밍,다형성,Polymorphism,참조변수,클래스,instanceof
 image : /img/java.png
 category : android

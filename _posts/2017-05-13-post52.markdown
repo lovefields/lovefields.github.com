@@ -1,0 +1,312 @@
+---
+layout: post
+title:  "추상 클래스와 인터페이스"
+date:   2017-05-15 12:00:00 +0900
+author: 민갤
+description: JAVA 객체지향 프로그래밍12 - 추상클래스
+keywords : android,java,androidstudio,method,class,요소,언어,자바의 정석,프로그래밍,추상클래스,abstract,interface,인터페이스,추상 메서드
+image : /img/java.png
+category : android
+---
+<div><strong class="h2">추상 클래스 abstract class</strong></div><p></p>
+<div>public <span class="red">abstract</span> class ClassName {}</div><p></p>
+<div>부분적으로만 완성된 미완성 설계도</div>
+<div>미완성 메서드(추상 메서드)를 포함하고 있다는 의미</div>
+<div>추상 클래스로 지정되면 클래스의 인스턴스를 생성할 수 없다.</div>
+<br>
+
+<div><strong>작성</strong></div>
+<div>추상화. 기존 클래스간의 공통부분을 찾아내서 조상 클래스를 만드는 것</div>
+<div><-> 구체화. 상속을 통해 클래스를 구현, 확장하는 작업.</div>
+<div>클래스는 상속계층도를 따라 내려 갈수록 세분화되며, 올라갈수록 공통요소만 남게 된다.</div>
+<br>
+
+<div><strong>추상 메서드 abstract method</strong></div>
+<div><span class="red">abstract</span> retrunType methodName();</div><p></p>
+<div>선언부만 작성하고 구현부는 작성하지 않은 채로 남겨 둔 메서드.</div>
+<div>구현부가 없으므로 괄호{} 대신 문장의 끝을 알리는 ';'을 적는다.</div>
+<div>상속받는 자손 클래스는 오버라이딩을 통해 조상의 추상 메서드를 <span class="red">모두</span> 구현해주어야 한다.</div>
+<div>만일 그 중 하나라도 구현하지 않는다면 자손 클래스 역시 추상 클래스로 지정해야 한다.</div>
+{% highlight java %}
+public abstract class Parent{
+    abstract void method1();
+    abstract void method2();
+}
+
+public class Child1 extends Parent {
+    void method1() { ... }
+    void method2() { ... }
+}
+
+public abstract class Child2 extends Parent {
+    void method1() { ... }
+}
+{% endhighlight %}<p></p>
+<div>추상 메서드도 클래스의 참조변수로 호출 가능하다.<div>
+<div>메서드는 참조변수의 타입에 관계없이 실제 인스턴스에 구현된 것이 호출되기 때문이다.</div>
+{% highlight java %}
+public abstract class Parent{ abstract void method(); }
+public class Child1 extends Parent { void method() { ... } }
+public class Child2 extends Parent { void method() { ... } }
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
+
+        Parent[] p = new Parent[2];
+	p[0] = new Child1();
+	p[1] = new Child2();
+
+	for(int i=0; i<p.length; i++){
+	   p[i].method();
+	}
+    }
+}
+{% endhighlight %}<p></p>
+<div>모든 클래스의 조상인 Object 클래스 타입의 배열로도 서로 다른 종류의 인스턴스를 하나로 묶을 수 있지만</div>
+<div>사용자가 만든 메서드를 호출 시 Object 클래스에는 정의되어 있지 않으므로 에러가 발생한다.</div>
+{% highlight java %}
+Object[] o = new Object[2];
+o[0] = new Child1();
+o[1] = new Child2();
+
+for(int i=0; i<o.length; i++){
+   o[i].method();   // error
+}
+{% endhighlight %} 
+<br>
+<br>
+<br>
+
+<div><strong class="h2">인터페이스 Interface</strong></div><p></p>
+<div>일종의 추상 클래스</div>
+<div>구현된 것이 아무것도 없고 밑그림만 그려져 있는 기본 설계도.</div>
+<div>몸통을 갖춘 일반 메서드 또는 멤버변수를 구성원으로 가질 수 없다.</div>
+<div>다른 클래스를 작성하는 데 도움을 줄 목적으로 작성된다.</div>
+<br>
+<br>
+
+<div><strong>작성</strong></div><p></p>
+<div>키워드 class 대신 interface를 사용한다.</div>
+<div>접근 제어자로 public 또는 default를 사용할 수 있다.</div>
+<div>모든 멤버변수는 public static final 이어야 하며, 생략할 수 있다.</div>
+<div>모든 메서드는 pubblic abstract 이어야 하며, 생략할 수 있다. (JDK1.8부터 static 메서드와 default 메서드는 예외)</div>
+{% highlight java %}
+interface InterfaceName{
+    public static final int A = 0;
+    public abstract method();
+}
+{% endhighlight %}
+<br>
+<br>
+
+<div><strong>상속</strong></div><p></p>
+<div>인터페이스로부터만 상속 받을 수 있다.</div>
+<div>다중상속이 가능 하다.</div>
+{% highlight java %}
+interface A { void methodA(); }
+interface B { void methodB(); }
+interface Group extends A, B { }
+{% endhighlight %}
+<br>
+<br>
+
+<div><strong>구현</strong></div><p></p>
+<div>인터페이스 자체로 인스턴스를 생성할 수 없다.</div>
+<div>자신에 정의된 추상 메서드의 몸통을 만들어주는 클래스를 작성해야 한다.</div>
+<div>구현한다는 의미의 키워드 implements 를 사용한다.</div>
+{% highlight java %}
+class Parent implements A {
+    public void methodA() {}
+    public void methodB() {}
+}
+{% endhighlight %}<p></p>
+<div>인터페이스의 메서드 중 일부만 구현한다면, abstract를 붙여서 추상 클래스로 선언해야 한다.</div>
+{% highlight java %}
+abstract class Parent implements A {
+    public void methodA() {}
+}
+{% endhighlight %}<p></p>
+<div>상속과 구현을 동시에 할 수 있다.</div>
+{% highlight java %}
+public class Grand {}
+
+class Parent extends Grand implements A {
+    public void methodA() {}
+}
+{% endhighlight %}<p></p>
+<div>인터페이스도 조금은 다른 의미의 조상이라고 할 수 있다.</div>
+<div>오버라이딩 할 때는 조상의 메서드보다 넓은 범위의 접근 제어자를 지정해야 한다.</div>
+{% highlight java %}
+interface A { 
+    (public abstract) void methodA(); 
+}
+
+class Parent extends Grand implements A {
+    public void methodA() {}
+}
+{% endhighlight %}
+<br>
+<br>
+
+<div><strong>인터페이스를 이용한 다중상속</strong></div><p></p>
+<div>두 개의 클래스로부터 상속을 받아야 할 경우,</div>
+<div>두 조상 클래스 중에서 비중이 높은 쪽을 상속받고 다른 한쪽은 클래스 내부에 멤버로 포함시키는 방식으로 처리 하거나</div>
+<div>어느 한쪽의 필요한 부분을 뽑아서 인터페이스로 만든 다음 구현하도록 한다.</div>
+{% highlight java %}
+public class Speaker {
+    protected boolean power;
+    protected int volume;
+
+    public void power() { power = !power; }
+    public void volumeUp() { volume++;}
+    public void volumeDown() { volume--;}
+}
+
+public class Video {
+    public void play() { /**/ }
+    public void pause() { /**/ }
+    public void stop() { /**/ }
+}
+{% endhighlight %}
+{% highlight java %}
+public interface IVideo {
+    public void play();
+    public void pause();
+    public void stop();
+}
+{% endhighlight %}
+{% highlight java %}
+public class Player extends Speaker implements IVideo {
+    Video vd = new Video();
+
+    public void play() { vd.play();}
+    public void pause() { vd.pause();}
+    public void stop() { vd.stop();}
+}
+{% endhighlight %}<p></p>
+<div>Video 클래스의 내용이 변경되면 Player에도 자동적으로 반영된다.</div>
+<div>Video 클래스를 포함시키는 것만으로도 충분하지만, 인터페이스를 이용하면 다형적 특성을 이용할 수 있다.</div>
+<br>
+<br>
+
+<div><strong>인터페이스를 이용한 다형성</strong></div><p></p>
+<div>인터페이스 타입의 참조변수 = 인터페이스를 구현한 클래스의 인스턴스</div>
+<div>해당 인터페이스 타입의 참조변수로 이를 구현한 클래스의 인스턴스를 참조할 수 있으며, 인터페이스 타입으로의 형변환도 가능하다.</div>
+{% highlight java %}
+IVideo ex1 = (IVideo)new Player();
+IVideo ex2 = new Player();
+{% endhighlight %}<p></p>
+<div>매개변수로 사용시, 인터페이스를 구현한 클래스의 인스턴스를 전달해야 한다.</div>
+{% highlight java %}
+void method(IVideo vd) {}
+{% endhighlight %}<p></p>
+<div>메서드의 리턴 타입이 인터페이스이면 해당 인터페이스를 구현한 클래스의 인스턴스를 반환한다는 것을 의미.</div>
+{% highlight java %}
+IVideo method(){
+    return new Player();
+}
+{% endhighlight %}
+<br>
+<br>
+
+<div><strong>장점</strong></div><p></p>
+<div>&#149;&nbsp; 개발 시간 단축</div>
+<div>&nbsp; &nbsp; 메서드 구현과 호출을 동시에 할 수 있다.</div>
+<div>&nbsp; &nbsp; 인터페이스가 작성되면, 프로그램 작성과 인터페이스 구현을 양쪽에서 동시에 할 수 있다.</div>
+<div>&#149;&nbsp; 표준화 가능</div>
+<div>&nbsp; &nbsp; 프로젝트에 사용되는 기본 틀을 인터페이스로 작성한 후, </div>
+<div>&nbsp; &nbsp; 각 개발자들마다 인터페이스를 구현하여 프로그램을 작성하도록 하면 일관되고 정형화된 프로그램을 개발할 수 있다.</div>
+<div>&#149;&nbsp; 서로 관계 없는 클래스들에게 관계를 맺어 줄 수 있다.</div>
+<div>&nbsp; &nbsp; 서로 상속관계에 있지도 않고 같은 조상 클래스를 가지고 있지 않은 클래스들에게 하나의 인터페이스를 공통적으로 구현하도록 하여 관계를 맺어줄 수 있다.</div>
+<div>&#149;&nbsp; 독립적인 프로그래밍이 가능</div>
+<div>&nbsp; &nbsp; 인터페이스를 이용하면 클래스의 선언과 구현을 분리시킬 수 있기 때문에 실제구현에 독립적인 프로그램을 작성할 수 있다.</div>
+<div>&nbsp; &nbsp; 클래스 간의 관계를 간접적인 관계로 만들어, 한 클래스의 변경이 관련된 다른 클래스에 영향을 미치지 않는다.</div>
+<br>
+<br>
+
+<div><strong>이해</strong></div><p></p>
+<div>클래스를 사용하는 쪽(User)과 클래스를 제공하는 쪽(Provider)이 있다.</div>
+<div>메서드를 사용/호출하는 쪽(User)에서는 사용하려는 메서드(Provider)의 선언부만 알면 된다.(내용은 몰라도 된다.)</div>
+{% highlight java %}
+public class Provider {
+    public void methodP() {
+        Log.d("TAG", "methodP()");
+    }
+}
+
+public class User {
+    public void methodU(Provider p){
+        p.methodP();
+    }
+}
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
+
+	User u = new User();
+	u.methodU(new Provider());      // methodP()
+    }
+}
+{% endhighlight %}<p></p>
+<div>User가 Provider를 직접 호출하지 않고 인터페이스를 매개체로 해서 User가 인터페이스를 통해 Provider의 메서드에 접근하도록 하면,</div>
+<div>Provider에 변경사항이 생기거나 Provider와 같은 기능의 다른 클래스로 대체되어도 User는 전혀 영향을 받지 않도록 할 수 있다.</div>
+{% highlight java %}
+public interface I {
+    public abstract void methodP();
+}
+public class Provider implements I {
+    public void methodP() {
+        Log.d("TAG", "methodP()");
+    }
+}
+
+public class User {
+    public void methodU(I i){ 
+        i.methodP(); 
+    }
+}
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
+
+	User u = new User();
+	u.methodU(new Provider());      // methodP()
+    }
+}
+{% endhighlight %}<p></p>
+<div>인터페이스 I는 실제 구현 내용(Provider)을 감싸고 있는 껍데기.</div>
+<div>User는 직접적인 관계에 있는 인터페이스 I의 영향만 받으며,</div>
+<div>껍데기 안에 어떤 알맹이(클래스)가 들어 있는 지 몰라도 된다.</div>
+<br>
+<br>
+
+<div><strong>static method</strong></div><p></p>
+<div>JDK1.8부터 인터페이스에 추가 가능.</div>
+<div>인스턴스와 관계가 없는 독립적인 메서드이기 때문에 추가하지 못할 이유는 없었으나,</div>
+<div>자바 규칙을 단순화 하기 위해 인터페이스의 모든 메서드는 추상 메서드여야 한다는 규칙에 예외를 두지 않았다.</div>
+<br>
+<br>
+
+<div><strong>default method</strong></div><p></p>
+<div>추상 메서드의 기본적인 구현을 제공하는 메서드.</div>
+<div>JDK1.8부터 인터페이스에 추가 가능.</div>
+<div>메서드 앞에 키워드 default를 붙이며, 일반 메서드처럼 몸통{}이 있어야 한다.</div>
+<div>접근 제어자는 public. 생략 가능.</div>
+<div>기존 인터페이스에 추가하면 조상 클래스에 새로운 메서드를 추가한 것과 동일.</div><p></p>
+<div>&#149;&nbsp; 메서드 이름이 충돌할 경우</div>
+<div>&nbsp; &nbsp; 여러 인터페이스의 디폴트 메서드 간의 충돌: 인터페이스를 구현한 클래스에서 디폴트 메서드를 오버라이딩한다.</div>
+<div>&nbsp; &nbsp; 디폴트 메서드와 조상 클래스의 메서드 간의 충돌: 조상 클래스의 메서드가 상속되고, 디폴트 메서드는 무시된다.</div>
+<br>
+<br>
+<br>
+
+참고 서적: 자바의 정석 3판
