@@ -31,7 +31,7 @@ category : android
 <br>
 
 <div><strong>선언</strong></div><p></p>
-<div>선언 위치에 따른 변수의 유효범위와 접근성을 동일하게 갖는다.
+<div>선언 위치에 따른 변수의 유효범위와 접근성을 동일하게 갖는다.</div>
 {% highlight java %}
 public class Outer{
     class InstanceInner {}

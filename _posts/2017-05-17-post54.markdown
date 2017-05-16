@@ -1,0 +1,250 @@
+---
+layout: post
+title:  "예외 처리"
+date:   2017-05-17 12:00:00 +0900
+author: 민갤
+description: JAVA 객체지향 프로그래밍14 - 예외 처리
+keywords : android,java,androidstudio,method,선언,class,요소,언어,자바의 정석,프로그래밍,예외 처리,Exception,try,catch,finally
+image : /img/java.png
+category : android
+---
+<div><strong class="h2">예외 처리 Exception Handling</strong></div><p></p>
+<div>프로그램 실행 시 발생할 수 있는 예기치 못한 예외의 발생에 대비한 코드를 작성하는 것.</div>
+<div>프로그램의 비정상 종료를 막고, 정상적인 실행 상태를 유지할 수 있도록 한다.</div>
+<div>처리되지 못한 예외(Uncaught Exception)는 JVM의 예외처리기(UncaughtExceptionHandler)가 받아서 예외의 원인을 화면에 출력한다.</div>
+<br>
+<br>
+
+<div><strong>프로그램 오류</strong></div><p></p>
+<div>&#149;&nbsp; 컴파일러 에러 Compile-time Error</div>
+<div>&nbsp; &nbsp; 컴파일 시에 발생하는 에러</div>
+<div>&nbsp; &nbsp; 컴파일러가 소스코드(*.java)에 대해 오타나 잘못된 구문, 자료형 체크 등의 기본적인 검사를 수행하여 오류를 알려준다.</div>
+<div>&nbsp; &nbsp; 컴파일을 성공적으로 마치고 나면, 클래스 파일(*.class)이 생성되고, 생성된 클래스 파일을 실행할 수 있게 된다.</div><p></p>
+<div>&#149;&nbsp; 런타임 에러 Runtime Error</div>
+<div>&nbsp; &nbsp; 실행 시에 발생하는 에러</div>
+<div>&nbsp; &nbsp; 실행 중에 에러에 의해서 잘못된 결과를 얻거나 프로그램이 비정상적으로 종료되는 것.</div>
+<div>&nbsp; &nbsp; 에러 Error :&nbsp; 메모리 부족(OutOfMemoryError), 스택오버플로우(StackOverflowError) 등 발생하면 복구할 수 없는 심각한 오류.</div>
+<div>&nbsp; &nbsp; 예외 Exception :&nbsp; 프로그램 코드에 의해서 수습될 수 있는 다소 미약한 오류.</div>
+<br>
+<br>
+
+<div><strong>예외 클래스의 계층구조</strong></div><p></p>
+<div>실행 시 발생할 수 있는 오류(Error, Exception)를 클래스로 정의.</div>
+<div>모든 예외의 최고 조상은 Exception 클래스.</div><p></p>
+
+|Exception|RuntimeException|
+|:-:|:-:|
+|IOException|ArithmeticException|
+|DataFormatException|ClassCastException|
+|FileNotFoundException|NullPointerException|
+|...|...|
+|* RuntimeException|IndexOutOfBoundException|
+
+<div>&#149;&nbsp; Exception 클래스들</div>
+<div>&nbsp; &nbsp; 외부의 영향으로 발생하는 예외(프로그램 사용자의 실수 등)</div>
+<div>&nbsp; &nbsp; Exception 클래스와 그 자손 클래스들(RuntimeException 클래스들 제외)</div>
+<div>&nbsp; &nbsp; - 존재하지 않는 파일의 이름을 입력하거나(FileNotFoundException)</div>
+<div>&nbsp; &nbsp; - 실수로 클래스의 이름을 잘못 적었거나(ClassNotFoundException)</div>
+<div>&nbsp; &nbsp; - 입력한 데이터 형식이 잘못된(DataFormatException) 경우 등</div><p></p>
+<div>&#149;&nbsp; RuntimeException 클래스들</div>
+<div>&nbsp; &nbsp; 프로그래머의 실수로 발생하는 예외</div>
+<div>&nbsp; &nbsp; RuntimeException 클래스와 그 자손 클래스들</div>
+<div>&nbsp; &nbsp; - 배열의 범위를 벗어나거나(IndexOutOfBoundException)</div>
+<div>&nbsp; &nbsp; - 값이 null인 참조변수의 멤버를 호출하려 했거나(NullPointerException)</div>
+<div>&nbsp; &nbsp; - 클래스간의 형변환을 잘못하거나(ClassCastException)</div>
+<div>&nbsp; &nbsp; - 정수를 0으로 나누는(ArithmeticException) 등</div>
+<br>
+<br>
+<br>
+
+<div><strong class="h2">예외 처리하기 try-catch문</strong></div><p></p>
+<div>발생한 예외의 종류와 일치하는 단 한 개의 catch블럭만 수행된다.</div>
+<div>일치하는 catch 블럭이 없으면 예외는 처리되지 않는다.</div>
+<div>블럭 내에 포함된 문장이 하나뿐이어도 괄호{}를 생략할 수 없다.</div>
+{% highlight java %}
+try{
+    // 예외 발생 가능성이 있는 문장
+}catch(Exception e){
+    // e가 발생했을 경우, 이를 처리하기 위한 문장
+}
+{% endhighlight %}
+<br>
+<br>
+
+<div><strong>흐름</strong></div><p></p>
+<div>&#149;&nbsp; try블럭 내에서 예외가 발생한 경우</div>
+<div>&nbsp; &nbsp; 발생한 예외와 일치하는 catch블럭이 있는 지 확인한다.</div>
+<div>&nbsp; &nbsp; 일치하는 catch블록을 찾으면, 그 블럭 내의 문장들을 수행하고 전체 try-catch문을 빠져 나와 그 다음 문장을 계속해서 수행한다.</div>
+<div>&nbsp; &nbsp; 일치하는 catch블럭을 찾지 못하면, 예외는 처리되지 못한다.</div>
+<div>&nbsp; &nbsp; try블럭에서 예외가 발생한 위치 이후에 있는 문장들은 수행되지 않는다.</div>
+<div>&nbsp; &nbsp; try블럭에 포함시킬 코드의 범위를 잘 선택해야 한다.</div>
+{% highlight java %}
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
+
+        Log.d("TAG", "0");                // 0
+	try {
+            Log.d("TAG", "1");            // 1
+            Log.d("TAG", "error" + 2 / 0);
+            Log.d("TAG", "3");
+        } catch (Exception e) {
+            Log.d("TAG", "4");            // 4
+        }
+        Log.d("TAG", "5");                // 5
+    }
+}
+{% endhighlight %}<p></p>
+<div>&#149;&nbsp; try블럭 내에서 예외가 발생하지 않은 경우</div>
+<div>&nbsp; &nbsp; catch블럭을 거치지 않고 전체 try-catch문을 빠져 나와 그 다음 문장을 계속해서 수행한다.</div>
+{% highlight java %}
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
+
+        Log.d("TAG", "0");                // 0
+	try {
+            Log.d("TAG", "1");            // 1
+        } catch (Exception e) {
+            Log.d("TAG", "2");
+        }
+        Log.d("TAG", "3");                // 3
+    }
+}
+{% endhighlight %}
+<br>
+<br>
+
+<div><strong>catch블럭</strong></div><p></p>
+<div>괄호()와 블럭{} 두 부분으로 나눠져 있다.</div>
+<div>괄호() 안에 처리하고자 하는 예외와 같은 타입의 참조변수를 하나 선언한다.</div>
+<div>예외가 발생하면, 발생한 예외에 해당하는 클래스의 인스턴스가 만들어진다.</div>
+<div>첫 번째 catch블럭부터 차례대로 내려가면서 참조변수의 종류와 생성된 예외 클래스의 인스턴스를 instanceof 연산자를 통해 검사한다.</div>
+<div>Exception클래스 타입의 참조변수를 선언하면 어떤 종류의 예외가 발생하더라도 그 catch블럭에 의해 처리되도록 할 수 있다.</div>
+{% highlight java %}
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
+
+        Log.d("TAG", "0");                         // 0
+	try {
+            Log.d("TAG", "1");                     // 1
+            Log.d("TAG", "error" + 2 / 0);
+            Log.d("TAG", "3");
+        } catch (ArithmeticException e) {
+            Log.d("TAG", "ArithmeticException");   // ArithmeticException
+	    if(e instanceof ArithmeticException)
+                Log.d("TAG", "true");              // true
+        } catch (Exception e) {
+            Log.d("TAG", "Exception");
+        }
+        Log.d("TAG", "4");                         // 4
+    }
+}
+{% endhighlight %}<p></p>
+<div>예외가 발생했을 때 생성되는 예외 클래스의 인스턴스에는 발생한 예외에 대한 정보가 담겨져 있다.</div>
+<div>예외가 여러 개 발생했을 경우 마지막 예외에 대한 내용만 출력된다.</div><p></p>
+<div>&#149;&nbsp; printStackTrace()</div>
+<div>&nbsp; &nbsp; 예외 발생 당시의 호출스택(Call Stack)에 있었던 메서드의 정보와 예외 메시지를 화면에 출력한다.</div><p></p>
+<div>&#149;&nbsp; getMessage()</div>
+<div>&nbsp; &nbsp; 발생한 예외 클래스의 인스턴스에 저장된 메시지를 얻을 수 있다.
+{% highlight java %}
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
+
+        Log.d("TAG", "0");                         // 0
+	try {
+            Log.d("TAG", "1");                     // 1
+            Log.d("TAG", "error" + 2 / 0);
+            Log.d("TAG", "3");
+        } catch (ArithmeticException e) {
+            e.printStackTrace();
+            Log.d("TAG", e.getMessage());          // divide by zero
+        }
+        Log.d("TAG", "4");                         // 4
+    }
+}
+{% endhighlight %}<p></p>
+
+<div>&#149;&nbsp; 멀티 catch블럭</div>
+<div>&nbsp; &nbsp; JDK1.7부터 여러 catch블럭을 '|' 기호를 이용하여 하나의 catch블럭으로 합칠 수 있다.</div>
+<div>&nbsp; &nbsp; 개수에 제한이 없다.</div>
+<div>&nbsp; &nbsp; 멀티 catch블럭에 선언된 참조변수는 상수다.</div>
+<div>&nbsp; &nbsp; 두 예외 클래스가 조상과 자손의 관계에 있다면, 조상 클래스만 써주는 것과 똑같기 때문에 컴파일 에러가 발생한다.</div>
+{% highlight java %}
+try {
+    ...
+} catch (ParentException | ChildException e) {    // error
+    ...
+}
+{% endhighlight %}<p></p>{% highlight java %}
+try {
+    ...
+} catch (ParentException e) {
+    ...
+}
+{% endhighlight %}
+<br>
+<br>
+
+<div><strong>finally블럭</strong></div><p></p>
+<div>try-catch문과 함께 예외의 발생여부에 상관없이 실행되어야 할 코드를 포함시킬 목적으로 사용한다.</div>
+{% highlight java %}
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
+
+        Log.d("TAG", "0");                         // 0
+	try {
+            Log.d("TAG", "1");                     // 1
+            Log.d("TAG", "error" + 2 / 0);
+            Log.d("TAG", "3");
+        } catch (ArithmeticException e) {
+            Log.d("TAG", "4");                     // 4
+        } finally {
+  	    Log.d("TAG", "5");                     // 5
+	}
+        Log.d("TAG", "6");                         // 6
+    }
+}
+{% endhighlight %}<p></p>
+<div>return문을 만나도 finally블럭의 문장들은 수행된다.<div>
+{% highlight java %}
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
+
+        Log.d("TAG", "0");                         // 0
+	try {
+            Log.d("TAG", "1");                     // 1
+            return;
+        } catch (ArithmeticException e) {
+            Log.d("TAG", "3");
+        } finally {
+  	    Log.d("TAG", "4");                     // 4
+	}
+        Log.d("TAG", "5");
+    }
+}
+{% endhighlight %}
+<br>
+<br>
+<br>
+
+
+
+
+참고 서적: 자바의 정석 3판
