@@ -1,0 +1,223 @@
+---
+layout: post
+title:  "내부 클래스"
+date:   2017-05-16 12:00:00 +0900
+author: 민갤
+description: JAVA 객체지향 프로그래밍13 - 내부 클래스
+keywords : android,java,androidstudio,method,선언,Inner,class,요소,언어,자바의 정석,프로그래밍,Inner class,내부 클래스 
+image : /img/java.png
+category : android
+---
+<div><strong class="h2">내부 클래스 Inner class</strong></div><p></p>
+<div>클래스 내에 선언된 클래스.</div>
+<div>외부 클래스를 제외하고는 다른 클래스에서 잘 사용되지 않는 것이어야 한다.</div>
+<br>
+<br>
+
+<div><strong>종류</strong></div><p></p>
+<div>변수의 선언 위치에 따른 종류와 같다.</div><p></p>
+<div>&#149;&nbsp; 인스턴스 클래스 instance class</div>
+<div>&nbsp; &nbsp; 외부 클래스의 멤버변수 선언 위치에 선언.</div>
+<div>&nbsp; &nbsp; 외부 클래스의 인스턴스 멤버들과 관련된 작업에 사용</div><p></p>
+<div>&#149;&nbsp; 스태틱 클래스 static class</div>
+<div>&nbsp; &nbsp; 외부 클래스의 멤버변수 선언 위치에 선언.</div>	
+<div>&nbsp; &nbsp; 외부 클래스의 static 멤버, static 메서드에서 사용</div><p></p>
+<div>&#149;&nbsp; 지역 클래스 local class</div>
+<div>&nbsp; &nbsp; 외부 클래스의 메서드나 초기화 블럭 안에서 선언</div>
+<div>&nbsp; &nbsp; 선언된 영역 내부에서만 사용 가능</div><p></p>
+<div>&#149;&nbsp; 익명 클래스 anonymous class</div>
+<div>&nbsp; &nbsp; 클래스의 선언과 객체의 생성을 동시에 하는 이름없는 클래스(일회용)</div>
+<br>
+<br>
+
+<div><strong>선언</strong></div><p></p>
+<div>선언 위치에 따른 변수의 유효범위와 접근성을 동일하게 갖는다.
+{% highlight java %}
+public class Outer{
+    class InstanceInner {}
+    static class StaticInner {}
+
+    void method(){
+        class LocalInner {}
+    }
+}
+{% endhighlight %}<br>
+<br>
+<br>
+
+<div><strong>제어자와 접근성</strong></div><p></p>
+<div>엄연한 클래스므로, 제어자와 접근 제어자를 사용할 수 있다.</div>
+{% highlight java %}
+public class Outer{
+    private class InstanceInner {
+        int iv = 1;
+	// static int cv = 1;              error
+        final static int CONSTANT = 1;
+    }
+
+    protected static class StaticInner {
+        int iv = 2;
+	static int cv = 2;
+    }
+
+    void method(){
+        class LocalInner {
+	    int iv = 3;
+	    // static int cv = 3;          error
+	    final static int CONSTANT = 3;
+	}
+    }
+}
+{% endhighlight %}<p></p>
+<div>&#149;&nbsp; 인스턴스 클래스와 스태틱 클래스</div>
+<div>&nbsp; &nbsp; 외부 클래스의 멤버변수와 같은 성질을 갖는다.</div>
+<div>&nbsp; &nbsp; = 인스턴스 멤버와 static 멤버간의 규칙도 똑같이 적용된다.</div><p></p>
+<div>&#149;&nbsp; 스태틱 클래스</div>
+<div>&nbsp; &nbsp; 내부 클래스 중 유일하게 static 멤버를 가질 수 있다.</div>
+<div>&nbsp; &nbsp; = 내부 클래스에 static 변수를 선언하려면 스태틱 클래스로 선언해야 한다.</div><p></p>
+<div>&#149;&nbsp; 지역 클래스</div>
+<div>&nbsp; &nbsp; 외부 클래스의 인스턴스 멤버와 static 멤버를 모두 사용할 수 있다.</div>
+<div>&nbsp; &nbsp; 외부 클래스의 지역변수(지역 클래스가 포함된 메서드에 정의된 지역변수)는 final이 붙은 지역 변수(상수)만 접근 가능하다.</div>
+<div>&nbsp; &nbsp; JDK1.8부터 지역 클래스에 접근하는 지역 변수는 자동으로 final이 붙는다.</div><p></p>
+<div>&#149;&nbsp; 상수(final과 static이 동시에 붙은 변수)는 모든 내부 클래스에서 정의 가능하다.</div>
+{% highlight java %}
+public class Outer{
+    class InstanceInner { }
+    static class StaticInner { }
+
+    InstanceInner iv = new InstanceInner();
+    static StaticInner cv = new StaticInner();
+
+    static void staticMethod(){
+        // InstanceInner obj1 = new InstanceInner();       error
+	Outer out = new Outer();
+        InstanceInner obj1 = out.new InstanceInner();
+	StaticInner obj2 = new StaticInner();
+    }
+
+    void instanceMethod(){
+        InstanceInner obj1 = new InstanceInner();
+	StaticInner obj2 = new StaticInner();
+	// LocalInner lv = new LocalInner();               error
+    }
+
+    void method(){
+        class LocalInner { }
+	LocalInner lv = new LocalInner();
+    }
+}
+{% endhighlight %}<p></p>
+{% highlight java %}
+public class Outer{
+    private int outIv = 0;
+    static int outCv = 0;
+
+    class InstanceInner {
+        int iv1 = outIv;
+	int iv2 = outCv;
+    }
+
+    static class StaticInner {
+        // int iv = outIv;         error
+	static int cv = outCv;
+    }
+
+    void method(){
+        int lv = 0;
+	final int LV = 0;
+
+        class LocalInner {
+	    int iv1 = outIv;
+	    int iv2 = outCv;
+   	    // int iv3 = lv;       JDK1.8 이전: error
+	    int iv4 = LV;
+	}
+    }
+}
+{% endhighlight %}<p></p>
+<div>&#149;&nbsp; 외부 클래스가 아닌 다른 클래스에서 내부 클래스에 접근할 경우</div>
+<div>&nbsp; &nbsp; 내부 클래스로 선언해서는 안 되는 클래스를 내부 클래스로 선언했다는 의미.</div>
+{% highlight java %}
+public class Outer{
+    class InstanceInner { }
+    static class StaticInner { }
+}
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
+
+        Outer out = new Outer();
+	Outer.InstanceInner ii = out.new InstanceInner();
+
+	Outer.StaticInner si = new Outer.StaticInner();
+    }
+}
+{% endhighlight %}<p></p>
+<div>&#149;&nbsp; 내부 클래스와 외부 클래스에 선언된 변수의 이름이 같을 때</div>
+<div>&nbsp; &nbsp; 변수 앞에 'this' 또는 '외부 클래스.this'를 붙여서 서로 구별할 수 있다.</div>
+{% highlight java %}
+public class Outer{
+    int iv = 0;
+
+    class InstanceInner {
+        int iv = 1;
+
+        void method(){
+	    int iv = 3;
+
+	    Log.d("TAG", "iv: " + iv);                        // 3
+       	    Log.d("TAG", "this.iv: " + this.iv);              // 2
+	    Log.d("TAG", "Outer.this.iv: " + Outer.this.iv);  // 1
+	}
+    } 
+}
+{% endhighlight %}<br>
+<br>
+<br>
+
+<div><strong>익명 클래스 Anonymous class</strong></div><p></p>
+<div>클래스의 선언과 객체의 생성을 동시에 한다.</div>
+<div>단 한번만 사용할 수 있고 오직 하나의 객체만을 생성할 수 있는 일회용 클래스.</div>
+<div>오로지 단 하나의 클래스를 상속 받거나 단 하나의 인터페이스만을 구현할 수 있다.</div>
+{% highlight java %}
+new ClassName() {
+    void method() {}
+}
+
+new InterfaceName() {
+    void method() {}
+}
+{% endhighlight %}<p></p>
+{% highlight java %}
+public class Anony {
+    Object iv = new Object() { void method(); };
+    static Object cv = new Object() { void method(); };
+
+    void method(){
+        Object lv = new Object() { void method(); };
+    }
+}
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
+
+        Button btn = (Button)findViewById(R.id.btn);
+	btn.setOnClickListener(new View.OnClickListener() {
+	    public void onClick(View v){
+	    
+	    }
+	});
+    }
+}
+{% endhighlight %}<p></p>
+<br>
+<br>
+<br>
+
+참고 서적: 자바의 정석 3판
