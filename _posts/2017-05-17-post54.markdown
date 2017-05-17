@@ -1,9 +1,9 @@
 ---
 layout: post
-title:  "예외 처리"
+title:  "예외 처리 01"
 date:   2017-05-17 12:00:00 +0900
 author: 민갤
-description: JAVA 객체지향 프로그래밍14 - 예외 처리
+description: JAVA 객체지향 프로그래밍14 - 예외 처리 01
 keywords : android,java,androidstudio,method,선언,class,요소,언어,자바의 정석,프로그래밍,예외 처리,Exception,try,catch,finally
 image : /img/java.png
 category : android

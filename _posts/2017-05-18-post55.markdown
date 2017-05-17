@@ -1,0 +1,257 @@
+---
+layout: post
+title:  "예외 처리 02"
+date:   2017-05-18 12:00:00 +0900
+author: 민갤
+description: JAVA 객체지향 프로그래밍15 - 예외 처리 02
+keywords : android,java,androidstudio,method,선언,class,요소,언어,자바의 정석,프로그래밍,예외 처리,예외 던지기,Exception
+image : /img/java.png
+category : android
+---
+<div><strong class="h2">예외 처리 Exception Handling</strong></div>
+<div>예외가 발생한 메서드 내에서 자체적으로 처리해도 되는 것은 메서드 내에서 try-catch문을 사용하여 처리한다.</div>
+<div>자체적으로 해결되지 않아 매개변수를 다시 넘겨 받아야 할 경우 예외를 메서드에 선언하여 호출한 메서드에서 처리해야 한다.</div>
+<br>
+<br>
+
+<div><strong>throw</strong></div><p></p>
+<div>프로그래머가 고의로 예외를 발생시킨다.</div>
+<div>연산자 new를 이용해서 발생시키려는 예외 클래스의 객체를 만들고, 키워드 throw를 이용해 예외를 발생시킨다.</div>
+{% highlight java %}
+try {
+    Exception e = new Exception();
+    throw e;
+} catch (Exception e) { }
+{% endhighlight %}<p></p>
+<div>Exception 인스턴스를 생성할 때, 생성자에 String을 넣어주면, 이 String이 Exception 인스턴스에 메시지로 저장된다.</div>
+<div>이 메시지는 getMessage()로 얻을 수 있다.</div>
+{% highlight java %}
+try {
+    throw new Exception("고의로 예외 발생");
+} catch (Exception e) {
+    Log.d("TAG", e.getMessage());
+}
+{% endhighlight %}<p></p>
+<div>&#149;&nbsp; checked 예외</div>
+<div>&nbsp; &nbsp; 컴파일러가 예외처리를 확인하는 Exception 클래스들</div>
+<div>&nbsp; &nbsp; Exception 클래스들은 예외 처리를 해주지 않으면 컴파일되지 않는다.</div>
+{% highlight java %}
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
+
+        throw new Exception("고의로 예외 발생");   // error
+    }
+}
+{% endhighlight %}<p></p>
+<div>&#149;&nbsp; unchecked 예외</div>
+<div>&nbsp; &nbsp; 컴파일러가 예외처리를 확인하지 않는 RuntimeException 클래스들</div>
+<div>&nbsp; &nbsp; RuntimeException 클래스들에 해당하는 예외는 프로그래머가 실수로 발생하는 것들이기 때문에 예외처리를 강제하지 않는다.</div>
+<br>
+<br>
+
+<div><strong>throws</strong></div><p></p>
+<div>메서드에 예외를 선언한다.</div>
+<div>메서드의 선언부에 키워드 throws를 사용해서 메서드 내에서 발생할 수 있는 예외를 적는다.</div>
+<div>메서드 내에서 발생할 가능성이 있는 예외를 메서드의 선언부에 명시하는 것은</div>
+<div>그 메서드를 호출한 메서드에게 예외를 전달하여 예외 처리를 떠맡기는 것이다.</div>
+{% highlight java %}
+void method() throws Exception { }
+{% endhighlight %}<p></p>
+<div>메서드에 예외를 선언할 때 일반적으로 RuntimeException 클래스들은 적지 않는다.</div>
+<div>반드시 처리해주어야 하는 예외들만 선언한다.</div>
+<div>예외가 발생한 메서드에서 예외 처리를 하지 않고 자신을 호출한 메서드에게 예외를 전달하기 때문에</div>
+<div>전달 받는 어느 한곳에서는 반드시 try-catch문으로 예외 처리를 해주어야 한다.</div>
+{% highlight java %}
+void method1 () {
+    try{
+        method2();
+    } catch (Exception e) {
+        Log.d("TAG", "method1에서 예외 처리함");
+    }
+}
+
+void method2() throws Exception {
+    method3();
+}
+
+void method3() throws Exception {
+    throw new Exception();
+}
+{% endhighlight %}<p></p>
+<div>예외를 전달받은 메서드가 또다시 자신을 호출한 메서드에게 전달할 수 있다.</div>
+<div>계속 호출스택에 있는 메서드들을 따라 전달되다가 제일 마지막 메서드에서도 예외가 처리 되지 않으면 프로그램 전체가 종료된다.</div>
+<br>
+<br>
+
+<div><strong>자동 자원 반환 try-with-resources문</strong></div><p></p>
+<div>입출력(I/O)과 관련된 클래스를 사용할 때 유용하다.</div>
+<div>입출력에 사용되는 클래스 중, 사용했던 자원을 반환 받기 위해서 사용한 후에 반드시 닫아줘야 되는 것들이 있다.</div>
+{% highlight java %}
+FileInputStream fis;
+DataInputStream dis;
+try {
+    fis = new FileInputStream("name.dat");
+    dis = new DataInputStream(fis);
+} catch (Exception e) {
+    Log.d("TAG", e.getMessage());
+} finally {
+    dis.close();
+}
+{% endhighlight %}<p></p>
+<div>그런데 close()가 예외를 발생시킬 수도 있어서 예외 처리를 해야 한다.</div>
+<div>이 때 try-catch-finally문으로는 코드가 복잡해지거나</div>
+<div>try블럭과 finally블럭에서 모두 예외가 발생하면 try블럭의 예외가 무시되는 문제가 발생한다.</div>
+{% highlight java %}
+FileInputStream fis;
+DataInputStream dis;
+try {
+    fis = new FileInputStream("name.dat");
+    dis = new DataInputStream(fis);
+} catch (Exception e) {
+    Log.d("TAG", e.getMessage());
+} finally {
+    try {
+        if(dis != null) dis.close();
+    } catch (Exception e) {}
+}
+{% endhighlight %}<p></p>
+<div>try-with-resources문은 이러한 점을 개선하기 위하여 추가되었다.</div>
+<div>괄호() 안에 객체를 생성하는 문장을 넣으면 try블럭을 벗어나는 순간 자동적으로 close()가 호출된다.</div>
+<div>단, 클래스가 AutoCloseable이라는 인터페이스를 구현한 것이어야만 한다.</div>
+<div>두 문장 이상을 넣을 경우 ' ; '로 구분한다.</div>
+{% highlight java %}
+public interface AutoCloseable {
+    void close() throws Exception;
+}
+{% endhighlight %}
+{% highlight java %}
+try (fis = new FileInputStream("name.dat"); dis = new DataInputStream(fis)) {
+} catch (Exception e) {
+    Log.d("TAG", e.getMessage());
+}
+{% endhighlight %}<p></p>
+<div>&#149;&nbsp; Suppressed Exception</div>
+<div>&nbsp; &nbsp; try-catch문과 AutoCloseable.close()에서 모두 예외가 발생되면,</div>
+<div>&nbsp; &nbsp; 두 예외가 동시에 발생할 수는 없기 때문에</div>
+<div>&nbsp; &nbsp; close()에서 발생되는 예외는 억제된 예외로 처리되어 실제 발생한 예외(try-catch문에서 발생한 예외)에 저장된다.</div>
+<div>&#149;&nbsp; Throwable에는 억제된 예외와 관련된 메서드가 정의되어 있다.</div>
+{% highlight java %}
+void addSuppressed(Throwwable exception) 
+Throwable[] getSuppressed()
+{% endhighlight %}<p></p>
+<div>&nbsp; &nbsp; addSuppressed() :&nbsp; 억제된 예외를 추가</div>
+<div>&nbsp; &nbsp; getSuppressed() :&nbsp; 억제된 예외(배열)를 반환</div>
+<br>
+<br>
+
+<div><strong>사용자정의 예외</strong></div><p></p>
+<div>필요에 따라 새로운 예외 클래스를 정의하여 사용할 수 있다.</div>
+<div>Exception 클래스로부터 상속받는 클래스를 만들거나, 필요에 따라서 알맞은 예외 클래스를 선택할 수 있다.</div>
+{% highlight java %}
+class MyException extends Exception {
+    MyException(String msg){
+        super(msg);
+    }
+}
+{% endhighlight %}<p></p>
+<div>Exception 클래스를 상속받으면 String을 매개변수로 받는 생성자를 추가하여 메시지를 저장할 수 있다.</div>
+<div>요즘은 예외 처리를 선택적으로 할 수 있도록 RuntimeException을 상속받아서 작성하는 추세다.</div>
+<br>
+<br>
+
+<div><strong>예외 던지기 Exception re-throwing</strong></div><p></p>
+<div>하나의 예외에 대해서 예외가 발생한 메서드와 이를 호출한 양쪽 모두에서 처리해줘야 할 작업이 있을 때 사용된다.</div>
+<div>예외가 발생할 메서드에서는 try-catch문을 사용해서 예외 처리를 해줌과 동시에 메서드의 선언부에 발생할 예외를 throws에 지정해줘야 한다.</div>
+{% highlight java %}
+void method1() {
+    try {
+        method2();
+    } catch (Exception e) {
+    }
+}
+
+void method2() throws Exception {
+    try {
+        throw new Exception();
+    } catch (Exception e) {
+        throw e;
+    }
+}
+{% endhighlight %}<p></p>
+<div>반환값이 있는 return문의 경우, catch블럭에도 return문이 있어야 하지만</div>
+<div>catch블럭에서 예외 되던지기를 해서 호출한 메서드로 예외를 전달하면 return문이 없어도 된다.</div>
+{% highlight java %}
+int method() throws Exception {
+    try {
+        return 0;
+    } catch (Exception e) {
+        throw new Exception();    // return
+    } finally {
+        // return 0;
+    }
+}
+{% endhighlight %}<p></p>
+<div>finally블럭 내에 return문을 사용하면 최종적으로 finally블럭 내의 반환값이 반환된다.</div>
+<br>
+<br>
+
+<div><strong>연결된 예외 Chained Exception</strong></div><p></p>
+<div>예외 A가 예외 B를 발생시켰다면, A를 B의 '원인 예외(Cause Exception)'라고 한다.</div>
+<div>원인 예외 등록은 initCause()를 사용한다.</div>
+{% highlight java %}
+try {
+    throw new Exception();
+} catch (Exception A) {
+    Exception B = new Exception();
+    B.initCause(A);
+    throw B;
+}
+{% endhighlight %}<p></p>
+<div>initCause()는 Exception클래스의 조상인 Throwable 클래스에 정의되어 있기 때문에 모든 예외에서 사용 가능하다.</div>
+{% highlight java %}
+Throwable initCause(Throwable cause)
+Throwable getCause()
+{% endhighlight %}<p></p>
+<div>발생한 원인을 원인 예외로 등록해서 다시 예외를 발생시킨다.</div><p></p>
+<div>&#149;&nbsp; 여러 가지 예외를 하나의 큰 분류의 예외로 묶어서 다룰 수 있다.</div>
+<div>&nbsp; &nbsp; 여러 예외의 조상으로 catch블록을 작성하면 실제로 발생한 예외가 어떤 것인지 알 수가 없으므로 예외가 원인 예외를 포함시킬 수 있도록 한 것이다.</div>
+{% highlight java %}
+public class MyThrowable implements Serializable {
+    ...
+    private Throwable cause = this; // 객체 자신을 원인 예외로 등록
+}
+{% endhighlight %}<p></p>
+<div>&#149;&nbsp; checked 예외를 unchecked 예외로 바꿀 수 있다.</div>
+<div>&nbsp; &nbsp; 예외 처리가 선택적이 되므로 억지로 예외처리 하지 않아도 된다.</div>
+{% highlight java %}
+boolean flag;
+
+int methodBefore() throws MyException1, MyException2 {
+    if(flagSwitch()) throw new MyException1();
+    else throw new MyException2();
+}
+
+int methodAfter() throws MyException1 {
+    if(flagSwitch()) throw new MyException1();
+    else throw new RuntimeException(new MyException2());
+}
+
+boolean flagSwitch(){ 
+    flag = !flag;
+    return flag; 
+}
+{% endhighlight %}<p></p>
+<div>&nbsp; &nbsp; RuntimeException으로 반드시 처리해야 하는 예외를 감싸 unchecked예외로 바꾼다.</div>
+<div>&nbsp; &nbsp; 메서드 선언부에 선언해야 하는 예외가 줄어든다.</div>
+<div>&nbsp; &nbsp; initCause() 대신 RuntimeException의 생성자로 원인 예외를 등록할 수 있다.</div>
+{% highlight java %}
+RuntimeException(Throwable cause)
+{% endhighlight %}
+<br>
+<br>
+<br>
+
+참고 서적: 자바의 정석 3판
