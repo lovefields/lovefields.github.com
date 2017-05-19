@@ -1,0 +1,312 @@
+---
+layout: post
+title:  "Object 클래스"
+date:   2017-05-19 12:00:00 +0900
+author: 민갤
+description: java.lang 패키지 - Object 클래스
+keywords : android,java,androidstudio,method,선언,class,요소,언어,자바의 정석,프로그래밍,java.lang,패키지,Object
+image : /img/java.png
+category : android
+---
+<div><strong class="h2">java.lang 패키지</strong></div>
+<div>자바프로그래밍에 가장 기본이 되는 클래스들을 포함하고 있다.</div>
+<br>
+<br>
+<div><strong class="h2">Object 클래스</strong></div>
+<div>모든 클래스의 최고 조상</div>
+<div>Object 클래스의 멤버들은 모든 클래스에서 바로 사용 가능하다.</div>
+<div>멤버 변수는 없고 오직 11개의 메서드(모든 인스턴스가 가져야 할 기본적인 것들)만 가지고 있다.</div>
+<br>
+<br>
+
+<div><strong>protected Object clone()</strong></div><p></p>
+<div>객체 자신을 복사하여 새로운 인스턴스를 생성한다.</div>
+<div>단순히 인스턴스 변수의 값만 복사하기 때문에 참조 변수 타입의 인스턴스 변수가 정의되어 있는 클래스는 인스턴스가 완전히 복제되지 않는다.</div>
+<div>Clonealbe 인터페이스를 구현한 클래스에서만 clone()을 호출할 수 있다. (인스턴스의 데이터 보호)</div>
+<div>오버라이딩하면서 접근 제어자를 public으로 변경해야 상속관계가 없는 다른 클래스에서 clone()을 호출할 수 있다.</div>
+<div>조상 클래스의 clone()을 호출하는 코드가 포함된 try-catch문을 작성한다. ← 반드시 예외 처리 해야 한다.</div>
+{% highlight java %}
+public class Test implements Cloneable {
+    int x;
+    Test(int x) { this.x = x; }
+
+    @Override
+    protected Object clone() {
+        Object obj = null;
+        try {
+            obj = super.clone();
+        } catch (CloneNotSupportedException e) {
+        }
+        return obj;
+    }
+}
+{% endhighlight %}<p></p>
+{% highlight java %}
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
+
+        Test original = new Test(10);
+        Test copy = (Test) original.clone();
+
+        Log.d("TAG_TEST", copy.x + "");       // 10
+    }
+}
+{% endhighlight %}<p></p>
+<div>&#149;&nbsp; 공변 반환타입 Covariant Return Type</div>
+<div>&nbsp; &nbsp; JDK1.5부터 오버라이딩할 때 조상 메서드의 반환 타입을 자손 클래스의 타입으로 변경하는 것을 허용한다.</div>
+<div>&nbsp; &nbsp; clone() 호출 시 자손 객체의 타입으로 형변환하는 번거로움이 줄어든다.</div>
+{% highlight java %}
+public class Test implements Cloneable {
+    ...
+
+    @Override
+    protected Test clone() {
+        Object obj = null;
+        try {
+            obj = super.clone();
+        } catch (CloneNotSupportedException e) {
+        }
+        return (Test) obj;
+    }
+}
+{% endhighlight %}<p></p>
+{% highlight java %}
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
+
+        Test original = new Test(10);
+        Test copy = original.clone();
+
+        Log.d("TAG_TEST", copy.x + "");          // 10
+    }
+}
+{% endhighlight %}<p></p>
+<div>&#149;&nbsp; 배열</div>
+<div>&nbsp; &nbsp; 배열도 객체이기 대문에 Object 클래스를 상속받으며, Cloneable 인터페이스와 Serializable 인터페이스가 구현되어 있다.</div>
+<div>&nbsp; &nbsp; System.arraycopy()를 이용하는 것과 같은 결과를 얻는다.</div><p></p>
+<div>&#149;&nbsp; 얕은 복사 Shallow Copy</div>
+<div>&nbsp; &nbsp; 기본형 배열과 달리 객체 배열은 clone()을 사용하면 원본과 복사본이 같은 객체를 공유한다.</div>
+<div>&nbsp; &nbsp; 원본의 변경이 복사본에 영향을 주므로 완전한 복제라고 보기 어렵다.</div><p></p>
+<div>&#149;&nbsp; 깊은 복사 Deep Copy</div>
+<div>&nbsp; &nbsp; 원본이 참조하고 있는 객체까지 복사한다.</div>
+<div>&nbsp; &nbsp; 원본과 복사본이 서로 다른 객체를 참조하기 때문에 원본의 변경이 복사본에 영향을 미치지 않는다.</div>
+<br>
+<br>
+
+<div><strong>public boolean equals(Object obj)</strong></div><p></p>
+<div>객체 자신과 객체 obj가 같은 지 참조변수의 값(주소값)으로 판단한다.</div>
+{% highlight java %}
+public class Test {
+    int x;
+
+    Test(int x) {
+        this.x = x;
+    }
+}
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
+
+        Test t1 = new Test(10);
+        Test t2 = new Test(10);
+
+        Log.d("TAG_TEST", t1.equals(t2) + "");  // false
+
+        t1 = t2;
+
+        Log.d("TAG_TEST", t1.equals(t2) + "");  // true
+    }
+}
+{% endhighlight %}<p></p>
+<div>주소가 아닌 객체에 저장된 내용을 비교하고 싶을 땐 equals 메서드를 오버라이딩 한다.</div>
+<div>ex) String, Date, File, wrapper 클래스(Integer, Double 등)</div>
+{% highlight java %}
+public class Test {
+    int x;
+
+    Test(int x) {
+        this.x = x;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj != null && obj instanceof Test) {
+            return x == ((Test) obj).x;
+        } else {
+            return false;
+        }
+    }
+}
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
+
+        Test t1 = new Test(10);
+        Test t2 = new Test(10);
+
+        Log.d("TAG_TEST", t1.equals(t2) + "");  // true
+
+        t1 = t2;
+
+        Log.d("TAG_TEST", t1.equals(t2) + "");  // true
+    }
+}
+{% endhighlight %}
+<br>
+<br>
+
+<div><strong>protected void finalize()</strong></div><p></p>
+<div>객체가 소멸될 대 가비지 컬렉터에 의해 자동 호출된다.</div>
+<br>
+
+<div><strong>public Class getClass()</strong></div><p></p>
+<div>객체 자신의 클래스 정보를 담고 있는 Class 인스턴스를 반환한다.</div><p></p>
+<div>&#149;&nbsp; Class 객체</div>
+<div>&nbsp; &nbsp; 이름이 'Class'인 클래스의 객체.</div>
+<div>&nbsp; &nbsp; 클래스당 단 1개만 존재하며, 클래스의 모든 정보를 담고 있다.</div>
+<div>&nbsp; &nbsp; 클래스 로더에 의해 메모리에 올라갈 때 자동적으로 생성된다.</div><p></p>
+<div>&#149;&nbsp; 클래스 로더 ClassLoader</div>
+<div>&nbsp; &nbsp; 실행 시에 필요한 클래스를 동적으로 메모리에 로드하는 역할</div>
+<div>&nbsp; &nbsp; 파일 형태로 저장되어 있는 클래스를 읽어서 Class클래스에 정의된 형식으로 변환한다.</div><p></p>
+<div>&#149;&nbsp; Class 객체 얻기</div>
+<div>&nbsp; &nbsp; 클래스의 정보가 필요할 때, Class 객체에 대한 참조를 얻어와야 한다.</div>
+{% highlight java %}
+Class co = new Test().getClass();  // 생성된 객체로 얻기
+Class co = Test.Class;             // 클래스 리터럴(*.class)로 얻기
+Class co = Class.forName("Test")   // 클래스 이름으로 얻기
+{% endhighlight %}<p></p>
+<div>&nbsp; &nbsp; Class 객체를 통해 객체를 생성하고 메서드를 호출하는 등 보다 동적인 코드를 작성할 수 있다.</div>
+{% highlight java %}
+try {
+    Test t = Test.class.newInstance();
+    } catch (InstantiationException e) {
+        e.printStackTrace();
+    } catch (IllegalAccessException e) {
+        e.printStackTrace();
+    }
+{% endhighlight %}<p></p>
+<div>newInstance()는 InstantiationException이 발생할 수 있다.</div>
+<br>
+
+<div><strong>public int hashCode()</strong></div><p></p>
+<div>객체의 주소값을 이용해서 해시코드를 만들어 반환한다.</div>
+<div>해싱(Hashing) 기법에 사용되는 해시함수(Hash Function)를 구현한 것이다.</div>
+<div>서로 다른 객체는 같은 해시코드를 가질 수 없다.</div>
+{% highlight java %}
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
+
+        Test t1 = new Test(10);
+        Test t2 = new Test(10);
+
+        Log.d("TAG_TEST", t1.hashCode()+"");                // 225078885
+        Log.d("TAG_TEST", t2.hashCode()+"");                // 185726778
+    }
+}
+{% endhighlight %}<p></p>
+<div>String 클래스는 문자열의 내용이 같으면 동일한 해시코드를 반환하도록 오버라이딩되어 있다.</div>
+<div>반면 System.identityHashCode(Object x)는 모든 객체에 대해 항상 다른 해시코드 값을 반환할 것을 보장한다.</div>
+{% highlight java %}
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
+
+        String str1 = new String("A");
+        String str2 = new String("A");
+
+
+        Log.d("TAG_TEST", str1.hashCode()+"");                // 65
+        Log.d("TAG_TEST", str2.hashCode()+"");                // 65
+        Log.d("TAG_TEST", System.identityHashCode(str1)+"");  // 225078885
+        Log.d("TAG_TEST", System.identityHashCode(str2)+"");  // 185726778
+    }
+}
+{% endhighlight %}
+<br>
+<br>
+
+<div><strong>public String toString()</strong></div><p></p>
+<div>객체 자신의 정보를 문자열로 반환한다.</div>
+<div>인스턴스나 클래스에 대한 정보 또는 인스턴스 변수들의 값을 문자열로 변환하여 반환하도록 오버라이딩되는 것이 보통이다.</div>
+{% highlight java %}
+public class Test {
+    int x;
+
+    Test(int x) {
+        this.x = x;
+    }
+
+    @Override
+    public String toString() {
+        return "x : " + x;
+    }
+}
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
+
+        Test t = new Test(1);
+
+        Log.d("TAG_TEST", t.toString());     // x : 1
+    }
+}
+{% endhighlight %}<p></p>
+<div>Object 클래스에 정의된 메서드를 호출하면 클래스 이름에 16진수의 해시코드를 얻게 된다.</div>
+{% highlight java %}
+public String toString() {
+    return getClass().getName() + "@" + Integer.toHexString(hashCode());
+}
+{% endhighlight %}<p></p>
+{% highlight java %}
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
+
+        Test t1 = new Test(1);
+        Test t2 = new Test(1);
+
+        Log.d("TAG_TEST", t1.toString());     // Test@d6a6e65
+        Log.d("TAG_TEST", t2.toString());     // Test@b11f73a
+    }
+}
+{% endhighlight %}
+<br>
+<br>
+
+<div><strong>public void notify()</strong></div><p></p>
+<div>객체 자신을 사용하려고 기다리는 쓰레드를 하나만 깨운다.</div>
+<br>
+
+<div><strong>public void notifyAll()</strong></div><p></p>
+<div>객체 자신을 사용하려고 기다리는 모든 쓰레드를 깨운다.</div>
+<br>
+
+<div><strong>public void wait(), wait(long timeout), wait(long timeout, int nanos)</strong></div><p></p>
+<div>다른 쓰레드가 notify()나 notifyAll()을 호출할 때까지 현재 쓰레드를 무한히 또는 지정된 시간(timeout, nanos)동안 기다리게 한다.</div>
+<div>(timeout: 천 분의 1초. nanos: 10의 9승분의 1호)</div>
+<br>
+<br>
+<br> 
+
+참고 서적: 자바의 정석 3판
