@@ -192,8 +192,8 @@ boolean b = str.equalsIgnoreCase("love");    // true
 <div>문자열의 문자 인코딩을 다른 인코딩으로 변경한다.</div>
 {% highlight java %}
 try {
-    byte[] utf8 = "가".getBytes("UTF-8");    //EA, B0, 80
-    String str = new String(utf8, "UTF-8"); // 가
+    byte[] utf8 = "가".getBytes("UTF-8");    // EA, B0, 80
+    String str = new String(utf8, "UTF-8");  // 가
 } catch (UnsupportedEncodingException e) {
     e.printStackTrace();
 }
@@ -398,7 +398,7 @@ String o = String.valueOf(date);       // Mon May 22 16:26:36 KST 2017
 String ca2 = String.valueOf(arr);      // love
 {% endhighlight %}<p></p>
 <div>&#149;&nbsp; String을 기본형 값으로 변환하기</div>
-<div>&nbsp; &nbsp; <strong>타입.parse타입() ,&nbsp; valueOf()</div></strong>
+<div>&nbsp; &nbsp; <strong>타입.parse타입() ,&nbsp; valueOf()</strong></div>
 <div>&nbsp; &nbsp; 메서드의 이름을 통일하기 위해 valueOf()가 나중에 추가되었다.
 <div>&nbsp; &nbsp; <span class="red">두 메서드는 반환 타입만 다를 뿐 같은 메서드</span>다.</div>
 <div>&nbsp; &nbsp; parse타입()은 문자열에 공백이나 문자가 포함되어 있는 경우,</div>
