@@ -20,7 +20,7 @@ category : android
 <br>
 
 <div><strong>변경 불가능한(Immutable) 클래스</strong></div><p></p>
-<div>문자열을 저장하기 위해서 문자형 배열 변수를 인스턴스 변수 value가 정의되어 있다.</div>
+<div>문자열을 저장하기 위해서 문자형 배열 변수 value를 인스턴스 변수로 정의하고 있다.</div>
 {% highlight java %}
 public final class String implements java.io.Serializable, Comparable{
     private char[] value;
