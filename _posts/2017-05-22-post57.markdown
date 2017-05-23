@@ -34,15 +34,19 @@ public final class String implements java.io.Serializable, Comparable{
 <div>&nbsp; &nbsp; 연산 시 마다 새로운 문자열을 가진 String 인스턴스가 생성되어 메모리 공간을 차지한다.</div>
 <div>&nbsp; &nbsp; 가능한 결합횟수를 줄이는 것이 좋다.</div>
 {% highlight java %}
-String a = "a";
-String b = "b";
-String a = a + b;
+String s1 = "a";
+String s2 = "b";
+s1 = s1 + s2;
 {% endhighlight %}<p></p>
 
-||a|b|
+||s1|s2|
 |:-:|:-:|:-:|
 |결합 전|0x100|0x200|
 |결합 후|0x300|0x200|
+
+|0x100|0x200|0x300|
+|:-:|:-:|:-:|
+|a|b|ab|
 
 <div>&#149;&nbsp; StringBuffer 클래스</div>
 <div>&nbsp; &nbsp; 문자열간의 결합이나 추출 등 문자열을 다루는 작업이 많이 필요한 경우 사용한다.</div>
@@ -403,7 +407,7 @@ String ca2 = String.valueOf(arr);      // love
 <div>&nbsp; &nbsp; <span class="red">두 메서드는 반환 타입만 다를 뿐 같은 메서드</span>다.</div>
 <div>&nbsp; &nbsp; parse타입()은 문자열에 공백이나 문자가 포함되어 있는 경우,</div>
 <div>&nbsp; &nbsp; 변환 시 예외(NumberFormatException)가 발생할 수 있기 때문에 trim()과 같이 사용하는 것이 좋다.</div>
-<div>&nbsp; &nbsp; parse타입은 부호(+)나, 소수점(.), 자료형 접미사는 자료형에 알맞은 변환을 하는 경우에 사용 가능하다.</div>
+<div>&nbsp; &nbsp; parse타입()은 부호(+)나, 소수점(.), 자료형 접미사는 자료형에 알맞은 변환을 하는 경우에 사용 가능하다.</div>
 {% highlight java %}
 Boolean.parseBoolean(String s)
 Byte.parseByte(String s)
