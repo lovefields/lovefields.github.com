@@ -22,7 +22,8 @@ category : android
 <div><strong>변경 불가능한(Immutable) 클래스</strong></div><p></p>
 <div>문자열을 저장하기 위해서 문자형 배열 변수 value를 인스턴스 변수로 정의하고 있다.</div>
 {% highlight java %}
-public final class String implements java.io.Serializable, Comparable{
+public final class String 
+extends Object implements Serializable, Comparable<String>, CharSequence{
     private char[] value;
     ...
 {% endhighlight %}
@@ -196,8 +197,8 @@ boolean b = str.equalsIgnoreCase("love");    // true
 <div>문자열의 문자 인코딩을 다른 인코딩으로 변경한다.</div>
 {% highlight java %}
 try {
-    byte[] utf8 = "가".getBytes("UTF-8");    // EA, B0, 80
-    String str = new String(utf8, "UTF-8");  // 가
+    byte[] utf8 = "가".getBytes("UTF-8");    // Encode to UTF-8
+    String str = new String(utf8, "UTF-8");  // Decoding
 } catch (UnsupportedEncodingException e) {
     e.printStackTrace();
 }
