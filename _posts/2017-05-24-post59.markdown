@@ -3,7 +3,7 @@ layout: post
 title:  "Math 클래스"
 date:   2017-05-24 12:00:00 +0900
 author: 민갤
-description: java.lang 패키지 - Math  클래스
+description: java.lang 패키지 - Math 클래스
 keywords : android,java,androidstudio,method,선언,class,요소,언어,자바의 정석,프로그래밍,java.lang,패키지,Math
 image : /img/java.png
 category : android

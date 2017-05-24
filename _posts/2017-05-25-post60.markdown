@@ -1,0 +1,213 @@
+---
+layout: post
+title:  "래퍼 클래스"
+date:   2017-05-25 12:00:00 +0900
+author: 민갤
+description: java.lang 패키지 - 래퍼 클래스
+keywords : android,java,androidstudio,method,선언,class,요소,언어,자바의 정석,프로그래밍,java.lang,패키지,래퍼,wrapper,Long,Integer,Boolean,Double,Float
+image : /img/java.png
+category : android
+---
+<div><strong class="h2">java.lang 패키지</strong></div>
+<div>자바프로그래밍에 가장 기본이 되는 클래스들을 포함하고 있다.</div>
+<br>
+<br>
+<br>
+
+<div><strong class="h2">래퍼(wrapper) 클래스</strong></div>
+<div>8개의 기본형을 대표하는 8개의 래퍼 클래스.</div>
+<div>기본형 값을 객체로 다룰 수 있다.</div>
+<div>생성자의 매개변수로 문자열을 제공할 때, 각 자료형에 알맞은 문자열을 사용해야 한다.</div>
+<br>
+
+<div><strong>Boolean</strong></div>
+<div>&#149;&nbsp; Boolean(boolean value)</div>
+<div>&#149;&nbsp; Boolean(String s)</div>
+{% highlight java %}
+Boolean b1 = new Boolean(true);
+Boolean b2 = new Boolean("true");
+{% endhighlight %}
+<br>
+
+<div><strong>Character</strong></div>
+<div>&#149;&nbsp; Character(char value)</div>
+{% highlight java %}
+Character c = new Character('a');
+{% endhighlight %}
+<br>
+
+<div><strong>Byte</strong></div>
+<div>&#149;&nbsp; Byte(byte value)</div>
+<div>&#149;&nbsp; Byte(String s)</div>
+{% highlight java %}
+Byte b1 = new Byte(2);
+Byte b2 = new Byte("2");
+{% endhighlight %}
+<br>
+
+<div><strong>Short</strong></div>
+<div>&#149;&nbsp; Short(short value)</div>
+<div>&#149;&nbsp; Short(String s)</div>
+{% highlight java %}
+Short s1 = new Short(2);
+Short s2 = new Short("2");
+{% endhighlight %}
+<br>
+
+<div><strong>Integer</strong></div>
+<div>&#149;&nbsp; Integer(int value)</div>
+<div>&#149;&nbsp; Integer(String s)</div>
+{% highlight java %}
+Integer i1 = new Integer(1000);
+Integer i2 = new Integer("1000);
+{% endhighlight %}
+<br>
+
+<div><strong>Long</strong></div>
+<div>&#149;&nbsp; Long(long value)</div>
+<div>&#149;&nbsp; Long(String s)</div>
+{% highlight java %}
+Long l1 = new Long(1000);
+Long l2 = new Long("1000");
+{% endhighlight %}
+<br>
+
+<div><strong>Float</strong></div>
+<div>&#149;&nbsp; Float(double value)</div>
+<div>&#149;&nbsp; Float(float value)</div>
+<div>&#149;&nbsp; Float(String s)</div>
+{% highlight java %}
+Float f1 = new Float(1.0);
+Float f1 = new Float(1.0f);
+Float f1 = new Float("1.0f");
+{% endhighlight %}
+<br>
+
+<div><strong>Double</strong></div>
+<div>&#149;&nbsp; Double(double value)</div>
+<div>&#149;&nbsp; Double(String s)</div>
+{% highlight java %}
+Double d1 = new Double(1.0);
+Double d2 = new Double("1.0");
+{% endhighlight %}
+<br>
+<br>
+<br>
+
+<div><strong>boolean equals(Object anObject)</strong></div>
+<div>오버라이딩 되어 있어서 주소값이 아닌 객체가 가지고 있는 값을 비교한다.</div>
+{% highlight java %}
+Integer i1 = new Integer(2);
+Integer i2 = new Integer(2);
+
+Log.d("TAG_TEST", (i1 == i2) + "");         // false
+Log.d("TAG_TEST", i1.equals(i2) + "");      // true
+{% endhighlight %}
+<br>
+
+<div><strong>int compareTo(Integer anotherInteger)</strong></div>
+<div>Integer 객체에 비교 연산자를 사용할 수 없어서 제공된 메서드.</div>
+{% highlight java %}
+Integer i1 = new Integer(2);
+Integer i2 = new Integer(2);
+Integer i3 = new Integer(5);
+Integer i4 = new Integer(-5);
+
+Log.d("TAG_TEST", i1.compareTo(i2) + "");   // 0
+Log.d("TAG_TEST", i1.compareTo(i3) + "");   // -1
+Log.d("TAG_TEST", i1.compareTo(i4) + "");   // 1
+{% endhighlight %}
+<br>
+
+<div><strong>String toString()</strong></div>
+<div>객체가 가지고 있는 값을 문자열로 변환하여 반환한다.</div>
+{% highlight java %}
+Integer i = new Integer(2);
+
+Log.d("TAG_TEST", i.toString());       // 2
+{% endhighlight %}
+<br>
+<br>
+<br>
+
+<div><strong>Number 클래스</strong></div>
+<div>내부적으로 숫자를 멤버변수로 갖는 래퍼 클래스들의 조상.</div>
+<div>추상 클래스</div>
+<div>객체가 가지고 있는 값을 숫자와 관련된 기본형으로 변환하여 반환하는 메서드들을 정의하고 있다.</div>
+{% highlight java %}
+public abstract class Number extends Object implements Serializable {
+
+    abstract double doubleValue();
+    abstract float floatValue();
+    abstract int intValue();
+    abstract long longValue();
+    
+    byte byteValue() {
+        return (byte) intValue();
+    }
+    short shortValue() {
+        return (short) intValue();
+    }
+    
+    ...
+}
+{% endhighlight %}
+<br>
+<br>
+
+<div><strong>문자열을 숫자로 변환</strong></div>
+<div>기본형을 반환하는 '타입.parse타입(String s)'과 래퍼 클래스 타입을 반환하는'타입.valueOf()'</div>
+<div>JDK1.5부터 도입된 오토박싱 덕분에 두 메서드의 차이가 없어졌다.</div>
+<div>단, 성능은 valueOf()가 조금 더 느리다.</div>
+{% highlight java %}
+byte b = Byte.parseByte("2");
+Byte B = Byte.valueOf("2");                 // → byte B = Byte.valueOf("2");
+short s = Short.parseShort("2");
+Short S = Short.valueOf("2");               // → short S = Short.valueOf("2"); 
+int i = Integer.parseInt("2");
+Integer I = Integer.valueOf("2");           // → int I = Integer.valuseOf("2");
+long l = Long.parseLong("2");
+Long L = Long.valueOf("2");                 // → long L = Long.valueOf("2");
+float f = Float.parseFloat("2.0");
+Float F = Float.valueOf("2.0");             // → float F = Float.valueOf("2.0");
+double d = Double.parseDouble("2.0");
+Double D = Double.valueOf("2.0");           // → double D = Double.valueOf("2.0");
+{% endhighlight %}<p></p>
+
+<div>문자열이 10진수가 아닌 다른 진법의 숫자일 때도 변환이 가능하다.</div>
+{% highlight java %}
+static int parseInt(String s, int radix);
+static Integer valueOf(String s,int radix);
+{% endhighlight %}
+{% highlight java %}
+int i1 = Integer.parseInt("100", 2);   // 4
+int i2 = Integer.parseInt("100", 8);   // 64
+int i3 = Integer.parseInt("100", 16);  // 256
+int i4 = Integer.parseInt("aa", 16);   // 170
+int i5 = Integer.parseInt("aa");       // error: NumberFormatException
+{% endhighlight %}
+<br>
+<br>
+
+<div><strong>오토박싱 Autoboxing & 언박싱 Unboxing</strong></div>
+<div>기본형과 참조형 간의 연산이 가능하도록 컴파일러가 자동으로 변환하는 코드를 넣어준다.</div>
+<div>개발자가 간략하게 쓴 구문을 컴파일러가 원래의 구문으로 변경해주는 것뿐 자바의 원칙이 바뀐 것은 아니다.</div><p></p>
+<div>&#149;&nbsp; 오토박싱 :&nbsp; 기본형 값을 래퍼 클래스의 객체로 자동 변환해주는 것.</div>
+{% highlight java %}
+int i = 2;
+Integer intg = (Integer) i;       // = Integer.valueOf(i);
+Object obj = (Object) i;          // = (Object) Integer.valueOf(i);
+Long l = 100L;                    // = new Long(100L);
+{% endhighlight %}<p></p>
+<div>&#149;&nbsp; 언박싱 :&nbsp; 래퍼 클래스의 객체를 기본형 값으로 자동 변환해주는 것.</div>
+{% highlight java %}
+ArrayList<Integer> list = new ArrayList<>();
+list.add(10);                // Autoboxing. 10 → new Integer(10)
+int value = list.get(0);     // Unboxing.   new Integer(10) → 10
+{% endhighlight %}
+
+
+<br>
+<br>
+<br>
+&#149;&nbsp; 참고 서적: 자바의 정석 3판
