@@ -1,0 +1,215 @@
+---
+layout: post
+title:  "Math 클래스"
+date:   2017-05-24 12:00:00 +0900
+author: 민갤
+description: java.lang 패키지 - Math  클래스
+keywords : android,java,androidstudio,method,선언,class,요소,언어,자바의 정석,프로그래밍,java.lang,패키지,Math
+image : /img/java.png
+category : android
+---
+<div><strong class="h2">java.lang 패키지</strong></div>
+<div>자바프로그래밍에 가장 기본이 되는 클래스들을 포함하고 있다.</div>
+<br>
+<br>
+<br>
+
+<div><strong class="h2">Math 클래스</strong></div>
+<div>기본적인 수학계산에 유용한 메서드로 구성되어 있다.</div>
+{% highlight java %}
+public final class Math extends Object 
+{% endhighlight %}<p></p>
+<div>인스턴스 변수가 하나도 없이, static 메서드와 2개의 상수만이 정의되어 있어</div>
+<div>접근 제어자를 private으로 하여 Math 인스턴스를 생성할 수 없도록 되어 있다.</div>
+{% highlight java %}
+public static final double E = 2.718281828459045;     // 자연로그의 밑
+public static final double PI = 3.141592653589793;    // 원주율
+{% endhighlight %}<p></p>
+<div>Math 클래스는 JVM이 설치된 OS의 메서드를 호출해서 사용하기 때문에 OS에 의존적이다.</div>
+<div>때문에 자바로 작성된 프로그램이어도 컴퓨터마다 결과가 다를 수 있다.</div>
+<br>
+<br>
+
+
+<div><strong>abs()</strong></div>
+<div>주어진 값의 절대값을 반환한다.</div>
+{% highlight java %}
+static double abs(double a)
+static float abs(float f)
+static int abs(int f)
+static long abs(long f)
+{% endhighlight %}
+{% highlight java %}
+double d = Math.abs(2.0);    // 2.0
+float f = Math.abs(2.0f);    // 2.0
+int i = Math.abs(2);         // 2
+long l = Math.abs(-2);       // 2
+{% endhighlight %}
+<br>
+
+<div><strong>static double ceil(double a)</strong></div>
+<div>주어진 값을 올림하여 반환한다.</div>
+{% highlight java %}
+double d1 = Math.ceil(0.4);    // 1.0   음수: -0.0 
+double d2 = Math.ceil(0.5);    // 1.0        -0.0
+double d3 = Math.ceil(0.6);    // 1.0        -0.0
+double d4 = Math.ceil(1.4);    // 2.0        -1.0
+double d5 = Math.ceil(1.5);    // 2.0        -1.0
+double d6 = Math.ceil(1.6);    // 2.0        -1.0
+{% endhighlight %}
+<br>
+
+<div><strong>static double floor(double a)</strong></div>
+<div>주어진 값을 버림하여 반환한다.</div>
+{% highlight java %}
+double d1 = Math.floor(0.4);   // 0.0   음수: -1.0
+double d2 = Math.floor(0.5);   // 0.0        -1.0
+double d3 = Math.floor(0.6);   // 0.0        -1.0
+double d4 = Math.floor(1.4);   // 1.0        -2.0
+double d5 = Math.floor(1.5);   // 1.0        -2.0
+double d6 = Math.floor(1.6);   // 1.0        -2.0
+{% endhighlight %}
+<br>
+
+<div><strong>max()</strong></div>
+<div>주어진 두 값을 비교하여 큰 쪽을 반환한다.</div>
+{% highlight java %}
+static double max(double a, double b)
+static float max(float a, float b)
+static int max(int a, int b)
+static long max(long a, long b)
+{% endhighlight %}
+{% highlight java %}
+double d = Math.max(2.0, 0.0);         // 2.0
+float f = Math.max(2.0f, 5.0f);        // 5.0
+int i = Math.max(2, -9);               // 2
+long l = Math.max(-2, 9);              // 9
+{% endhighlight %}
+<br>
+
+<div><strong>min()</strong></div>
+<div>주어진 두 값을 비교하여 작은 쪽을 반환한다.</div>
+{% highlight java %}
+static double min(double a, double b)
+static float min(float a, float b)
+static int min(int a, int b)
+static long min(long a, long b)
+{% endhighlight %}
+{% highlight java %}
+double d = Math.min(2.0, 0.0);         // 0.0
+float f = Math.min(2.0f, 5.0f);        // 2.0
+int i = Math.min(2, -9);               // -9
+long l = Math.min(-2, 9);              // -2
+{% endhighlight %}
+<br>
+
+<div><strong>static double random()</strong></div>
+<div>0.0 <= x < 1.0 범위의 임의의 double값을 반환한다.</div>
+{% highlight java %}
+double d = Math.random();              // 0.0 <= d < 1.0
+int i = (int) (Math.random() * 10);    // 0 <= i <1
+{% endhighlight %}
+<br>
+
+<div><strong>static double rint(double a)</strong></div>
+<div>주어진 double 값과 가장 가까운 정수값을 double형으로 반환한다.</div>
+{% highlight java %}
+double d1 = Math.rint(0.4);   // 0.0   음수: -0.0
+double d2 = Math.rint(0.5);   // 0.0        -0.0
+double d3 = Math.rint(0.6);   // 1.0        -1.0
+double d4 = Math.rint(1.4);   // 1.0        -1.0
+double d5 = Math.rint(1.5);   // 2.0        -2.0
+double d6 = Math.rint(1.6);   // 2.0        -2.0
+{% endhighlight %}
+<br>
+
+<div><strong>static long round(double a)</strong></div>
+<div><strong>static long round(float a)</strong></div>
+<div>소수점 첫 째 자리에서 반올림한 정수값을 반환한다.</div>
+<div>매개변수의 값이 음수일 경우, round()와 rint()의 결과가 다르다.</div>
+{% highlight java %}
+long l1 = Math.round(0.4);    // 0   음수: 0 
+long l2 = Math.round(0.5);    // 1        0
+long l3 = Math.round(0.6);    // 1       -1
+long l4 = Math.round(1.4);    // 1       -1
+long l5 = Math.round(1.5);    // 2       -1
+long l6 = Math.round(1.6);    // 2       -2
+{% endhighlight %}<p></p>
+<div>원하는 자릿수에서 반올림된 값을 얻으려면 10의 n제곱으로 곱한 후, 다시 그 곱한 수로 나눈다.</div>
+{% highlight java %}
+double d = 0.54321 * 100; 
+double result1 = Math.round(d) / 100;        //0.0
+double result2 = Math.round(d) / 100.0;      //0.54
+{% endhighlight %}<p></p>
+<div>정수형 값으로 나누면 정수형 값을 얻게 된다.</div>
+<div>정수형간의 연산에서는 반올림되지 않는 다는 것을 주의한다.</div>
+<br>
+<br>
+
+<div><strong>예외를 발생시키는 메서드</strong></div>
+<div>메서드 이름에 'Exact'가 포함된 메서드(JDK1.8부터)</div>
+<div>정수형간의 연산에서 발생할 수 있는 오버플로우를 감지하기 위한 것</div>
+<div>오버플로우가 발생하면, 예외(ArithmeticException)를 발생시킨다.</div>
+{% highlight java %}
+int addExact(int x, int y)             // x + y
+int subtracExact(int x, int y)         // x - y
+int multiplyExact(int x, int y)        // x * y
+int incrementExact(int a)              // a++
+int decrementExact(int a)              // a--
+int negateExact(int a)                 // -a
+int toIntExact(long value)             // (int) value
+{% endhighlight %}
+<br>
+<br>
+
+<div><strong>삼각함수와 지수, 로그</strong></div>
+<div>두 점 (x1, y1), (x2, y2) 사이의 거리 = √(x2-x1)²+(y2-y1)²</div>
+{% highlight java %}
+import static java.lang.Math.*;
+
+...
+
+int x1 = 1, y1 = 1;
+int x2 = 2, y2 = 2;
+
+double d = sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));
+         //sqrt(pow(2 - 1, 2) + pow(2 - 1, 2));
+	 //sqrt(pow(1, 2) + pow(1, 2));
+	 //sqrt(1.0 + 1.0);
+	 //sqrt(2.0);
+	 //1.414214;
+{% endhighlight %}<p></p>
+<div>sqrt(double a) :&nbsp; 제곱근 계산</div>
+<div>pow(double a, double b) :&nbsp; n제곱 계산</div>
+<br>
+<div>두 점을 잇는 직선을 빗변으로 하는 삼각형이 있을 때 가로, 세로, 끼인각θ 구하기</div><p></p>
+<div>&#149;&nbsp; 두 변의 길이로 끼인각 구하기</div>
+{% highlight java %}
+double width = x2 - x1;
+double height = y2 - y1;
+double angle = atan2(height, width);   // 0.7853981633974483
+{% endhighlight %}<p></p>
+<div>&#149;&nbsp; 끼인각으로 두 변의 길이 구하기</div>
+{% highlight java %}
+double angle = 45;
+double radian = toRadians(angle);
+
+double width = d *  sin(radian);       // 1.0
+double height = d * cos(radian);       // 1.0000000000000002
+{% endhighlight %}<p></p>
+<div>&nbsp; &nbsp; double atan2(double y, double x) :&nbsp; 직각 삼각형에서 두 변의 길이로 끼인각을 구하여 radian 단위로 반환한다.</div>
+<div>&nbsp; &nbsp; 삼각함수는 매개변수의 단위가 radian 이므로 degree를 radian 단위의 값으로 변환해야 한다.</div>
+<div>&nbsp; &nbsp; double toRadians(double gngdeg) :&nbsp; degree 단위를 radian 단위로 변환한다.</div>
+<div>&nbsp; &nbsp; double toDegrees(double angrad) :&nbsp; radian 단위를 degree 단위로 변환한다.</div>
+<div>&nbsp; &nbsp; double sin(double a) :&nbsp; sinθ</div>
+<div>&nbsp; &nbsp; double cos(double a) :&nbsp; cosinθ</div>
+<br>
+<br>
+
+<div><strong>StrictMath 클래스</strong></div>
+<div>어떤 OS에서 실행되어도 항상 같은 결과를 얻도록 Math클래스를 새로 작성한 클래스.</div>
+
+<br>
+<br>
+<br>
+&#149;&nbsp; 참고 서적: 자바의 정석 3판
