@@ -217,7 +217,7 @@ while (m.find()) {
 <div><strong>Matcher의 boolean find()</strong></div><p></p>
 <div>주어진 소스 내에서 패턴과 일치하는 부분을 찾아내면 true 반환.</div>
 <div>다시 호출하면 이전에 발견한 패턴과 일치하는 부분의 다음부터 다시 패턴 매칭을 시작한다.</div><p></p>
-<div>&#149;&nbsp; 정규식와 일치하는 부분을 찾았을 경우</div>
+<div>&#149;&nbsp; 정규식와 일치하는 부분을 찾았을 경우 (<span class="red">find()==true</span>)</div>
 <div>&nbsp; &nbsp; int start() :&nbsp; 매칭된 문자열의 시작 위치 반환.</div>
 <div>&nbsp; &nbsp; int end() :&nbsp; 매칭된 문자열의 끝 다음 문자의 위치 반환.</div>
 <div>&nbsp; &nbsp; Matcher appendReplacement(StringBuffer sb, String replacement) :&nbsp; source 시작부터 원하는 문자열로 치환된 위치까지의 내용을 저장한다.</div>
