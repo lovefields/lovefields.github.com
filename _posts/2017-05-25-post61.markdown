@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "editplus 에서 VSCode로 옮기다."
-date: 2017-05-25 10:00:00 +0900
+date: 2017-05-25 13:00:00 +0900
 author: Lovefield
 description: editplus 에서 VSCode로 옮기게 된 계기와 에디터와 IDE의 차이에 대한 글입니다.
 keywords : ied,editplus,visual studio code,vscode,editor
