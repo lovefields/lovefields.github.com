@@ -1,15 +1,15 @@
 ---
 layout: post
-title: "editplus 에서 VSCode로 옮기다."
+title: "EditPlus 에서 VSCode로 옮기다."
 date: 2017-05-25 13:00:00 +0900
 author: Lovefield
-description: editplus 에서 VSCode로 옮기게 된 계기와 에디터와 IDE의 차이에 대한 글입니다.
+description: EditPlus 에서 VSCode로 옮기게 된 계기와 에디터와 IDE의 차이에 대한 글입니다.
 keywords : ied,editplus,visual studio code,vscode,editor
 image : /img/post61/post61.jpg
 category : all
 ---
 
-오늘은 제가 3년동안 쓴 <strong class="blue">editplus</strong>를 떠나고 <strong class="red">VSCode</strong>로 전환하게된 이유와 두가지 툴의 비교점을 설명해드리겟습니다.
+오늘은 제가 3년동안 쓴 <strong class="blue">EditPlus</strong>를 떠나고 <strong class="red">VSCode</strong>로 전환하게 된 이유와 두 가지 툴의 비교점을 설명해드리겠습니다.
 
 <strong>기본 스펙</strong>
 
@@ -24,19 +24,19 @@ category : all
 |자동완성|no|yes|
 
 기본 스펙은 위와 같습니다.<br>
-먼저 옮기게된 이유중 가장 큰 것은 멀티셀렉터의 유무 였습니다.
+먼저 옮기게 된 이유 중 가장 큰 것은 멀티셀렉터의 유무였습니다.
 
-<strong class="blue">EditPlus</strong>도 열모드를 지원하기에 어느정도 커버가 가능하지만.<br>
-개발을 하다보면 멀티셀렉터의 필요성이 많아지더군요.<br>
+<strong class="blue">EditPlus</strong>도 열모드를 지원하기에 어느 정도 커버가 가능하지만.<br>
+개발을 하다 보면 멀티셀렉터의 필요성이 많아지더군요.<br>
 
 저는 <strong class="blue">phpstorm</strong> 을 후보로 두고 있었지만.<br>
-집에서 많은 시간 개발을 잡고있을수가 없기에 고민이 되고있던 참이였습니다.
+집에서 많은 시간 개발을 잡고 있을 수가 없기에 고민이 되고 있던 참이었습니다.
 
-<strong class="blue">phpstorm</strong> 을 후보로 두고 고민하던차 <strong class="red">VSCode</strong>를 알게되었고.
+<strong class="blue">phpstorm</strong> 을 후보로 두고 고민하던 차 <strong class="red">VSCode</strong>를 알게 되었고.
 
 무게가 좀 있는 <strong class="blue">phpstorm</strong> 보다 비교적 가볍게 돌아가는 <strong class="red">VSCode</strong> 에 끌리게 되었습니다.
 
-그리고 무엇보다 JS기반이라 설정이 모두 json 인점이 흥미로웠구요.
+그리고 무엇보다 JS기반이라 설정이 모두 json 인 점이 흥미로웠구요.
 
 설정하기도 너무 편했습니다.
 
@@ -52,13 +52,13 @@ category : all
   4. GIT이 내장이다.
   5. plug-in 을 사용할 수 있다.
 
-이외에도 설정이 굉장히 자유롭다는점?
+이외에도 설정이 굉장히 자유롭다는 점?
 
 <strong class="h2">단점</strong>
 
   1. FTP UI가 불편하다.
   2. page 단위 scroll이 없다.
 
-그리고 단점아닌 단점같지만 설정이 굉장히 자유로워서 설정할게 많더군요 ㅋㅋ..
+그리고 단점 아닌 단점 같지만 설정이 굉장히 자유로워서 설정할게 많더군요 ㅋㅋ..
 
-이상 툴을 옮긴 필자의 간단한 글이였습니다 :)
+이상 툴을 옮긴 필자의 간단한 글이었습니다 :)

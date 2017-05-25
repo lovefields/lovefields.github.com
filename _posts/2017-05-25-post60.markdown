@@ -26,15 +26,13 @@ category : android
 {% highlight java %}
 Boolean b1 = new Boolean(true);
 Boolean b2 = new Boolean("true");
-{% endhighlight %}
-<br>
+{% endhighlight %}<p></p>
 
 <div><strong>Character</strong></div>
 <div>&#149;&nbsp; Character(char value)</div>
 {% highlight java %}
 Character c = new Character('a');
-{% endhighlight %}
-<br>
+{% endhighlight %}<p></p>
 
 <div><strong>Byte</strong></div>
 <div>&#149;&nbsp; Byte(byte value)</div>
@@ -42,8 +40,7 @@ Character c = new Character('a');
 {% highlight java %}
 Byte b1 = new Byte(2);
 Byte b2 = new Byte("2");
-{% endhighlight %}
-<br>
+{% endhighlight %}<p></p>
 
 <div><strong>Short</strong></div>
 <div>&#149;&nbsp; Short(short value)</div>
@@ -51,8 +48,7 @@ Byte b2 = new Byte("2");
 {% highlight java %}
 Short s1 = new Short(2);
 Short s2 = new Short("2");
-{% endhighlight %}
-<br>
+{% endhighlight %}<p></p>
 
 <div><strong>Integer</strong></div>
 <div>&#149;&nbsp; Integer(int value)</div>
