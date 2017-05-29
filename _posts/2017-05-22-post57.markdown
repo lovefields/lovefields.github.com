@@ -6,7 +6,7 @@ author: 민갤
 description: java.lang 패키지 – String 클래스
 keywords : android,java,androidstudio,method,선언,class,요소,언어,자바의 정석,프로그래밍,java.lang,패키지,String 
 image : /img/java.png
-category : android
+category : java
 ---
 <div><strong class="h2">java.lang 패키지</strong></div>
 <div>자바프로그래밍에 가장 기본이 되는 클래스들을 포함하고 있다.</div>

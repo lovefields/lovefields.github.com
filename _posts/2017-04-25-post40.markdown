@@ -6,7 +6,7 @@ author: 민갤
 description: JAVA 다차원 배열
 keywords : android,java,변수,variable,androidstudio,배열,array,선언,괄호,요소,언어,자바의 정석,프로그래밍,다차원
 image : /img/java.png
-category : android
+category : java
 ---
 
 <div><strong class="h2">다차원 배열</strong></div>

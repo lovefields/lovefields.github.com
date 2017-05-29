@@ -6,7 +6,7 @@ author: 민갤
 description: JAVA 객체지향 프로그래밍11 - 다형성
 keywords : android,java,androidstudio,method,선언,class,요소,언어,자바의 정석,프로그래밍,다형성,Polymorphism,참조변수,클래스,instanceof
 image : /img/java.png
-category : android
+category : java
 ---
 <div><strong class="h2">다형성 Polymorphism</strong></div><p></p>
 

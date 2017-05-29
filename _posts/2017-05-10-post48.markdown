@@ -6,7 +6,7 @@ author: 민갤
 description: JAVA 객체지향 프로그래밍08 - 상속
 keywords : android,java,androidstudio,method,선언,class,요소,언어,자바의 정석,프로그래밍,메모리,JVM,memory,상속,Inheritance
 image : /img/java.png
-category : android
+category : java
 ---
 <div><strong class="h2">상속 Inheritance</strong></div><p></p>
 

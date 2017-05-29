@@ -6,7 +6,7 @@ author: 민갤
 description: JAVA 조건문과 반복문
 keywords : android,java,조건문,반복문,androidstudio,언어,자바의 정석,프로그래밍,if,switch,for,while,do,false,else,true
 image : /img/java.png
-category : android
+category : java
 ---
 <div><strong class="h2">제어문</strong></div>
 

@@ -6,7 +6,7 @@ author: 민갤
 description: JAVA 객체지향 프로그래밍09 - Package and import
 keywords : android,java,androidstudio,method,선언,class,요소,언어,자바의 정석,프로그래밍,Package,import,패키지
 image : /img/java.png
-category : android
+category : java
 ---
 <div><strong class="h2">패키지 Package</strong></div><p></p>
 

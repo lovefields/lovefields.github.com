@@ -6,7 +6,7 @@ author: 민갤
 description: JAVA 변수 타입
 keywords : android,java,변수,variable,androidstudio,type,타입,정수형,자료형,기본형,언어,자바의 정석,프로그래밍
 image : /img/java.png
-category : android
+category : java
 ---
 
 <div><strong class="h2">자료형 Data Type</strong></div>

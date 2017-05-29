@@ -6,7 +6,7 @@ author: 민갤
 description: JAVA 객체지향 프로그래밍10 - 제어자
 keywords : android,java,androidstudio,method,선언,class,요소,언어,자바의 정석,프로그래밍,제어자,modifier
 image : /img/java.png
-category : android
+category : java
 ---
 <div><strong class="h2">제어자 Modifier</strong></div><p></p>
 

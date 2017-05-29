@@ -6,7 +6,7 @@ author: 민갤
 description: 예외 처리 01
 keywords : android,java,androidstudio,method,선언,class,요소,언어,자바의 정석,프로그래밍,예외 처리,Exception,try,catch,finally
 image : /img/java.png
-category : android
+category : java
 ---
 <div><strong class="h2">예외 처리 Exception Handling</strong></div><p></p>
 <div>프로그램 실행 시 발생할 수 있는 예기치 못한 예외의 발생에 대비한 코드를 작성하는 것.</div>

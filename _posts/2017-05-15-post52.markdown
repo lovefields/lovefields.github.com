@@ -6,7 +6,7 @@ author: 민갤
 description: JAVA 객체지향 프로그래밍12 - 추상클래스
 keywords : android,java,androidstudio,method,class,요소,언어,자바의 정석,프로그래밍,추상클래스,abstract,interface,인터페이스,추상 메서드
 image : /img/java.png
-category : android
+category : java
 ---
 <div><strong class="h2">추상 클래스 abstract class</strong></div><p></p>
 <div>public <span class="red">abstract</span> class ClassName {}</div><p></p>

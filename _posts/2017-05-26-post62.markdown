@@ -6,7 +6,7 @@ author: 민갤
 description: java.util.regex 패키지
 keywords : android,java,androidstudio,class,언어,자바의 정석,프로그래밍,java.util,java.lang,패키지,regex,정규식,Regular Expresstion,java.util.regex
 image : /img/java.png
-category : android
+category : java
 ---
 <div><strong class="h2">정규식 Regular Expression</strong></div>
 <br>

@@ -6,7 +6,7 @@ author: 민갤
 description: JAVA 변수
 keywords : android,java,변수,variable,androidstudio,자바의정석,언어,프로그래밍
 image : /img/java.png
-category : android
+category : java
 ---
 
 <div><strong class="h2">변수 Variable </strong></div>
