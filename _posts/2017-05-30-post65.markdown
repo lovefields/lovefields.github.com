@@ -1,0 +1,203 @@
+---
+layout: post
+title:  "Calendar"
+date:   2017-05-30 09:00:00 +0900
+author: 민갤
+description: Calendar
+keywords : android,java,androidstudio,method,선언,class,요소,언어,자바의 정석,프로그래밍,Calendar,date,날짜,시간,java.time
+image : /img/java.png
+category : java
+---
+<div><strong class="h2">날짜와 시간</strong></div><p></p>
+<div>날짜와 시간을 다룰 목적으로 제공되는 클래스가 등장한 순서는 다음과 같다.</div>
+<div>JDK1.0 - Class Date.</div>
+<div>JDK1.1 - Class Calendar.</div>
+<div>JDK1.8 - package java.time</div>
+<br>
+<br>
+
+<div><strong class="h2">Calendar</strong></div><p></p>
+<div>추상 클래스</div>
+<div>최소한의 변경으로 프로그램이 동작할 수 있도록 하기 위해 메서드를 통해서 완전히 구현된 클래스의 인스턴스를 얻는다.</div>
+{% highlight java %}
+import java.util.Calendar;
+
+Calendar cal = Calendar.getInstance();
+{% endhighlight %}
+<br><br>
+
+<div><strong>static Calendar getInstance()</strong></div><p></p>
+<div>시스템의 국가와 지역 설정을 확인해서 태국이면 BuddhistCalendar, 그 외는 GregorianCalendar의 인스턴스를 반환한다.</div>
+<div>생성된 인스턴스는 현재 시스템의 날짜와 시간에 대한 정보를 담고 있다.</div>
+<div>&#149;&nbsp; GregorianCalendar :&nbsp;  Calendar를 상속받아 오늘날 전세계 공통으로 사용하고 있는 그레고리력에 맞게 구현한 클래스.</div>
+{% highlight java %}
+import java.util.GregorianCalendar;
+
+Calendar cal = new GregorianCalendar();
+{% endhighlight %}<p></p>
+<div>특정 인스턴스를 생성하도록 작성할 경우,</div>
+<div>다른 종류의 역법(calendar)을 사용하는 국가에서 실행하거나 새로운 역법이 추가되거나 할 때 추가 작업이 필요하다.</div>
+<br>
+<br>
+
+<div><strong>Date와 Calendar간의 변환</strong></div><p></p>
+<div>Date는 대부분의 메서드가 deprecated되어 잘 사용하지 않지만</div>
+<div>여전히 Date를 필요로 하는 메서드들이 존재하여 Calendar를 Date로 또는 그 반대로 변환할 일이 생긴다.</div><p></p>
+<div>&#149;&nbsp; Calendar → Date</div>
+{% highlight java %}
+Calendar cal = Calendar.getInstance();
+Date d = new Date(cal.getTimeInMillis();
+{% endhighlight %}<p></p>
+<div>&#149;&nbsp; Date → Calendar</div>
+{% highlight java %}
+Date d = new Date();
+Calendar cal = Calendar.getInstance();
+cal.setTime(d);
+{% endhighlight %}
+<br><br>
+
+<div><strong>get</strong></div><p></p>
+<div>원하는 필드의 값을 얻는다.</div>
+<div>get메서드의 매개변수로 사용되는 int 값들은 Calendar에 정의된 static 상수다.</div>
+
+|상수|설명|
+|:-:|:-:|
+|YEAR|현재 년도|
+|MONTH|현재 월 (0~11. 0:1월)|
+|WEEK_OF_YEAR|현재 년도의 몇 째 주|
+|WEEK_OF_MONTH|현재 월의 몇 째 주|
+|DATE|현재 월의 날짜|
+|DAY_OF_MONTH|현재 월의 날짜|
+|DAY_OF_YEAR|현재 년도|
+|DAY_OF_WEEK|현재 요일 (1~7. 1:일요일)|
+|DAY_OF_WEEK_IN_MONTH|현대 월의 몇 째 요일|
+|AM_PM|현재 시간 (오전 0, 오후 1)|
+|HOUR|현재 시간 (0~11)|
+|HOUR_OF_DAY|현재 시간 (0~23)|
+|MINUTE|현재 분(0~59)|
+|SECOND|현재 초(0~590|
+|MILLISECOND|1000분의 1초(0~999)|
+|ZONE_OFFSET|TimeZone(-12~+12|
+
+<div>get(Calendar.Month)로 얻을 수 있는 값의 범위는 0~11이다. ex) 1월 → 0월</div>
+{% highlight java %}
+int year, month, day;                                           // 2017년 5월 30일
+
+Calendar cal = Calendar.getInstance();
+year = cal.get(Calendar.YEAR);
+month = cal.get(Calendar.MONTH);
+day = cal.get(Calendar.DAY_OF_MONTH);
+
+Log.d("TAG_TEST", year + "년 " + month + "월 " + day + "일");      // 2017년 4월 30일
+{% endhighlight %}
+<br><br>
+
+<div><strong>set</strong></div><p></p>
+<div>날짜와 시간을 원하는 값으로 변경한다.</div>
+{% highlight java %}
+void void set(int field, int value)
+final void set(int year, int month, int date)
+final void set(int year, int month, int date, int hourOfDay, int minute)
+final void set(int year, int month, int date, int hourOfDay, int minute, int second)
+{% endhighlight %}<p></p>
+{% highlight java %}
+cal.set(Calendar.DATE, 2);
+day = cal.get(Calendar.DAY_OF_MONTH);
+Log.d("TAG_TEST", year + "년 " + month + "월 " + day + "일");      // 2017년 4월 2일
+
+cal.set(2017, 12, 25);
+year = cal.get(Calendar.YEAR);
+month = cal.get(Calendar.MONTH);
+day = cal.get(Calendar.DAY_OF_MONTH);
+Log.d("TAG_TEST", year + "년 " + month + "월 " + day + "일");      // 2018년 0월 25일
+{% endhighlight %}
+<br><br>
+
+<div><strong>long getTimeInMillis()</strong></div><p></p>
+<div>시간을 1/1000초 단위로 값을 반환한다.</div>
+<div>1초 단위로 값을 얻으려면 1000으로 나눠 주어야 한다.</div>
+{% highlight java %}
+Calendar cal1 = Calendar.getInstance();
+cal1.set(Calendar.HOUR_OF_DAY, 5);
+cal1.set(Calendar.MINUTE, 10);
+cal1.set(Calendar.SECOND, 40);
+Calendar cal2 = Calendar.getInstance();
+cal2.set(Calendar.HOUR_OF_DAY, 15);
+cal2.set(Calendar.MINUTE, 20);
+cal2.set(Calendar.SECOND, 10);
+
+long dif = (cal2.getTimeInMillis() - cal1.getTimeInMillis()) / 1000;
+
+Log.d("TAG_TEST", dif + "");      // 36570
+{% endhighlight %}<p></p>
+<div>&#149;&nbsp; 두 시간간의 차이</div>
+<div>&nbsp; &nbsp; 두 개의 시간 데이터로부터 초 단위로 차이를 구한 후,<div>
+<div>&nbsp; &nbsp; 가장 큰 단위인 시간 단위(3600s)로 나누고 → 시간</div>
+<div>&nbsp; &nbsp; 남은 나머지를 분 단위(60s)로 다시 나누면 → 분</div>
+<div>&nbsp; &nbsp; 그 나머지는 초 단위의 값이 된다. → 초</div>
+{% highlight java %}
+final int[] UNIT = {3600, 60, 1};
+final String[] NAME = {"시 ", "분 ", "초"};
+
+String temp = "";
+for (int i = 0; i < UNIT.length; i++) {
+    temp += (dif / UNIT[i]) + NAME[i];
+    dif %= UNIT[i];
+}
+Log.d("TAG_TEST", temp);          // 10시 9분 30초
+{% endhighlight %}<p></p>
+<div>시간상의 전후를 알고 싶을 때는 두 날짜간의 차이가 양수인지 음수인지 판단하면 된다.</div>
+<div>boolean after(Object when) :&nbsp; when과 비교하여 현재 날짜 이후이면 true, 아니면 false</div>
+<div>boolean before(Object when) :&nbsp; when과 비교하여 현재 날짜 이전이면 true, 아니면 false</div>
+<br><br>
+
+<div><strong>add(int field, int amount)</strong></div><p></p>
+<div>지정한 필드의 값을 원하는 만큼 증가/감소 시킨다.</div>
+<div>특정 날짜/시간을 기점으로 해서 일정 기간 전후의 날짜와 시간을 알아낼 수 있다.</div>
+{% highlight java %}
+int year, month, day;
+
+Calendar cal = Calendar.getInstance();                          // 2017년 5월 30일
+cal.add(Calendar.DAY_OF_MONTH, 5);
+
+year = cal.get(Calendar.YEAR);
+month = cal.get(Calendar.MONTH) + 1;
+day = cal.get(Calendar.DATE);
+Log.d("TAG_TEST", year + "년 " + month + "월 " + day + "일");      // 2017년 6월 4일
+{% endhighlight %}
+<br><br>
+
+<div><strong>roll(int field, int amount)</strong></div><p></p>
+<div>지정한 필드의 값을 원하는 만큼 증가/감소 시킨다.</div>
+<div>다른 필드에 영향을 미치지 않는다.</div>
+{% highlight java %}
+int year, month, day;
+
+Calendar cal = Calendar.getInstance();                          // 2017년 5월 30일
+cal.add(Calendar.DAY_OF_MONTH, 5);
+
+year = cal.get(Calendar.YEAR);
+month = cal.get(Calendar.MONTH) + 1;
+day = cal.get(Calendar.DATE);
+Log.d("TAG_TEST", year + "년 " + month + "월 " + day + "일");      // 2017년 5월 4일
+{% endhighlight %}<p></p>
+<div>단, 일 필드가 말일(end of month)일 때 월 필드를 변경하면 일 필드에 영향을 미칠 수 있다.</div>
+{% highlight java %}
+int year, month, day;
+
+Calendar cal = Calendar.getInstance();                          // 2017년 5월 30일
+cal.set(Calendar.DATE, cal.getActualMaximum(Calendar.DATE));
+cal.add(Calendar.MONTH, 2);
+
+year = cal.get(Calendar.YEAR);
+month = cal.get(Calendar.MONTH) + 1;
+day = cal.get(Calendar.DATE);
+Log.d("TAG_TEST", year + "년 " + month + "월 " + day + "일");      // 2017년 7월 31일
+{% endhighlight %}<p></p>
+<div>int getActualMaximum(int field): 해당 월의 마지막 날을 반환한다.</div>
+
+
+<br>
+<br>
+<br>
+&#149;&nbsp; 참고 서적: 자바의 정석 3판 2
