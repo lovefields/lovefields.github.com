@@ -8,8 +8,8 @@ keywords : android,java,androidstudio,method,선언,class,요소,언어,자바�
 image : /img/java.png
 category : java
 ---
-<div><strong class="h2">날짜와 시간</strong></div><p></p>
-<div>날짜와 시간을 다룰 목적으로 제공되는 클래스가 등장한 순서는 다음과 같다.</div>
+<div><strong class="h2">날짜와 시간</strong></div>
+<div>날짜와 시간을 다룰 목적으로 제공되는 클래스들.</div><p></p>
 <div>JDK1.0 - Class Date.</div>
 <div>JDK1.1 - Class Calendar.</div>
 <div>JDK1.8 - package java.time</div>
@@ -28,7 +28,7 @@ Calendar cal = Calendar.getInstance();
 
 <div><strong>static Calendar getInstance()</strong></div><p></p>
 <div>시스템의 국가와 지역 설정을 확인해서 태국이면 BuddhistCalendar, 그 외는 GregorianCalendar의 인스턴스를 반환한다.</div>
-<div>생성된 인스턴스는 현재 시스템의 날짜와 시간에 대한 정보를 담고 있다.</div>
+<div>생성된 인스턴스는 현재 시스템의 날짜와 시간에 대한 정보를 담고 있다.</div><p></p>
 <div>&#149;&nbsp; GregorianCalendar :&nbsp;  Calendar를 상속받아 오늘날 전세계 공통으로 사용하고 있는 그레고리력에 맞게 구현한 클래스.</div>
 {% highlight java %}
 import java.util.GregorianCalendar;
@@ -46,7 +46,7 @@ Calendar cal = new GregorianCalendar();
 <div>&#149;&nbsp; Calendar → Date</div>
 {% highlight java %}
 Calendar cal = Calendar.getInstance();
-Date d = new Date(cal.getTimeInMillis();
+Date d = new Date(cal.getTimeInMillis());
 {% endhighlight %}<p></p>
 <div>&#149;&nbsp; Date → Calendar</div>
 {% highlight java %}
@@ -56,9 +56,10 @@ cal.setTime(d);
 {% endhighlight %}
 <br><br>
 
-<div><strong>get</strong></div><p></p>
-<div>원하는 필드의 값을 얻는다.</div>
-<div>get메서드의 매개변수로 사용되는 int 값들은 Calendar에 정의된 static 상수다.</div>
+<div><strong>int get(int field)</strong></div><p></p>
+<div>주어진 값(field)에 해당하는 상수 값을 반환한다.</div>
+<div>get 메서드의 매개변수로 사용되는 int 값들은 Calendar에 정의된 static 상수다.</div><p></p>
+<div>&#149;&nbsp; 주요 상수</div>
 
 |상수|설명|
 |:-:|:-:|
@@ -81,7 +82,7 @@ cal.setTime(d);
 
 <div>get(Calendar.Month)로 얻을 수 있는 값의 범위는 0~11이다. ex) 1월 → 0월</div>
 {% highlight java %}
-int year, month, day;                                           // 2017년 5월 30일
+int year, month, day;                                              // 2017년 5월 30일
 
 Calendar cal = Calendar.getInstance();
 year = cal.get(Calendar.YEAR);
@@ -92,13 +93,13 @@ Log.d("TAG_TEST", year + "년 " + month + "월 " + day + "일");      // 2017년
 {% endhighlight %}
 <br><br>
 
-<div><strong>set</strong></div><p></p>
+<div><strong>void set()</strong></div><p></p>
 <div>날짜와 시간을 원하는 값으로 변경한다.</div>
 {% highlight java %}
-void void set(int field, int value)
-final void set(int year, int month, int date)
-final void set(int year, int month, int date, int hourOfDay, int minute)
-final void set(int year, int month, int date, int hourOfDay, int minute, int second)
+public void set(int field, int value)
+public final void set(int year, int month, int date)
+public final void set(int year, int month, int date, int hourOfDay, int minute)
+public final void set(int year, int month, int date, int hourOfDay, int minute, int second)
 {% endhighlight %}<p></p>
 {% highlight java %}
 cal.set(Calendar.DATE, 2);
@@ -109,7 +110,7 @@ cal.set(2017, 12, 25);
 year = cal.get(Calendar.YEAR);
 month = cal.get(Calendar.MONTH);
 day = cal.get(Calendar.DAY_OF_MONTH);
-Log.d("TAG_TEST", year + "년 " + month + "월 " + day + "일");      // 2018년 0월 25일
+Log.d("TAG_TEST", year + "년 " + month + "월 " + day + "일");      // 2018년 1월 25일 (?)
 {% endhighlight %}
 <br><br>
 
@@ -121,6 +122,7 @@ Calendar cal1 = Calendar.getInstance();
 cal1.set(Calendar.HOUR_OF_DAY, 5);
 cal1.set(Calendar.MINUTE, 10);
 cal1.set(Calendar.SECOND, 40);
+
 Calendar cal2 = Calendar.getInstance();
 cal2.set(Calendar.HOUR_OF_DAY, 15);
 cal2.set(Calendar.MINUTE, 20);
@@ -130,7 +132,7 @@ long dif = (cal2.getTimeInMillis() - cal1.getTimeInMillis()) / 1000;
 
 Log.d("TAG_TEST", dif + "");      // 36570
 {% endhighlight %}<p></p>
-<div>&#149;&nbsp; 두 시간간의 차이</div>
+<div>&#149;&nbsp; 두 개의 시간간의 차이</div>
 <div>&nbsp; &nbsp; 두 개의 시간 데이터로부터 초 단위로 차이를 구한 후,<div>
 <div>&nbsp; &nbsp; 가장 큰 단위인 시간 단위(3600s)로 나누고 → 시간</div>
 <div>&nbsp; &nbsp; 남은 나머지를 분 단위(60s)로 다시 나누면 → 분</div>
@@ -147,17 +149,17 @@ for (int i = 0; i < UNIT.length; i++) {
 Log.d("TAG_TEST", temp);          // 10시 9분 30초
 {% endhighlight %}<p></p>
 <div>시간상의 전후를 알고 싶을 때는 두 날짜간의 차이가 양수인지 음수인지 판단하면 된다.</div>
-<div>boolean after(Object when) :&nbsp; when과 비교하여 현재 날짜 이후이면 true, 아니면 false</div>
-<div>boolean before(Object when) :&nbsp; when과 비교하여 현재 날짜 이전이면 true, 아니면 false</div>
+<div>&#149;&nbsp; boolean after(Object when) :&nbsp; when과 비교하여 현재 날짜 이후이면 true, 아니면 false</div>
+<div>&#149;&nbsp; boolean before(Object when) :&nbsp; when과 비교하여 현재 날짜 이전이면 true, 아니면 false</div>
 <br><br>
 
-<div><strong>add(int field, int amount)</strong></div><p></p>
+<div><strong>void add(int field, int amount)</strong></div><p></p>
 <div>지정한 필드의 값을 원하는 만큼 증가/감소 시킨다.</div>
 <div>특정 날짜/시간을 기점으로 해서 일정 기간 전후의 날짜와 시간을 알아낼 수 있다.</div>
 {% highlight java %}
 int year, month, day;
 
-Calendar cal = Calendar.getInstance();                          // 2017년 5월 30일
+Calendar cal = Calendar.getInstance();                             // 2017년 5월 30일
 cal.add(Calendar.DAY_OF_MONTH, 5);
 
 year = cal.get(Calendar.YEAR);
@@ -167,13 +169,13 @@ Log.d("TAG_TEST", year + "년 " + month + "월 " + day + "일");      // 2017년
 {% endhighlight %}
 <br><br>
 
-<div><strong>roll(int field, int amount)</strong></div><p></p>
+<div><strong>void roll(int field, int amount)</strong></div><p></p>
 <div>지정한 필드의 값을 원하는 만큼 증가/감소 시킨다.</div>
 <div>다른 필드에 영향을 미치지 않는다.</div>
 {% highlight java %}
 int year, month, day;
 
-Calendar cal = Calendar.getInstance();                          // 2017년 5월 30일
+Calendar cal = Calendar.getInstance();                             // 2017년 5월 30일
 cal.add(Calendar.DAY_OF_MONTH, 5);
 
 year = cal.get(Calendar.YEAR);
@@ -185,16 +187,18 @@ Log.d("TAG_TEST", year + "년 " + month + "월 " + day + "일");      // 2017년
 {% highlight java %}
 int year, month, day;
 
-Calendar cal = Calendar.getInstance();                          // 2017년 5월 30일
-cal.set(Calendar.DATE, cal.getActualMaximum(Calendar.DATE));
-cal.add(Calendar.MONTH, 2);
+Calendar cal = Calendar.getInstance();
+cal.set(Calendar.DATE, cal.getActualMaximum(Calendar.DATE));       // 2017년 5월 31일
+cal.add(Calendar.MONTH, 4);
 
 year = cal.get(Calendar.YEAR);
 month = cal.get(Calendar.MONTH) + 1;
 day = cal.get(Calendar.DATE);
-Log.d("TAG_TEST", year + "년 " + month + "월 " + day + "일");      // 2017년 7월 31일
+Log.d("TAG_TEST", year + "년 " + month + "월 " + day + "일");      // 2017년 9월 30일
 {% endhighlight %}<p></p>
-<div>int getActualMaximum(int field): 해당 월의 마지막 날을 반환한다.</div>
+<div>&#149;&nbsp; int getActualMaximum(int field) :&nbsp; 해당 월의 마지막 날을 반환한다.</div>
+<div>&#149;&nbsp; int getActualMinimum(int field) :&nbsp; 해당 월의 첫 날을 반환한다.</div>
+
 
 
 <br>
