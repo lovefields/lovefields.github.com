@@ -15,6 +15,7 @@ category : java
 <div>JDK1.8 - package java.time</div>
 <br>
 <br>
+<br>
 
 <div><strong class="h2">Calendar</strong></div><p></p>
 <div>추상 클래스</div>
@@ -24,7 +25,8 @@ import java.util.Calendar;
 
 Calendar cal = Calendar.getInstance();
 {% endhighlight %}
-<br><br>
+<br>
+<br>
 
 <div><strong>static Calendar getInstance()</strong></div><p></p>
 <div>시스템의 국가와 지역 설정을 확인해서 태국이면 BuddhistCalendar, 그 외는 GregorianCalendar의 인스턴스를 반환한다.</div>
@@ -54,7 +56,8 @@ Date d = new Date();
 Calendar cal = Calendar.getInstance();
 cal.setTime(d);
 {% endhighlight %}
-<br><br>
+<br>
+<br>
 
 <div><strong>int get(int field)</strong></div><p></p>
 <div>주어진 값(field)에 해당하는 상수 값을 반환한다.</div>
@@ -91,7 +94,8 @@ day = cal.get(Calendar.DAY_OF_MONTH);
 
 Log.d("TAG_TEST", year + "년 " + month + "월 " + day + "일");      // 2017년 4월 30일
 {% endhighlight %}
-<br><br>
+<br>
+<br>
 
 <div><strong>void set()</strong></div><p></p>
 <div>날짜와 시간을 원하는 값으로 변경한다.</div>
@@ -112,7 +116,8 @@ month = cal.get(Calendar.MONTH);
 day = cal.get(Calendar.DAY_OF_MONTH);
 Log.d("TAG_TEST", year + "년 " + month + "월 " + day + "일");      // 2018년 1월 25일 (?)
 {% endhighlight %}
-<br><br>
+<br>
+<br>
 
 <div><strong>long getTimeInMillis()</strong></div><p></p>
 <div>시간을 1/1000초 단위로 값을 반환한다.</div>
@@ -151,7 +156,8 @@ Log.d("TAG_TEST", temp);          // 10시 9분 30초
 <div>시간상의 전후를 알고 싶을 때는 두 날짜간의 차이가 양수인지 음수인지 판단하면 된다.</div>
 <div>&#149;&nbsp; boolean after(Object when) :&nbsp; when과 비교하여 현재 날짜 이후이면 true, 아니면 false</div>
 <div>&#149;&nbsp; boolean before(Object when) :&nbsp; when과 비교하여 현재 날짜 이전이면 true, 아니면 false</div>
-<br><br>
+<br>
+<br>
 
 <div><strong>void add(int field, int amount)</strong></div><p></p>
 <div>지정한 필드의 값을 원하는 만큼 증가/감소 시킨다.</div>
@@ -167,7 +173,8 @@ month = cal.get(Calendar.MONTH) + 1;
 day = cal.get(Calendar.DATE);
 Log.d("TAG_TEST", year + "년 " + month + "월 " + day + "일");      // 2017년 6월 4일
 {% endhighlight %}
-<br><br>
+<br>
+<br>
 
 <div><strong>void roll(int field, int amount)</strong></div><p></p>
 <div>지정한 필드의 값을 원하는 만큼 증가/감소 시킨다.</div>
@@ -198,9 +205,13 @@ Log.d("TAG_TEST", year + "년 " + month + "월 " + day + "일");      // 2017년
 {% endhighlight %}<p></p>
 <div>&#149;&nbsp; int getActualMaximum(int field) :&nbsp; 해당 월의 마지막 날을 반환한다.</div>
 <div>&#149;&nbsp; int getActualMinimum(int field) :&nbsp; 해당 월의 첫 날을 반환한다.</div>
+<br>
+<br>
 
-
-
+<div><strong>쓰레드에 안전하지 않다.</strong></div><p></p>
+<div>멀티 쓰레드 환경에서는 동시에 여러 쓰레드가 같은 객체에 접근할 수 있기 때문에,</div>
+<div>변경 가능한 객체는 데이터가 잘못될 가능성이 있다.</div>
+<div>날짜나 시간을 변경하는 메서드들이 기존의 객체를 변경할 수 있어서 멀티 쓰레드 환경에서 안전하지 못하다.</div>
 <br>
 <br>
 <br>
