@@ -1,0 +1,173 @@
+---
+layout: post
+title:  "DecimalFormat"
+date:   2017-05-31 09:00:00 +0900
+author: 민갤
+description: 형식화 클래스 - DecimalFormat
+keywords : android,java,androidstudio,method,선언,class,요소,언어,자바의 정석,프로그래밍,형식화 클래스,java.text, DecimalFormat
+image : /img/java.png
+category : java
+---
+<div><strong class="h2">형식화 클래스</strong></div><p></p>
+<div>원하는 형식으로 표현 또는 변환하기 위해서 패턴을 정의한다.</div>
+<div>형식화된 데이터에서 원래의 데이터를 얻을 수 있다.</div>
+<div><span class="red">package java.text</span>에 포함되어 있다.</div>
+<div>숫자, 날짜, 텍스트 데이터를 일정한 형식에 맞게 표현할 수 있는 방법을 객체지향적으로 설계하여 표준화했다.</div>
+<br>
+<br>
+<br>
+
+<div><strong class="h2">DecimalFormat</strong></div><p></p>
+<div>숫자를 형식화하는 클래스.</div>
+<div>숫자 데이터를 정수, 부동소수점, 금액 등의 다양한 형식으로 표현할 수 있다.</div>
+<div>일정한 형식의 텍스트 데이터를 숫자로 쉽게 변환할 수 있다.</div>
+<br>
+<br>
+
+<div><strong>사용법</strong></div><p></p>
+<div>원하는 출력형식의 패턴을 작성하여 DecimalFormat 인스턴스를 생성한다.</div>
+<div>출력하고자 하는 문자열로 format 메서드를 호출하면 원하는 패턴에 맞게 변환된 문자열을 얻게 된다.</div>
+{% highlight java %}
+double number = 1234567.89;
+
+DecimalFormat df = new DecimalFormat("#.#");
+String result = df.format(number);
+{% endhighlight %}<p></p>
+<br>
+<br>
+
+<div><strong>기호</strong></div><p></p>
+<div>DecimalFormat의 패턴의 작성에 사용되는 기호와 자주 사용될만한 패턴은 다음과 같다.
+{% highlight java %}
+double number = 1234567.89;
+String pattern[] = { /* pattern */};
+
+
+for (int i = 0; i < pattern.length; i++) {
+    DecimalFormat df = new DecimalFormat(pattern[i]);
+    Log.d("TAG_TEST", pattern[i] + " : " + df.format(number));
+}
+{% endhighlight %}<p></p>
+<div>&#149;&nbsp; 0 :&nbsp; 10진수. 값이 없을 때는 0</div>
+{% highlight java %}
+String pattern[] = {
+        "0",                     // 1234568
+        "0.0",                   // 1234567.9
+        "0000000000.0000",       // 0001234567.8900
+};
+{% endhighlight %}<p></p>
+<div>&#149;&nbsp; # &nbsp;: 10진수</div>
+{% highlight java %}
+String pattern[] = {
+        "#",                     // 1234568
+        "#.#",                   // 1234567.9
+        "##########.####",       // 1234567.89
+};
+{% endhighlight %}<p></p>
+
+<div>&#149;&nbsp; . :&nbsp; 소수점</div>
+{% highlight java %}
+String pattern[] = {
+        "#.#",                   // 1234567.9
+};
+{% endhighlight %}<p></p>
+
+<div>&#149;&nbsp; - :&nbsp; 음수 부호</div>
+{% highlight java %}
+String pattern[] = {
+        "-#.#",                  // -1234567.9
+        "#.#-",                  // 1234567.9-
+};
+{% endhighlight %}<p></p>
+
+<div>&#149;&nbsp; , :&nbsp; 단위 구분자</div>
+{% highlight java %}
+String pattern[] = {
+        "#,###.##",              // 1,234,567.89
+        "#,####.##",             // 123,4567.89
+};
+{% endhighlight %}<p></p>
+
+<div>&#149;&nbsp; E :&nbsp; 지수기호</div>
+{% highlight java %}
+String pattern[] = {
+        "#E0",                   // 1.23456789E6
+        "0E0",                   // 1E6
+        "##E0",                  // 1.23456789E6
+        "00E0",                  // 12E5
+        "####E0",                // 123.456789E4
+        "0000E0",                // 1235E3
+        "#.#E0",                 // 1.2E6
+        "0.0E0",                 // 1.2E6
+        "0.000000000E0",         // 1.234567890E6
+        "00.00000000E0",         // 12.34567890E5
+        "000.0000000E0",         // 123.4567890E4
+        "#.#########E0",         // 1.23456789E6
+        "##.########E0",         // 1.23456789E6
+        "###.#######E0",         // 1.2345679E6
+};
+{% endhighlight %}<p></p>
+
+<div>&#149;&nbsp; ; :&nbsp; 패턴 구분자</div>
+{% highlight java %}
+String pattern[] = {
+        "#,###.##+;#,###.##-",   // 1,234,567.89+
+};
+{% endhighlight %}<p></p>
+
+<div>&#149;&nbsp; % :&nbsp; 퍼센트</div>
+{% highlight java %}
+String pattern[] = {
+        "#.#%",                  // 123456789%
+};
+{% endhighlight %}<p></p>
+
+<div>&#149;&nbsp; \u2030 :&nbsp; 퍼밀 (퍼센트x10)</div>
+{% highlight java %}
+String pattern[] = {
+        "#.#\u2030",             // 1234567890‰
+};
+{% endhighlight %}<p></p>
+
+<div>&#149;&nbsp; \u00A4 &nbsp;: 통화</div>
+{% highlight java %}
+String pattern[] = {
+        "\u00A4 #,###",          // ₩ 1,234,568
+};
+{% endhighlight %}<p></p>
+
+<div>&#149;&nbsp; ' :&nbsp; escape 문자</div>
+{% highlight java %}
+String pattern[] = {
+        "'#'#,###",              // #1,234,568
+        "''#,###"                // '1,234,568
+};
+{% endhighlight %}<p></p>
+<br>
+<br>
+
+<div><strong>Number parse(String source)</strong></div><p></p>
+<div>DecimalFormat의 조상인 NumberFormat에 정의된 메서드.</div>
+<div>기호와 문자가 포함된 문자열을 숫자로 쉽게 변환할 수 있다.</div>
+{% highlight java %}
+public Number parse(String source) throws ParseException
+{% endhighlight %}<p></p>
+<div>지정된 패턴으로 입력되지 않은 경우, 호출 시 예외(ParseException)가 발생한다.</div>
+{% highlight java %}
+DecimalFormat df1 = new DecimalFormat("#,#####.##");
+DecimalFormat df2 = new DecimalFormat("#.###E0");
+
+try {
+    Number num = df1.parse("2,01705.31");
+    double d = num.doubleValue();
+
+    Log.d("TAG_TEST", d + "");                   // 201705.31
+    Log.d("TAG_TEST", df2.format(d));            // 2.017E5
+}catch(Exception e){}
+{% endhighlight %}<p></p>
+<div>Integer.parseInt 메서드는 콤마(,)가 포함된 문자열을 숫자로 변환하지 못한다.</div>
+<br>
+<br>
+<br>
+
+&#149;&nbsp; 참고 서적: 자바의 정석 3판 2
