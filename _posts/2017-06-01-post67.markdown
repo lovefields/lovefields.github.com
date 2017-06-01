@@ -1,0 +1,111 @@
+---
+layout: post
+title:  "SimpleDateFormat"
+date:   2017-06-01 09:00:00 +0900
+author: 민갤
+description: 형식화 클래스 - SimpleDateFormat
+keywords : android,java,androidstudio,method,선언,class,요소,언어,자바의 정석,프로그래밍,형식화 클래스,java.text,SimpleDateFormat,형식화,패턴,날짜
+image : /img/java.png
+category : java
+---
+<div><strong class="h2">형식화 클래스</strong></div><p></p>
+<div>원하는 형식으로 표현 또는 변환하기 위해서 패턴을 정의한다.</div>
+<div>형식화된 데이터에서 원래의 데이터를 얻을 수 있다.</div>
+<div><span class="red">package java.text</span>에 포함되어 있다.</div>
+<div>숫자, 날짜, 텍스트 데이터를 일정한 형식에 맞게 표현할 수 있는 방법을 객체지향적으로 설계하여 표준화했다.</div>
+<br>
+<br>
+<br>
+
+<div><strong class="h2">SimpleDateFormat</strong></div><p></p>
+<div>날짜 데이터를 원하는 형태로 다양하게 출력할 수 있다.</div>
+<br>
+<br>
+
+<div><strong>사용법</strong></div><p></p>
+<div>원하는 출력형식의 패턴을 작성하여 SimpleDateFormat 인스턴스를 생성한다.</div>
+<div>출력하고자 하는 Date 인스턴스를 가지고 format(Date d)를 호출하면 지정한 출력 형식에 맞게 변환된 문자열을 얻을 수 있다.</div>
+{% highlight java %}
+Date today = new Date();
+SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+
+Log.d("TAG_TEST", df.format(today));        // 2017-05-31
+{% endhighlight %}<p></p>
+<br>
+<br>
+
+<div><strong>기호</strong></div><p></p>
+<div>&#149;&nbsp; G :&nbsp; 연대 (BC, AD)</div>
+<div>&#149;&nbsp; y :&nbsp; 년도</div>
+<div>&#149;&nbsp; M :&nbsp; 월 (1~12 또는 1월~12월)</div>
+<div>&#149;&nbsp; w :&nbsp; 년의 몇 번째 주 (1~53)</div>
+<div>&#149;&nbsp; W :&nbsp; 월의 몇 번째 주 (1~5)</div>
+<div>&#149;&nbsp; D :&nbsp; 년의 몇 번째 일 (1~366)</div>
+<div>&#149;&nbsp; d :&nbsp; 월의 몇 번째 일 (1~31)</div>
+<div>&#149;&nbsp; F :&nbsp; 월의 몇 번째 요일 (1~5)</div>
+<div>&#149;&nbsp; E :&nbsp; 요일</div>
+<div>&#149;&nbsp; a :&nbsp; 오전/오후 (AM/PM)</div>
+<div>&#149;&nbsp; H :&nbsp; 시간 (0~23)</div>
+<div>&#149;&nbsp; h :&nbsp; 시간 (1~12)</div>
+<div>&#149;&nbsp; k :&nbsp; 시간 (1~24)</div>
+<div>&#149;&nbsp; K :&nbsp; 시간 (0~11)</div>
+<div>&#149;&nbsp; m :&nbsp; 분 (0~59)</div>
+<div>&#149;&nbsp; s :&nbsp; 초 (0~59)</div>
+<div>&#149;&nbsp; S :&nbsp; 1/1000초 (0~999)</div>
+<div>&#149;&nbsp; z :&nbsp; Time zone (General time zone)</div>
+<div>&#149;&nbsp; Z :&nbsp; Time zone (RFC 822 time zone)</div>
+<div>&#149;&nbsp; ' :&nbsp; escape 문자 (특수문자를 표현하는 데 사용)</div>
+
+{% highlight java %}
+Date today = new Date();
+
+Log.d("TAG_TEST", new SimpleDateFormat("연대 G").format(today));                  // 연대 서기
+Log.d("TAG_TEST", new SimpleDateFormat("y년도").format(today));                   // 2017년도
+Log.d("TAG_TEST", new SimpleDateFormat("M월").format(today));                     // 6월
+Log.d("TAG_TEST", new SimpleDateFormat("올 해의 D번째 날").format(today));        // 올 해의 152번째 날
+Log.d("TAG_TEST", new SimpleDateFormat("이 달의 d번째 날").format(today));        // 이 달의 1번째 날
+Log.d("TAG_TEST", new SimpleDateFormat("올 해의 w번째 주").format(today));        // 올 해의 22번째 주
+Log.d("TAG_TEST", new SimpleDateFormat("이 달의 W번째 주").format(today));        // 이 달의 1번째 주
+Log.d("TAG_TEST", new SimpleDateFormat("이 달의 F번째 E요일").format(today));     // 이 달의 1번째 목요일
+Log.d("TAG_TEST", new SimpleDateFormat("오전/오후 : a").format(today));           // 오전/오후 : 오전
+Log.d("TAG_TEST", new SimpleDateFormat("H시 (0~23)").format(today));              // 11시 (0~23)
+Log.d("TAG_TEST", new SimpleDateFormat("h시 (1~12)").format(today));              // 11시 (1~12)
+Log.d("TAG_TEST", new SimpleDateFormat("k시 (1~24)").format(today));              // 11시 (1~24)
+Log.d("TAG_TEST", new SimpleDateFormat("K시 (0~11)").format(today));              // 11시 (0~11)
+Log.d("TAG_TEST", new SimpleDateFormat("m분 (0~59)").format(today));              // 7분 (0~59)
+Log.d("TAG_TEST", new SimpleDateFormat("s초 (0~59)").format(today));              // 44초 (0~59)
+Log.d("TAG_TEST", new SimpleDateFormat("1/1000초 (0~999) : S").format(today));    // 1/1000초 (0~999) : 4
+Log.d("TAG_TEST", new SimpleDateFormat("z").format(today));                       // GMT+09:00. Time zone(General time zone)
+Log.d("TAG_TEST", new SimpleDateFormat("Z").format(today));                       // +0900. Time zone(RFC 822 time zone)
+{% endhighlight %}<p></p>
+{% highlight java %}
+Log.d("TAG_TEST", new SimpleDateFormat("yyyy-MM-dd").format(today));                      // 2017-06-01
+Log.d("TAG_TEST", new SimpleDateFormat("yy년 MMM dd일 E요일").format(today));             // 17년 6월 01일 목요일
+Log.d("TAG_TEST", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(today));         // 2017-06-01 10:18:26.724
+Log.d("TAG_TEST", new SimpleDateFormat("yyyy-MM-dd hh:mm:ss a").format(today));           // 2017-06-01 10:18:26 오전
+{% endhighlight %}<p></p>
+<div>패턴에 기호 외의 다른 영문자가 들어가면 문자열을 얻지 못한다.</div>
+<br>
+<br>
+
+<div><strong>Date parse(String source)</strong></div><p></p>
+<div>문자열을 날짜(Date 인스턴스)로 변환한다.</div>
+{% highlight java %}
+public Date parse(String source) throws ParseException
+{% endhighlight %}<p></p>
+<div>지정된 패턴으로 입력되지 않은 경우, parse 메서드를 호출하는 부분에서 예외(ParseException)가 발생한다.</div>
+{% highlight java %}
+DateFormat df1 = new SimpleDateFormat("yyyy년 MM월 dd일");
+DateFormat df2 = new SimpleDateFormat("yyyy.MM.dd");
+
+try{
+    Date date = df1.parse("2017년 06월 01일");
+    Log.d("TAG_TEST", df2.format(date));                      // 2017.06.01
+}catch(Exception e){}
+{% endhighlight %}<p></p>
+<div>날짜 데이터를 문자열로 입력 받을 때, 문자열을 날짜로 인식하기 위해 substring 메서드를 이용해 년, 월, 일을 뽑아야 하는 수고를 덜어준다.</div>
+<br>
+<br>
+<br>
+
+&#149;&nbsp; 참고 서적: 자바의 정석 3판 2
