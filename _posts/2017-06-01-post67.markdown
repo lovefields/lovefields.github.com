@@ -35,26 +35,27 @@ Log.d("TAG_TEST", df.format(today));        // 2017-05-31
 <br>
 
 <div><strong>기호</strong></div><p></p>
-<div>&#149;&nbsp; G :&nbsp; 연대 (BC, AD)</div>
-<div>&#149;&nbsp; y :&nbsp; 년도</div>
-<div>&#149;&nbsp; M :&nbsp; 월 (1~12 또는 1월~12월)</div>
-<div>&#149;&nbsp; w :&nbsp; 년의 몇 번째 주 (1~53)</div>
-<div>&#149;&nbsp; W :&nbsp; 월의 몇 번째 주 (1~5)</div>
-<div>&#149;&nbsp; D :&nbsp; 년의 몇 번째 일 (1~366)</div>
-<div>&#149;&nbsp; d :&nbsp; 월의 몇 번째 일 (1~31)</div>
-<div>&#149;&nbsp; F :&nbsp; 월의 몇 번째 요일 (1~5)</div>
-<div>&#149;&nbsp; E :&nbsp; 요일</div>
-<div>&#149;&nbsp; a :&nbsp; 오전/오후 (AM/PM)</div>
-<div>&#149;&nbsp; H :&nbsp; 시간 (0~23)</div>
-<div>&#149;&nbsp; h :&nbsp; 시간 (1~12)</div>
-<div>&#149;&nbsp; k :&nbsp; 시간 (1~24)</div>
-<div>&#149;&nbsp; K :&nbsp; 시간 (0~11)</div>
-<div>&#149;&nbsp; m :&nbsp; 분 (0~59)</div>
-<div>&#149;&nbsp; s :&nbsp; 초 (0~59)</div>
-<div>&#149;&nbsp; S :&nbsp; 1/1000초 (0~999)</div>
-<div>&#149;&nbsp; z :&nbsp; Time zone (General time zone)</div>
-<div>&#149;&nbsp; Z :&nbsp; Time zone (RFC 822 time zone)</div>
-<div>&#149;&nbsp; ' :&nbsp; escape 문자 (특수문자를 표현하는 데 사용)</div>
+
+|G|연대 (BC, AD)|
+|y|년도|
+|M|월 (1~12 또는 1월~12월)|
+|w|년의 몇 번째 주 (1~53)|
+|W|월의 몇 번째 주 (1~5)|
+|D|년의 몇 번째 일 (1~366)|
+|d|월의 몇 번째 일 (1~31)|
+|F|월의 몇 번째 요일 (1~5)|
+|E|요일|
+|a|오전/오후 (AM/PM)|
+|H|시간 (0~23)|
+|h|시간 (1~12)|
+|k|시간 (1~24)|
+|K|시간 (0~11)|
+|m|분 (0~59)|
+|s|초 (0~59)|
+|S|1/1000초 (0~999)|
+|z|Time zone (General time zone)|
+|Z|Time zone (RFC 822 time zone)|
+|'|escape 문자 (특수문자를 표현하는 데 사용)|
 
 {% highlight java %}
 Date today = new Date();

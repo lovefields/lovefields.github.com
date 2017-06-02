@@ -47,8 +47,8 @@ for (int i = 0; i < scores.length; i++) {
 
 <div><strong>패턴</strong></div><p></p>
 <div>배열 대신 패턴을 사용할 경우,  구분자로 '#'와 '<' 두 가지를 제공한다.</div>
-<div># :&nbsp; 경계값을 범위에 포함시킨다. limit<span class="blue">#</span>value</div>
-<div>< :&nbsp; 경계값을 범위에 포함시키지 않는다. limit<span class="blue">&#60;</span>value</div>
+<div>&#149;&nbsp; # :&nbsp; 경계값을 범위에 포함시킨다. limit<span class="blue">#</span>value</div>
+<div>&#149;&nbsp; < :&nbsp; 경계값을 범위에 포함시키지 않는다. limit<span class="blue">&#60;</span>value</div>
 {% highlight java %}
 String pattern = "60#D|70<C|80#B|90#A";
 int[] scores = {58, 66, 70, 80, 92, 97};

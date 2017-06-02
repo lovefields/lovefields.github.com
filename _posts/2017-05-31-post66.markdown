@@ -37,60 +37,86 @@ String result = df.format(number);
 <br>
 
 <div><strong>기호</strong></div><p></p>
-<div>DecimalFormat의 패턴의 작성에 사용되는 기호와 자주 사용될만한 패턴은 다음과 같다.
+<div>DecimalFormat의 패턴의 작성에 사용되는 기호와 자주 사용될만한 패턴은 다음과 같다.</div><p></p>
+
+<div>&#149;&nbsp;&nbsp; 0 &nbsp; &nbsp;: 10진수. 값이 없을 때는 0</div>
+
+|0|1234568|
+|0.0|1234567.9|
+|0000000000.0000|0001234567.8900|
+
+<div>&#149;&nbsp;&nbsp; # &nbsp; &nbsp;: 10진수</div>
+
+|#|1234568|
+|#.#|1234567.9|
+|##########.####|1234567.89|
+
+<div>&#149;&nbsp;&nbsp; . &nbsp; &nbsp;: 소수점</div>
+
+|#.#|1234567.9|
+
+<div>&#149;&nbsp;&nbsp; - &nbsp; &nbsp;: 음수부호</div>
+
+|-#.#|-1234567.9|
+|#.#-|1234567.9-|
+
+<div>&#149;&nbsp;&nbsp; , &nbsp; &nbsp;: 단위 구분자</div>
+
+|#,###.##|1,234,567.89|
+|#,####.##|123,4567.89|
+
+<div>&#149;&nbsp;&nbsp; E &nbsp; &nbsp;: 지수 기호</div>
+
+|#E0|1.23456789E6|
+|0E0|1E6|
+|##E0|1.23456789E6|
+|00E0|12E5|
+|####E0|123.456789E4|
+|0000E0|1235E3|
+|#.#E0|1.2E6|
+|0.0E0|1.2E6|
+|0.000000000E0|1.234567890E6|
+|00.00000000E0|12.34567890E5|
+|000.0000000E0|123.4567890E4|
+|#.#########E0|1.23456789E6|
+|##.########E0|1.23456789E6|
+|###.#######E0|1.2345679E6|
+
+<div>&#149;&nbsp;&nbsp; ; &nbsp; &nbsp;: 패턴 구분자</div>
+
+|#,###.##+;#,###.##-|1,234,567.89+|
+
+<div>&#149;&nbsp;&nbsp; % &nbsp; &nbsp;: 퍼센트</div>
+
+|#.#%|123456789%|
+
+<div>&#149;&nbsp;&nbsp; \u2030 &nbsp; &nbsp;: 퍼밀(퍼센트x10)</div>
+
+|#.#\u2030|1234567890‰|
+
+<div>&#149;&nbsp;&nbsp; \u00A4 &nbsp; &nbsp;: 통화</div>
+
+|\u00A4#,###|₩1,234,568|
+
+<div>&#149;&nbsp;&nbsp; ' &nbsp; &nbsp;: escape 문자</div>
+
+|'#'#,###|#1,234,568|
+|''#,###|'1,234,568|
+
 {% highlight java %}
 double number = 1234567.89;
-String pattern[] = { /* pattern */};
-
-
-for (int i = 0; i < pattern.length; i++) {
-    DecimalFormat df = new DecimalFormat(pattern[i]);
-    Log.d("TAG_TEST", pattern[i] + " : " + df.format(number));
-}
-{% endhighlight %}<p></p>
-<div>&#149;&nbsp; 0 :&nbsp; 10진수. 값이 없을 때는 0</div>
-{% highlight java %}
 String pattern[] = {
         "0",                     // 1234568
         "0.0",                   // 1234567.9
         "0000000000.0000",       // 0001234567.8900
-};
-{% endhighlight %}<p></p>
-<div>&#149;&nbsp; # &nbsp;: 10진수</div>
-{% highlight java %}
-String pattern[] = {
         "#",                     // 1234568
         "#.#",                   // 1234567.9
         "##########.####",       // 1234567.89
-};
-{% endhighlight %}<p></p>
-
-<div>&#149;&nbsp; . :&nbsp; 소수점</div>
-{% highlight java %}
-String pattern[] = {
         "#.#",                   // 1234567.9
-};
-{% endhighlight %}<p></p>
-
-<div>&#149;&nbsp; - :&nbsp; 음수 부호</div>
-{% highlight java %}
-String pattern[] = {
         "-#.#",                  // -1234567.9
         "#.#-",                  // 1234567.9-
-};
-{% endhighlight %}<p></p>
-
-<div>&#149;&nbsp; , :&nbsp; 단위 구분자</div>
-{% highlight java %}
-String pattern[] = {
         "#,###.##",              // 1,234,567.89
         "#,####.##",             // 123,4567.89
-};
-{% endhighlight %}<p></p>
-
-<div>&#149;&nbsp; E :&nbsp; 지수기호</div>
-{% highlight java %}
-String pattern[] = {
         "#E0",                   // 1.23456789E6
         "0E0",                   // 1E6
         "##E0",                  // 1.23456789E6
@@ -105,43 +131,18 @@ String pattern[] = {
         "#.#########E0",         // 1.23456789E6
         "##.########E0",         // 1.23456789E6
         "###.#######E0",         // 1.2345679E6
-};
-{% endhighlight %}<p></p>
-
-<div>&#149;&nbsp; ; :&nbsp; 패턴 구분자</div>
-{% highlight java %}
-String pattern[] = {
         "#,###.##+;#,###.##-",   // 1,234,567.89+
-};
-{% endhighlight %}<p></p>
-
-<div>&#149;&nbsp; % :&nbsp; 퍼센트</div>
-{% highlight java %}
-String pattern[] = {
         "#.#%",                  // 123456789%
-};
-{% endhighlight %}<p></p>
-
-<div>&#149;&nbsp; \u2030 :&nbsp; 퍼밀 (퍼센트x10)</div>
-{% highlight java %}
-String pattern[] = {
         "#.#\u2030",             // 1234567890‰
-};
-{% endhighlight %}<p></p>
-
-<div>&#149;&nbsp; \u00A4 &nbsp;: 통화</div>
-{% highlight java %}
-String pattern[] = {
         "\u00A4 #,###",          // ₩ 1,234,568
-};
-{% endhighlight %}<p></p>
-
-<div>&#149;&nbsp; ' :&nbsp; escape 문자</div>
-{% highlight java %}
-String pattern[] = {
         "'#'#,###",              // #1,234,568
         "''#,###"                // '1,234,568
 };
+
+for (int i = 0; i < pattern.length; i++) {
+    DecimalFormat df = new DecimalFormat(pattern[i]);
+    Log.d("TAG_TEST", pattern[i] + " : " + df.format(number));
+}
 {% endhighlight %}<p></p>
 <br>
 <br>
