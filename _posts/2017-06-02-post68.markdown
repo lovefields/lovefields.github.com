@@ -1,0 +1,198 @@
+---
+layout: post
+title:  "Choice/MessageFormat"
+date:   2017-06-02 09:00:00 +0900
+author: 민갤
+description: 형식화 클래스 - ChoiceFormat, MessageFormat
+keywords : android,java,androidstudio,method,선언,class,요소,언어,자바의 정석,프로그래밍,형식화 클래스,java.text,ChoiceFormat,MessageFormat,형식화,패턴
+image : /img/java.png
+category : java
+---
+<div><strong class="h2">형식화 클래스</strong></div><p></p>
+<div>원하는 형식으로 표현 또는 변환하기 위해서 패턴을 정의한다.</div>
+<div>형식화된 데이터에서 원래의 데이터를 얻을 수 있다.</div>
+<div><span class="red">package java.text</span>에 포함되어 있다.</div>
+<div>숫자, 날짜, 텍스트 데이터를 일정한 형식에 맞게 표현할 수 있는 방법을 객체지향적으로 설계하여 표준화했다.</div>
+<br>
+<br>
+<br>
+
+<div><strong class="h2">ChoiceFormat</strong></div><p></p>
+<div>특정 범위에 속하는 값을 문자열로 변환한다.</div>
+<div>if문, switch문을 대신해서 연속적/불연속적인 범위의 값들을 간단하고 직관적으로 처리할 수 있다.</div>
+<br>
+<br>
+
+<div><strong>사용법</strong></div><p></p>
+<div>범위의 경계값은 double형으로 반드시 모두 오름차순으로 정렬되어야 한다.</div>
+<div>범위에 포함된 값을 치환할 문자열의 개수는 경계값에 의해 정의된 범위의 개수와 일치해야 한다.</div>
+{% highlight java %}
+double[] limits = {60, 70, 80, 90};
+String[] grades = {"D", "C", "B", "A"};
+
+int[] scores = {52, 60, 77, 80, 92, 100};
+
+ChoiceFormat cf = new ChoiceFormat(limits, grades);
+
+for (int i = 0; i < scores.length; i++) {
+    Log.d("TAG_TEST", scores[i] + " : " + cf.format(scores[i]));
+}
+
+// 52 : D, 60 : D, 77 : C, 80 : B, 92 : A, 100 : A
+{% endhighlight %}<p></p>
+<div>경계값(limits)에 의해 '60~69', '70~79', '80~89', '90~'의 범위가 정의되었다.</div>
+<div>정의된 범위의 개수와 치환 될 문자열의 개수가 일치하지 않으면 IllegalArgumentException이 발생한다.</div>
+<br>
+<br>
+
+<div><strong>패턴</strong></div><p></p>
+<div>배열 대신 패턴을 사용할 경우,  구분자로 '#'와 '<' 두 가지를 제공한다.</div>
+<div># :&nbsp; 경계값을 범위에 포함시킨다. limit<span class="blue">#</span>value</div>
+<div>< :&nbsp; 경계값을 범위에 포함시키지 않는다. limit<span class="blue">&#60;</span>value</div>
+{% highlight java %}
+String pattern = "60#D|70<C|80#B|90#A";
+int[] scores = {58, 66, 70, 80, 92, 97};
+
+ChoiceFormat cf = new ChoiceFormat(pattern);
+
+for (int i = 0; i < scores.length; i++) {
+    Log.d("TAG_TEST", scores[i] + " : " + cf.format(scores[i]));
+}
+
+// 58 : D, 66 : D, 70 : D, 80 : B, 92 : A, 97 : A
+{% endhighlight %}<p></p>
+<br>
+<br>
+<br>
+<br>
+
+<div><strong class="h2">MessageFormat</strong></div><p></p>
+<div>데이터를 정해진 양식에 맞게 출력할 수 있도록 한다.</div>
+<div>데이터가 들어갈 자리를 마련해 놓은 양식을 미리 작성하고 프로그램을 이용해서 다수의 데이터를 같은 양식으로 출력할 때 사용하면 좋다.</div>
+<br>
+<br>
+
+<div><strong>사용법</strong></div><p></p>
+<div>사용할 양식(문자열)을 작성할 때 데이터가 출력될 자리를 '{숫자}'로 표시한다.</div>
+<div>양식에 들어갈 데이터를 객체 배열에 정의한다.</div>
+{% highlight java %}
+String msg = "Name: {0} \nAge: {1} \nBirthday: {2} \nTel: {3}";
+Object[] arguments = {"홍길동", "25", "11-17", "010-1111-2222"};
+
+Log.d("TAG_TEST", MessageFormat.format(msg, arguments));
+{% endhighlight %}
+{% highlight java %}
+D/TAG_TEST: Name: 홍길동 
+            Age: 25 
+            Birthday: 11-17 
+            Tel: 010-1111-2222
+{% endhighlight %}<p></p>
+<div>숫자는 배열처럼 index가 0부터 시작하며, 객체 배열(arguments)의 index와 매칭된다.</div>
+{% highlight java %}
+String msg = "''{0}'',''{2}'',''{1}'',''{3}''";
+Object[][] arguments = {
+        {"홍길동", "25", "11-17", "010-1111-2222"},
+        {"자바다", "27", "07-22", "010-9999-4444"}
+};
+
+for (int i = 0; i < arguments.length; i++) {
+    Log.d("TAG_TEST", MessageFormat.format(msg, arguments[i]));
+}
+{% endhighlight %}
+{% highlight java %}
+D/TAG_TEST: '홍길동','11-17','25','010-1111-2222'
+D/TAG_TEST: '자바다','07-22','27','010-9999-4444'
+{% endhighlight %}<p></p>
+<div>홑따옴표(')는 MessageFormat의 양식에 escape문자로 사용되기 때문에 문자열 내에서 사용하려면 연속으로 두 번 써주어야 한다.</div>
+<div>위의 예제들처럼 데이터를 객체 배열로 직접 초기화 할 경우, 데이터가 바뀔 때마다 매번 배열을 변경한 후 다시 컴파일 해줘야 해서 불편하다.</div>
+<div>파일로부터 데이터를 제공받으면 데이터가 변경되어도 다시 컴파일 하지 않아도 된다.</div>
+<br>
+<br>
+
+<div><strong>EditText로 입력 받아 보기</strong></div><p></p>
+<div>&#149;&nbsp; activity_main.xml</div>
+{% highlight xml %}
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    ...
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/edit_name"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@null"
+        android:gravity="center"
+        android:hint="name"
+        android:inputType="text"/>
+
+    <EditText
+        android:id="@+id/edit_age"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@null"
+        android:gravity="center"
+        android:hint="age"
+        android:inputType="number"/>
+
+    <EditText
+        android:id="@+id/edit_tel"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@null"
+        android:gravity="center"
+        android:hint="tel"
+        android:inputType="number"/>
+
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="hi"
+        android:textSize="30dp"/>
+
+</LinearLayout>
+{% endhighlight %}<p></p>
+<div>&#149;&nbsp; MainActivity.java</div>
+{% highlight java %}
+public class MainActivity extends AppCompatActivity {
+
+    int[] editId = {R.id.edit_name, R.id.edit_age, R.id.edit_tel};
+    int size = editId.length;
+    EditText[] edit = new EditText[size];
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        for (int i = 0; i < size; i++) {
+            edit[i] = (EditText) findViewById(editId[i]);
+        }
+        final TextView tv = (TextView) findViewById(R.id.tv);
+
+        edit[2].setOnEditorActionListener(new EditText.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+
+                    Object[] obj = new Object[size];
+                    for (int i = 0; i < size; i++) {
+                        obj[i] = edit[i].getText().toString();
+                    }
+
+                    String msg = "values ({0}, {1}, {2})";
+                    tv.setText(MessageFormat.format(msg, obj));
+                }
+                return false;
+            }
+        });
+    }
+}
+{% endhighlight %}<p></p>
+
+<br>
+<br>
+<br>
+&#149;&nbsp; 참고 서적: 자바의 정석 3판 2
