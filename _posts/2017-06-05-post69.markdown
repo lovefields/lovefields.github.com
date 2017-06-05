@@ -1,0 +1,146 @@
+---
+layout: post
+title:  "package java.time"
+date:   2017-06-05 09:00:00 +0900
+author: 민갤
+description: package java.time 01
+keywords : android,java,androidstudio,method,선언,class,요소,언어,자바의 정석,프로그래밍,package java.time,LocalDate,LocalTime,Instant
+image : /img/java.png
+category : java
+---
+<div><span class="red">Android Studio에서는 사용할 수 없어서 EditPlus로 실행하였습니다.</span></div>
+<br>
+
+<div><strong class="h2">package java.time</strong></div><p></p>
+<div>Date와 Calendar가 가지고 있던 단점들을 개선한 패키지.</div>
+<div>4개의 하위 패키지를 가지고 있다.</div>
+<div>날짜나 시간을 변경하는 메서드들은 항상 변경된 새로운 객체를 반환한다. = 불변Immutable</div>
+<br>
+
+<div><strong>java.time</strong></div>
+<div>날짜와 시간을 다루는데 필요한 핵심 클래스들을 제공.</div>
+<div>시간(시분초)과 더 큰 개념의 시간(년월일시분초)을 구분하기 위해 time 대신 temporal과 chrono 용어를 사용함.</div><p></p>
+<div><strong>java.time.chrono</strong></div>
+<div>표준(ISO)이 아닌 달력 시스템을 위한 클래스들을 제공.</div><p></p>
+<div><strong>java.time.format</strong></div>
+<div>날짜와 시간을 파싱하고, 형식화하기 위한 클래스들을 제공.</div><p></p>
+<div><strong>java.time.temporal</strong></div>
+<div>날짜와 시간의 필드(field)와 단위(unit)를 위한 클래스들을 제공.</div><p></p>
+<div><strong>java.time.zone</strong></div>
+<div>시간대(time-zone)와 관련된 클래스들을 제공.</div>
+
+<br>
+<br>
+<br>
+
+<div><strong>핵심 클래스</strong></div><p></p>
+<div>&#149;&nbsp; 날짜와 시간이 별도의 클래스로 분리되어 있다.</div>
+
+|LocalDate|날짜를 표현|
+|LocalTime|시간을 표현|
+|LocalDateTime|날짜와 시간을 모두 표현|
+|ZonedDateTime|날짜와 시간, 시간대(time-zone)을 다룬다|
+
+<br>
+<div>&#149;&nbsp; 날자와 시간의 간격을 표현하는 클래스</div>
+
+|Period|두 날짜간의 차이를 표현|
+|Duration|시간의 차이를 표현|
+
+<br>
+<div>&#149;&nbsp; 객체 생성하기</div>
+<div>&nbsp; &nbsp; java.time 패키지에 속한 클래스의 객체를 생성하는 가장 기본적인 방법.</div>
+
+|now()|현재 날짜와 시간을 저장하는 객체를 생성|
+|of()|해당 필드의 값을 순서대로 지정하여 생성|
+
+<br>
+<div>&#149;&nbsp; Temporal, TemporalAccessor, TemporalAdjuster 인터페이스를 구현한 클래스</div>
+<div>&nbsp; &nbsp; 날짜와 시간을 표현하기 위한 클래스들.</div>
+<div>&nbsp; &nbsp; LocalDate, LocalTime, LocalDateTime, ZonedDateTime, Instant 등</div><p></p>
+
+<br>
+<div>&#149;&nbsp; TemporalAmount 인터페이스를 구현한 클래스</div>
+<div>&nbsp; &nbsp; Duration, Period</div><p></p>
+
+<br>
+<div>&#149;&nbsp; TemporalUnit과 TemporalField</div>
+
+|TemporalUnit 인터페이스|날짜와 시간의 단위를 정의해 놓은 것|
+|열거형 ChronoUnit|TemporalUnit을 구현한 것|
+|TemporalField 인터페이스|년, 월, 일 등 날짜와 시간의 필드를 정의해 놓은 것|
+|열겨형 ChronoField|TemporalField를 구현한 것|
+
+<br>
+<div>&#149;&nbsp; 날짜와 시간에서 특정 필드의 값만 얻기</div>
+<div>&nbsp; &nbsp; get(), get으로 시작하는 이름의 메서드</div><p></p>
+
+<br>
+<div>&#149;&nbsp; 특정 날짜와 시간에서 지정된 단위의 값을 더하거나 빼기</div>
+<div>&nbsp; &nbsp; plus()/minus()에 값과 함께 열거형 ChronoUnit을 사용한다.</div>
+
+<br>
+<br>
+<br>
+
+<div><strong>Instant</strong></div><p></p>
+<div>에포크 타임(EPOCH TIME, 1970-01-01 00:00:00 UTC)부터 경과된 시간을 나노초 단위로 표현한다.</div>
+<div>단일 진법으로 다루기 때문에 계산이 편리하다.</div>
+<div>항상 UFC(+00:00)를 기준으로 하기 때문에 LocalTime과 차이가 있을 수 있다.</div>
+{% highlight java %}
+LocalTime time = LocalTime.now();
+Instant now = Instant.now();
+System.out.println(time);         // 13:55:13.023
+System.out.println(now);          // 2017-06-05T04:55:13.023Z
+{% endhighlight %}<p></p>
+<div>시간대를 고려해야 하는 경우 OffsetDateTime을 사용하는 것이 나을 수 있다.</div>
+<br>
+
+<div>&#149;&nbsp; UFC (Coordinated Universal Time)</div>
+<div>&nbsp; &nbsp; 세계 협정시</div>
+<div>&nbsp; &nbsp; 1972년 1월 1일부터 시행된 국제 표준시</div>
+<div>&nbsp; &nbsp; GMT(Greenwich Mean Time)와 거의 같지만 좀 더 정확하다.</div>
+<br>
+
+<div>&#149;&nbsp; 생성</div>
+<div>&nbsp; &nbsp; now()와 ofEpochSecond()를 사용한다.</div>
+{% highlight java %}
+static Instant now()
+static Instant now(Clock clock)
+static Instant ofEpochSecond(long epochSecond, long nanoAdjustment)
+static Instant ofEpochSecond(long epochSecond)
+{% endhighlight %}
+{% highlight java %}
+Instant now1 = Instant.now();
+Instant now2 = Instant.ofEpochSecond(now1.getEpochSecond());
+Instant now3 = Instant.ofEpochSecond(now1.getEpochSecond(), now1.getNano());
+{% endhighlight %}
+<br>
+
+<div>&#149;&nbsp; long getEpochSecond()</div>
+<div>&nbsp; &nbsp; 필드에 저장된 값을 가져온다.</div>
+{% highlight java %}
+long epochSec = now1.getEpochSecond();      // 1496637563
+int nano = now1.getNano();                  // 924000000
+{% endhighlight %}
+<br>
+
+<div>&#149;&nbsp; long toEpochMilli()</div>
+<div>&nbsp; &nbsp; 밀리초 단위의 EPOCh TIME</div>
+{% highlight java %}
+System.out.println(now.toEpochMilli());     // 1496638682369
+{% endhighlight %}
+<br>
+
+<div>&#149;&nbsp; Instant와 Date간의 변환</div>
+<div>&nbsp; &nbsp; Instant는 기존의 java.util.Date를 대체하기 위한 것이며,</div>
+<div>&nbsp; &nbsp; JDK1.8부터 Date에 Instant로 변환할 수 있는 새로운 메서드가 추가되었다.</div>
+{% highlight java %}
+static Date from(Instant instant)      // Instant → Date
+Instant toInstant()                    // Date → Instant
+{% endhighlight %}
+
+<br>
+<br>
+<br>
+&#149;&nbsp; 참고 서적: 자바의 정석 3판 2

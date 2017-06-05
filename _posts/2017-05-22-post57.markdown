@@ -54,8 +54,11 @@ s1 = s1 + s2;
 <br>
 <br>
 
-<div><strong>문자열의 비교</strong></div><p></p>
-<div>문자열 리터럴은 이미 존재하는 것을 재사용한다.</div>
+<div><strong>String 인스턴스 생성</strong></div><p></p>
+<div>&#149;&nbsp; 문자열 리터럴</div>
+<div>&nbsp; &nbsp; 같은 내용의 문자열 리터럴은 한 번만 저장되어 이미 존재하는 것을 재사용한다.</div>
+<div>&nbsp; &nbsp; 하나의 인스턴스를 공유하기 때문에 한 번 생성하면 내용을 변경할 수 없다.</div>
+<div>&nbsp; &nbsp; 컴파일 시에 클래스 파일에 저장된다.</div>
 {% highlight java %}
 String str1 = "a";
 String str2 = "a";
@@ -65,7 +68,8 @@ String str2 = "a";
 |:-:|:-:|:-:|
 |a|0x100|0x100|
 
-<div>생성자를 이용하면 new 연산자에 의해 메모리 할당이 이루어져 항상 새로운 String 인스턴스가 생성된다.</div>
+<div>&#149;&nbsp; 생성자</div>
+<div>&nbsp; &nbsp; 생성자를 이용하면 new 연산자에 의해 메모리 할당이 이루어져 항상 새로운 String 인스턴스가 생성된다.</div>
 {% highlight java %}
 String str1 = new String("a");
 String str2 = new String("a");
@@ -82,11 +86,21 @@ String str2 = new String("a");
 <br>
 <br>
 
-<div><strong>문자열 리터럴</strong></div><p></p>
-<div>String 인스턴스.</div>
-<div>같은 내용의 문자열 리터럴은 한 번만 저장된다.</div>
-<div>하나의 인스턴스를 공유하기 때문에 한 번 생성하면 내용을 변경할 수 없다.</div>
-<div>컴파일 시에 클래스 파일에 저장된다.</div>
+<div><strong>문자열의 비교</strong></div><p></p>
+<div>equals()는 두 문자열의 내용을 비교하기 때문에 String 인스턴스를 어떤 방식(리터럴, 생성자)으로 생성하든 true를 결과로 얻는다.</div>
+<div>각 String 인스턴스의 주소를 등가비교연산자(==)로 비교할 경우 결과가 다르다.</div>
+{% highlight java %}
+String str1 = "a";
+String str2 = "a";
+String str3 = new String("a");
+String str4 = new String("a");
+
+Log.d("TAG_TEST", str1.equals(str2) + "");    // true
+Log.d("TAG_TEST", str3.equals(str4) + "");    // true
+Log.d("TAG_TEST", (str1 == str2) + "");       // true
+Log.d("TAG_TEST", (str3 == str4) + "");       // false
+{% endhighlight %}
+
 <br>
 <br>
 
