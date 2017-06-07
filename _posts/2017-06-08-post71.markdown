@@ -1,0 +1,236 @@
+---
+layout: post
+title:  "Tween Animation"
+date:   2017-06-08 09:00:00 +0900
+author: 민갤
+description: Animation - Tween Animation 
+keywords : android,java,androidstudio,요소,언어,자바의 정석,프로그래밍,Animation,Tween,TweenAnimation,anim,rotate,alpha,scale
+image : /img/androidstudio.png
+category : android
+---
+<div><strong class="h2">Animation</strong></div><p></p>
+<div>java.lang.Object</div>
+<div> &nbsp; ↳&nbsp; android.view.animation.Animation</div>
+
+{% highlight xml %}
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+     android:duration="int"
+     android:fillAfter="boolean"
+     android:fillBefore="boolean"
+     android:fillEnabled="boolean"
+     android:repeatCount="int"
+     android:repeatMode="restart/reverse"
+     android:startOffset="int"
+     android:zAdjustment="normal/top/bottom">
+    ...
+</set>
+{% endhighlight %}
+
+|android:duration|애니메이션 지속시간 (1/1000초)|
+|android:fillAfter|true일 때, 애니메이션 효과가 끝난 후에도 상태를 유지한다. default false|
+|android:fillBefore|true일 때, 애니메이션이 시작되기 전에 애니메이션 변형이 적용된다|
+|android:fillEnabled|true일 때, fillBefore 값을 고려|
+|android:interpolator|애니메이션이 일어나는 동안 횟수, 속도 조절 또는 효과 추가|
+|android:repeatCount|애니메이션 반복 횟수. 0 ~ infinite 무한반복. default 0|
+|android:repeatMode|반복 모드. restart: 애니메이션을 처음부터 다시 시작, reverse: 애니메이션을 거꾸로 진행|
+|android:startOffset|애니메이션 시작 전 대기시간 (1/1000초)|
+|android:zAdjustment|애니메이션이 실행될 때 Z축 중심으로 정렬|
+
+<br>
+<br>
+<br>
+<br>
+
+<div><strong class="h2">Tween Animation</strong></div><p></p>
+<div>간단한 애니메이션</div>
+<div>동작, 모양 변경과 같은 효과를 준다.</div>
+<div>AnimationUtils 클래스의 loadAnimation을 호출하여 두 번째 매개 변수에 애니메이션 xml을 지정한다.</div>
+{% highlight java %}
+Animation anim = AnimationUtils.loadAnimation(this, R.anim.myanimation);
+{% endhighlight %}
+<br>
+<br>
+
+<div><strong>File Location</strong></div><p></p>
+<div><span class="blue">res/anim/filename.xml</span></div><p></p>
+<div>애니메이션을 정의한 xml 파일들은 res/anim 폴더 안에 위치시킨다.</div>
+<div>기본적으로 anim 폴더는 프로젝트 내에 없기 때문에 따로 만들어 사용한다.</div>
+<br>
+<br>
+
+<div><strong>Syntax</strong></div>
+{% highlight xml %}
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:interpolator="@[package:]anim/interpolator_resource"
+    android:shareInterpolator=["true" | "false"] >
+    <alpha
+        android:fromAlpha="float"
+        android:toAlpha="float" />
+    <scale
+        android:fromXScale="float"
+        android:toXScale="float"
+        android:fromYScale="float"
+        android:toYScale="float"
+        android:pivotX="float"
+        android:pivotY="float" />
+    <translate
+        android:fromXDelta="float"
+        android:toXDelta="float"
+        android:fromYDelta="float"
+        android:toYDelta="float" />
+    <rotate
+        android:fromDegrees="float"
+        android:toDegrees="float"
+        android:pivotX="float"
+        android:pivotY="float" />
+    <set>
+        ...
+    </set>
+</set>
+{% endhighlight %}
+<br>
+<br>
+
+<div><strong>set</strong></div><p></p>
+<div>set 태그로 여러 애니메이션들을 묶는다.</div>
+
+|android:shareInterpolator|true일 경우, 하위 애니메이션에 같은 interpolator를 공유한다.|
+
+<br>
+<br>
+
+<div><strong>alpha</strong></div><p></p>
+<div>투명도 애니메이션</div>
+<div>알파값은 0.0 ~ 1.0 까지의 범위를 갖는다.</div>
+<div>0.0 은 완전 투명, 1.0은 완전 불투명이다.</div>
+
+|android:fromAlpha|시작 투명도 값|
+|android:toAlpha|종료 투명도 값|
+
+<br>
+<br>
+
+<div><strong>scale</strong></div><p></p>
+<div>확대/축소 애니메이션</div>
+<div>크기는 0.0 ~ 1.0의 범위를 갖는다. (0% ~ 100%)</div>
+<div>1.0은 원래 크기.</div>
+
+|android:fromXScale|애니메이션 시작 시 가로 크기|
+|android:toXScale|애니메이션 종료 시 가로 크기|
+|android:toYScale|애니메이션 종료 시 세로 크기|
+|android:fromYScale|애니메이션 시작 시 세로 크기|
+|android:pivotX|크기 변화 중심점의 X좌표|
+|android:pivotY|크기 변화 중심점의 Y좌표|
+
+<br>
+<br>
+
+<div><strong>translate</strong></div><p></p>
+<div>이동 애니메이션.</div>
+<div>위치 좌표는 접미어에 따라 기준이 달라 진다.</div>
+
+|접미어|기준|
+|:-:|:-:|
+|없음|절대값|
+|%|객체|
+|%p|객체의 부모|
+
+|android:fromXDelta|처음 시작될 때 View의 X 위치|
+|android:toXDelta|끝날 때 X위치. 좌우 이동|
+|android:fromYDelta|처음 시작될 때 View의 Y 위치|
+|android:toYDelta|끝날 때 Y위치. 상하 이동|
+
+<br>
+<br>
+
+<div><strong>rotate</strong></div><p></p>
+<div>회전 애니메이션.</div>
+
+|android:fromDegrees|회전을 시작하는 각도|
+|android:toDegrees|회전을 끝내는 각도|
+|android:pivotX|회전축의 X 좌표|
+|android:pivotY|회전축의 Y 좌표|
+
+<br>
+<br>
+
+<div><strong>Interpolators</strong></div><p></p>
+<div>미리 정의된 애니메이션의 설정을 사용할 수 있다.</div>
+
+|accelerate_interpolator|점점 빠르게 진행한다|
+|decelerate_interpolator|점점 느리게 진행한다|
+|accelerate_decelerate_interpolator|accelerate/decelerate를 동시에 적용한다|
+|anticipate_interpolator|시작위치에서 조금 뒤로 당겼다 이동한다|
+|overshoot_interpolator|도착 위치를 조금 지나친 후 도착 위치로 이동한다|
+|anticipate_overshoot_interpolator|anticipate/ overshoot 동시적용 된다|
+|bounce_interpolator|도착 위치에서 튕긴다|
+|cycle_interpolator|애니메이션을 반복한다|
+|linear_interpolator|일정하게 진행한다|
+
+<br>
+<br>
+<br>
+<br>
+
+<div><strong class="h2">Example</strong></div>
+<br>
+
+<div><strong>alpha.xml</strong></div>
+{% highlight xml %}
+<?xml version="1.0" encoding="utf-8"?>
+<alpha xmlns:android="http://schemas.android.com/apk/res/android"
+       android:duration="10000"
+       android:fromAlpha="0.0"
+       android:toAlpha="1.0"/>
+{% endhighlight %}
+<br>
+
+<div><strong>MainActivity.java</strong></div>
+{% highlight java %}
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+
+public class MainActivity extends Activity {
+    Animation anim;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+
+    public void alpha(View v) {
+        anim = AnimationUtils.loadAnimation(this, R.anim.alpha);
+        v.startAnimation(anim);
+    }
+}
+{% endhighlight %}
+<br>
+
+<div><strong>activity_main.xml</strong></div>
+{% highlight xml %}
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:gravity="center"
+              android:orientation="vertical">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="alpha"
+        android:text="Alpha"/>
+
+</LinearLayout>
+{% endhighlight %}
+<br>
+<br>
+<br>
+<br>
+
+&#149;&nbsp; 참고: [Animation Resources]
+
+
+[Animation Resources]: https://developer.android.com/guide/topics/resources/animation-resource.html#Frame
