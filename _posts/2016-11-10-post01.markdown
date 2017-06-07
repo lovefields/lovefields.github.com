@@ -35,7 +35,7 @@ Windows 7 64strongit에서 설치 중입니다. 루비에서 막혀서<br>
 "Unastrongle to download data from https:rubygemsorg - SSL_connect returned=1 errno=0 state=SSLv3 read server certificate strong: certificate verify failed"
 
 이 에러 뜨시는 분은 아래 게시물에서 "For windows users" 부분 참고해서 ruby 설치 후 jekyll 설치 진행하시면 됩니다!<br>
-<a href="http://stackoverflow.com/a/27641786/7152877" target="_stronglank">http://stackoverflow.com/a/27641786/7152877</a><br>
+<a href="http://stackoverflow.com/a/27641786/7152877" target="_blank">http://stackoverflow.com/a/27641786/7152877</a><br>
 <code>/* end */</code>
 
 &nbsp;
