@@ -1,0 +1,148 @@
+---
+layout: post
+title:  "LocalDateTime, ZonedDateTime"
+date:   2017-06-09 12:00:00 +0900
+author: 민갤
+description: package java.time 03 - LocalDateTime, ZonedDateTime
+keywords : android,java,androidstudio,method,선언,class,요소,언어,자바의 정석,프로그래밍,package java.time,LocalDateTime,ZonedDateTime
+image : /img/java.png
+category : java
+---
+<div><span class="red">Android Studio에서는 사용할 수 없어서 EditPlus로 실행하였습니다.</span></div>
+<br>
+
+<div><strong class="h2">package java.time</strong></div><p></p>
+<div>Date와 Calendar가 가지고 있던 단점들을 개선한 패키지.</div>
+<div>4개의 하위 패키지를 가지고 있다.</div>
+<div>날짜나 시간을 변경하는 메서드들은 항상 변경된 새로운 객체를 반환한다. = 불변Immutable</div>
+<br>
+<br>
+<br>
+<br>
+
+<div><strong class="h2">LocalDateTime</strong></div><p></p>
+<div>LocalDate + LocalTime</div>
+{% highlight java %}
+LocalDateTime today = LocalDateTime.now();
+LocalDateTime dateTime = LocalDateTime.of(2017, 06, 06, 12, 30, 45);
+{% endhighlight %}<p></p>
+<br>
+
+<div><strong>생성</strong></div><p></p>
+{% highlight java %}
+LocalDate date = LocalDate.now();
+LocalTime time = LocalTime.now();
+
+LocalDateTime dt = LocalDateTime.of(date, time);
+// LocalDateTime dt = date.atTime(time);
+// LocalDateTime dt = time.atDate(date);
+// LocalDateTime dt = date.atTime(0,0,0);
+// LocalDateTime dt = time.atDate(LocalDate.now());
+// LocalDateTime dt = date.atStartOfDay();
+{% endhighlight %}
+<br>
+
+<div><strong>변환</strong></div><p></p>
+<div>LocalDate 또는 LocalTime으로 변환</div>
+{% highlight java %}
+LocalDateTime dt = LocalDateTime.now();
+LocalDate date = dt.toLocalDate();          // 2017-06-09
+LocalTime time = dt.toLocalTime();          // 09:39:11.149
+{% endhighlight %}
+<br>
+<br>
+<br>
+<br>
+
+<div><strong class="h2">ZoendDateTime</strong></div><p></p>
+<div>LocalDateTime + 시간대(time zone)</div>
+<div>GregorianCalendar와 가장 유사하다.</div>
+{% highlight java %}
+ZonedDateTime zdt = ZonedDateTime.now();    // 2017-06-09T09:39:11.150+09:00[Asia/Seoul]
+{% endhighlight %}<p></p>
+<br>
+
+<div><strong>생성</strong></div><p></p>
+<div>&#149;&nbsp; LocalDateTime에 atZone()으로 시간대 정보를 추가한다.</div>
+{% highlight java %}
+LocalDateTime dt = LocalDateTime.now();
+ZoneId zi = ZoneId.of("Asia/Seoul");
+
+ZonedDateTime zdt = dt.atZone(zi);          // 2017-06-09T09:39:11.149+09:00{Asia/Seoul]
+{% endhighlight %}<p></p>
+<div>&#149;&nbsp; LocalDate의 atStartOfDay() 메서드의 매개변수로 ZoneId를 지정하여 ZonedDateTime 얻기.</div>
+{% highlight java %}
+ZoneId zi = ZoneId.of("Asia/Seoul");
+ZonedDateTime zdt = LocalDate.now().atStartOfDay(zi);          // 2017-06-09T00:00+09:00{Asia/Seoul]
+{% endhighlight %}<p></p>
+<div>&#149;&nbsp; ZoneId : 일광 절약 시간을 자동적으로 처리해주는 클래스.</div>
+<div>&nbsp; &nbsp; 시간대와 관련된 규칙들을 포함하고 있다.</div><p></p>
+<div>&#149;&nbsp; 일광 절약 시간제 (DST, Daylight Saving Time / Summer time)</div>
+<div>&nbsp; &nbsp; 여름의 일조 시간에 맞춰 3월 두 번째 일요일부터 11월 첫 일요일까지 1시간을 앞당기는 것.</div>
+<div>&nbsp; &nbsp; (3월 두 번째 일요일 2:00AM → 3:00AM, 11월 첫 월요일 2:00AM → 1:00AM 으로 시간 변경)</div>
+<div>&nbsp; &nbsp; 여름은 일조 시간이 길기 때문에 한 시간 더 빨리 활동하여 조명과 연료 등 에너지를 절약하고 개인 활동 시간을 늘릴 수 있다는 이유로 시행.</div>
+<div>&nbsp; &nbsp; 미국, 캐나다 등에서 시행하고 있다.</div>
+<br>
+
+<div><strong>현재 특정 시간대의 시간을 알고 싶을 때</strong></div>
+{% highlight java %}
+ZoneId zi = ZoneId.of("America/New_York");
+ZonedDateTime zdt = ZonedDateTime.now().withZoneSameInstant(zi);     // 2017-06-08T20:39:11.173-04:00{America/New_York]
+
+ZoneId zi = ZoneId.of("America/Chicago");
+ZonedDateTime zdt = ZonedDateTime.now().withZoneSameInstant(zi);     // 2017-06-08T19:39:11.187-05:00{America/Chicago]
+{% endhighlight %}
+<br>
+
+<div><strong>ZoneOffset</strong></div><p></p>
+<div>UTC로부터 얼마만큼 떨어져 있는 지 표현한다.</div>
+<div>시간대를 시간의 차이로만 구분한다.</div>
+<div>서울은 +09:00. UTC보다 9시간(60*60*9s) 빠르다.</div>
+{% highlight java %}
+ZoneOffset zo = ZonedDateTime.now().getOffset();
+// ZoneOffset zo = ZoneOffset.of("+9");
+int offsetSeconds = zo.get(ChronoField.OFFSET_SECONDS);    // 32400
+{% endhighlight %}
+<br>
+
+<div><strong>OffsetDateTime</strong></div><p></p>
+<div>서로 다른 시간대에 존재하는 컴퓨터간의 통신에 유용하다.</div><p></p>
+<div>&#149;&nbsp; LocalDate + LocalTime + ZomeOffset</div>
+{% highlight java %}
+LocalDate date = LocalDate.now();
+LocalTime time = LocalTime.now();
+ZoneOffset zo = ZonedDateTime.now().getOffset();
+
+OffsetDateTime odt = OffsetDateTime.of(date, time, zo);    // 2017-06-09T09:39:11.187+09:00
+{% endhighlight %}<p></p>
+<div>&#149;&nbsp; ZonedDateTime에 toOffsetDateTime()을 호출하여 얻는다.</div>
+{% highlight java %}
+LocalDate date = LocalDate.now();
+LocalTime time = LocalTime.now();
+ZoneId zi = ZoneId.of("Asia/Seoul");
+ZonedDateTime zdt = ZonedDateTime.of(date, time, zi);
+
+OffsetDateTime odt = zdt.toOffsetDateTime();            // 2017-06-09T09:39:11.187+09:00
+{% endhighlight %}
+<br>
+
+<div><strong>변환</strong></div><p></p>
+<div>&#149;&nbsp; ZonedDateTime의 변환</div>
+{% highlight java %}
+LocalDate toLocalDate()
+LocalTime toLocalTime()
+LocalDateTime toLocalDateTime()
+OffsetDateTime toOffsetDateTime()
+long toEpochSecond()
+Instant toInstant()
+{% endhighlight %}<p></p>
+<div>&#149;&nbsp; GregorianCalendar와의 변환</div>
+{% highlight java %}
+GregorianCalendar from(ZonedDateTime zdt)
+ZonedDateTime toZonedDateTime()
+{% endhighlight %}
+<br>
+<br>
+<br>
+
+&#149;&nbsp; 참고 서적: 자바의 정석 3판 2

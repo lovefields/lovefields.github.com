@@ -85,6 +85,7 @@ category : java
 
 <div><strong>Instant</strong></div><p></p>
 <div>에포크 타임(EPOCH TIME, 1970-01-01 00:00:00 UTC)부터 경과된 시간을 나노초 단위로 표현한다.</div>
+<div>시간을 초 단위와 나노초 단위로 나누어 저장한다.</div>
 <div>단일 진법으로 다루기 때문에 계산이 편리하다.</div>
 <div>항상 UFC(+00:00)를 기준으로 하기 때문에 LocalTime과 차이가 있을 수 있다.</div>
 {% highlight java %}
