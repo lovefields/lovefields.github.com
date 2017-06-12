@@ -74,7 +74,7 @@ cal.setTime(d);
 |DAY_OF_MONTH|현재 월의 날짜|
 |DAY_OF_YEAR|현재 년도|
 |DAY_OF_WEEK|현재 요일 (1~7. 1:일요일)|
-|DAY_OF_WEEK_IN_MONTH|현대 월의 몇 째 요일|
+|DAY_OF_WEEK_IN_MONTH|현재 월의 몇 째 요일|
 |AM_PM|현재 시간 (오전 0, 오후 1)|
 |HOUR|현재 시간 (0~11)|
 |HOUR_OF_DAY|현재 시간 (0~23)|

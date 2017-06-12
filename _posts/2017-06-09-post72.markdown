@@ -73,7 +73,7 @@ ZonedDateTime zdt = dt.atZone(zi);          // 2017-06-09T09:39:11.149+09:00{Asi
 <div>&#149;&nbsp; LocalDate의 atStartOfDay() 메서드의 매개변수로 ZoneId를 지정하여 ZonedDateTime 얻기.</div>
 {% highlight java %}
 ZoneId zi = ZoneId.of("Asia/Seoul");
-ZonedDateTime zdt = LocalDate.now().atStartOfDay(zi);          // 2017-06-09T00:00+09:00{Asia/Seoul]
+ZonedDateTime zdt = LocalDate.now().atStartOfDay(zi);      // 2017-06-09T00:00+09:00{Asia/Seoul]
 {% endhighlight %}<p></p>
 <div>&#149;&nbsp; ZoneId : 일광 절약 시간을 자동적으로 처리해주는 클래스.</div>
 <div>&nbsp; &nbsp; 시간대와 관련된 규칙들을 포함하고 있다.</div><p></p>
@@ -122,7 +122,7 @@ LocalTime time = LocalTime.now();
 ZoneId zi = ZoneId.of("Asia/Seoul");
 ZonedDateTime zdt = ZonedDateTime.of(date, time, zi);
 
-OffsetDateTime odt = zdt.toOffsetDateTime();            // 2017-06-09T09:39:11.187+09:00
+OffsetDateTime odt = zdt.toOffsetDateTime();               // 2017-06-09T09:39:11.187+09:00
 {% endhighlight %}
 <br>
 

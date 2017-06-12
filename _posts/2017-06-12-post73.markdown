@@ -1,0 +1,134 @@
+---
+layout: post
+title:  "TemporalAdjusters"
+date:   2017-06-12 12:00:00 +0900
+author: 민갤
+description: package java.time 04 - TemporalAdjusters
+keywords : android,java,androidstudio,method,선언,class,요소,언어,자바의 정석,프로그래밍,package java.time,TemporalAdjusters,interface
+image : /img/java.png
+category : java
+---
+<div><span class="red">Android Studio에서는 사용할 수 없어서 EditPlus로 실행하였습니다.</span></div>
+<br>
+
+<div><strong class="h2">package java.time</strong></div><p></p>
+<div>Date와 Calendar가 가지고 있던 단점들을 개선한 패키지.</div>
+<div>4개의 하위 패키지를 가지고 있다.</div>
+<div>날짜나 시간을 변경하는 메서드들은 항상 변경된 새로운 객체를 반환한다. = 불변Immutable</div>
+<br>
+<br>
+<br>
+<br>
+
+<div><strong class="h2">TemporalAdjusters</strong></div><p></p>
+<div>자주 쓰일만한 날자 계산들을 대신 해주는 메서드들을 정의해놓은 클래스</div>
+<div>TemporalAdjuster 인터페이스를 구현한 클래스의 객체를 LocalDate의 with() 메서드에 매개변수로 전달하여 사용한다.</div>
+{% highlight java %}
+import java.time.temporal.TemporalAdjusters;
+
+LocalDate today = LocalDate.now();
+LocalDate nextMonday = today.with(TemporalAdjusters.next(DayOfWeek.MONDAY));   // 2017-06-12
+{% endhighlight %}
+
+<br>
+<br>
+
+<div><strong>Method</strong></div>
+
+|firstDayOfNextYear()|다음 해의 첫 날|
+|firstDayOfNextMonth()|다음 달의 첫 날|
+|firstDayOfYear()|올 해의 첫 날|
+|firstDayOfMonth()|이번 달의 첫 날|
+|lastDayOfYear()|올 해의 마지막 날|
+|lastDayOfMonth()|이번 달의 마지막 날|
+|firstInMonth(DayOfWeek dayOfWeek)|이번 달의 첫 번째 요일|
+|lastInMonth(DayOfWeek dayOfWeek)|이번 달의 마지막 요일|
+|previous(DayOfWeek dayOfWeek)|지난 요일(당일 미포함)|
+|previousOrSame(DayOfWeek dayOfWeek)|지난 요일(당일 포함)|
+|next(DayOfWeek dayOfWeek)|다음 요일(당일 미포함)|
+|nextOrSame(DayOfWeek dayOfWeek)|다음 요일(당일 포함)|
+|dayOfWeekInMonth(int ordinal, DayOfWeek dayOfWeek)|이번 달의 n번째 요일|
+
+<br>
+<br>
+
+<div><strong>직접 구현하기</strong></div><p></p>
+<div>&#149;&nbsp; interface TemporalAdjuster</div>
+<div>&nbsp; &nbsp; 단 하나 정의되어 있는 추상 메서드만 구현하면 된다.</div>
+<div>&nbsp; &nbsp; 실제로 구현해야 하는 것은 adjustInto()지만, 이 메서드는 내부적으로만 사용할 의도로 작성되어 있다.</div>
+<div>&nbsp; &nbsp; 따라서 TemporalAdjuster와 같이 사용해야 하는 with()를 사용하도록 한다.</div>
+{% highlight java %}
+@FunctionalInterface
+public interface TemporalAdjuster{
+    Temporal adjustInto(Temporal temporal);
+}
+{% endhighlight %}<p></p>
+<div>&#149;&nbsp; with()</div>
+<div>&nbsp; &nbsp; LocalDate의 with()는 TemporalAdjuster 인터페이스를 구현한 클래스의 객체를 매개변수로 받는다.</div>
+<div>&nbsp; &nbsp; with는 LocalTime, LocalDateTime, Instant 등 대부분의 날짜와 시간에 관련된 클래스에 포함되어 있다.</div>
+{% highlight java %}
+LocalDate with(TemporalAdjuster adjuster)
+{% endhighlight %}<p></p>
+<div>&#149;&nbsp; adjustInto()</div>
+<div>&nbsp; &nbsp; 날짜와 시간에 관련된 대부분의 클래스는 Temporal 인터페이스를 구현하였으므로 이 메서드의 매개변수가 될 수 있다.</div>
+{% highlight java %}
+class TestDayAddFive implements TemporalAdjuster {
+    @Override
+    public Temporal adjustInto(Temporal temporal){
+        return temporal.plus(5, ChronoUnit.DAYS);
+    }
+}
+{% endhighlight %}
+
+<br>
+<br>
+
+<div><strong>Example</strong></div>
+{% highlight java %}
+import java.time.*;
+import java.util.*;
+import java.time.temporal.*;
+class Test
+
+{
+	public static void main(String[] args) 
+	{
+		LocalDate today = LocalDate.now();
+		LocalDate date = today.with(new DayAddFive());
+		
+		print(today);        // 2017-06-09
+		print(date);         // 2017-06-14
+
+		print(today.with(TemporalAdjusters.firstDayOfNextYear()));                       // 2018-01-01
+		print(today.with(TemporalAdjusters.firstDayOfNextMonth()));                      // 2017-07-01
+                print(today.with(TemporalAdjusters.firstDayOfYear()));                           // 2017-01-01
+                print(today.with(TemporalAdjusters.firstDayOfMonth()));                          // 2017-06-01
+		print(today.with(TemporalAdjusters.lastDayOfYear()));                            // 2017-12-31
+		print(today.with(TemporalAdjusters.lastDayOfMonth()));                           // 2017-06-30
+		print(today.with(TemporalAdjusters.firstInMonth(DayOfWeek.FRIDAY)));             // 2017-06-02
+		print(today.with(TemporalAdjusters.lastInMonth(DayOfWeek.FRIDAY)));              // 2017-06-30
+		print(today.with(TemporalAdjusters.previous(DayOfWeek.FRIDAY)));                 // 2017-06-02
+		print(today.with(TemporalAdjusters.previousOrSame(DayOfWeek.FRIDAY)));           // 2017-06-09
+		print(today.with(TemporalAdjusters.next(DayOfWeek.FRIDAY)));                     // 2017-06-16
+		print(today.with(TemporalAdjusters.nextOrSame(DayOfWeek.FRIDAY)));               // 2017-06-09
+		print(today.with(TemporalAdjusters.dayOfWeekInMonth(4, DayOfWeek.FRIDAY)));      // 2017-06-23
+
+    }
+
+	public static void print(Object obj){
+		System.out.println(obj);
+	}
+}
+
+class DayAddFive implements TemporalAdjuster {
+    @Override
+    public Temporal adjustInto(Temporal temporal){
+        return temporal.plus(5, ChronoUnit.DAYS);
+    }
+}
+{% endhighlight %}
+<br>
+<br>
+<br>
+
+&#149;&nbsp; 참고 서적: 자바의 정석 3판 2

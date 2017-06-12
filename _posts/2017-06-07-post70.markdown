@@ -243,4 +243,13 @@ System.out.println(date1.isBefore(date2));      // false
 <br>
 <br>
 <br>
+
+<div><strong>toEpochDay()</strong></div><p></p>
+<div>Epoch Day인 '1970-01-01'부터 날짜/시간을 세어서 반환한다.</div>
+<div>Period/Duration을 대신하여 두 날짜간의 일수 또는 시간 차이를 계산할 수 있다.</div>
+<div>단, 날짜는 두 날짜 모두 Epoch Day 이후의 것이어야 한다.</div>
+
+<br>
+<br>
+<br>
 &#149;&nbsp; 참고 서적: 자바의 정석 3판 2
