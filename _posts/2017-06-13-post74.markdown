@@ -1,0 +1,176 @@
+---
+layout: post
+title:  "Period"
+date:   2017-06-13 12:00:00 +0900
+author: 민갤
+description: package java.time 05 - Period
+keywords : android,java,androidstudio,method,선언,class,요소,언어,자바의 정석,프로그래밍,package java.time,Period,Duration
+image : /img/java.png
+category : java
+---
+<div><span class="red">Android Studio에서는 사용할 수 없어서 EditPlus로 실행하였습니다.</span></div>
+<br>
+
+<div><strong class="h2">package java.time</strong></div><p></p>
+<div>Date와 Calendar가 가지고 있던 단점들을 개선한 패키지.</div>
+<div>4개의 하위 패키지를 가지고 있다.</div>
+<div>날짜나 시간을 변경하는 메서드들은 항상 변경된 새로운 객체를 반환한다. = 불변Immutable</div>
+<br>
+<br>
+<br>
+<br>
+
+<div><strong class="h2">Period</strong></div><p></p>
+<div>날짜의 차이를 계산한다.</div>
+<div>년월일을 구분해서 저장한다.</div>
+<br>
+<br>
+
+<div><strong>between()</strong></div><p></p>
+<div>두 날짜의 차이를 계산한다.</div>
+<div>start 날짜가 end 날짜 상으로 이전이면 양수로, 이후면 음수로 Period에 저장된다.</div>
+{% highlight java %}
+static Period between(LocalDate startDateInclusive, LocalDate endDateExclusive)
+{% endhighlight %}
+{% highlight java %}
+LocalDate date1 = LocalDate.now();               // 2017-06-09
+LocalDate date2 = LocalDate.of(2018, 11, 17);
+
+Period pe = Period.between(date1, date2);        // P1Y5M8D
+{% endhighlight %}
+<br>
+<br>
+
+<div><strong>until()</strong></div><p></p>
+<div>between()과 거의 같은 일을 한다.</div>
+<div>D-day를 구하려는 경우 between()보다 이 메서드를 사용하는 것이 낫다.</div>
+{% highlight java %}
+Period until(ChronoLocalDate endDateExclusive)             // LocalDate Method
+long until(Temporal endExclusive, TemporalUnit unit)       // LocalDate/LocalTime Method
+{% endhighlight %}
+{% highlight java %}
+Period pe = date1.until(date2);                       // P1Y5M8D
+long Dday = date1.until(date2, ChronoUnit.DAYS);      // 526
+{% endhighlight %}
+<br>
+<br>
+
+<div><strong>get()</strong></div><p></p>
+<div>특정 필드의 값을 얻는다.</div>
+{% highlight java %}
+long year = pe.get(ChronoUnit.YEARS);            // 1
+long month = pe.get(ChronoUnit.MONTHS);          // 5
+long day = pe.get(ChronoUnit.DAYS);              // 8
+{% endhighlight %}
+<br>
+<br>
+
+<div><strong>getXXX()</strong></div><p></p>
+<div>&#149;&nbsp; getUnits()</div>
+<div>&nbsp; &nbsp; Period가 get()에 사용할 수 있는 ChronoUnit의 종류를 알려준다.</div>
+{% highlight java %}
+List<TemporalUnit> getUnits()          // [Years, Months, Days]
+{% endhighlight %}
+{% highlight java %}
+int getDays()
+int getMonths()
+int getYears()
+{% endhighlight %}
+<br>
+<br>
+
+<div><strong>static Period of()</strong></div><p></p>
+<div>지정된 값으로 Period 객체를 생성한다.</div>
+{% highlight java %}
+static Period of(int years, int months, int days)
+static Period ofDays(int days)
+static Period ofMonths(int months)
+static Period ofWeeks(int weeks)
+static Period ofYears(int years)
+{% endhighlight %}
+<br>
+<br>
+
+<div><strong>Period with()</strong></div><p></p>
+<div>특정 필드의 값을 변경한다.</div>
+{% highlight java %}
+Period withDays(int days)
+Period withMonths(int months)
+Period withYears(int years)
+{% endhighlight %}
+<br>
+<br>
+
+<div><strong>사칙연산</strong></div><p></p>
+<div>&#149;&nbsp; plus() / minus()</div>
+<div>&nbsp; &nbsp; 다음은 plus 메서드로, minus 메서드는 plus를 minus로 바꾸기만 하면 된다.</div><p></p>
+{% highlight java %}
+Period plus(TemporalAmount amountToAdd)
+Period plusDays(long daysToAdd)
+Period plusMonths(long monthsToAdd)
+Period plusYears(long yearsToAdd)
+{% endhighlight %}<p></p>
+<div>&#149;&nbsp; 곱셈</div>
+{% highlight java %}
+Period multipliedBy(int scalar)
+{% endhighlight %}<p></p>
+<div>&#149;&nbsp; 나눗셈</div>
+<div>&nbsp; &nbsp; Period는 날짜의 기간을 표현하기 위한 것으로, 나눗셈을 위한 메서드가 없다.</div>
+{% highlight java %}
+pe = pe.minusYears(1).multipliedBy(2);      // P10M16D
+{% endhighlight %}
+<br>
+<br>
+
+<div><strong>boolean isNegative()</strong></div><p></p>
+<div>음수인지 확인하는 메서드</div>
+{% highlight java %}
+boolean b = pe.isNegative();      // false
+{% endhighlight %}
+<br>
+<br>
+
+<div><strong>boolean isZero()</strong></div><p></p>
+<div>0인지 확인하는 메서드</div>
+{% highlight java %}
+boolean b = pe.isZero();         // false
+{% endhighlight %}
+<br>
+<br>
+
+<div><strong>Period negated()</strong></div><p></p>
+<div>부호를 반대로 변경하는 메서드</div>
+{% highlight java %}
+boolean b = pe.negated().isNegative();      // true
+{% endhighlight %}
+<br>
+<br>
+
+<div><strong>Period normalized()</strong></div><p></p>
+<div>월(month)의 값이 12를 넘지 않게 한다.</div>
+<div>일(day)의 길이는 일정하지 않아 그대로 놔둔다.</div>
+{% highlight java %}
+pe = Period.of(1, 13, 32).normalized();     // 1년 13개월 32일 → 2년 1개월 32일
+{% endhighlight %}
+<br>
+<br>
+
+<div><strong>long toTotalMonths()</strong></div><p></p>
+<div>년월일을 월 단위로 변환해서 반환한다.</div>
+<div>일 단위는 무시한다.</div>
+<br>
+<br>
+
+<div><strong>LocalDate의 toEpochDay()</strong></div><p></p>
+<div>Epoch Day인 '1970-01-01'부터 날짜를 세어서 반환한다.</div>
+<div>Period를 대신하여 두 날짜간의 일수를 계산할 수 있다.</div>
+<div>단, 두 날짜 모두 Epoch Day 이후의 것이어야 한다.</div>
+{% highlight java %}
+long i = date2.toEpochDay() - date1.toEpochDay();     // 526
+{% endhighlight %}
+
+<br>
+<br>
+<br>
+
+&#149;&nbsp; 참고 서적: 자바의 정석 3판 2
