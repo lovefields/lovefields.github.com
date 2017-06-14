@@ -72,6 +72,7 @@ LocalTime time = LocalTime.parse("17:41:30");         // 17:41:30
 <div>&#149;&nbsp; LocalDate</div>
 
 |메서드|설명|2017-06-07|
+|::-|::-|::-|
 |int getYear()|년도|2017|
 |int getMonthValue()|월|6|
 |Month getMonth()|월|JUNE. getMonth().getValue()=6|
@@ -86,6 +87,7 @@ LocalTime time = LocalTime.parse("17:41:30");         // 17:41:30
 <div>&#149;&nbsp; LocalTime</div>
 
 |메서드|설명|2017-06-07 10:51:37|
+|::-|::-|::-|
 |int getHour()|시|10|
 |int getMinute()|분|51|
 |int getSecond()|초|37|
@@ -102,6 +104,7 @@ LocalTime time = LocalTime.parse("17:41:30");         // 17:41:30
 <div>&#149;&nbsp; LocalDate - int get(TemporalField field)</div>
 
 |TemporalField(ChronoField)|설명|2017-06-07|
+|::-|::-|::-|
 |ERA|시대|1|
 |YEAR_OF_ERA|년|2017|
 |YEAR|년|2017|
@@ -124,6 +127,7 @@ LocalTime time = LocalTime.parse("17:41:30");         // 17:41:30
 <div>&#149;&nbsp; LocalTime - int get(TemporalField field)</div>
 
 |TemporalField(ChronoField)|설명|10:51:37|
+|::-|::-|::-|
 |AMPM_OF_DAY|오전/오후|0|
 |HOUR_OF_DAY|시간(0~23)|10|
 |CLOCK_HOUR_OF_DAY|시간(1~24)|10|
@@ -143,6 +147,7 @@ LocalTime time = LocalTime.parse("17:41:30");         // 17:41:30
 <div>&#149;&nbsp; LocalTime - long getLong(TemporalField field)</div>
 
 |TemporalField(ChronoField)|설명|10:51:37|
+|::-|::-|::-|
 |MICRO_OF_SECOND|백만 분의 일초|404000|
 |NANO_OF_SECOND|10억분의 일초|404000000|
 |MICRO_OF_DAY|그 날의 몇 번째 마이크로초(=10-6초)|39094404000|

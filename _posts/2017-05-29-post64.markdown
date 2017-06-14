@@ -44,7 +44,7 @@ String toString()
 String toString(int radix)
 {% endhighlight %}<p></p>
 
-<div>&#149;&nbsp; byte 배열로 변환<div>
+<div>&#149;&nbsp; byte 배열로 변환</div>
 {% highlight java %}
 byte[] toByteArray()
 {% endhighlight %}<p></p>
@@ -82,12 +82,16 @@ BigInteger remainder(BigInteger val)   // this % val
 
 <div><strong>비트 연산 메서드</strong></div><p></p>
 <div>큰 숫자를 다루기 때문에 성능을 향상시키기 위해 비트단위로 연산을 수행하는 메서드들이 많다.</div>
-<div>&#149;&nbsp; int bitCount() : 2진수로 표현했을 때, 1의 개수(음수는 0의 개수)를 반환</div>
-<div>&#149;&nbsp; int bitLength() : 2진수로 표현했을 때, 값을 표현하는 데 필요한 bit수</div>
-<div>&#149;&nbsp; boolean testBit(int n) : 우측에서 n+1번째 비트가 1이면 true, 0이면 false</div>
-<div>&#149;&nbsp; BigInteger setBit(int n) : 우측에서 n+1번째 비트를 1로 변경</div>
-<div>&#149;&nbsp; BitInteger clearBit(int n): 우측에서 n+1번째 비트를 0으로 변경</div>
-<div>&#149;&nbsp; BigInteger flipBit(int n) : 우측에서 n+1번째 비트를 전환(1→0, 0→1)</div>
+
+|반환타입|이름|설명|
+|::-|::-|::-|
+|int|bitCount()|2진수로 표현했을 때, 1의 개수(음수는 0의 개수)를 반환|
+|int|bitLength()|2진수로 표현했을 때, 값을 표현하는 데 필요한 bit수|
+|boolean|testBit(int n)|우측에서 n+1번째 비트가 1이면 true, 0이면 false|
+|BigInteger|setBit(int n)|우측에서 n+1번째 비트를 1로 변경|
+|BitInteger|clearBit(int n)|우측에서 n+1번째 비트를 0으로 변경|
+|BigInteger|flipBit(int n)|우측에서 n+1번째 비트를 전환(1→0, 0→1)|
+
 <div>n의 값은 0부터 시작하므로, 우측에서 첫 번째 비트는 n이 0이다.</div>
 <br>
 <br>
@@ -101,7 +105,7 @@ BigInteger remainder(BigInteger val)   // this % val
 
 <div><strong>정수 x 10-scale</strong></div><p></p>
 <div>scale은 0부터 Integer.MAX_VALUE사이의 범위에 있는 값.</div>
-<div>정수를 저장하는 데 BitInteger를 사용한다.<div>
+<div>정수를 저장하는 데 BitInteger를 사용한다.</div>
 <div>따라서 BigDecimal도 불변이다.</div>
 {% highlight java %}
 private final BigInteger intVal;       // 정수Unscaled Value
@@ -192,14 +196,18 @@ BigDecimal divide(BigDecimal divisor, MathContext mc)
 {% endhighlight %}<p></p>
 <div>roundingMode :&nbsp; 반올림 처리 방법에 대한 것. BigDecimal에 정의된 'ROUND_'로 시작하는 상수들 중 하나를 사용한다.</div>
 <div>RoundingMode :&nbsp; roundingMode를 열거형으로 정의한 것. 나중에 추가된 것으로, 가능하면 이것을 사용한다.</div>
-<div>&#149;&nbsp; CEILING :&nbsp; 올림</div>
-<div>&#149;&nbsp; FLOOR :&nbsp; 내림</div>
-<div>&#149;&nbsp; UP :&nbsp; 양수일 때는 올림, 음수일 때는 내림</div>
-<div>&#149;&nbsp; DOWN :&nbsp; 양수일 때는 내림, 음수일 때는 올림</div>
-<div>&#149;&nbsp; HALF_UP :&nbsp; 반올림 (5이상올림, 5미만 버림)</div>
-<div>&#149;&nbsp; HALF_EVEN :&nbsp; 반올림 (반올림 자리의 값이 짝수면 HALF_DOWN, 홀수면 HALF_UP)</div>
-<div>&#149;&nbsp; HALF_DOWN :&nbsp; 반올림 (6이상 올림, 6미만 버림)</div>
-<div>&#149;&nbsp; UNNECESSARY :&nbsp; 나눗셈의 결과가 딱 떨어지는 수가 아니면, ArithmeticException 발생</div>
+
+|RoundingMode|설명|
+|::-|::-|
+|CEILING|올림|
+|FLOOR|내림|
+|UP|양수일 때는 올림, 음수일 때는 내림|
+|DOWN|양수일 때는 내림, 음수일 때는 올림|
+|HALF_UP|반올림 (5이상올림, 5미만 버림)|
+|HALF_EVEN|반올림 (반올림 자리의 값이 짝수면 HALF_DOWN, 홀수면 HALF_UP)|
+|HALF_DOWN|반올림 (6이상 올림, 6미만 버림)|
+|UNNECESSARY|나눗셈의 결과가 딱 떨어지는 수가 아니면, ArithmeticException 발생|
+
 <div>divide()로 나눗셈한 결과가 무한소수인 경우, 반올림 모드를 지정해주지 않으면 ArithmeticException이 발생한다.</div>
 <br>
 <br>

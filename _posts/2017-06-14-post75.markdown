@@ -1,0 +1,192 @@
+---
+layout: post
+title:  "Duration"
+date:   2017-06-14 12:00:00 +0900
+author: 민갤
+description: package java.time 06 - Duration
+keywords : android,java,androidstudio,method,선언,class,요소,언어,자바의 정석,프로그래밍,package java.time,Period,Duration
+image : /img/java.png
+category : java
+---
+<div><span class="red">Android Studio에서는 사용할 수 없어서 EditPlus로 실행하였습니다.</span></div>
+<br>
+
+<div><strong class="h2">package java.time</strong></div><p></p>
+<div>Date와 Calendar가 가지고 있던 단점들을 개선한 패키지.</div>
+<div>4개의 하위 패키지를 가지고 있다.</div>
+<div>날짜나 시간을 변경하는 메서드들은 항상 변경된 새로운 객체를 반환한다. = 불변Immutable</div>
+<br>
+<br>
+<br>
+<br>
+
+<div><strong class="h2">Duration</strong></div><p></p>
+<div>시간의 차이를 계산한다.</div>
+<br>
+<br>
+
+<div><strong>between()</strong></div><p></p>
+<div>두 시간의 차이를 계산한다.</div>
+<div>start 날짜가 end 날짜 상으로 이전이면 양수로, 이후면 음수로 Duration에 저장된다.</div>
+{% highlight java %}
+static Duration between(Temporal startInclusive, Temporal endExclusive)
+{% endhighlight %}
+{% highlight java %}
+LocalTime time1 = LocalTime.now();               // 11:30
+LocalTime time2 = LocalTime.of(17, 11, 17);
+
+Duration du = Duration.between(time1, time2);    // PT5H41M9.916S
+{% endhighlight %}
+<br>
+<br>
+
+<div><strong>get()</strong></div><p></p>
+<div>특정 필드의 값을 얻는다.</div>
+{% highlight java %}
+long get(TemporalUnit unit)
+{% endhighlight %}
+{% highlight java %}
+long sec = du.get(ChronoUnit.SECONDS);           // 20399
+int nano = du.get(ChronoUnit.NANOS);             // 561000000
+{% endhighlight %}
+<br>
+<br>
+
+<div><strong>getXXX()</strong></div><p></p>
+<div>&#149;&nbsp; getUnits()</div>
+<div>&nbsp; &nbsp; Duration이 get()에 사용할 수 있는 ChronoUnit의 종류를 알려준다.</div>
+{% highlight java %}
+List<TemporalUnit> getUnits()          // [Seconds, Nanos]
+{% endhighlight %}<p></p>
+<div>&#149;&nbsp; 불편하고 불안전한 계산</div>
+<div>&nbsp; &nbsp; 사용할 수 있는 메서드가 적다 보니 시간 계산이 복잡하다.</div>
+{% highlight java %}
+int getNano()
+long getSeconds()
+{% endhighlight %}
+{% highlight java %}
+long hour = du.getSeconds() / 3600;
+long min = (du.getSEconds() - hour * 3600) / 60;
+long sec = (du.getSEconds() - hour * 3600 - min * 60) % 60;
+int nano = du.getNano();
+{% endhighlight %}<p></p>
+<div>&nbsp; &nbsp; 좀더 안전하고 간단한 방법이 필요할 땐 LocalTime으로 변환하여 사용한다.</div>
+{% highlight java %}
+LocalTime time = LocalTime.of(0,0).plusSeconds(du.getSeconds());
+
+long hour = time.getHour();
+long min =  time.getMinute();
+long sec =  time.getSecond();
+int nano = du.getNano();
+{% endhighlight %}
+<br>
+<br>
+
+<div><strong>of()</strong></div><p></p>
+<div>지정된 값으로 Duration 객체를 생성한다.</div>
+{% highlight java %}
+static Duration of(long amount, TemporalUnit unit)
+static Duration ofDays(long days)
+static Duration ofHours(long hours)
+static Duration ofMillis(long millis)
+static Duration ofMinutes(long minutes)
+static Duration ofNanos(long nanos)
+static Duration ofSeconds(long seconds, long nanoAdjustment)
+static Duration ofSeconds(long seconds)
+{% endhighlight %}
+<br>
+<br>
+
+<div><strong>with()</strong></div><p></p>
+<div>특정 필드의 값을 변경한다.</div>
+{% highlight java %}
+Duration withNanos(int nanoOfSecond)
+Duration withSeconds(long seconds)
+{% endhighlight %}
+<br>
+<br>
+
+<div><strong>사칙연산</strong></div><p></p>
+<div>&#149;&nbsp; plus() / minus()</div>
+<div>&nbsp; &nbsp; 다음은 plus 메서드로, minus 메서드는 plus를 minus로 바꾸기만 하면 된다.</div>
+{% highlight java %}
+Duration plus(Duration duration)
+Duration plus(long amountToAdd, TemporalUnit unit)
+Duration plusDays(long daysToAdd)
+Duration plusHours(long hoursToAdd)
+Duration plusMillis(long millisToAdd)
+Duration plusMinutes(long minutesToAdd)
+Duration plusNanos(long nanosToAdd)
+Duration plusSeconds(long secondsToAdd)
+{% endhighlight %}<p></p>
+<div>&#149;&nbsp; 곱셈</div>
+{% highlight java %}
+Duration multipliedBy(long multiplicand)
+{% endhighlight %}<p></p>
+<div>&#149;&nbsp; 나눗셈</div>
+{% highlight java %}
+Duration dividedBy(long divisor)
+{% endhighlight %}
+{% highlight java %}
+du = du.plusHours(1).dividedBy(60);         // PT5M54.900283333S
+{% endhighlight %}
+<br>
+<br>
+
+<div><strong>boolean isNegative()</strong></div><p></p>
+<div>음수인지 확인하는 메서드</div>
+{% highlight java %}
+boolean b = du.isNegative();      // false
+{% endhighlight %}
+<br>
+<br>
+
+<div><strong>boolean isZero()</strong></div><p></p>
+<div>0인지 확인하는 메서드</div>
+{% highlight java %}
+boolean b = du.isZero();          // false
+{% endhighlight %}
+<br>
+<br>
+
+<div><strong>Duration negated()</strong></div><p></p>
+<div>부호를 반대로 변경하는 메서드</div>
+{% highlight java %}
+boolean b = du.negated().isNegative();      // true
+{% endhighlight %}
+<br>
+<br>
+
+<div><strong>Duration abs()</strong></div><p></p>
+<div>부호를 없애는 메서드</div>
+{% highlight java %}
+du = du.abs();
+{% endhighlight %}
+<br>
+<br>
+
+<div><strong>toXXX()</strong></div><p></p>
+<div>특정 단위로 변환한 결과를 반환하는 메서드</div>
+<div>정수(long 타입)으로 반환하여 지정된 단위 이하의 값들은 버려진다.</div>
+
+|long toDays()|일 단위로 변환해서 반환|
+|long toHours()|시간 단위로 변환해서 반환|
+|long toMinutes()|분 단위로 변환해서 반환|
+|long toMillis()|천분의 일초 단위로 변환해서 반환|
+|long toNanos()|나노초 단위로 변환해서 반환|
+
+<br>
+<br>
+
+<div><strong>LocalTime의 toSecondOfDay(), toNanoOfDay()</strong></div><p></p>
+<div>Duration을 대신하여 시간 차이를 계산할 수 있다.</div>
+{% highlight java %}
+long i1 = time2.toSecondOfDay() - time1.toSecondOfDay();  // 1480
+long i2 = time2.toNanoOfDay() - time1.toNanoOfDay();  // 1479642000000
+{% endhighlight %}
+
+<br>
+<br>
+<br>
+
+&#149;&nbsp; 참고 서적: 자바의 정석 3판 2
