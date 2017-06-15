@@ -1,0 +1,207 @@
+---
+layout: post
+title:  "DateTimeFormatter"
+date:   2017-06-15 12:00:00 +0900
+author: 민갤
+description: package java.time 07 - DateTimeFormatter
+keywords : android,java,androidstudio,method,선언,class,요소,언어,자바의 정석,프로그래밍,package java.time,DateTimeFormatter,형식화,formatting
+image : /img/java.png
+category : java
+---
+<div><span class="red">Android Studio에서는 사용할 수 없어서 EditPlus로 실행하였습니다.</span></div>
+<br>
+
+<div><strong class="h2">package java.time</strong></div><p></p>
+<div>Date와 Calendar가 가지고 있던 단점들을 개선한 패키지.</div>
+<div>4개의 하위 패키지를 가지고 있다.</div>
+<div>날짜나 시간을 변경하는 메서드들은 항상 변경된 새로운 객체를 반환한다. = 불변Immutable</div>
+<br>
+<br>
+<br>
+<br>
+
+<div><strong class="h2">DateTimeFormatter</strong></div><p></p>
+<div>java.time.format 패키지의 형식화(formatting)와 관련된 클래스들 중 핵심인 클래스.</div>
+<div>자주 쓰이는 다양한 형식들을 정의하고 있다.</div>
+<div>그 외의 형식이 필요할 경우 직접 정의해서 사용할 수 있다.</div>
+
+<br>
+<br>
+
+<div><strong>format()</strong></div><p></p>
+<div>날짜와 시간의 형식화에 사용된다.</div>
+<div>DateTimeFormatter뿐 아니라 LocalDate나 LocalTime 같은 클래스에도 있다.</div>
+{% highlight java %}
+LocalDate date = LocalDate.now();
+System.out.println(DateTimeFormatter.ISO_LOCAL_DATE.format(date));   // 2017-06-12
+System.out.println(date.format(DateTimeFormatter.ISO_LOCAL_DATE));   // 2017-06-12
+{% endhighlight %}
+
+<br>
+<br>
+
+<div><strong>상수로 정의된 형식들</strong></div>
+
+|ISO_DATE_TIME|Date and time with Zoneld|
+|ISO_LOCAL_DATE|ISO Local Date|
+|ISO_LOCAL_TIME|time without offset|
+|ISO_LOCAL_DATE_TIME|ISO Local Date and Time|
+|ISO_OFFSET_DATE|ISO Date with Offset|
+|ISO_OFFSET_TIME|Time with offset|
+|ISO_OFFSET_DATE_TIME|Date Time with Offset|
+|ISO_ZONED_DATE_TIME|Zoned Date Time|
+|ISO_INSTANT|Date and Time of an Instant|
+|BASIC_ISO_DATE|Basic ISO date|
+|ISO_DATE|ISO Date with or without offset|
+|ISO_TIME|Time with of without offset|
+|ISO_ORDINAL_DATE|Year and day of year|
+|ISO_WEEK_DATE|Year and Week|
+|RFC_1123_DATE_TIME|RFC 1123 / RFC 822|
+
+{% highlight java %}
+LocalDate date = LocalDate.now();      
+LocalTime time = LocalTime.now(); 
+LocalDateTime dt = LocalDateTime.now();
+ZonedDateTime zdt = ZonedDateTime.now();
+OffsetDateTime odt = zdt.toOffsetDateTime();
+Instant in = Instant.now();
+
+print(dt.format(DateTimeFormatter.ISO_DATE_TIME));              // 2017-06-12T14:28:59. 147
+print(date.format(DateTimeFormatter.ISO_LOCAL_DATE));           // 2017-06-12
+print(time.format(DateTimeFormatter.ISO_LOCAL_TIME));           // 14:28:59. 147
+print(dt.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME));        // 2017-06-12T14:28:59. 147
+print(odt.format(DateTimeFormatter.ISO_OFFSET_DATE));           // 2017-06-12+09:00
+print(odt.format(DateTimeFormatter.ISO_OFFSET_TIME));           // 14:28:59. 147+09:00
+print(odt.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME));      // 2017-06-12T14:28:59. 147+09:00
+print(zdt.format(DateTimeFormatter.ISO_ZONED_DATE_TIME));       // 2017-06-12T14:28:59. 147+09:00[Asia/Seoul]
+print(zdt.format(DateTimeFormatter.ISO_INSTANT));               // 2017-06-12T05:28:59. 147Z
+print(date.format(DateTimeFormatter.BASIC_ISO_DATE));           // 20170612
+print(date.format(DateTimeFormatter.ISO_DATE));                 // 2017-06-12
+print(time.format(DateTimeFormatter.ISO_TIME));                 // 14:28:59. 147
+print(date.format(DateTimeFormatter.ISO_ORDINAL_DATE));         // 2017-163
+print(date.format(DateTimeFormatter.ISO_WEEK_DATE));            // 2017-W24-1
+print(odt.format(DateTimeFormatter.RFC_1123_DATE_TIME));        // Mon. 12 Jun 2017 14:28:59 +09:00
+
+public static void print(Object obj){ System.out.println(obj); }
+{% endhighlight %}
+
+<br>
+<br>
+
+<div><strong>Locale에 종속된 형식화</strong></div><p></p>
+<div>static 메서드인 ofLocalizedDate(), ofLocalizedTime(), ofLocalizedDateTime()은 로케일에 종속적인 포맷터를 생성한다.</div>
+{% highlight java %}
+DateTimeFormatter dtf = DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT);
+print(dtf.format(LocalDate.now()));    // 17. 6. 12
+{% endhighlight %}<p></p>
+
+<div>&#149;&nbsp; FormatStyle 종류에 따른 출력 형태</div>
+
+|FormatStyle|날짜|시간|
+|:-:|:-:|:-:|
+|FULL|2017년 6월 12일 월요일|N/A|
+|LONG|2017년 6월 12일 (월)|오후 3시 20분 30초|
+|MEDIUM|2017. 6. 12|오후 3:20:30|
+|SHORT|12. 6. 12|오후 3:20|
+
+<br>
+<br>
+
+<div><strong>ofPattern()</strong></div><p></p>
+<div>출력 형식을 직접 정의할 수 있다.</div>
+{% highlight java %}
+DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+{% endhighlight %}
+
+|G|연대 (BC, AD)|
+|y/Y|년도|
+|M/L|월 (1~12 또는 1월~12월)|
+|Q/q|분기(quarter)|
+|w|년의 몇 번째 주 (1~53)|
+|W|월의 몇 번째 주 (1~5)|
+|D|년의 몇 번째 일 (1~366)|
+|d|월의 몇 번째 일 (1~31)|
+|F|월의 몇 번째 요일 (1~5)|
+|E/e|요일|
+|a|오전/오후 (AM/PM)|
+|H|시간 (0~23)|
+|h|시간 (1~12)|
+|k|시간 (1~24)|
+|K|시간 (0~11)|
+|m|분 (0~59)|
+|s|초 (0~59)|
+|S|1/1000초 (0~999)|
+|A|1/1000초 (그 날의 0시 0분 0초 부터의 시간)|
+|n|나노초 (0~999999999)|
+|N|나노초 (그 날의 0시 0분 0초 부터의 시간)|
+|V|시간대 ID(VV)|
+|z|시간대(Time zone) 이름|
+|O|지역화된 zone-offset|
+|Z|zone-offset|
+|X/x|zone-offset(Z는 +00:00를 의미)|
+|'|escape 문자 (특수문자를 표현하는 데 사용)|
+
+{% highlight java %}
+String[] pattern = {"G",     // 서기
+                    "y",     // 2017
+                    "M",     // 6
+                    "q",     // 2
+                    "w",     // 24
+                    "W",     // 3
+                    "D",     // 163
+                    "d",     // 12
+                    "F",     // 5
+	            "e",     // 2
+                    "a",     // 오후
+                    "H",     // 15
+                    "h",     // 3
+                    "k",     // 15
+                    "K",     // 3
+                    "m",     // 53
+                    "s",     // 4
+                    "S",     // 5
+                    "A",     // 57184516
+                    "n",     // 516000000
+                    "N",     // 57185416000000
+                    "z",     // KST
+                    "O",     // GMT+9
+                    "Z",     // +0900
+                    "x" };   // +09
+
+
+for(int i =0; i<pattern.length; i++){
+	DateTimeFormatter dtf = DateTimeFormatter.ofPattern(pattern[i]);
+	System.out.println(zdt.format(dtf));
+}
+{% endhighlight %}
+
+<br>
+<br>
+
+<div><strong>parse()</strong></div><p></p>
+<div>문자열을 날짜/시간으로 파싱(parsing. 해석)한다.</div>
+{% highlight java %}
+static LocalDateTime parse(CharSequence text);
+static LocalDateTime parse(CharSequence text, DateTimeFormatter formatter);
+{% endhighlight %}<p></p>
+<div>&#149;&nbsp; DateTimeFormatter에 상수로 정의된 형식을 사용할 때</div>
+{% highlight java %}
+LocalDate date = LocalDate.parse("2017-06-06", DateTimeFormatter.ISO_LOCAL_DATE);
+{% endhighlight %}<p></p>
+<div>&#149;&nbsp; 자주 사용되는 기본적인 형식의 문자열을 파싱할 경우</div>
+<div>&nbsp; &nbsp; ISO_LOCAL_DATE와 같은 형식화 상수를 사용하지 않고도 파싱할 수 있다.</div>
+{% highlight java %}
+LocalDate date = LocalDate.parse("2017-11-17");
+LocalTime time = LocalTime.parse("17:11:17");
+LocalDateTime dt = LocalDateTime.parse("2017-11-17T12:34:56");
+{% endhighlight %}<p></p>
+<div>&#149;&nbsp; ofPattern()을 이용하여 파싱</div>
+{% highlight java %}
+DateTimeFormatter pattern = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+LocalDateTime day = LocalDateTime.parse("2015-11-17 21:59:58", pattern);
+{% endhighlight %}
+<br>
+<br>
+<br>
+
+&#149;&nbsp; 참고 서적: 자바의 정석 3판 2
