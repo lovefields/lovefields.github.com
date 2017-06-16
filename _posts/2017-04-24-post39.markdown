@@ -9,16 +9,25 @@ image : /img/java.png
 category : java
 ---
 
-<div><strong class="h2">배열 array</strong></div>
+<div><strong class="h2">배열 array</strong></div><p></p>
 
-<div><span class="red">같은 타입</span>의 여러 변수를 하나의 묶음으로 다루는 것</div>
+<div><span class="red">같은 타입</span>의 여러 변수를 하나의 묶음으로 다루는 것.</div>
+<div>가장 기본적인 형태의 자료구조.</div><p></p>
+
+<div>&#149;&nbsp; 장점</div>
+<div>&nbsp; &nbsp; 구조가 간단하며 사용하기 쉬움</div>
+<div>&nbsp; &nbsp; 접근시간(데이터를 읽어오는데 걸리는 시간)이 가장 빠름.</div><p></p>
+<div>&#149;&nbsp; 단점</div>
+<div>&nbsp; &nbsp; 크기 변경 불가 -&nbsp; 새로운 배열을 생성하여 데이터를 복사하는 작업 필요. 충분히 큰 크기로 만들어둘 경우 메모리 낭비.</div>
+<div>&nbsp; &nbsp; 비순차적인 데이터의 추가/삭제에 시간이 많이 걸림 -&nbsp; 중간에 데이터를 추가/삭제할 경우 빈자리를 만들기 위해 다른 데이터들을 복사해서 이동해야 함.</div>
+
 <br>		
 <br>
 
-<div><strong>선언</strong></div>
+<div><strong>선언</strong></div><p></p>
 
 <div>타입<span class="red">[]</span> 변수이름;</div>
-<div>타입 변수이름<span class="red">[]</span>;</div>
+<div>타입 변수이름<span class="red">[]</span>;</div><p></p>
 					     
 <div>타입 또는 변수이름 뒤에 배열임을 의미하는 대괄호[]를 붙인다.</div>
 <div>배열의 저장공간을 가리키는 참조변수를 선언한다. = 참조변수를 위한 공간을 만든다.</div>
@@ -29,20 +38,20 @@ int array[];
 <br>	     
 <br>
   
-<div><strong>생성</strong></div>
+<div><strong>생성</strong></div><p></p>
 
 <div>&#149;&nbsp; 선언과 동시에 생성 </div>
-<div>&nbsp; &nbsp; <span class="blue">타입</span>[] 변수이름 = new <span class="blue">타입</span>[<span class="red">길이</span>];</div>
+<div>&nbsp; &nbsp; <span class="blue">타입</span>[] 변수이름 = new <span class="blue">타입</span>[<span class="red">길이</span>];</div><p></p>
 
 <div>&#149;&nbsp; 선언 후 생성</div>
 <div>&nbsp; &nbsp; <span class="blue">타입</span>[] 변수이름;</div>
-<div>&nbsp; &nbsp; 변수이름 = new <span class="blue">타입</span>[<span class="red">길이</span>];</div>
+<div>&nbsp; &nbsp; 변수이름 = new <span class="blue">타입</span>[<span class="red">길이</span>];</div><p></p>
 
 <div>new 연산자와 함께 배열의 타입과 길이를 지정한다.</div>
 <div>배열을 생성해야만 비로소 값을 저장할 수 있는 공간들이 만들어진다.</div>
 	
 <div>생성된 배열의 각 저장공간을 배열의 요소(element)라 칭하며, '배열이름[index]'의 형식으로 접근한다.</div>
-<div>각 배열의 요소는 자동적으로 타입의 기본값으로 초기화된다.</div>
+<div>각 배열의 요소는 자동적으로 타입의 기본값으로 초기화된다.</div><p></p>
 
 <div>&#149;&nbsp; 배열 선언. 배열 생성 전 ex) int</div> 
 
@@ -64,14 +73,14 @@ int array[];
 <br>	    
 <br>
 
-<div><strong>Index</strong></div>
+<div><strong>Index</strong></div><p></p>
 
 <div>배열의 요소마다 붙여진 일련번호(범위: <span class="blue">0 ~ 배열길이-1</span>).</div>
 <div>각 요소를 구별한다.</div>
 <div>상수 대신 변수나 수식을 사용할 수 있다.</div>
 <div>대괄호 안에 수식이 포함된 경우 수식을 먼저 계산한 후 요소를 찾는다.</div>
 
-<div><span class="red">주의!</span> index의 범위를 벗어난 값을 사용해선 안된다.</div>
+<div><span class="red">!!</span> index의 범위를 벗어난 값을 사용해선 안된다.</div>
 <div>변수의 값은 실행 시에 대입되므로 컴파일러는 이 값이 index의 유효 범위 안에 있는 지 확인할 수 없다.</div>
 <div>유효하지 않은 값을 사용할 경우 실행 시 에러가 발생한다.</div>    
 {% highlight java %}
@@ -89,12 +98,12 @@ int temp = arr[i+2];
 <br>		 
 <br>
 
-<div><strong>길이</strong></div>
+<div><strong>길이</strong></div><p></p>
 
 <div>배열의 요소의 개수.</div>
 <div>값을 저장할 수 있는 공간의 개수.</div>
 <div>int 범위의 0을 포함한 양의 정수여야 한다.</div>
-<div>배열은 한번 생성하면 길이를 변경할 수 없다.</div>
+<div>배열은 한번 생성하면 길이를 변경할 수 없다.</div><p></p>
 
 <div>&#149;&nbsp; 배열이름.length</div>
 <div>&nbsp; &nbsp; 배열이 가진 공간의 개수(상수)를 반환한다.</div>
@@ -117,7 +126,7 @@ for(int i=0; i<arr.length; i++){
 <br>			 
 <br>
 
-<div><strong>초기화</strong></div>
+<div><strong>초기화</strong></div><p></p>
 
 <div>배열은 생성과 동시에 자동적으로 자신의 타입에 맞는 기본값으로 초기화된다.</div>
 <div>만일 원하는 값으로 저장하려면 각 요소마다 값을 지정해야 한다.</div>
@@ -189,7 +198,7 @@ System.out.println(Arrays.toString(arr));  // [1, 2, 3]
 <br>
 <br>
 
-<div><strong>복사</strong></div>
+<div><strong>복사</strong></div><p></p>
 
 <div>&#149;&nbsp; for문 이용.</div>
 <div>&nbsp; &nbsp; 기본 배열보다 큰 배열을 만들어서 그 안에 기존 배열의 모든 요소에 저장된 값을 하나씩 복사한다.</div>
@@ -238,7 +247,7 @@ System.out.println(Arrays.toString(temp));  // [6, 6, 6, 1, 2, 3]
 <br>
 <br>
 
-<div><strong>String 배열</strong></div>
+<div><strong>String 배열</strong></div><p></p>
 
 <div>참조형 배열의 경우 배열에 저장되는 것은 객체의 주소다.</div>
 
