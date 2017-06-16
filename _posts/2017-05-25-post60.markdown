@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "래퍼 클래스"
+title:  "Wrapper 클래스"
 date:   2017-05-25 12:00:00 +0900
 author: 민갤
 description: java.lang 패키지 - 래퍼 클래스
@@ -14,7 +14,7 @@ category : java
 <br>
 <br>
 
-<div><strong class="h2">래퍼(wrapper) 클래스</strong></div>
+<div><strong class="h2">Wrapper 클래스</strong></div>
 <div>8개의 기본형을 대표하는 8개의 래퍼 클래스.</div>
 <div>기본형 값을 객체로 다룰 수 있다.</div>
 <div>생성자의 매개변수로 문자열을 제공할 때, 각 자료형에 알맞은 문자열을 사용해야 한다.</div>

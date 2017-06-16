@@ -109,7 +109,7 @@ category : java
 <br>
 
 <div><strong>interface Set</strong></div><p></p>
-<div>저장 순서 유지 않함.</div>
+<div>저장 순서 유지 안 함.</div>
 <div>중복 불가능.</div>
 <div>구현클래스 :&nbsp; HashSet, SortedSet ← TreeSet.</div>
 
