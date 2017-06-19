@@ -1,0 +1,184 @@
+---
+layout: post
+title:  "ArrayList"
+date:   2017-06-19 12:00:00 +0900
+author: 민갤
+description: Collection Framework 02 - ArrayList 01
+keywords : android,java,androidstudio,method,선언,class,요소,언어,자바의 정석,프로그래밍,Collection,Framework,ArrayList
+image : /img/java.png
+category : java
+---
+<div><strong class="h2">Collection Framework</strong></div><p></p>
+<div>데이터 군을 저장하는 클래스들을 표준화한 설계</div>
+<div>컬렉션 Collection :&nbsp; 다수의 데이터. 데이터 그룹</div>
+<div>프레임웍 Framework :&nbsp; 표준화된 프로그래밍 방식.</div>
+
+<br>
+<br>
+<br>
+<br>
+
+<div><strong class="h2">ArrayList</strong></div><p></p>
+<div>List 인터페이스를 구현 → 저장된 순서를 유지한다.</div>
+<div>기존의 Vector를 개선 → Vector와는 구현원리와 기능적인 측면에서 동일하다.</div>
+<div>Object 배열을 이용하여 데이터를 순차적으로 저장 → 용량 변경 비효율적. 읽기, 저장하기 효율적.</div>
+<div>처음 인스턴스 생성 시, 저장할 데이터의 개수를 잘 고려하여 충분한 용량의 인스턴스를 생성한다.</div>
+<div>자동적으로 크기가 늘어나긴 하지만 그 과정에서 처리시간이 많이 소요된다.</div>
+{% highlight java %}
+public class ArrayList<E> extends AbstractList<E>
+        implements List<E>, RandomAccess, Cloneable, java.io.Serializable
+{
+    ...
+    transient Object[] elementData;
+    ...
+}
+{% endhighlight %}<p></p>
+<div>elementDate라는 이름의 Object 배열을 멤버변수로 선언. 모든 종류의 객체를 담을 수 있다.</div>
+
+<br>
+<br>
+
+<div><strong>Public constructors</strong></div><p></p>
+
+|생성자|설명|
+|::-|::-|
+|ArrayList(int initialCapacity)|지정된 초기용량을 갖는 ArrayList 생성|
+|ArrayList()|크기가 0인 ArrayList 생성|
+|ArrayList(Collection<? extends E> c)|주어진 컬렉션이 저장된 ArrayList 생성|
+
+<br>
+<br>
+
+<div><strong>Public methods</strong></div><p></p>
+
+|반환타입|이름|설명|
+|::-|::-|::-|
+|boolean|add(E e)|ArrayList의 마지막에 객체를 추가. 성공하면 true|
+|void|add(int index, E element)|지정된 위치에 객체 추가|
+|boolean|addAll(Collection<? extends E> c)|주어진 컬렉션의 모든 객체 추가|
+|boolean|addAll(int index, Collection<? extends E> c)|지정된 위치부터 주어진 컬렉션의 모든 객체 추가|
+|void|clear()|ArrayList를 완전히 비운다|
+|Object|clone()|ArrayList 복제|
+|boolean|contains(Object o)|지정된 객체가 ArrayList에 포함되어 있는 지 확인|
+|void|ensureCapacity(int minCapacity)|ArrayList의 용량이 최소한 minCapacity가 되도록 한다|
+|E|get(int index)|지정된 위치에 저장된 객체를 반환|
+|int|indexOf(Object o)|지정된 객체가 저장된 위치를 찾아 반환|
+|boolean|isEmpty()|ArrayList가 비어있는 지 확인|
+|Iterator<E>|iterator()|ArrayList의 Iterator 객체를 반환|
+|int|lastIndexOf(Object o)|객체가 저장된 위치를 끝부터 역방향으로 검색해서 반환|
+|ListIterator<E>|listIterator(int index)|ArrayList의 지정된 위치부터 시작하는 ListIterator를 반환|
+|ListIterator<E>|listIterator()|ArrayList의 ListIterator를 반환|
+|E|remove(int index)|지정된 위치에 있는 객체를 제거|
+|boolean|remove(Object o)|지정한 객체를 제거. 성공하면 true|
+|boolean|removeAll(Collection<?> c)|지정한 컬렉션에 저장된 것과 동일한 객체들을 제거|
+|boolean|removeIf(Predicate<? super E> filter)|지정된 조건과 일치하는 컬렉션의 모든 객체 제거|
+|E|set(int index, E element)|지정된 위치에 객체 저장|
+|int|size()|ArrayList에 저장된 객체의 개수를 반환|
+|void|sort(Comparator<? super E> c)|지정된 정렬기준으로 ArrayList 정렬|
+|List<E>|subList(int fromIndex, int toIndex)|fromIndex부터 toIndex 사이에 저장된 객체를 반환|
+|Object[]|toArray()|ArrayList에 저장된 모든 객체들을 객체배열로 반환|
+|<T> T[]|toArray(T[] a)|ArrayList에 저장된 모든 객체들을 객체배열 a에 담아 반환|
+|void|trimToSize()|용량을 크기에 맞게 줄인다. 빈 공간 제거|
+
+<br>
+<br>
+
+<div><strong>Example01 - 기본적인 메서드로 객체 다루기</strong></div>
+{% highlight java %}
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
+
+        ArrayList list1 = new ArrayList(10);
+        for (int i = 0; i < 5; i++) {
+            list1.add((int) (Math.random() * 10));
+        }
+
+        ArrayList list2 = new ArrayList(list1.subList(1, 4));
+        print(list1, list2);                                            // list1 : [8, 7, 6, 7, 4], list2 : [7, 6, 7]
+
+        Collections.sort(list1);
+        Collections.sort(list2);
+        print(list1, list2);                                            // list1 : [4, 6, 7, 7, 8], list2 : [6, 7, 7]
+
+        Log.d("TAG_TEST", list1.containsAll(list2) + "");               // true
+
+        list2.add("B");
+        list2.add("C");
+        list2.add(3, "add");
+        print(list1, list2);                                            // list1 : [4, 6, 7, 7, 8], list2 : [6, 7, 7, add, B, C]
+
+        list2.set(3, "set");
+        print(list1, list2);                                            // list1 : [4, 6, 7, 7, 8], list2 : [6, 7, 7, set, B, C]
+
+        Log.d("TAG_TESG", list1.retainAll(list2) + "");                 // true
+        print(list1, list2);                                            // list1 : [6, 7, 7]      , list2 : [6, 7, 7, set, B, C]
+
+    }
+
+    public void print(ArrayList list1, ArrayList list2) {
+        Log.d("TAG_TEST", "list1 : " + list1 + ", list2 : " + list2);
+    }
+}
+{% endhighlight %}<p></p>
+<div>add(int index, E element) :&nbsp; 객체 추가. 지정된 위치에서부터 기존 데이터들이 뒤로 밀려난다.</div>
+<div>set(int index, E element) :&nbsp; 객체 저장. 지정된 위치에 기존 데이터가 있으면 새로운 데이터로 바꿔 저장한다.</div>
+<div>Collections 클래스의 sort(List&lt;T&gt; list) :&nbsp; List에 저장된 객체들을 정렬한다.</div>
+
+<br>
+<br>
+
+<div><strong>Example02 - 공통요소 찾아서 삭제하기</strong></div><p></p>
+<div><span class="red">!!</span> 한 요소가 삭제될 때마다 빈 공간을 채우기 위해 나머지 요소들이 자리 이동을 한다.</div>
+{% highlight java %}
+for (int i = list2.size() - 1; i >= 0; i--) {
+    if (list1.contains(list2.get(i))) {
+        list2.remove(i);
+    }
+}
+// 전 - list1 : [6, 7, 7], list2 : [6, 7, 7, set, B, C]
+// 후 - list1 : [6, 7, 7], list2 : [set, B, C]
+{% endhighlight %}<p></p>
+<div>만일 제어변수를 증가시켜가면서 삭제하면, 한 요소가 삭제될 때마다 자리 변동이 일어나 올바른 결과를 얻을 수 없다.</div>
+<div>제어변수를 감소시켜가면서 삭제해야 자리이동이 발생해도 영향을 받지 않고 작업이 가능하다.</div>
+
+<br>
+<br>
+
+<div><strong>Example03 - 문자열 데이터를 원하는 길이로 잘라서 ArrayList에 담기</strong></div><p></p>
+<div>ArrayList의 크기는 실제 저장할 개수보다 약간 여유 있게 하는 것이 좋다.</div>
+{% highlight java %}
+final int LIMIT = 10;
+String source = "abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+int length = source.length();
+
+List list = new ArrayList(length / LIMIT + 10);
+
+for (int i = 0; i < length; i += LIMIT) {
+    if (i + LIMIT < length) {
+        list.add(source.substring(i, i + LIMIT));
+    } else {
+        list.add(source.substring(i));
+    }
+}
+for (int i = 0; i < list.size(); i++) {
+    Log.d("TAG_TEST", list.get(i) + "");
+}
+{% endhighlight %}
+{% highlight java %}
+D/TAG_TEST: abcdefghij
+D/TAG_TEST: klmnopqrst
+D/TAG_TEST: uvwxyz0123
+D/TAG_TEST: 456789ABCD
+D/TAG_TEST: EFGHIJKLMN
+D/TAG_TEST: OPQRSTUVWX
+D/TAG_TEST: YZ
+{% endhighlight %}<p></p>
+
+<br>
+<br>
+<br>
+
+&#149;&nbsp; 참고 서적: 자바의 정석 3판 2

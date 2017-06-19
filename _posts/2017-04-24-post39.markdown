@@ -12,7 +12,8 @@ category : java
 <div><strong class="h2">배열 array</strong></div><p></p>
 
 <div><span class="red">같은 타입</span>의 여러 변수를 하나의 묶음으로 다루는 것.</div>
-<div>가장 기본적인 형태의 자료구조.</div><p></p>
+<div>가장 기본적인 형태의 자료구조.</div>
+<div>모든 데이터가 연속적으로 존재한다.</div><p></p>
 
 <div>&#149;&nbsp; 장점</div>
 <div>&nbsp; &nbsp; 구조가 간단하며 사용하기 쉬움</div>
