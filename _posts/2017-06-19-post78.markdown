@@ -167,7 +167,7 @@ for (int i = 0; i < list.size(); i++) {
     Log.d("TAG_TEST", list.get(i) + "");
 }
 {% endhighlight %}
-{% highlight java %}
+{% highlight text %}
 D/TAG_TEST: abcdefghij
 D/TAG_TEST: klmnopqrst
 D/TAG_TEST: uvwxyz0123

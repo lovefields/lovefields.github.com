@@ -81,7 +81,7 @@ Object[] arguments = {"홍길동", "25", "11-17", "010-1111-2222"};
 
 Log.d("TAG_TEST", MessageFormat.format(msg, arguments));
 {% endhighlight %}
-{% highlight java %}
+{% highlight text %}
 D/TAG_TEST: Name: 홍길동 
             Age: 25 
             Birthday: 11-17 
@@ -99,7 +99,7 @@ for (int i = 0; i < arguments.length; i++) {
     Log.d("TAG_TEST", MessageFormat.format(msg, arguments[i]));
 }
 {% endhighlight %}
-{% highlight java %}
+{% highlight text %}
 D/TAG_TEST: '홍길동','11-17','25','010-1111-2222'
 D/TAG_TEST: '자바다','07-22','27','010-9999-4444'
 {% endhighlight %}<p></p>
