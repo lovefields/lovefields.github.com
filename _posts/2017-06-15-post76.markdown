@@ -8,7 +8,8 @@ keywords : android,java,androidstudio,method,선언,class,요소,언어,자바�
 image : /img/java.png
 category : java
 ---
-<div><span class="red">Android Studio에서는 사용할 수 없어서 EditPlus로 실행하였습니다.</span></div>
+<div><span class="red">Android는 일부 Java 8 언어 기능을 지원하지 않습니다.</span><div>
+<div><span class="red">이 글은 EditPlus로 실행하였습니다.</span></div>
 <br>
 
 <div><strong class="h2">package java.time</strong></div><p></p>
