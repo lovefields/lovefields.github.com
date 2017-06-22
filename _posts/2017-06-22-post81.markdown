@@ -1,0 +1,200 @@
+---
+layout: post
+title:  "Stack"
+date:   2017-06-22 12:00:00 +0900
+author: 민갤
+description: Collection Framework 04 - Stack
+keywords : android,java,androidstudio,method,선언,class,요소,언어,자바의 정석,프로그래밍,Collection,Framework,Stack,LIFO
+image : /img/java.png
+category : java
+---
+<div><strong class="h2">Collection Framework</strong></div><p></p>
+<div>데이터 군을 저장하는 클래스들을 표준화한 설계</div>
+<div>컬렉션 Collection :&nbsp; 다수의 데이터. 데이터 그룹</div>
+<div>프레임웍 Framework :&nbsp; 표준화된 프로그래밍 방식.</div>
+
+<br>
+<br>
+<br>
+<br>
+
+<div><strong class="h2">Stack</strong></div><p></p>
+<div>마지막에 저장한 데이터를 가장 먼저 꺼내는 LIFO(Last In First Out) 방식의 자료 구조. &nbsp;ex) 일반 독</div>
+<div>넣는 순서와 꺼내는 순서가 반대다.</div>
+<div>컬렉션 프레임웍 이전부터 존재했기 때문에 Vector로부터 상속받아 구현되었다.</div>
+<div>Java에서 Stack 클래스로 구현하여 제공하고 있다.</div>
+
+<br>
+<br>
+
+<div><strong>method</strong></div><p></p>
+
+|반환타입|이름|설명|
+|::-|::-|::-|
+|boolean|empty()|Stack이 비어있는 지 확인|
+|E|peek()|맨 위에 저장된 객체를 반환. 객체를 꺼내진 않음. 비어있으면 EmptyStackException 발생|
+|E|pop()|맨 위에 저장된 객체를 꺼낸다. 비어있으면 EmptyStackException 발생|
+|E|push(E item)|객체를 저장|
+|int|search(Object o)|주어진 객체를 찾아 그 위치(1~)를 반환. 못 찾으면 -1|
+
+<br>
+<br>
+
+<div><strong>실제 코드</strong></div><p></p>
+{% highlight java %}
+public class Stack<E> extends Vector<E> {
+    public Stack() {
+    }
+
+    public E push(E item) {
+        addElement(item);
+
+        return item;
+    }
+
+    public synchronized E pop() {
+        E       obj;
+        int     len = size();
+
+        obj = peek();
+        removeElementAt(len - 1);                // 마지막 요소 삭제. 배열의 index가 0부터 시작하므로 1을 뺀다.
+
+        return obj;
+    }
+
+    public synchronized E peek() {
+        int     len = size();
+
+        if (len == 0)
+            throw new EmptyStackException(); 
+        return elementAt(len - 1);               // 마지막 요소 반환. 배열의 index가 0부터 시작하므로 1을 뺀다.
+    }
+
+    public boolean empty() {
+        return size() == 0;
+    }
+
+    public synchronized int search(Object o) {
+        int i = lastIndexOf(o);                  // 끝에서부터 객체를 찾아 저장된 위치(배열의 index)를 반환한다.
+
+        if (i >= 0) {
+            return size() - i;                   // Stack은 맨 위에 저장된 객체의 index를 1로 정의한다.
+        }
+        return -1;                               // 해당 객체를 찾지 못하면 -1 반환.
+    }
+
+    private static final long serialVersionUID = 1224463164541339165L;
+}
+{% endhighlight %}<p></p>
+
+<br>
+<br>
+
+<div><strong>Exemple01</strong></div><p></p>
+<div>웹 브라우저의 뒤로/앞으로 가기, 워드프로세서의 되돌이기 기능을 구현한 예제.</div>
+{% highlight java %}
+public class MainActivity extends AppCompatActivity {
+    public static Stack back = new Stack();
+    public static Stack forward = new Stack();
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        goIndex(0);
+        goIndex(1);
+        goIndex(2);
+        status();
+
+        goBack();
+        status();
+
+        goBack();
+        status();
+
+        goForward();
+        status();
+    }
+
+    public static void goIndex(int index) {
+        back.push(index);
+        if (!forward.empty()) {
+            forward.clear();
+        }
+    }
+
+    public static void goForward() {
+        if (!forward.empty()) {
+            back.push(forward.pop());
+        }
+    }
+
+    public static void goBack() {
+        if (!back.empty()) {
+            forward.push(back.pop());
+        }
+    }
+
+    public void status() {
+        Log.d("TAG_STACK", "back : " + back);
+        Log.d("TAG_STACK", "forward : " + forward);
+        Log.d("TAG_STACK", "현재 index : " + back.peek());
+    }
+}
+{% endhighlight %}
+{% highlight text %}
+D/TAG_STACK: back : [0, 1, 2]
+D/TAG_STACK: forward : []
+D/TAG_STACK: 현재 index : 2
+
+D/TAG_STACK: back : [0, 1]
+D/TAG_STACK: forward : [2]
+D/TAG_STACK: 현재 index : 1
+
+D/TAG_STACK: back : [0]
+D/TAG_STACK: forward : [2, 1]
+D/TAG_STACK: 현재 index : 0
+
+D/TAG_STACK: back : [0, 1]
+D/TAG_STACK: forward : [2]
+D/TAG_STACK: 현재 index : 1
+{% endhighlight %}<p></p>
+
+<br>
+<br>
+
+<div><strong>Exemple02</strong></div><p></p>
+<div>괄호가 올바른지 확인하는 예제.</div>
+{% highlight java %}
+Stack stack = new Stack();
+String expression = "((STACK) Exemple 02";
+
+try {
+    for (int i = 0; i < expression.length(); i++) {
+        char ch = expression.charAt(i);
+        if (ch == '(') {
+            stack.push(ch + "");
+        } else if (ch == ')') {
+            stack.pop();
+        }
+    }
+
+    if (stack.isEmpty()) {
+        Log.d("TAG_", "괄호가 일치합니다.");
+    } else {
+        Log.d("TAG_", "괄호가 일치하지 않습니다.");
+    }
+} catch (Exception e) {
+    Log.d("TAG_", "괄호가 일치하지 않습니다.");
+}
+{% endhighlight %}
+{% highlight text %}
+D/TAG_: 괄호가 일치하지 않습니다.
+{% endhighlight %}
+
+<br>
+<br>
+<br>
+
+&#149;&nbsp; 참고 서적: 자바의 정석 3판 2

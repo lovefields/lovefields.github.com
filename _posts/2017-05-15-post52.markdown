@@ -79,6 +79,7 @@ for(int i=0; i<o.length; i++){
 <br>
 <br>
 <br>
+<br>
 
 <div><strong class="h2">인터페이스 Interface</strong></div><p></p>
 <div>일종의 추상 클래스</div>
@@ -123,13 +124,7 @@ class Parent implements A {
     public void methodB() {}
 }
 {% endhighlight %}<p></p>
-<div>인터페이스의 메서드 중 일부만 구현한다면, abstract를 붙여서 추상 클래스로 선언해야 한다.</div>
-{% highlight java %}
-abstract class Parent implements A {
-    public void methodA() {}
-}
-{% endhighlight %}<p></p>
-<div>상속과 구현을 동시에 할 수 있다.</div>
+<div>&#149;&nbsp; 상속과 구현을 동시에 할 수 있다.</div>
 {% highlight java %}
 public class Grand {}
 
@@ -137,8 +132,9 @@ class Parent extends Grand implements A {
     public void methodA() {}
 }
 {% endhighlight %}<p></p>
-<div>인터페이스도 조금은 다른 의미의 조상이라고 할 수 있다.</div>
-<div>오버라이딩 할 때는 조상의 메서드보다 넓은 범위의 접근 제어자를 지정해야 한다.</div>
+<div>&#149;&nbsp; 접근 제어자</div>
+<div>&nbsp; &nbsp; 인터페이스도 조금은 다른 의미의 조상이라고 할 수 있다.</div>
+<div>&nbsp; &nbsp; 오버라이딩 할 때는 조상의 메서드보다 넓은 범위의 접근 제어자를 지정해야 한다.</div>
 {% highlight java %}
 interface A { 
     (public abstract) void methodA(); 
@@ -147,7 +143,23 @@ interface A {
 class Parent extends Grand implements A {
     public void methodA() {}
 }
+{% endhighlight %}<p></p>
+<div>&#149;&nbsp; 인터페이스의 메서드 중 일부만 구현할 경우</div>
+<div>&nbsp; &nbsp; abstract를 붙여서 추상 클래스로 선언하거나</div>
+{% highlight java %}
+abstract class Parent implements A {
+    public void methodA() {}
+}
+{% endhighlight %}<p></p>
+<div>&nbsp; &nbsp; 예외를 던져서 구현되지 않은 기능이라는 것을 메서드를 호출하는 쪽에 알린다.</div>
+{% highlight java %}
+public class Parent implements A {
+    public void methodA() {
+        throw new UnsupportedOperationException();
+    }
+}
 {% endhighlight %}
+
 <br>
 <br>
 
