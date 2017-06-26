@@ -1,0 +1,182 @@
+---
+layout: post
+title:  "Queue"
+date:   2017-06-26 12:00:00 +0900
+author: 민갤
+description: Collection Framework 05 - Queue
+keywords : android,java,androidstudio,method,선언,class,요소,언어,자바의 정석,프로그래밍,Collection,Framework,Queue,FIFO
+image : /img/java.png
+category : java
+---
+<div><strong class="h2">Collection Framework</strong></div><p></p>
+<div>데이터 군을 저장하는 클래스들을 표준화한 설계</div>
+<div>컬렉션 Collection :&nbsp; 다수의 데이터. 데이터 그룹</div>
+<div>프레임웍 Framework :&nbsp; 표준화된 프로그래밍 방식.</div>
+
+<br>
+<br>
+<br>
+<br>
+
+<div><strong class="h2">Queue</strong></div><p></p>
+<div>처음에 저장한 데이터를 가장 먼저 꺼내는 FIFO(First In First Out) 방식의 자료 구조. &nbsp;ex) 밑 빠진 독</div>
+<div>순서의 변경 없이 먼저 넣은 것을 먼저 꺼내게 된다.</div>
+<div>데이터를 꺼낼 때 항상 첫 번째 저장된 데이터를 삭제하므로 데이터의 추가/삭제가 쉬운 LinkedList로 구현하는 것이 적합하다.</div>
+<div>Java에서 Queue 인터페이스로만 정의하여 이를 구현한 클래스들을 사용한다.</div>
+
+<br>
+<br>
+
+<div><strong>Known Indirect Subclasses</strong></div><p></p>
+<div>Queue 인터페이스에 정의된 기능을 사용하고 싶다면 다음 중 적당한 것을 하나 골라서 사용한다.</div>
+
+|AbstractQueue<E>|ArrayBlockingQueue<E>|ArrayDeque<E>|
+|BlockingDeque<E>|BlockingQueue<E>|ConcurrentLinkedDeque<E>
+|ConcurrentLinkedQueue<E>|DelayQueue<E extends Delayed>|Deque<E>|
+|LinkedBlockingDeque<E>|LinkedBlockingQueue<E>|LinkedList<E>|
+|LinkedTransferQueue<E>|PriorityBlockingQueue<E>|PriorityQueue<E>|
+|SynchronousQueue<E>|TransferQueue<E>|
+
+<br>
+<br>
+
+<div><strong>method</strong></div><p></p>
+
+|반환타입|이름|설명|
+|::-|::-|::-|
+|abstract boolean|add(E e)|지정된 객체 추가. 성공하면 true. 저장 공간이 부족하면 IllegalStateException 발생|
+|abstract E|element()|삭제 없이 요소를 읽어온다. 비어있으면 NoSuchElementException 발생|
+|abstract boolean|offer(E e)|객체 저장. 성공하면 true|
+|abstract E|peek()|삭제 없이 요소를 읽어온다. 비어있으면 null|
+|abstract E|poll()|객체를 꺼내서 반환. 비어있으면 null|
+|abstract E|remove()|객체를 꺼내 반환. 비어있으면 NoSuchElementException 발생|
+
+<br>
+<br>
+
+<div><strong>PriorityQueue</strong></div><p></p>
+<div>Queue 인터페이스의 구현체 중 하나.</div>
+<div>저장공간으로 배열을 사용하며, 각 요소를 힙(heap)의 형태로 저장한다.</div>
+<div>저장 순서와 관계없이 우선순위가 높은 것부터 꺼낸다.</div>
+<div>null을 저장하면 NullPointerException이 발생한다.</div><p></p>
+
+<div>&#149;&nbsp; 우선순위 priority</div>
+<div>&nbsp; &nbsp; 객체 :&nbsp; 각 객체의 크기를 비교할 수 있는 방법을 제공해야 한다.</div>
+<div>&nbsp; &nbsp; 숫자 :&nbsp; 작을 수록 높다. Number의 자손들은 자체적으로 숫자를 비교하는 방법을 정의하고 있다.</div>
+{% highlight java %}
+Queue qu = new PriorityQueue();
+qu.offer(1);                           // qu.offer(new Integer(1)); 오토박싱
+{% endhighlight %}<p></p>
+
+<br>
+<br>
+
+<div><strong>Deque</strong></div><p></p>
+<div>Double-Ended Queue. 덱 또는 디큐라고 읽는다.</div>
+<div>양쪽 끝에 추가/삭제가 가능.</div>
+<div>구현체 :&nbsp; ArrayDeque, LinkedList 등</div><p></p>
+<div>&#149;&nbsp; Queue + Stack</div>
+
+|Deque|Queue|Stack|
+|:-:|:-:|:-:|
+|offerLast()|offer()|push()|
+|pollLast()| |pop()|
+|pollFirst()|poll()| |
+|peekLast()| |peek()|
+|peekFirst|peek()| |
+
+<br>
+<br>
+
+<div><strong>Exemple</strong></div><p></p>
+<div>최근 사용한 것의 목록을 보여주는 기능.</div>
+{% highlight java %}
+public class MainActivity extends AppCompatActivity {
+    static Queue q = new LinkedList();
+    static final int MAX_SIZE = 5;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        final EditText edt = (EditText) findViewById(R.id.edt);
+        edt.setOnEditorActionListener(new EditText.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    try {
+                        String input = edt.getText().toString();
+
+                        if ("".equals(input)) {
+                            print("다시 입력바랍니다.");
+                        }
+
+                        if (input.equalsIgnoreCase("help")) {
+                            print("help - 도움말");
+                            print("end - 프로그램");
+                            print("history - 최근에 입력한 명령어 " + MAX_SIZE + "개");
+                        } else if (input.equalsIgnoreCase("history")) {
+                            save(input);
+
+                            LinkedList tmp = (LinkedList) q;
+                            ListIterator it = tmp.listIterator();
+
+                            while (it.hasNext()) {
+                                print(it.next().toString());
+                            }
+                        }else{
+                            save(input);
+                            print(input);
+                        }
+                    } catch (Exception e) {
+                        print("입력 오류입니다.");
+                    }
+                }
+
+                return false;
+            }
+        });
+    }
+
+    public static void save(String input) {
+        if(!"".equals(input)){
+            q.offer(input);
+        }
+
+        if(q.size() > MAX_SIZE){
+            q.remove();
+        }
+    }
+
+    public void print(String str) {
+        Log.d("TAG_", str);
+    }
+}
+{% endhighlight %}
+{% highlight text %}
+input = help
+D/TAG_: help - 도움말
+D/TAG_: end - 프로그램 종료
+D/TAG_: history - 최근에 입력한 명령어 5개
+
+input = list
+D/TAG_: list
+
+input = open
+D/TAG_: open
+input = love
+D/TAG_: love
+
+input = history
+D/TAG_: list
+D/TAG_: open
+D/TAG_: love
+D/TAG_: history
+{% endhighlight %}
+
+<br>
+<br>
+<br>
+
+&#149;&nbsp; 참고 서적: 자바의 정석 3판 2
