@@ -1,0 +1,295 @@
+---
+layout: post
+title:  "Iterator"
+date:   2017-06-27 12:00:00 +0900
+author: 민갤
+description: Collection Framework 06 - Iterator
+keywords : android,java,androidstudio,method,선언,class,요소,언어,자바의 정석,프로그래밍,Collection,Framework,Iterator,interface
+image : /img/java.png
+category : java
+---
+<div><strong class="h2">Collection Framework</strong></div><p></p>
+<div>데이터 군을 저장하는 클래스들을 표준화한 설계</div>
+<div>컬렉션 Collection :&nbsp; 다수의 데이터. 데이터 그룹</div>
+<div>프레임웍 Framework :&nbsp; 표준화된 프로그래밍 방식.</div>
+
+<br>
+<br>
+<br>
+<br>
+
+<div><strong class="h2">interface Iterator</strong></div><p></p>
+<div>모든 컬렉션에 저장된 요소를 접근하는 데 사용되는 인터페이스.</div>
+<div>단방향으로 이동 → 재사용 X. 마지막 요소에 다다르면 더 이상 사용할 수 없다.</div>
+
+<br>
+<br>
+
+<div><strong>Iterator iterator()</strong></div><p></p>
+<div>Collection 인터페이스에 정의된 메서드.</div>
+<div>Iterator를 구현한 클래스의 인스턴스를 반환한다.</div>
+<div>List나 Set 인터페이스를 구현하는 컬렉션마다 각 컬렉션의 특징에 알맞게 작성되어 있다.</div>
+{% highlight java %}
+public interface Collection<E> extends Iterable<E> {
+   
+    Iterator<E> iterator();
+   
+...
+{% endhighlight %}
+
+<br>
+<br>
+
+<div><strong>사용</strong></div><p></p>
+<div>&#149;&nbsp; List, Set 인터페이스를 구현한 컬렉션 클래스</div>
+<div>&nbsp; &nbsp; 컬렉션 클래스에 대해 iterator를 호출하여 Iterator를 얻는다.</div>
+<div>&#149;&nbsp; Map 인터페이스를 구현한 컬렉션 클래스</div>
+<div>&nbsp; &nbsp; 키와 값을 각각 따로 Set의 형태로 얻어온 후 Set 인스턴스의 iterator()를 호출해서 얻는다.</div>
+{% highlight java %}
+Map map = new HashMap();
+        
+Iterator it = map.keySet().iterator();
+// Iterator it = map.entrySet().iterator();
+{% endhighlight %}<p></p>
+<div>&#149;&nbsp; 주로 while문을 사용해서 컬렉션 클래스의 요소들을 읽어온다.</div>
+{% highlight java %}
+List list = new ArrayList();
+
+Iterator it = list.iterator();
+
+while (it.hasNext()) {
+    Log.d("TAG_", it.next() + "");
+}
+{% endhighlight %}
+
+<br>
+<br>
+
+<div><strong>method</strong></div><p></p>
+
+|반환타입|이름|설명|
+|::-|::-|::-|
+|boolean|hasNext()|읽어 올 요소가 남아있는 지 확인. 있으면 true|
+|E|next()|다음 요소를 읽어온다. 반드시 hasNext() 후에 사용|
+|void|remove()|next()로 읽어 온 요소를 삭제. 선택적 기능|
+|void|forEachRemaining(Consumer<? super E> action)|남아있는 요소들에 대해 지정된 작업을 수행|
+
+<div>&#149;&nbsp; remove()</div>
+<div>&nbsp; &nbsp; 반드시 next와 같이 사용해야 한다.</div>
+<div>&nbsp; &nbsp; next() 없이 호출하면 IllegalStateException이 발생한다.</div>
+
+<br>
+<br>
+
+<div><strong>재사용성</strong></div><p></p>
+<div>공통 인터페이스를 정의해서 표준을 정의하고 구현 → 코드의 일관성을 유지하여 재사용성을 극대화했다.</div>
+{% highlight java %}
+List list = new ArrayList();
+list = new LinkedList();
+{% endhighlight %}<p></p>
+<div>List 인터페이스를 구현한 다른 클래스로 바꿔야할 때 선언문만 변경하면 된다.</div>
+<div>참조변수의 타입이 List이므로 List에 정의되지 않은 메서드는 사용되지 않았을 것이 확실하기 때문.</div>
+<div>따라서 List에 없고 특성 클래스에만 있는 메서드를 사용하는 게 아니라면, List 타입의 참조변수로 선언하는 것이 좋다.</div>
+
+<br>
+<br>
+
+<div><strong>Enumeration</strong></div><p></p>
+<div>Iterator의 구버전.</div>
+<div>컬렉션 프레임웍이 만들어지기 이전에 사용하던 것으로, 이전 버전으로 작성된 소스와의 호환을 위해 남겨졌다.</div>
+<div>Iterator와 메서드 이름만 다를 뿐 기능은 같다.</div>
+
+|반환타입|이름|설명|Iterator|
+|::-|::-|::-|::-|
+|boolean|hasMoreElements()|읽어 올 요소가 남아있는 지 확인. 있으면 true|hasNext()|
+|E|nextElement()|다음 요소를 읽어 온다|next()|
+
+<br>
+<br>
+
+<div><strong>ListIterator</strong></div><p></p>
+<div>Iterator에 이전 방향으로의 접근 기능을 추가한 것.</div>
+<div>양방향 이동 → 각 요소간의 이동이 자유롭다.</div>
+<div>List 인터페이스를 구현한 컬렉션에서만 사용 가능하다.</div>
+
+|반환타입|이름|설명|
+|::-|::-|::-|
+|boolean|hasNext()|읽어 올 요소가 남아있는 지 확인. 있으면 true|
+|E|next()|다음 요소를 읽어 온다. hasNext()가 선행되야 안전하다.|
+|boolean|hasPrevious()|읽어 올 이전 요소가 남아 있는 지 확인. 있으면 true|
+|E|previous()|이전 요소를 읽어 온다. hasPrevious() 선행되어야 안전하다.|
+|int|nextIndex()|다음 요소의 index 반환|
+|int|previousIndex()|이전 요소의 index 반환|
+|void|remove()|next()/previous()로 읽어 온 요소를 삭제. 선택적 기능|
+|void|set(E e)|next()/previous()로 읽어 온 요소를 지정된 객체로 변경. 선택적 기능|
+|void|add(E e)|컬렉션에 새로운 객체를 추가. 선택적 기능|
+
+<br>
+<br>
+
+<div><strong>선택적 기능 Optional operation</strong></div><p></p>
+<div>반드시 구현하지 않아도 된다.</div>
+<div>구현하지 않을 경우, 예외를 던져서 구현되지 않은 기능이라는 것을 메서드를 호출하는 쪽에 알리는 것이 좋다.</div>
+
+<br>
+<br>
+
+<div><strong>구현 Exemple</strong></div><p></p>
+<div>&#149;&nbsp; Test.java</div>
+&nbsp; &nbsp; MyVector의 세부 코드는 Vector 글에 있다.&nbsp; ([click])
+{% highlight java %}
+public class Test extends MyVector implements Iterator {
+    int cursor = 0;                              // 앞으로 읽어 올 요소의 index
+    int lastRet = -1;                            // 최근에 읽어 온 요소의 index. -1 == 읽어온 값이 없다.
+
+    public Test(int capacity) {
+        super(capacity);
+    }
+
+    public Test() {
+        this(10);
+    }
+
+    @Override
+    public synchronized String toString() {
+        String tmp = "";
+        Iterator it = iterator();
+
+        for (int i = 0; it.hasNext(); i++) {
+            if (i != 0) tmp += ", ";
+            tmp += it.next();
+        }
+        return "[" + tmp + "]";
+    }
+
+    @Override
+    public synchronized Iterator iterator() {    // 초기화
+        cursor = 0;
+        lastRet = -1;
+        return this;
+    }
+
+    @Override
+    public boolean hasNext() {
+        return cursor != size();
+    }
+
+    @Override
+    public Object next() {
+        Object next = get(cursor);
+        ;
+        lastRet = cursor++;
+        return next;
+    }
+
+    @Override
+    public void remove() {
+        if (lastRet == -1) {                     // 더 이상 삭제할 것이 없으면
+            throw new IllegalStateException();
+        } else {
+            remove(lastRet);                     // 최근에 읽어 온 요소 삭제
+            cursor--;                            // 삭제 후 자리 이동이 일어남으로 감소
+            lastRet = -1;                        // 읽어온 요소가 삭제되었으므로 초기화
+        }
+    }
+}
+{% endhighlight %}<p></p>
+<div>&#149;&nbsp; MainActivity.java</div>
+{% highlight java %}
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        Test test = new Test();
+        test.add(0);
+        test.add(1);
+        test.add(2);
+        test.add(3);
+
+        print(test + "");
+
+        Iterator it = test.iterator();
+        it.next();
+        it.remove();
+        it.next();
+        it.remove();
+
+        print(test + "");
+    }
+
+    public void print(String str) {
+        Log.d("TAG_", str);
+    }
+}
+{% endhighlight %}
+{% highlight text %}
+D/TAG_: [0, 1, 2, 3]
+D/TAG_: [2, 3]
+
+// Test의 remove()에서 cursor--;가 없다면
+D/TAG_: [0, 1, 2, 3]
+D/TAG_: [1, 3]
+{% endhighlight %}
+
+<br>
+<br>
+
+<div><strong>Exemple</strong></div><p></p>
+<div>마이크로소프트 아웃룩과 같이 단순히 읽어오기만 할 때는 next()를 사용하고,</div>
+<div>읽어온 후 삭제할 때는 next()와 함께 remove()를 사용한다.</div>
+{% highlight java %}
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        ArrayList original = new ArrayList(10);
+        ArrayList copy1 = new ArrayList(10);
+        ArrayList copy2 = new ArrayList(10);
+
+        for (int i = 0; i < 10; i++) {
+            original.add(i);
+        }
+
+        Iterator it = original.iterator();
+        while (it.hasNext()) {
+            copy1.add(it.next());
+        }
+
+        print("original : " + original);
+        print("copy1 : " + copy1);
+
+        it = original.iterator(); // Iterator는 재사용이 안되므로 다시 얻어와야 한다.
+        while (it.hasNext()) {
+            copy2.add(it.next());
+            it.remove();
+        }
+
+        print("original : " + original);
+        print("copy2 : " + copy2);
+    }
+
+    public void print(String str) {
+        Log.d("TAG_", str);
+    }
+}
+{% endhighlight %}<p></p>
+{% highlight text %}
+D/TAG_: original : [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+D/TAG_: copy1 : [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+D/TAG_: original : []
+D/TAG_: copy2 : [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+{% endhighlight %}<p></p>
+
+<br>
+<br>
+<br>
+
+[click]: https://lovefields.github.io/java/2017/06/20/post79.html
+<div>&#149;&nbsp; 참고 서적: 자바의 정석 3판 2</div>
