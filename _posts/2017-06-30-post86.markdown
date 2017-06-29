@@ -1,0 +1,204 @@
+---
+layout: post
+title:  "HashSet"
+date:   2017-06-30 12:00:00 +0900
+author: 민갤
+description: Collection Framework 09 - HashSet
+keywords : android,java,androidstudio,method,선언,class,요소,언어,자바의 정석,프로그래밍,Collection,Framework,HashSet,Set,HashMap
+image : /img/java.png
+category : java
+---
+<div><strong class="h2">Collection Framework</strong></div><p></p>
+<div>데이터 군을 저장하는 클래스들을 표준화한 설계</div>
+<div>컬렉션 Collection :&nbsp; 다수의 데이터. 데이터 그룹</div>
+<div>프레임웍 Framework :&nbsp; 표준화된 프로그래밍 방식.</div>
+
+<br>
+<br>
+<br>
+<br>
+
+<div><strong class="h2">HashSet</strong></div><p></p>
+<div>Set 인터페이스를 구현한 가장 대표적인 컬렉션</div>
+<div>내부적으로 HashMap을 이용해서 만들어졌으며, 해싱(hashing)을 이용해서 구현했다.</div>
+<div>중복된 요소를 저장하지 않는다.</div>
+<div>자체적인 저장방식에 따라 순서를 결정한다.</div>
+
+<br>
+<br>
+
+<div><strong>Public constructors</strong></div><p></p>
+
+|생성자|설명|
+|::-|::-|
+|HashSet()|HahSet 객체 생성|
+|HashSet(Collection<? extends E> c)|주어진 컬렉션을 포함하는 HashSet 객체 생성|
+|HashSet(int initialCapacity, float loadFactor)|초기 용량과 load factor를 지정하는 생성자|
+|HashSet(int initialCapacity)|주어진 값을 초기 용량으로 하는 HashSet 객체 생성|
+
+<div>&#149;&nbsp; load factor</div>
+<div>&nbsp; &nbsp; 컬렉션 클래스에 저장공간이 가득 차기 전에 미리 용량을 확보하기 위한 것.</div>
+<div>&nbsp; &nbsp; 값을 0.8로 지정하면, 저장 공간의 80%가 채워져 있을 때 용량이 두 배로 늘어난다. default 0.75</div>
+
+<br>
+<br>
+
+<div><strong>Public methods</strong></div><p></p>
+
+|반환타입|이름|설명|
+|::-|::-|::-|
+|boolean|add(E e)|새로운 객체 저장|
+|void|clear()|저장된 모든 객체 삭제|
+|Object|clone()|HashSet을 복제해서 반환 (얕은 복사)|
+|boolean|contains(Object o)|지정된 객체를 포함하고 있는 지 확인|
+|boolean|isEmpty()|HashSet이 비어있는 지 확인|
+|Iterator<E>|iterator()|Iterator를 반환|
+|boolean|remove(Object o)|지정된 객체를 HashSet에서 삭제. 성공하면 true|
+|int|size()|저장된 객체의 개수 반환|
+
+<br>
+<br>
+
+<div><strong>중복</strong></div><p></p>
+{% highlight java %}
+Object[] objArr = {"0", new Integer(0), "1", "1", "2", "3", "3", "3"};
+Set set = new HashSet();
+
+
+for (int i = 0; i < objArr.length; i++) {
+    set.add(objArr[i]);
+}
+
+Log.d("TAG_", set + "");                         // [0, 1, 0, 3, 2]
+{% endhighlight %}<p></p>
+<div>중복된 값은 저장되지 않는다.</div>
+<div>0은 서로 다른 객체이므로 중복으로 간주되지 않는다.</div>
+<div>중복을 제거하는 동시에 저장한 순서를 유지하고 싶다면 LinkedHashSet을 사용한다.</div>
+
+<br>
+<br>
+
+<div><strong>add()</strong></div><p></p>
+<div>새로운 요소를 추가하기 전에, 기존에 저장된 요소와 같은 것인지 판별하기 위해 추가하려는 요소의 equals()와 hashCode()를 호출한다.</div>
+{% highlight java %}
+public class Test {
+    String name;
+    int age;
+
+    Test(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Test) {
+            Test tmp = (Test) obj;
+            return name.equals(tmp.name) && age == tmp.age;
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, age);          // public static int hash(Object... values)
+    }
+
+    @Override
+    public String toString() {
+        return name + " : " + age;
+    }
+}
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
+
+        HashSet set = new HashSet();
+
+        set.add("abc");
+        set.add("abc");
+        set.add(new Test("maria", 10));
+        set.add(new Test("maria", 10));
+
+        Log.d("TAG_", set.toString());      // [abc, maria : 10]
+
+    }
+}
+{% endhighlight %}<p></p>
+<div>&#149;&nbsp; equals()</div>
+<div>&nbsp; &nbsp; 서로 같으면 true를 반환하도록 오버라이딩.</div><p></p>
+<div>&#149;&nbsp; hashCode()</div>
+<div>&nbsp; &nbsp; JDK1.8부터 추가된 java.util.Objects 클랙스의 hash()를 이용해서 작성.</div><p></p>
+<div>&nbsp; &nbsp; 1. 동일한 객체에 대해서 여러 번 hashCode()를 호출해도 동일한 값을 반환해야 한다.</div>
+<div>&nbsp; &nbsp; 단, 실행 시마다 동일한 int 값을 반환할 필요는 없다. (Object 클래스는 객체의 주소로 해시코드를 만들기 때문에 실행 시마다 달라질 수 있다.)</div>
+{% highlight java %}
+Test t = new Test("maria", 10);
+
+int hc0 = t.hashCode();                               // -1081307243
+int hc1 = t.hashCode();                               // -1081307243
+
+t.age = 20;
+int hc2 = t.hashCode();                               // -1081307233
+{% endhighlight %}<p></p>
+<div>&nbsp; &nbsp; 2. equals()로 true를 얻은 두 객체는 각각 hashCode()를 호출해서 얻은 결과가 반드시 같아야 한다.</div>
+{% highlight java %}
+Test t0 = new Test("maria", 10);
+Test t1 = new Test("maria", 10);
+
+Log.d("TAG_", t0.equals(t1) + "");                    // true
+
+int hc0 = t0.hashCode();                              // -1081307243
+int hc1 = t1.hashCode();                              // -1081307243
+{% endhighlight %}<p></p>
+<div>&nbsp; &nbsp; 3. equals()로 false를 얻은 두 객체는 hashCode()를 호출했을 때 항상 다른 int 값을 반환하는 것이 좋다.</div>
+<div>&nbsp; &nbsp; false일지라도 두 객체의 해시코드 값이 같을 수 있다.</div>
+<div>&nbsp; &nbsp; 해싱을 사용하는 컬렉션의 성능을 향상시키기 위해서는 가능한 서로 다른 값을 반환하도록 작성해야 한다.</div>
+<div>&nbsp; &nbsp; 두 객체의 해시코드가 같다고 해서 equals 메서드의 호출 결과가 반드시 true가 되지 않는다.</div>
+
+<br>
+<br>
+
+<div><strong>Exemple</strong></div><p></p>
+{% highlight java %}
+HashSet setA = new HashSet();
+HashSet setB = new HashSet();
+HashSet setAnB = new HashSet();
+HashSet setA_B = new HashSet();
+HashSet setAuB = new HashSet();
+
+for (int i = 0; i < 5; i++) {
+    setA.add((int)(Math.random() * 10));    // [7, 4, 9, 3]
+    setB.add((int)(Math.random() * 10));    // [9, 5, 6, 1]
+}
+
+Iterator it = setA.iterator();
+while (it.hasNext()) {
+    Object tmp = it.next();
+    if (setB.contains(tmp)) {
+        setAnB.add(tmp);                    // A ∩ B = [9]
+    }
+}
+
+it = setA.iterator();
+while (it.hasNext()) {
+    Object tmp = it.next();
+    if (!setB.contains(tmp)) {
+        setA_B.add(tmp);                    // A － B = [4, 7, 3]
+    }
+    setAuB.add(tmp);
+}
+
+it = setB.iterator();
+while(it.hasNext()){
+    setAuB.add(it.next());                  // A ∪ B = [4, 1, 7, 9, 6, 5, 3]
+}
+{% endhighlight %}<p></p>
+
+<br>
+<br>
+<br>
+
+&#149;&nbsp; 참고 서적: 자바의 정석 3판 2
