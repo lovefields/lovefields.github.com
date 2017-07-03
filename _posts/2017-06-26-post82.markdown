@@ -88,7 +88,7 @@ qu.offer(1);                           // qu.offer(new Integer(1)); 오토박싱
 <br>
 <br>
 
-<div><strong>Exemple</strong></div><p></p>
+<div><strong>Example</strong></div><p></p>
 <div>최근 사용한 것의 목록을 보여주는 기능.</div>
 {% highlight java %}
 public class MainActivity extends AppCompatActivity {

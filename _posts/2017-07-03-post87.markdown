@@ -1,0 +1,148 @@
+---
+layout: post
+title:  "TreeSet"
+date:   2017-07-03 12:00:00 +0900
+author: 민갤
+description: Collection Framework 10 - TreeSet
+keywords : android,java,androidstudio,method,선언,class,요소,언어,자바의 정석,프로그래밍,Collection,Framework,TreeSet,Binary Tree,Binary Search Tree
+image : /img/java.png
+category : java
+---
+<div><strong class="h2">Collection Framework</strong></div><p></p>
+<div>데이터 군을 저장하는 클래스들을 표준화한 설계</div>
+<div>컬렉션 Collection :&nbsp; 다수의 데이터. 데이터 그룹</div>
+<div>프레임웍 Framework :&nbsp; 표준화된 프로그래밍 방식.</div>
+
+<br>
+<br>
+<br>
+<br>
+
+<div><strong class="h2">TreeSet</strong></div><p></p>
+<div>이진 검색 트리 형태로 데이터를 저장하는 컬렉션 클래스.</div>
+<div>이진 검색 트리의 성능을 향상시킨 레드-블랙 트리(Red-Black tree)로 구현되어 있다.</div>
+<div>데이터의 중복 저장이 불가능하며 저장 순서를 유지하지 않는다.</div>
+
+<br>
+<br>
+
+<div><strong>이진 트리 Binary Tree</strong></div><p></p>
+<div>링크드리스트처럼 여러 개의 노드(Node)가 서로 연결된 구조.</div>
+<div>루트(Root)라고 불리는 하나의 노드에서부터 시작해서 계속 확장해 나갈 수 있다.</div>
+<div>위 아래로 연결된 두 노드를 '부모-자식 관계'에 있다고 한다. (상대적)</div>
+<div>각 노드에 최대 2개의 노드(자식 노드)를 연결할 수 있다.</div><p></p>
+<div>&#149;&nbsp; 트리(Tree)</div>
+<div>&nbsp; &nbsp; 각 노드 간의 연결된 모양이 나무와 같다고 해서 붙여진 이름.</div>
+
+<br>
+<br>
+
+<div><strong>이진 검색 트리 Binary Search Tree</strong></div><p></p>
+<div>정렬, 검색, 범위 검색(Range Search)에 높은 성능을 보이는 자료 구조.</div>
+<div>부모 노드의 왼쪽에는 부모 노드의 값보다 작은 값의 작은 노드를, 오른 쪽에는 큰 값의 자식 노드를 저장하는 이진 트리.</div>
+<div>데이터를 순차적으로 저장하는 것이 아니라서 데이터 추가/삭제에 시간이 걸린다.</div><p></p>
+<div>&#149;&nbsp; ex) 5, 1, 9, 4의 순서로 값을 저장할 경우</div>
+
+||Left|Element|Right|
+|:-:|:-:|:-:|:-:|
+|Root|0x100|5|0x200|
+|0x100|null|1|0x300|
+|0x200|null|9|null|
+|0x300|null|4|null|
+
+<div>첫 번째로 저장되는 값은 루트가 되고, 두 번째 값은 트리의 루트부터 시작해서 값의 크기를 비교하면서 트리를 따라 내려간다.</div>
+<div>저장되는 객체가 Comparable을 구현하거나, Comparator를 제공해서 두 객체를 비교할 방법을 알려줘야 한다.</div>
+<div>그렇지 않으면 두 번째 객체를 저장할 때 예외가 발생한다.</div>
+<br>
+<br>
+
+<div><strong>Public constructors</strong></div><p></p>
+
+|생성자|설명|
+|::-|::-|
+|TreeSet()|기본 생성자|
+|TreeSet(Comparator<? super E> comparator)|주어진 정렬조건으로 정렬하는 TreeSet 생성|
+|TreeSet(Collection<? extends E> c)|주어진 컬렉션을 저장하는 TreeSet 생성|
+|TreeSet(SortedSet<E> s)|주어진 SortedSet을 구현한 컬렉션을 저장하는 TreeSet 생성|
+
+<br>
+<br>
+
+<div><strong>Public methods</strong></div><p></p>
+
+|반환타입|이름|설명|
+|::-|::-|::-|
+|boolean|add(E e)|지정된 객체를 Collection에 추가|
+|boolean|addAll(Collection<? extends E> c)|지정된 Collection의 객체들을 Collection에 추가|
+|E|ceiling(E e)|지정된 객체와 같은 객체 반환. 없으면 큰 값 중 가장 가까운 값의 객체 반환. 없으면 null|
+|void|clear()|저장된 모든 객체 삭제|
+|Object|clone()|TreeSet 복제하여 반환|
+|Comparator<? super E>|comparator()|TreeSet의 정렬 기준 반환|
+|boolean|contains(Object o)|지정된 객체가 포함되어 있는 지 확인|
+|NavigableSet<E>|descendingSet()|TreeSet에 저장된 요소들을 역순으로 정렬해서 반환|
+|E|first()|정렬된 순서에서 첫 번째 객체 반환|
+|E|floor(E e)|지정된 객체와 같은 객체 반환. 없으면 작은 값 중 가장 가까운 값의 객체 반환. 없으면 null|
+|NavigableSet<E>|headSet(E toElement, boolean inclusive)|지정된 객체보다 작은 값의 객체들을 반환. inclusive가 null이면 같은 값의 객체도 포함|
+|SortedSet<E>|headSet(E toElement)|지정된 객체보다 작은 값의 객체들을 반환|
+|E|higher(E e)|지정된 객체보다 큰 값을 가진 객체 중 가장 가까운 값의 객체 반환. 없으면 null|
+|boolean|isEmpty()|TreeSet이 비어 있는 지 확인|
+|Iterator<E>|iterator()|TreeSet의 Iterator 반환|
+|E|last()|정렬된 순서에서 마지막 객체 반환|
+|E|lower(E e)|지정된 객체보다 작은 값을 가진 객체 중 제일 가까운 값의 객체 반환. 없으면 null|
+|E|pollFirst()|TreeSet의 첫 번째 요소(가장 작은 값의 객체) 반환|
+|E|pollLast()|TreeSet의 마지막 번째 요소(가장 큰 값의 객체) 반환|
+|boolean|remove(Object o)|지정된 객체 삭제|
+|int|size()|저장된 객체의 개수 반환|
+|Spliterator<E>|spliterator()|TreeSet의 spliterator 반환|
+|NavigableSet<E>|subSet(E fromElement, boolean fromInclusive, E toElement, boolean toInclusive)|범위 검색(fromElement과 toElement 사이)의 결과 반환. fromInclusive가 true면 시작 값 포함. toInclusive가 true면 끝 값 포함|
+|SortedSet<E>|subSet(E fromElement, E toElement)|범위 검색(from과 to 사이)의 결과 반환. 끝 범위는 불포함|
+|SortedSet<E>|tailSet(E fromElement)|지정된 객체보다 큰 값의 객체들을 반환|
+
+<br>
+<br>
+
+<div><strong>subSet()</strong></div><p></p>
+<div>범위 검색. 끝 범위를 포함하지 않는다.</div>
+<div>대소문자가 섞여 있으면 의도한 것과 다른 결과를 얻을 수 있으므로 가능하면 대문자/소문자로 통일해서 저장하는 것이 좋다.</div>
+{% highlight java %}
+TreeSet set = new TreeSet();
+String from = "b";
+String to = "d";
+
+set.add("abs"); set.add("alien"); set.add("battle");
+set.add("cat"); set.add("Cat"); set.add("design");
+set.add("dance"); set.add("dZ"); set.add("dzz");
+set.add("elevator"); set.add("event"); set.add("family");
+set.add("flower");
+
+Log.d("TAG_", set + "");                                   // [Cat, abs, alien, battle, cat, dZ, dance, design, dzz, elevator, event, family, flower]
+Log.d("TAG_", set.subSet(from, to) + "");                  // [battle, cat]
+Log.d("TAG_", set.subSet(from, to + "zzzzz")+"");          // [battle, cat, dZ, dance, design, dzz]
+{% endhighlight %}<p></p>
+<div>대소문자가 섞여있어야 하거나, 다른 방식으로 정렬해야 할 경우 Comparator를 이용한다.</div><p></p>
+<div>&#149;&nbsp; 문자열의 정렬 순서</div>
+<div>&nbsp; &nbsp; 문자의 코드값 순</div>
+<div>&nbsp; &nbsp; 오름차순 : 공백, 숫자, 대소문자, 소문자 순.</div>
+
+<br>
+<br>
+
+<div><strong>headSet()/tailSet()</strong></div><p></p>
+<div>저장된 객체 중 지정된 기준 값보다 작은/큰 값의 객체들을 반환한다.</div>
+{% highlight java %}
+TreeSet set = new TreeSet();
+int score[] = {15, 27, 49, 60, 88, 91, 73};
+
+for (int i = 0; i < score.length; i++) {
+    set.add(new Integer(score[i]));
+}
+
+Log.d("TAG_", set.headSet(50) + "");             // [15, 27, 49]
+Log.d("TAG_", set.tailSet(50) + "");             // [60, 73, 88, 91]
+{% endhighlight %}
+
+<br>
+<br>
+<br>
+
+&#149;&nbsp; 참고 서적: 자바의 정석 3판 2

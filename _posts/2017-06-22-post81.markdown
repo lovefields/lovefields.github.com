@@ -90,7 +90,7 @@ public class Stack<E> extends Vector<E> {
 <br>
 <br>
 
-<div><strong>Exemple01</strong></div><p></p>
+<div><strong>Example01</strong></div><p></p>
 <div>웹 브라우저의 뒤로/앞으로 가기, 워드프로세서의 되돌이기 기능을 구현한 예제.</div>
 {% highlight java %}
 public class MainActivity extends AppCompatActivity {
@@ -164,11 +164,11 @@ D/TAG_STACK: 현재 index : 1
 <br>
 <br>
 
-<div><strong>Exemple02</strong></div><p></p>
+<div><strong>Example02</strong></div><p></p>
 <div>괄호가 올바른지 확인하는 예제.</div>
 {% highlight java %}
 Stack stack = new Stack();
-String expression = "((STACK) Exemple 02";
+String expression = "((STACK) Example 02";
 
 try {
     for (int i = 0; i < expression.length(); i++) {

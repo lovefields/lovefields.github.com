@@ -161,7 +161,7 @@ int hc1 = t1.hashCode();                              // -1081307243
 <br>
 <br>
 
-<div><strong>Exemple</strong></div><p></p>
+<div><strong>Example</strong></div><p></p>
 {% highlight java %}
 HashSet setA = new HashSet();
 HashSet setB = new HashSet();
