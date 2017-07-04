@@ -1,0 +1,306 @@
+---
+layout: post
+title:  "HashMap"
+date:   2017-07-04 12:00:00 +0900
+author: 민갤
+description: Collection Framework 11 - HashMap
+keywords : android,java,androidstudio,method,선언,class,요소,언어,자바의 정석,프로그래밍,Collection,Framework,HashMap,Hashtable
+image : /img/java.png
+category : java
+---
+<div><strong class="h2">Collection Framework</strong></div><p></p>
+<div>데이터 군을 저장하는 클래스들을 표준화한 설계</div>
+<div>컬렉션 Collection :&nbsp; 다수의 데이터. 데이터 그룹</div>
+<div>프레임웍 Framework :&nbsp; 표준화된 프로그래밍 방식.</div>
+
+<br>
+<br>
+<br>
+<br>
+
+<div><strong class="h2">HashMap</strong></div><p></p>
+<div>Map을 구현한 컬렉션 클래스.</div>
+<div>키와 값을 하나의 데이터(Entry)로 저장한다.</div>
+<div>해싱을 사용하기 때문에 많은 양의 데이터를 빠르게 검색할 수 있다.</div>
+<div>Hashtable(컬렉션 프레임웍 이전 클래스) → HashMap(컬렉션 프레임웍 이후 클래스. Hashtable 대체)</div>
+
+<br>
+<br>
+
+<div><strong>키와 값</strong></div><p></p>
+<div>키와 값을 모두 Object 형태로 저장하기 때문에 어떤 객체도 저장할 수 있다.</div>
+<div>따라서 하나의 키에 다시 복수의 데이터를 저장할 수 있다. (HashMap의 값으로 HashMap을 저장)</div>
+<div>키는 주로 String을 대문자/소문자로 통일해서 사용하곤 한다.</div><p></p>
+<div>&#149;&nbsp; 키 key :&nbsp; 저장된 값을 찾는 데 사용한다. 컬렉션 내의 키 중에서 유일해야 한다.</div>
+<div>&#149;&nbsp; 값 value :&nbsp; 키와 달리 데이터의 중복을 허용한다.</div>
+
+<br>
+<br>
+
+<div><strong>데이터의 무결성 Consistency</strong></div><p></p>
+<div>키와 값은 서로 관련된 값이기 때문에 각각의 배열로 선언하지 않고 하나의 클래스로 정의해서 하나의 배열로 다룬다.</div>
+<div>Entry라는 내부 클래스를 정의하고, 다시 Entry 타입의 배열을 선언하고 있다.</div>
+{% highlight java %}
+public class HashMap<K,V> extends AbstractMap<K,V> implements Map<K,V>, Cloneable, Serializable {
+
+    transient HashMapEntry<K,V>[] table = (HashMapEntry<K,V>[]) EMPTY_TABLE;
+    ...
+
+    static class HashMapEntry<K,V> implements Map.Entry<K,V> {
+        final K key;
+        V value;
+        ...
+    }
+}
+{% endhighlight %}<p></p>
+<div>&#149;&nbsp; 비객체지향적인 코드</div>
+{% highlight java %}
+Object[] key;
+Object[] value;
+{% endhighlight %}<p></p>
+<div>&#149;&nbsp; 객체지향적인 코드</div>
+{% highlight java %}
+Entry[] table;
+class Entry{
+    Object key;
+    Object value;
+}
+{% endhighlight %}
+
+<br>
+<br>
+
+<div><strong>자료 구조</strong></div><p></p>
+<div>저장할 데이터의 키를 해시함수에 넣으면 배열의 한 요소를 얻게 되고, 다시 그 곳에 연결되어 있는 LinkedList에 저장하게 된다.</div>
+
+||Hash Table|LinkedList|
+|:-:|:-:|:-:|
+|key[0]|HashCode[0]|value|
+|...|||
+|key[n-1]|HashCode[n-1]|value,value|
+|key[n]|HashCode[n]|value|
+
+<div>1. 검색하고자 하는 값의 키로 해시함수를 호출한다.</div>
+<div>2. 해시함수의 계산 결과인 해시코드를 이용해서 해당 값이 저장되어 있는 LinkedList를 찾는다.</div>
+<div>3. LinkedList에서 검색한 키와 일치하는 데이터를 찾는다.</div>
+
+<br>
+<br>
+
+<div><strong>구현</strong></div><p></p>
+<div>하나의 LinkedList에 최소한의 데이터만 저장하도록 구현해야 한다.</div>
+<div>&#149;&nbsp; 저장될 데이터의 크기를 고려해서 HashMap의 크기를 적절히 지정한다.</div>
+<div>&#149;&nbsp; 해시 함수가 서로 다른 키에 대해서 중복된 해시코드를 반환하는 것을 최소화 한다.</div>
+
+<br>
+<br>
+
+<div><strong>Public constructors</strong></div><p></p>
+
+|생성자|설명|
+|::-|::-|
+|HashMap(int initialCapacity, float loadFactor)|지정된 초기 용량과 load factor의 HashMap 객체 생성|
+|HashMap(int initialCapacity)|지정된 값을 초기 용량으로 하는 HashMap 객체 생성|
+|HashMap()|HashMap 객체 생성|
+|HashMap(Map<? extends K, ? extends V> m)|지정된 Map의 모든 요소를 포함하는 HashMap 생성|
+
+<br>
+<br>
+
+<div><strong>Public methods</strong></div><p></p>
+
+|반환타입|이름|설명|
+|::-|::-|::-|
+|void|clear()|HashMap에 저장된 모든 객체 제거|
+|Object|clone()|현재 HashMap을 복제해서 반환|
+|boolean|containsKey(Object key)|HashMap에 지정된 키가 포함되어 있는 지 확인. 있으면 true|
+|boolean|containsValue(Object value)|HashMap에 지정된 값이 포함되어 있는 지 확인. 있으면 true|
+|Set<Entry<K, V>>|entrySet()|HashMap에 저장된 키와 값을 엔트리(키와 값의 결합) 형태로 Set에 저장해서 반환|
+|void|forEach(BiConsumer<? super K, ? super V> action)|모든 엔트리에 지정된 액션을 실행|
+|V|get(Object key)|지정된 키의 값을 반환. 못 찾으면 null|
+|boolean|isEmpty()|HashMap이 비어있는 지 확인|
+|Set<K>|keySet()|HashMap에 저장된 모든 키를 Set에 저장해서 반환|
+|V|put(K key, V value)|지정된 키와 값을 HashMap에 저장|
+|void|putAll(Map<? extends K, ? extends V> m)|Map에 저장된 모든 요소를 HashMap에 저장|
+|V|remove(Object key)|HashMap에서 지정된 키로 저장된 값 제거|
+|boolean|replace(K key, V oldValue, V newValue)|지정된 키와 객체가 모두 일치하는 경우에만 새로운 객체로 대체|
+|void|replaceAll(BiFunction<? super K, ? super V, ? extends V> function)|모든 키의 값을 지정된 함수의 결과로 대체|
+|int|size()|HashMap에 저장된 요소의 개수를 반환|
+|Collection<V>|values()|HashMap에 저장된 모든 값을 컬렉션의 형태로 반환|
+
+<br>
+<br>
+
+<div><strong>Example0</strong></div><p></p>
+<div>forEach()로 각 엔트리에 대해 일괄적인 액션을 수행하거나, replaceAll()로 모든 값을 새로운 값으로 대체할 수 있다.</div>
+{% highlight java %}
+// EditPlus에서 실행
+class Test {
+	public static void main(String[] args) {
+		HashMap map = new HashMap();
+		map.put("A", false);
+		map.put("B", true);
+		map.put("C", true);
+		map.forEach((k, v) ->  System.out.println(k + " " + v));
+
+		map.replaceAll((k, v) -> false);
+		map.forEach((k, v) ->  System.out.println(k + " " + v));
+	}
+}
+{% endhighlight %}
+{% highlight text %}
+A false
+B true
+C true
+- replaceAll 후 -
+A false
+B false
+C false
+{% endhighlight %}
+
+<br>
+<br>
+
+<div><strong>Example1</strong></div><p></p>
+<div>entrySet()으로 키와 값을 함께 읽어 오거나, KeySet()/values()로 키와 값을 따로 읽어 올 수 있다.</div>
+{% highlight java %}
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
+
+        Map map = new HashMap<>();
+        map.put("A", 1);
+        map.put("B", 3);
+        map.put("C", 2);
+        map.put("D", 4);
+        map.put("E", 9);
+
+        Set set = map.entrySet();
+        Iterator it = set.iterator();
+
+        while (it.hasNext()) {
+            Map.Entry e = (Map.Entry) it.next();
+            print(e.getKey() + " " + e.getValue());
+        }
+        set = map.keySet();
+        print("All keys : " + set);
+
+        Collection values = map.values();   // All Values
+        it = values.iterator();
+
+        int total = 0;
+        while (it.hasNext()) {
+            Integer i = (Integer) it.next();
+            total += i.intValue();
+        }
+
+        print("개수 : " + set.size());
+        print("총합 : " + total);
+        print("가장 큰 값 : " + Collections.max(values));
+        print("가장 작은 값 : " + Collections.min(values));
+    }
+
+    public void print(String str) {
+        Log.d("TAG_", str);
+    }
+}
+{% endhighlight %}
+{% highlight text %}
+D/TAG_: D 4
+D/TAG_: C 2
+D/TAG_: E 9
+D/TAG_: A 1
+D/TAG_: B 3
+D/TAG_: All keys : [D, C, E, A, B]
+D/TAG_: 개수 : 5
+D/TAG_: 총합 : 19
+D/TAG_: 가장 큰 값 : 9
+D/TAG_: 가장 작은 값 : 1
+{% endhighlight %}<p></p>
+
+<br>
+<br>
+
+<div><strong>Example2</strong></div><p></p>
+<div>전화번호부</div>
+<div>키와 값을 모두 Object 형태로 저장하기 때문에 HashMap의 값으로 HashMap을 저장할 수 있다.</div>
+{% highlight java %}
+public class MainActivity extends AppCompatActivity {
+    Map map = new HashMap();
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
+
+        addContact("A", "010-1111-1111");
+        addContact("친구", "B", "010-7979-7979");
+        addContact("친구", "C", "010-2222-2222");
+        addContact("회사", "D", "010-4444-4444");
+        addContact("가족", "E", "010-9090-9999");
+        addContact("가족", "F", "010-1121-3333");
+        addContact("가족", "G", "010-6531-8888");
+
+        getList();
+    }
+
+    void addGroup(String groupName) {
+        if (!map.containsKey(groupName)) {
+            map.put(groupName, new HashMap());
+        }
+    }
+
+    void addContact(String groupName, String name, String tel) {
+        addGroup(groupName); //
+        HashMap group = (HashMap) map.get(groupName);                // value(HashMap) of group
+        group.put(tel, name); // unique key = tel
+    }
+
+    void addContact(String name, String tel) {
+        addContact("기타", name, tel);
+    }
+
+    void getList() {
+        Set set = map.entrySet();                                    // All Entry → Set (Group)
+        Iterator it = set.iterator();
+        while (it.hasNext()) {
+            Map.Entry e = (Map.Entry) it.next();                     // Set → Entry
+            Set subSet = ((HashMap) e.getValue()).entrySet();        // Entry → get value → Set (HashMap(Name, Tel) to Group)
+            Iterator subIt = subSet.iterator();
+
+            print("*" + e.getKey() + "[" + subSet.size() + "]");
+
+            while (subIt.hasNext()) {
+                Map.Entry subE = (Map.Entry) subIt.next();
+                String tel = (String) subE.getKey();
+                String name = (String) subE.getValue();
+                print(name + " " + tel);
+            }
+        }
+    }
+
+    public void print(String str) {
+        Log.d("TAG_", str);
+    }
+}
+{% endhighlight %}
+{% highlight text %}
+D/TAG_: *기타[1]
+D/TAG_: A 010-1111-1111
+D/TAG_: *가족[3]
+D/TAG_: F 010-1121-3333
+D/TAG_: G 010-6531-8888
+D/TAG_: E 010-9090-9999
+D/TAG_: *회사[1]
+D/TAG_: D 010-4444-4444
+D/TAG_: *친구[2]
+D/TAG_: C 010-2222-2222
+D/TAG_: B 010-7979-7979
+{% endhighlight %}
+
+<br>
+<br>
+<br>
+
+&#149;&nbsp; 참고 서적: 자바의 정석 3판 2
