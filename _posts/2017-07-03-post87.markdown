@@ -18,7 +18,7 @@ category : java
 <br>
 <br>
 
-<div><strong class="h2">TreeSet</strong></div><p></p>
+<div><strong class="h2">Java.util.TreeSet Class</strong></div><p></p>
 <div>이진 검색 트리 형태로 데이터를 저장하는 컬렉션 클래스.</div>
 <div>이진 검색 트리의 성능을 향상시킨 레드-블랙 트리(Red-Black tree)로 구현되어 있다.</div>
 <div>데이터의 중복 저장이 불가능하며 저장 순서를 유지하지 않는다.</div>

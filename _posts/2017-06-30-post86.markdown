@@ -18,7 +18,7 @@ category : java
 <br>
 <br>
 
-<div><strong class="h2">HashSet</strong></div><p></p>
+<div><strong class="h2">Java.util.HashSet Class</strong></div><p></p>
 <div>Set 인터페이스를 구현한 가장 대표적인 컬렉션</div>
 <div>내부적으로 HashMap을 이용해서 만들어졌으며, 해싱(hashing)을 이용해서 구현했다.</div>
 <div>중복된 요소를 저장하지 않는다.</div>

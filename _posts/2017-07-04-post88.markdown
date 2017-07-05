@@ -18,7 +18,7 @@ category : java
 <br>
 <br>
 
-<div><strong class="h2">HashMap</strong></div><p></p>
+<div><strong class="h2">Java.util.HashMap Class</strong></div><p></p>
 <div>Map을 구현한 컬렉션 클래스.</div>
 <div>키와 값을 하나의 데이터(Entry)로 저장한다.</div>
 <div>해싱을 사용하기 때문에 많은 양의 데이터를 빠르게 검색할 수 있다.</div>
