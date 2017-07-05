@@ -161,6 +161,26 @@ category : java
 |int|hashCode()|Entry의 해시코드를 반환|
 |V|setValue(V value)|Entry의 value객체를 지정된 객체로 변경|
 
+
+<br>
+<br>
+
+<div><strong>Collection Class 특징</strong></div>
+
+|Collection|특징|
+|::-|::-|
+|ArrayList|배열 기반. 불연속적인 데이터 추가/삭제 불리. 순차적인 추가/삭제 가장 빠름. 임의의 요소에 대한 접근성이 뛰어남|
+|LinkedList|연결 기반. 불연속적인 데이터 추가/삭제 유리. 임의의 요소에 대한 접근성이 좋지 않음|
+|HashMap|배열과 연결이 결합된 형태. 추가, 삭제, 검색, 접근성이 모두 뛰어남. 검색에 최고 성능|
+|TreeMap|연결 기반. 정렬과 검색(특히 범위 검색)에 적합. 검색 성능은 HashMap보다 떨어짐|
+|Stack|LIFO(Last In First Out) 방식의 자료. 구조Vector를 상속받아 구현|
+|Queue|FIFO(First In First Out) 방식의 자료 구조. LinkedList가 Queue 인터페이스를 구현|
+|Properties|데이터를 파일로부터 읽고 쓰는 편리한 기능을 제공. Hashtable을 상속받아 구현|
+|HashSet|Set 인터페이스를 구현한 가장 대표적인 컬렉션. HashMap을 이용해서 구현|
+|TreeSet|TreeMap을 이용해서 구현|
+|LikedHashMap|HashMap에 저장 순서 유지 기능 추가|
+|LikedHashSet|HashSet에 저장 순서 유지 기능 추가|
+
 <br>
 <br>
 <br>
