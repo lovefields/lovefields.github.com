@@ -18,7 +18,7 @@ category : java
 <br>
 <br>
 
-<div><strong class="h2">Queue</strong></div><p></p>
+<div><strong class="h2">java.util.Queue Class</strong></div><p></p>
 <div>처음에 저장한 데이터를 가장 먼저 꺼내는 FIFO(First In First Out) 방식의 자료 구조. &nbsp;ex) 밑 빠진 독</div>
 <div>순서의 변경 없이 먼저 넣은 것을 먼저 꺼내게 된다.</div>
 <div>데이터를 꺼낼 때 항상 첫 번째 저장된 데이터를 삭제하므로 데이터의 추가/삭제가 쉬운 LinkedList로 구현하는 것이 적합하다.</div>
@@ -54,7 +54,7 @@ category : java
 <br>
 <br>
 
-<div><strong>PriorityQueue</strong></div><p></p>
+<div><strong>Java.util.PriorityQueue Class</strong></div><p></p>
 <div>Queue 인터페이스의 구현체 중 하나.</div>
 <div>저장공간으로 배열을 사용하며, 각 요소를 힙(heap)의 형태로 저장한다.</div>
 <div>저장 순서와 관계없이 우선순위가 높은 것부터 꺼낸다.</div>
@@ -71,7 +71,7 @@ qu.offer(1);                           // qu.offer(new Integer(1)); 오토박싱
 <br>
 <br>
 
-<div><strong>Deque</strong></div><p></p>
+<div><strong>java.util.Deque Class</strong></div><p></p>
 <div>Double-Ended Queue. 덱 또는 디큐라고 읽는다.</div>
 <div>양쪽 끝에 추가/삭제가 가능.</div>
 <div>구현체 :&nbsp; ArrayDeque, LinkedList 등</div><p></p>

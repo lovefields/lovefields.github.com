@@ -18,7 +18,7 @@ category : java
 <br>
 <br>
 
-<div><strong class="h2">Vector</strong></div><p></p>
+<div><strong class="h2">Java.util.Vector Class</strong></div><p></p>
 <div>객체에 대한 참조값을 저장하는 배열 → 서로 다른 타입을 가지는 참조형 데이터를 저장. 기본형 데이터는 Wrapper로 변형 후 저장 가능.</div>
 <div>List 인터페이스를 구현 → 저장된 순서를 유지한다.</div>
 <div>Object 배열을 이용하여 데이터를 순차적으로 저장 → 용량 변경 비효율적. 읽기, 저장하기 효율적.</div>

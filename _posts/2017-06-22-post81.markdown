@@ -18,7 +18,7 @@ category : java
 <br>
 <br>
 
-<div><strong class="h2">Stack</strong></div><p></p>
+<div><strong class="h2">Java.util.Stack Class</strong></div><p></p>
 <div>마지막에 저장한 데이터를 가장 먼저 꺼내는 LIFO(Last In First Out) 방식의 자료 구조. &nbsp;ex) 일반 독</div>
 <div>넣는 순서와 꺼내는 순서가 반대다.</div>
 <div>컬렉션 프레임웍 이전부터 존재했기 때문에 Vector로부터 상속받아 구현되었다.</div>
