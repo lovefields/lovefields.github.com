@@ -1,0 +1,200 @@
+---
+layout: post
+title:  "TreeMap"
+date:   2017-07-06 12:00:00 +0900
+author: 민갤
+description: Collection Framework 13 - TreeMap
+keywords : android,java,androidstudio,method,선언,class,요소,언어,자바의 정석,프로그래밍,Collection,Framework,TreeMap
+image : /img/java.png
+category : java
+---
+<div><strong class="h2">Collection Framework</strong></div><p></p>
+<div>데이터 군을 저장하는 클래스들을 표준화한 설계</div>
+<div>컬렉션 Collection :&nbsp; 다수의 데이터. 데이터 그룹</div>
+<div>프레임웍 Framework :&nbsp; 표준화된 프로그래밍 방식.</div>
+
+<br>
+<br>
+<br>
+<br>
+
+<div><strong class="h2">Java.util.TreeMap Class</strong></div><p></p>
+<div>이진 검색 트리의 형태로 키와 값의 쌍으로 이루어진 데이터를 저장한다.</div>
+<div>검색에 관한 대부분의 경우에서는 HashMap,</div>
+<div>범위 검색이나 정렬이 필요한 경우에는 TreeMap을 사용하는 것이 좋다.</div>
+
+<br>
+<br>
+
+<div><strong>Public constructors</strong></div><p></p>
+
+|생성자|설명|
+|::-|::-|
+|TreeMap()|TreeMap 객체 생성|
+|TreeMap(Comparator<? super K> comparator)|지정된 Comparator를 기준으로 정렬하는 TreeMap 객체 생성|
+|TreeMap(Map<? extends K, ? extends V> m)|주어진 Map에 저장된 모든 요소를 포함하는 TreeMap|
+|TreeMap(SortedMap<K, ? extends V> m)|주어진 SortedMap에 저장된 모든 요소를 포함하는 TreeMap 생성|
+
+<br>
+<br>
+
+<div><strong>Public methods</strong></div><p></p>
+
+|반환타입|이름|설명|
+|::-|::-|::-|
+|Entry<K, V>|ceilingEntry(K key)|지정된 key와 일치하거나 큰 것 중 제일 작은 것의 키와 값의 쌍(Map.Entry)를 반환. 없으면 null|
+|K|ceilingKey(K key)|지정된 key와 일치하거나 큰 것 중 제일 작은 것의 키를 반환. 없으면 null|
+|void|clear()|TreeMap에 저장된 모든 객체 제거|
+|Object|clone()|현재 TreeMap을 복제해서 반환|
+|Comparator<? super K>|comparator()|TreeMap의 정렬 기준이 되는 Comparator를 반환. Comparator가 지정되지 않았다면 null|
+|boolean|containsKey(Object key)|TreeMap에 지정된 키가 포함되어 있는 지 확인. 있으면 true|
+|boolean|containsValue(Object value)|TreeMap에 지정된 값이 포함되어 있는 지 확인. 있으면 true|
+|NavigableSet<K>|descendingKeySet()|TreeMap에 저장된 키를 내림차순으로 정렬해서 NavigableSet에 담아 반환|
+|NavigableMap<K, V>|descendingMap()|TreeMap에 저장된 요소들을 키를 기준으로 내림차순 정렬해서 NavigabableMap에 담아 반환|
+|Set<Entry<K, V>>|entrySet()|TreeeMap에 저장된 키와 값을 엔트리(키와 값의 결합)의 형태로 Set에 저장해서 반환|
+|Entry<K, V>|firstEntry()|TreeMap에 저장된 첫 번째(가장 작은) 키와 값의 쌍(Map.Entry) 반환|
+|K|firstKey()|TreeMap에 저장된 첫 번째(가장 작은) 키를 반환|
+|Entry<K, V>|floorEntry(K key)|지정된 key와 일치하거나 작은 것 중에서 제일 큰 키의 쌍(Map.Entry) 반환. 없으면 null|
+|K|floorKey(K key)|지정된 key와 일치하거나 작은 것 중에서 제일 큰 키를 반환. 없으면 null|
+|void|forEach(BiConsumer<? super K, ? super V> action)|모든 엔트리에 지정된 액션을 실행|
+|V|get(Object key)|지정된 키의 값을 반환|
+|SortedMap<K, V>|headMap(K toKey)|TreeMap에 저장된 첫 번째 요소부터 지정된 범위에 속한 모든 요소가 담긴 SortedMap을 반환(toKey는 미포함)|
+|NavigableMap<K, V>|headMap(K toKey, boolean inclusive)|TreeMap에 저장된 첫 번째 요소부터 지정된 범위에 속한 모든 요소가 담긴 SortedMap을 반환. inclusive의 값이 true면 toKey도 포함|
+|Entry<K, V>|higherEntry(K key)|지정된 key보다 큰 키 중에서 제일 작은 키의 쌍(Map.Entry) 반환. 없으면 null|
+|K|higherKey(K key)|지정된 key보다 큰 키 중에서 제일 작은 키의 쌍(Map.Entry) 반환. 없으면 null|
+|Set<K>|keySet()|TreeMap에 저장된 모든 키를 담은 Set 반환|
+|Entry<K, V>|lastEntry()|TreeMap에 저장된 마지막(가장 큰) 키의 쌍을 반환|
+|K|lastKey()|TreeMap에 저장된 마지막(가장 큰) 키 반환|
+|Entry<K, V>|lowerEntry(K key)|지정된 key보다 작은 키 중에서 제일 큰 키의 쌍(Map.Entry) 반환. 없으면 null|
+|K|lowerKey(K key)|지정된 key보다 작은 키 중에서 제일 큰 키의 쌍(Map.Entry) 반환. 없으면 null|
+|NavigableSet<K>|navigableKeySet()|TreeMap의 모든 키가 담긴 NavigableSet 반환|
+|Entry<K, V>|pollFirstEntry()|TreeMap에서 가장 작은 키를 제거하면서 반환|
+|Entry<K, V>|pollLastEntry()|TreeMap에서 가장 큰 키를 제거하면서 반환|
+|V|put(K key, V value)|지정된 키와 값을 TreeMap에 저장|
+|void|putAll(Map<? extends K, ? extends V> map)|Map에 저장된 모든 요소를 TreeMap에 저장|
+|V|remove(Object key)|TreeMap에서 지정된 키로 저장된 값(객체) 제거|
+|boolean|replace(K key, V oldValue, V newValue)|기존의 키(key)의 값과 지정된 값(oldValue)이 일치하면 새로운 값으로 변경.|
+|V|replace(K key, V value)|기존의 키(key)의 값을 지정된 값(value)으로 변경|
+|void|replaceAll(BiFunction<? super K, ? super V, ? extends V> function)|모든 키의 값을 지정된 함수의 결과로 대체|
+|int|size()|TreeMap에 저장된 요소의 개수 반환|
+|SortedMap<K, V>|subMap(K fromKey, K toKey)|지정된 두 개의 키 사이에 있는 모든 요소들이 담긴 SortedMap 반환. toKey는 불 포함|
+|NavigableMap<K, V>|subMap(K fromKey, boolean fromInclusive, K toKey, boolean toInclusive)|지정된 두 개의 키 사이에 있는 모든 요소들이 담긴 NavigableMap 반환. fromInclusive가 true면 범위에 fromKey포함. toInclusive가 true면 범위에 toKey 포함|
+|NavigableMap<K, V>|tailMap(K fromKey, boolean inclusive)|지정된 키부터 마지막 요소의 범위에 속한 요소가 담긴 NavigableMap 반환. inclusive가 true면 fromKey 포함|
+|SortedMap<K, V>|tailMap(K fromKey)|지정된 키부터 마지막 요소의 범위에 속한 요소가 담긴 SortedMap 반환|
+|Collection<V>|values()|TreeMap에 저장된 모든 값을 컬렉션의 형태로 반환|
+
+<br>
+<br>
+
+<div><strong>Example0</strong></div><p></p>
+{% highlight java %}
+TreeMap<Integer, String> tm = new TreeMap<>();
+
+// populating tree map
+tm.put(6, "six");
+tm.put(2, "two");
+tm.put(4, "four");
+tm.put(3, "three");
+tm.put(1, "one");
+tm.put(5, "five");
+NavigableSet ns = tm.descendingKeySet();
+NavigableMap nm = tm.descendingMap();
+
+Log.d("TAG_", ns + "");           // [6, 5, 4, 3, 2, 1]
+Log.d("TAG_", nm + "");           // {6=six, 5=five, 4=four, 3=three, 2=two, 1=one}
+{% endhighlight %}<p></p>
+
+<br>
+<br>
+
+<div><strong>Example1</strong></div><p></p>
+{% highlight java %}
+public class Test implements Comparator {
+    
+    @Override
+    public int compare(Object o1, Object o2) {
+        if (o1 instanceof Map.Entry && o2 instanceof Map.Entry) {
+            Map.Entry e1 = (Map.Entry) o1;
+            Map.Entry e2 = (Map.Entry) o2;
+
+            int v1 = (Integer) e1.getValue();
+            int v2 = (Integer) e2.getValue();
+
+            return v2 - v1;
+        }
+        return -1;
+    }
+}
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
+
+        String[] data = {"A", "K", "B", "A", "C", "K", "B", "B", "D", "K", "C"};
+        TreeMap<String, Integer> tm = new TreeMap<>();
+
+        for (int i = 0; i < data.length; i++) {
+            if (tm.containsKey(data[i])) {
+                Integer value = tm.get(data[i]);
+                tm.put(data[i], value + 1);
+            } else {
+                tm.put(data[i], 1);
+            }
+        }
+
+        Set set = tm.entrySet();
+        Iterator it = set.iterator();
+
+        while (it.hasNext()) {
+            Map.Entry entry = (Map.Entry) it.next();
+            int value = (Integer) (entry.getValue());
+            Log.d("TAG_", entry.getKey() + " : " + print('#', value) + " " + value);
+        }
+
+        List list = new ArrayList(set);
+        Collections.sort(list, new Test());
+
+        it = list.iterator();
+
+        while (it.hasNext()) {
+            Map.Entry entry = (Map.Entry) it.next();
+            int value = (Integer) (entry.getValue());
+            Log.d("TAG_", entry.getKey() + " : " + print('#', value) + " " + value);
+        }
+
+    }
+
+    public String print(char ch, int value) {
+        char[] bar = new char[value];
+
+        for (int i = 0; i < bar.length; i++) {
+            bar[i] = ch;
+        }
+
+        return new String(bar);
+    }
+}
+{% endhighlight %}
+{% highlight text %}
+- 기본(키에 대한) 정렬 -
+D/TAG_: A : ## 2
+D/TAG_: B : ### 3
+D/TAG_: C : ## 2
+D/TAG_: D : # 1
+D/TAG_: K : ### 3
+
+- 값에 대한 내림차순 정렬 -
+D/TAG_: B : ### 3
+D/TAG_: K : ### 3
+D/TAG_: A : ## 2
+D/TAG_: C : ## 2
+D/TAG_: D : # 1
+{% endhighlight %}
+
+<br>
+<br>
+<br>
+
+&#149;&nbsp; 참고 서적: 자바의 정석 3판 2
