@@ -1,0 +1,176 @@
+---
+layout: post
+title:  "Properties"
+date:   2017-07-07 12:00:00 +0900
+author: 민갤
+description: Collection Framework 14 - Properties
+keywords : android,java,androidstudio,method,선언,class,요소,언어,자바의 정석,프로그래밍,Collection,Framework,Properties,property
+image : /img/java.png
+category : java
+---
+<div><strong class="h2">Collection Framework</strong></div><p></p>
+<div>데이터 군을 저장하는 클래스들을 표준화한 설계</div>
+<div>컬렉션 Collection :&nbsp; 다수의 데이터. 데이터 그룹</div>
+<div>프레임웍 Framework :&nbsp; 표준화된 프로그래밍 방식.</div>
+
+<br>
+<br>
+<br>
+<br>
+
+<div><strong class="h2">Java.util.Properties Class</strong></div><p></p>
+<div>Hashtable을 상속받아 구현한 컬렉션 클래스.</div>
+<div>(String, String)의 형태로 저장한다.</div>
+<div>주로 애플리케이션의 환경 설정과 관련된 속성(property)을 저장하는 데 사용한다.</div>
+<div>데이터를 파일로부터 읽고 쓰는 편리한 기능을 제공한다.</div>
+
+<br>
+<br>
+
+<div><strong>Public constructors</strong></div><p></p>
+
+|생성자|설명|
+|::-|::-|
+|Properties()|Properties 객체 생성|
+|Properties(Properties defaults)|지정된 Properties에 저장된 목록을 가진 Properties 객체 생성|
+
+<br>
+<br>
+
+<div><strong>Public methods</strong></div><p></p>
+
+|반환타입|이름|설명|
+|::-|::-|::-|
+|String|getProperty(String key, String defaultValue)|지정된 키의 값을 반환. 키를 못 찾으면 dafalutValue 반환|
+|String|getProperty(String key)|지정된 키의 값을 반환|
+|void|list(PrintStream out)|지정된 PrintStream에 저장된 목록 출력|
+|void|list(PrintWriter out)|지정된 PrintWriter에 저장된 목록 출력|
+|void|load(InputStream inStream)|지정된 InputStream으로부터 목록을 읽어서 저장|
+|void|load(Reader reader)|지정된 Reader로부터 목록을 읽어서 저장|
+|void|loadFromXML(InputStream in)|지정된 InputStream으로부터 XML문서를 읽어서, XML문서에 저장된 목록을 읽어서 담는다. (load&store)|
+|Enumeration<?>|propertyNames()|목록의 모든 키가 담긴 Enumeration을 반환|
+|void|save(OutputStream out, String comments)|deprecated되었으므로 store()를 사용하자|
+|Object|setProperty(String key, String value)|지정된 키와 값을 저장. 이미 존재하는 키면 새로운 값으로 변경|
+|void|store(OutputStream out, String comments)|저장된 목록을 지정된 out에 출력(저장). comments는 목록에 대한 주석으로 저장|
+|void|store(Writer writer, String comments)|저장된 목록을 지정된 writer에 출력(저장). comments는 목록에 대한 주석으로 저장|
+|void|storeToXML(OutputStream os, String comment, String encoding)|저장된 목록을 지정된 출력 스트림에 해당 인코딩의 XML 문서로 출력(저장). comment는 목록에 대한 주석으로 저장|
+|void|storeToXML(OutputStream os, String comment)|저장된 목록을 지정된 출력 스트림에 XML 문서로 출력(저장). comment는 목록에 대한 주석으로 저장|
+|Set<String>|stringPropertyNames()|Properties에 저장되어 있는 모든 키를 Set에 담아서 반환|
+
+<br>
+<br>
+
+<div><strong>Example</strong></div>
+{% highlight java %}
+public class MainActivity extends AppCompatActivity {
+    String packageName = "yourPackageName";
+    File file = new File(Environment.getDataDirectory() + "/data/" + packageName, "Test.properties");   //property File
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        EditText edtKey = (EditText) findViewById(R.id.edt_key);
+        EditText edtValue = (EditText) findViewById(R.id.edt_value);
+
+        edtValue.setOnEditorActionListener((v, actionId, event) -> {
+            String key = edtKey.getText().toString();                     // name
+            String value = edtValue.getText().toString();                 // love
+
+            writeProperty(key, value);
+            readProperty(key);
+            return false;
+        });
+
+        defaultExample();
+        SystemProperty();
+    }
+
+    public void defaultExample() {
+        Properties pr = new Properties();
+
+        pr.setProperty("timeout", "30");
+        pr.setProperty("language", "kr");
+        pr.setProperty("size", "10");
+        pr.setProperty("capacity", "10");
+
+        Enumeration e = pr.propertyNames();
+        while (e.hasMoreElements()) {
+            String element = (String) e.nextElement();
+            print(element + " = " + pr.getProperty(element));
+        }
+        /*
+        - element = get -
+        size = 10
+        timeout = 30
+        language = kr
+        capacity = 10
+         */
+
+        pr.setProperty("size", "20");
+        print("size = " + pr.getProperty("size"));                        // size = 20
+        print("capacity = " + pr.getProperty("capacity", "0"));           // capacity = 10
+        print("loadFactor = " + pr.getProperty("loadFactor", "0.75"));    // loadFactor = 0.75
+
+        print(pr + "");                                                   // {size=20, timeout=30, language=kr, capacity=10}
+    }
+
+    public void writeProperty(String key, String value) {
+        FileOutputStream fos = null;
+        try {
+	    // Nonexistent File → Create
+            if (!file.exists()) {
+                file.createNewFile();
+                print("Create New File");                                 // Create New File
+            }
+
+            fos = new FileOutputStream(file);
+
+            // Save Property data
+            Properties pr = new Properties();
+            pr.setProperty(key, value);
+            pr.store(fos, "Property Test");
+
+            print("Write");                                               // Write
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void readProperty(String key) {
+        if (!file.exists()) {
+            print("Nonexistent File");
+        }
+
+        try {
+            // Read Property Data
+            Properties pr = new Properties();
+            pr.load(new FileInputStream(file));
+            String data = pr.getProperty(key, "does not exist");
+
+            print(data);                                                  // love
+            print("Read");                                                // Read
+            print(pr + "");                                               // {name=love}
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void SystemProperty() {
+        Properties sysPr = System.getProperties();
+        print("java.version : " + sysPr.getProperty("java.version"));     // 0
+        print("user.language : " + sysPr.getProperty("user.language"));   // ko
+    }
+
+    public void print(String str) {
+        Log.d("TAG_", str);
+    }
+}
+{% endhighlight %}
+
+<br>
+<br>
+<br>
+
+&#149;&nbsp; 참고 서적: 자바의 정석 3판 2
