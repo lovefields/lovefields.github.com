@@ -1,0 +1,229 @@
+---
+layout: post
+title:  "Generics Class"
+date:   2017-07-12 12:00:00 +0900
+author: 민갤
+description: Generics
+keywords : android,java,androidstudio,method,선언,class,요소,언어,자바의 정석,프로그래밍,Generics,Generics Class,제네릭스,지네릭스
+image : /img/java.png
+category : java
+---
+<div><strong class="h2">Generics</strong></div><p></p>
+<div>다양한 타입의 객체들을 다루는 메서드나 컬렉션 클래스에 컴파일 시의 타입 체크(Compile-Time Type Check)를 해주는 기능.</div>
+<div>인스턴스 별로 다르게 동작하도록 하려고 만든 기능.</div>
+<div>다룰 객체의 타입을 미리 명시해줌으로써 번거로운 형변환을 줄여준다.</div>
+<div>지네릭스를 모르고는 Java API 문서조차 제대로 보기 어려울 만큼 중요하다.</div><p></p>
+<div>&#149;&nbsp; 장점</div>
+<div>&nbsp; &nbsp; 타입 안전성 제공</div>
+<div>&nbsp; &nbsp; 타입 체크와 형변환을 생략할 수 있어 코드가 간결해 진다.</div>
+
+<br>
+<br>
+<br>
+
+<div><strong>지네릭 클래스의 객체 생성</strong></div><p></p>
+<div>참조 변수와 생성자에 타입 T 대신에 사용될 실제 타입을 지정한다.</div>
+<div>어떤 타입이든 한 가지 타입을 정해서 담을 수 있다.</div>
+{% highlight java %}
+Test<String> test = new Test<String>();
+test.setItem("love");
+test.setItem(new Object());                      // error. 지정된 타입만 가능.
+String item = test.getItem();
+{% endhighlight %}<p></p>
+<div>생성자의 타입은 참조 변수의 타입으로 추정 가능할 경우 생략할 수 있다. (JDK1.7부터)</div>
+{% highlight java %}
+Test<String> test = new Test<>();
+{% endhighlight %}<p></p>
+<div>참조 변수와 생성자에 대입된 타입이 일치해야 한다.</div>
+{% highlight java %}
+Test<String> test = new Test<Integer>();         // error
+{% endhighlight %}<p></p>
+<div>&#149;&nbsp; 두 타입이 상속 관계에 있더라도 대입된 타입이 다르다고 간주된다.</div>
+{% highlight java %}
+// class Animal {}
+// class Dog extends Animal{}
+
+Test<Animal> test = new Test<Animal>();
+Test<Animal> test = new Test<Dog>();          // error
+{% endhighlight %}<p></p>
+<div>&#149;&nbsp; 두 지네릭 클래스의 타입이 상속관계에 있고, 대입된 타입이 같으면 괜찮다.</div>
+{% highlight java %}
+// class Test01<T> extends Test<T> {}
+// class Animal {}
+// class Dog extends Animal{}
+
+Test<Animal> test = new Test01<Animal>();
+Test<Dog> test = new Test01<Dog>();
+Test<Animal> test = new Test01<Dog>();        // error
+{% endhighlight %}<p></p>
+<div>타입을 지정하지 않을 경우, 지네릭 타입을 지정하지 않아서 안전하지 않다는 경고가 발생한다.</div>
+{% highlight java %}
+Test test = new Test();                // T → Object
+test.setItem("love");                  // (Java)unchecked or unsafe operations./(Android)unchecked call to "setImte(T)" as a member of raw type
+String item = (String) test.getItem();
+{% endhighlight %}<p></p>
+<div>&#149;&nbsp; 용어</div>
+<div>&nbsp; &nbsp; Test&lt;String&gt; test = new Test&lt;String&gt;();</div>
+<div>&nbsp; &nbsp; Test&lt;<span class="red">대입된 타입</span>&gt; test = new Test&lt;String&gt;();</div>
+<div>&nbsp; &nbsp; <span class="red">지네릭 타입 호출</span> test = new <span class="red">지네릭 타입 호출</span>();</div>
+
+|Test&lt;String&gt;|지네릭 타입 호출. 타입 매개변수에 타입을 지정하는 것|
+|String|대입된 타입. 매개변수화된 타입 Parameterized Type. 타입 매개변수에 지정된 타입|
+
+<br>
+<br>
+<br>
+
+<div><strong>지네릭 클래스의 사용</strong></div><p></p>
+<div>Test&lt;T&gt;의 객체에 setItem(T item)으로 객체를 추가할 때, 대입된 타입과 다른 타입의 객체는 추가할 수 없다.</div>
+{% highlight java %}
+Test<Dog> test = new Test<>();
+test.setItem(new Dog());
+test.setItem(new Cat());          // error
+{% endhighlight %}<p></p>
+<div>타입 T가 Animal인 경우, Animal의 자손들은 매개변수가 될 수 있다.
+{% highlight java %}
+Test<Animal> test = new Test<>();
+test.setItem(new Animal());
+test.setItem(new Dog());
+{% endhighlight %}<p></p>
+
+<br>
+<br>
+<br>
+
+<div><strong>제한된 지네릭 클래스</strong></div><p></p>
+<div>타입 매개변수 T에 저장할 수 있는 타입의 종류를 제한한다.</div>
+<div>특정 타입의 자손들만 대입할 수 있게 할 경우 &nbsp;→&nbsp; 지네릭 타입에 와일드 카드의 상한 제한 'extends'를 사용한다.</div>
+<div>인터페이스를 구현해야 한다는 제약이 필요한 경우 &nbsp;→&nbsp; 'implements'가 아닌 'extends'를 사용한다.</div>
+<div>특정 타입의 자손이면서 인터페이스도 구현해야 할 경우 &nbsp;→&nbsp; '&' 기호로 연결한다.</div>
+{% highlight java %}
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        FruitBox<Fruit> fruitBox = new FruitBox<>();
+        FruitBox<Apple> appleBox = new FruitBox<>();
+        FruitBox<Grape> grapeBox = new FruitBox<>();
+//        FruitBox<Grape> grapeBox2 = new FruitBox<Apple>();         error
+//        FruitBox<Toy> toyBox = new FruitBox<>();                   error
+
+        fruitBox.add(new Fruit());
+        fruitBox.add(new Apple());
+        fruitBox.add(new Grape());
+
+        appleBox.add(new Apple());
+//        appleBox.add(new Fruit());                                 error
+//        appleBox.add(new Grape());                                 error
+
+        grapeBox.add(new Grape());
+
+        Log.d("TAG_", fruitBox + "");                                // [Fruit, apple, grape]
+        Log.d("TAG_", appleBox + "");                                // [apple]
+        Log.d("TAG_", grapeBox + "");                                // [grape]
+
+    }
+
+    public void print(String str) {
+        Log.d("TAG_", str);
+    }
+}
+
+interface TestInterface {}
+
+class Fruit implements TestInterface {
+    @Override
+    public String toString() {
+        return "Fruit";
+    }
+}
+
+class Apple extends Fruit {
+    @Override
+    public String toString() {
+        return "apple";
+    }
+}
+
+class Grape extends Fruit {
+    @Override
+    public String toString() {
+        return "grape";
+    }
+}
+class Toy {}
+
+class FruitBox<T extends Fruit & TestInterface> extends Box<T> {}
+
+class Box<T> {
+    ArrayList<T> list = new ArrayList<>();
+
+    void add(T item) { list.add(item); }
+    T get(int i) { return list.get(i); }
+    int size() { return list.size(); }
+    @Override
+    public String toString() { return list.toString(); }
+}
+{% endhighlight %}<p></p>
+
+<br>
+<br>
+<br>
+
+<div><strong>지네릭 메서드</strong></div><p></p>
+<div>메서드의 선언부에 지네릭 타입이 선언된 메서드.</div>
+<div>반환 타입 바로 앞에 지네릭 타입을 선언한다.</div>
+<div>메서드에 선언된 지네릭 타입은 지역 변수를 선언한 것과 같다.</div>
+<div><span class="red">!!</span> 지네릭 클래스에 정의된 타입 매개변수와 지네릭 메서드에 정의된 타입 매개변수는 전혀 별개의 것이다.</div>
+<div>→&nbsp; 지네릭 클래스가 아닌 클래스에도 정의될 수 있다.</div>
+<div>→&nbsp; 메서드가 static이건 아니건 상관 없다.</div>
+<div>→&nbsp; 내부 클래스에 선언된 타입 문자가 외부 클래스의 타입 문자와 같아도 구별된다.</div>
+{% highlight java %}
+class Toy {
+    static <T> void method(List<T> list) { }
+}
+{% endhighlight %}<p></p>
+<div>이전 글에 나왔던 makeJuice()를 지네릭 메서드로 바꾸면 다음과 같다.</div>
+{% highlight java %}
+// before 
+static Juice makeJuice(FruitBox<? extends Fruit> box) {
+    String tmp = "";
+    for (Fruit f : box.getList()) {
+        tmp += f + " ";
+    }
+    return new Juice(tmp);
+}
+
+// after
+static <T extends Fruit> Juice makeJuice(FruitBox<T> box) {
+    String tmp = "";
+    for (Fruit f : box.getList()) {
+        tmp += f + " ";
+    }
+    return new Juice(tmp);
+}
+{% endhighlight %}<p></p>
+<div>매개변수의 타입이 복잡할 때 유용하다. → 타입을 별도로 선언.</div>
+{% highlight java %}
+// before 
+static void method(ArrayList<? extends A> list, ArrayList<? extends A> list2) { }
+
+// after
+static <T extends A> void method2(ArrayList<T> list, ArrayList<T> list2) { }
+{% endhighlight %}<p></p>
+<div>&#149;&nbsp; Example 복잡하게 선언된 지네릭 메서드</div>
+{% highlight java %}
+public static <T extends Comparable<? super T>> void sort(List<T> list) { ... }
+{% endhighlight %}<p></p>
+<div>&nbsp; &nbsp; 타입 T를 요소로 하는 List를 매개변수로 허용.<div>
+<div>&nbsp; &nbsp; 'T'는 Comparable을 구현한 클래스여야 한다. (<T extends Comparable>)</div>
+<div>&nbsp; &nbsp; 'T' 또는 그 조상의 타입을 비교하는 Comparable이어야 한다. (Comparable<? super T>)</div>
+
+<br>
+<br>
+<br>
+
+&#149;&nbsp; 참고 서적: 자바의 정석 3판 2

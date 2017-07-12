@@ -258,7 +258,7 @@ objTest = (Test<Object>) strTest;      // error. Test<String> → Test<Object>
 <div><strong>지네릭 타입의 제거</strong></div><p></p>
 <div>컴파일러는 지네릭 타입을 이용해서 소스파일을 체크하고, 필요한 곳에 형변환을 넣어준 후 지네릭 타입을 제거한다.</div>
 <div>&becaus; &nbsp; 지네릭이 도입되기 이전의 소스 코드와의 호환성을 유지하기 위해</div>
-<div>&there4; &nbsp; 컴파일된 파일(*.class)에는 지네릭 타입에 대한 정보가 없다.</div><p></p>
+<div>&there4; &nbsp; 컴파일된 파일(*.class)에는 지네릭 타입에 대한 정보가 없다. (지네릭 타입은 대부분 Non-Reifiable Types)</div><p></p>
 <div>&#149;&nbsp; 과정 1.&nbsp; 지네릭 타입의 경계 제거</div>
 {% highlight java %}
 // before 
@@ -303,7 +303,10 @@ static Juice makeJuice(FruitBox box){
     }
     retrun new Juice(tmp);
 }
-{% endhighlight %}
+{% endhighlight %}<p></p>
+<div>&#149;&nbsp; 컴파일 후에</div>
+<div>&nbsp; &nbsp; 제거되지 않는 타입 == Reifiable Types</div>
+<div>&nbsp; &nbsp; 제거되는 타입 == Non-Reifiable Types</div>
 
 <br>
 <br>
