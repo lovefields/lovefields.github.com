@@ -1,0 +1,316 @@
+---
+layout: post
+title:  "Enum"
+date:   2017-07-13 12:00:00 +0900
+author: 민갤
+description: 열거형 enums
+keywords : android,java,androidstudio,method,선언,class,요소,언어,자바의 정석,프로그래밍,열거형,enum
+image : /img/java.png
+category : java
+---
+<div><strong class="h2">열거형 Enum</strong></div><p></p>
+<div>C언어의 열거형보다 더 향상되어 논리적인 오류를 줄일 수 있다 → Typesafe enum. 타입에 안전하다.</div><p></p>
+<div>&#149;&nbsp; C언어 :&nbsp; 타입이 달라도 값이 같으면 조건식의 결과가 true</div>
+<div>&#149;&nbsp; Java :&nbsp; 실제 값이 같아도 타입이 다르면 조건식의 결과가 false</div><p></p>
+<div>열거형 상수를 사용하면, 상수 값이 바뀔 때 해당 상수를 참조하는 모든 소스를 다시 컴파일하지 않아도 된다.</div>
+{% highlight java %}
+public class Test {
+    static final int ZERO = 0;
+    static final int ONE = 1;
+    static final int TWO = 2;
+    static final int THREE = 3;
+    static final int FOUR = 4;
+}
+{% endhighlight %}
+{% highlight java %}
+public class Test {
+    enum Number {ZERO, ONE, TWO, THREE, FOUR}
+}
+{% endhighlight %}<p></p>
+
+<br>
+<br>
+<br> 
+
+<div><strong>정의</strong></div><p></p>
+<div>괄호{} 안에 상수의 이름을 나열한다.</div>
+{% highlight java %}
+enum enumName {name1, name2, name3 ...}
+{% endhighlight %}
+
+<br>
+<br>
+<br>
+
+<div><strong>사용</strong></div><p></p>
+<div>열거형이름.상수명</div>
+{% highlight java %}
+public class Test {
+    enum Number {ZERO, ONE, TWO, THREE, FOUR}
+
+    Number num;                        // 열거형을 인스턴스 변수로 선언
+
+    Test() {
+        num = Number.ONE;              // ONE으로 초기화
+    }
+}
+{% endhighlight %}<p></p>
+<div>&#149;&nbsp; 열거형 상수간의 비교</div>
+<div>&nbsp; &nbsp; equals()가 아닌 '=='로 비교 가능하다.</div>
+<div>&nbsp; &nbsp; '<', '>'와 가은 비교 연산자는 사용할 수 없고 compareTo()는 사용 가능하다.</div>
+<div>&nbsp; &nbsp; switch문의 조건식에도 열거형을 사용할 수 있다.</div>
+{% highlight java %}
+if(num == Number.ZERO){
+}else if(num > Number.TWO){                 // error
+}else if(num.compareTo(Number.TWO) > 0){
+}
+{% endhighlight %}
+{% highlight java %}
+switch (num) {
+    case ZERO:
+        break;
+    case ONE:
+        break;
+    case TWO:
+        break;
+    case THREE:
+        break;
+    case FOUR:
+        break;
+}
+{% endhighlight %}<p></p>
+<div>case문에 열거형의 이름은 적지 않고 상수의 이름만 적어야 한다.</div>
+
+<br>
+<br>
+<br>
+
+<div><strong>java.lang.Enum</strong></div><p></p>
+<div>모든 열거형의 조상</div>
+<div>열거형에 정의된 모든 상수를 출력하려면 다음과 같이 한다.</div>
+{% highlight java %}
+Number[] nArr = Number.values();
+
+for (Number n : nArr) {
+    Log.d("TAG_", n.name() + " " + n.ordinal());
+}
+{% endhighlight %}
+{% highlight text %}
+D/TAG_: ZERO 0
+D/TAG_: ONE 1
+D/TAG_: TWO 2
+D/TAG_: THREE 3
+D/TAG_: FOUR 4
+{% endhighlight %}<p></p>
+<div>&#149;&nbsp; 모든 열거형에 컴파일러가 자동으로 추가해 주는 메서드</div>
+<div>&nbsp; &nbsp; values() :&nbsp; 열거형의 모든 상수를 배열에 담아 반환한다. </div>
+<div>&nbsp; &nbsp; valuesOf() :&nbsp; 열거형 상수의 이름으로 문자열 상수에 대한 참조를 얻을 수 있게 해준다.</div><p></p><p></p>
+<div>&#149;&nbsp; Public methods</div>
+
+|반환타입|이름|설명|
+|::-|::-|::-|
+|final int|compareTo(E o)|두 비교 대상이 같으면 0, 왼쪽이 크면 양수, 오른쪽이 크면 음수를 반환|
+|final boolean|equals(Object other)|지정된 객체가 열거형 상수와 같으면 true|
+|final Class<E>|getDeclaringClass()|열거형의 Class 객체를 반환|
+|final int|hashCode()|열거형 상수의 해시 코드를 반환|
+|final String|name()|열거형 상수의 이름을 문자열로 반환|
+|final int|ordinal()|열거형 상수가 정의된 순서(0~)를 정수로 반환|
+|String|toString()|열거형 상수의 이름을 문자열로 반환|
+|static <T extends Enum<T>> T|valueOf(Class<T> enumType, String name)|지정된 열거형에서 name과 일치하는 열거형 상수를 반환|
+
+<p></p>
+<div>&#149;&nbsp; Example</div>
+{% highlight java %}
+public class MainActivity extends AppCompatActivity {
+    enum Number {ZERO, ONE, TWO, THREE, FOUR}
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
+
+        Number n1 = Number.ZERO;
+        Number n2 = Number.valueOf("TWO");
+        Number n3 = Enum.valueOf(Number.class, "FOUR");
+
+        print(n1 + "");
+        print(n2 + "");
+        print(n3 + "");
+
+        print((n1 == n2) + "");
+        print((n1 == n3) + "");
+        print(n1.equals(n3) + "");
+        print(n1.compareTo(n2) + "");
+        print(n1.compareTo(n3) + "");
+
+        switch (n1) {
+            case ZERO: print("n1 = 0"); break;
+            case ONE: print("n1 = 1"); break;
+            case TWO: print("n1 = 2"); break;
+            case THREE: print("n1 = 3"); break;
+            case FOUR: print("n1 = 4"); break;
+        }
+
+        for (Number n : Number.values()) {
+            print(n.name() + " " + n.ordinal());
+        }
+    }
+
+    public void print(String str) {
+        Log.d("TAG_", str);
+    }
+}
+{% endhighlight %}
+{% highlight text %}
+D/TAG_: ZERO
+D/TAG_: TWO
+D/TAG_: FOUR
+
+D/TAG_: false
+D/TAG_: false
+D/TAG_: false
+
+D/TAG_: -2
+D/TAG_: -4
+
+D/TAG_: n1 = 0
+D/TAG_: ZERO 0
+
+D/TAG_: ONE 1
+D/TAG_: TWO 2
+D/TAG_: THREE 3
+D/TAG_: FOUR 4
+{% endhighlight %}
+
+<br>
+<br>
+<br>
+
+<div><strong>멤버 추가하기</strong></div><p></p>
+<div>&#149;&nbsp; 열거형 상수의 값이 불규칙적인 경우</div>
+<div>&nbsp; &nbsp; 1. 열거형 상수의 이름 옆에 원하는 값을 괄호()와 함께 적는다.</div>
+<div>&nbsp; &nbsp; 2. 지정된 값을 저장할 수 있는 인스턴스 변수와 생성자를 새로 추가한다.</div>
+<div>&nbsp; &nbsp; <span class="red">주의!</span> 열거형 상수를 모두 정의한 후 다른 멤버들을 추가한다.</div>
+<div>&nbsp; &nbsp; 열거형 상수의 마지막에 ' ; '을 잊지 않도록 주의한다.</div>
+<div>&nbsp; &nbsp; 열거형의 생성자는 제어자가 묵시적으로 private이다.</div>
+{% highlight java %}
+enum Number {
+    ZERO(10), ONE(-1), TWO(2), THREE(33), FOUR(-4);
+
+    private final int value;
+
+    Number(int value) {           // == private Number(int value)
+        this.value = value;
+    }
+
+    public int getValue() { return value; }
+}
+{% endhighlight %}<p></p>
+<div>&#149;&nbsp; 하나의 열거형 상수에 여러 값을 지정할 경우</div>
+{% highlight java %}
+enum Number {
+    ZERO(10, "Z"), ONE(-1, "O"), TWO(2, "T"), THREE(33, "H"), FOUR(-4, "F");
+    private final int value;
+    private final String symbol;
+
+    Number(int value, String symbol) {
+        this.value = value;
+        this.symbol = symbol;
+    }
+
+    public int getValue() { return value; }
+    public String getSymbol() { return symbol; }
+}
+{% endhighlight %}
+
+<br>
+<br>
+<br>
+
+<div><strong>추상 메서드 추가하기</strong></div><p></p>
+<div>열거형에 추상 메서드를 선언하면 각 열거형 상수가 이 추상 메서드를 반드시 구현해야 한다.</div>
+{% highlight java %}
+enum Number {
+    ZERO(10, "Z") {
+        @Override
+        String getNumber() { return NUMBER + 0; }
+    }, ONE(-1, "O") {
+        @Override
+        String getNumber() { return NUMBER + 1; }
+    }, TWO(2, "T") {
+        @Override
+        String getNumber() { return NUMBER + 2; }
+    }, THREE(33, "H") {
+        @Override
+        String getNumber() { return NUMBER + 3; }
+    }, FOUR(-4, "F") {
+        @Override
+        String getNumber() { return NUMBER + 4; }
+    };
+
+    abstract String getNumber();
+
+    protected final String NUMBER = "Number = ";       // protected로 해야 각 상수에서 접근 가능.
+
+    ...
+}
+{% endhighlight %}
+
+<br>
+<br>
+<br>
+
+<div><strong>이해하기</strong></div><p></p>
+<div>열거형 Number가 다음과 같이 정의되어 있을 때, 열거형 상수 하나하나가 Number 객체다.</div>
+{% highlight java %}
+enum Number {ZERO, ONE, TWO, THREE, FOUR}
+{% endhighlight %}<p></p>
+<div>클래스로 정의한다면 다음과 같다.</div>
+{% highlight java %}
+public class Number {
+    static final Number ZERO = new Number("ZERO");
+    static final Number ONE = new Number("ONE");
+    static final Number TWO = new Number("TWO");
+    static final Number THREE = new Number("THREE");
+    static final Number FOUR = new Number("FOUR");
+
+    private String name;
+
+    private Number(String name) {
+        this.name = name;
+    }
+}
+{% endhighlight %}<p></p>
+<div>Number 클래스의 static 상수들의 값은 객체의 주소이고, 이 값은 바뀌지 않으므로 '=='로 비교 가능하다.</div>
+<div>모든 열거형의 조상인 추상 클래스 Enum을 흉내 내어 작성하면 다음과 같다.</div>
+{% highlight java %}
+abstract class Test<T extends Test<T>> implements Comparable<T> {
+    static int id = 0;                           // 객체에 붙일 일련번호. 0~
+
+    int ordinal;
+    String name = "";
+
+    public int ordinal() {
+        return ordinal;
+    }
+
+    Test(String name) {
+        this.name = name;
+        ordinal = id++;                          // 객체를 생성할 때마다 id의 값을 증가시킨다.
+    }
+
+    public int compareTo(T t) {
+        return ordinal - t.ordinal();
+    }
+}
+{% endhighlight %}<p></p>
+<div>객체가 생성될 때마다 번호를 붙여서 인스턴스 변수 ordinal에 저장한다.</div>
+<div>Comparable 인터페이스를 두 열거형 상수의 ordinal 값을 서로 빼도록 구현해서 열거형 상수 간의 비교가 가능하도록 되어 있다.</div>
+<div>클래스를 Test&lt;T&gt;로 선언했다면 타입 T에 ordinal()이 정의되어 있는 지 확인할 수 없어 compareTo()를 위와 같이 작성할 수 없었을 것이다.</div>
+<div>Test&lt;T extends Test&lt;T&gt;&gt;는 타입 T가 Test&lt;T&gt;의 자손이어야 한다는 의미이므로</div>
+<div>Test의 자손인 타입 T는 ordinal()이 정의되어 있는 것이 분명하기 때문에 형변환 없이도 에러가 나지 않는다.</div>
+
+<br>
+<br>
+<br>
+
+&#149;&nbsp; 참고 서적: 자바의 정석 3판 2
