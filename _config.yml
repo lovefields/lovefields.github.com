@@ -24,6 +24,7 @@ description: Lovefield 의 개발 팀 블로그입니다.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://lovefields.github.io" # the base hostname & protocol for your site
 github_username:  lovefields
+future: true
 
 # Build settings
 markdown: kramdown
