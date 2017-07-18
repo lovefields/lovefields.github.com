@@ -224,7 +224,7 @@ int i = 'a' + 1;   // 98
 <div>두 개의 기호로 이루어진 연산자는 기호의 순서를 바꾸거나, 중간에 공백이 들어가서는 안 된다. (>= → => or < =)</div>
 <br>
 
-<strong>대소비교 연산자 </strong></div>
+<div><strong>대소비교 연산자 </strong></div>
 
 <div>&#149; &nbsp; 두 피연산자의 값의 크기를 비교한다.</div>
 <div>&#149; &nbsp; boolean과 참조형에는 사용할 수 없다.</div>
