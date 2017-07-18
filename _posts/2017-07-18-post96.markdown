@@ -1,0 +1,18 @@
+---
+layout: post
+title:  "[공지]블로그 이전"
+date:   2100-01-01 12:00:00 +0900
+author: Lovefield
+description: 블로그 이전에 대한 글입니다.
+keywords : 
+category : all
+---
+
+안녕하세요 Lovefield 입니다.
+이번에 블로그를 새로 만들게 되어 블로그를 이전합니다.
+
+기존 블로그인 이곳은 글이 미러 처럼 가끔 올라오지만 관리가 되지는 않을 것 입니다.
+
+이전 되는 블로그 주소는 다음과 같습니다.
+
+<a href="https://dico.devellany.com" target="_blank">https://dico.devellany.com</a>
