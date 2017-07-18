@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "[공지]블로그 이전"
-date:   2100-01-01 12:00:00 +0900
+date:   2020-01-01 12:00:00 +0900
 author: Lovefield
 description: 블로그 이전에 대한 글입니다.
 keywords : 
