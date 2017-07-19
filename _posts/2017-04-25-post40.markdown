@@ -55,8 +55,9 @@ int[][] array = new int[2][3];
 
 <div>&#149;&nbsp; 값 출력</div>
 {% highlight java %}
+int array[][] = new int[2][3];
 array[1][1] = 5;
-System.out.println(array[1][1]);    // 5
+Log.d("TAG_", array[1][1] + "");    // 5
 {% endhighlight %}<p></p>     
 <br>
   
@@ -64,16 +65,16 @@ System.out.println(array[1][1]);    // 5
 
 <div>괄호{ }로 행을 구분한다.</div>
 {% highlight java %}
-int[][] arr = new int[][] { {1, 2, 3, 4}, {5, 6, 1, 2}, {3, 4, 5, 6} };
-int[][] arr = { {1, 2, 3, 4}, {5, 6, 1, 2}, {3, 4, 5, 6} };
+int[][] arr = new int[][]{{1, 2, 3, 4}, {5, 6, 1, 2}, {3, 4, 5, 6}};
+int[][] arr = {{1, 2, 3, 4}, {5, 6, 1, 2}, {3, 4, 5, 6}};
 {% endhighlight %}<p></p>
 <div>행마다 줄 바꿈을 해주면 가독성이 좋아진다.</div>
 {% highlight java %}
 int[][] arr = {
-		{1, 2, 3, 4}, 
-		{5, 6, 1, 2}, 
-		{3, 4, 5, 6} 
-	};
+        {1, 2, 3, 4},
+        {5, 6, 1, 2},
+        {3, 4, 5, 6}
+};
 {% endhighlight %}<p></p>	     
 <br>
   
@@ -111,18 +112,18 @@ int[][] arr = {
 <div>2차원 이상의 다차원 배열을 생성할 때 전체 배열 차수 중 마지막 차수의 길이를 지정하지 않고,</div>
 <div>추후에 각기 다른 길이의 배열을 생성하여 유동적인 배열을 구성할 수 있다.</div>
 {% highlight java %}
-int[][] arr = new int[2][];    // arr.length = 2
-arr[0] = new int[3];	       // arr[0].length = 3
-arr[1] = new int[1];	       // arr[1].length = 1
+int[][] arr = new int[2][];       // arr.length = 2
+arr[0] = new int[3];	          // arr[0].length = 3
+arr[1] = new int[1];	          // arr[1].length = 1
 {% endhighlight %}<p></p>
 
 <div>&#149;&nbsp; 초기화</div>
 {% highlight java %}
 int[][] arr = {
-		{1, 2, 3, 4}, 
-		{5, 6}, 
-		{3, 4, 5} 
-	};
+        {1, 2, 3, 4},
+        {5, 6},
+        {3, 4, 5}
+};
 {% endhighlight %}<p></p>
 
 
