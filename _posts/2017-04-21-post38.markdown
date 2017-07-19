@@ -42,25 +42,25 @@ ControlStatement(condition){
 
 <div>조건식이 참이면 괄호 안의 문장들을 수행한다.</div>   
 {% highlight java %}
-if(i > 10){
-	Log.d("TAG_", "1은 10보다 크다.");
+if (i > 10) {
+    Log.d("TAG_", "1은 10보다 크다.");
 }
 
-if(i <= 10) Log.d("TAG_", "1은 10보다 작거나 같다.");	    
+if (i <= 10) Log.d("TAG_", "1은 10보다 작거나 같다.");
 {% endhighlight %}<p></p>
 
 <div>&#149; &nbsp; if-else문</div>
 <div>&nbsp; &nbsp; 조건식의 결과가 거짓일 때 else블럭의 문장을 수행한다.</div>
 <div>&nbsp; &nbsp; 두 조건식이 참과 거짓인 상반된 관계에 있을 때 사용할 수 있다.</div>      
 {% highlight java %}
-if(i > 10){
-	Log.d("TAG_", "1은 10보다 크다.");
+if (i > 10) {
+    Log.d("TAG_", "1은 10보다 크다.");
 } else {
-	Log.d("TAG_", "1은 10보다 작거나 같다.");
+    Log.d("TAG_", "1은 10보다 작거나 같다.");
 }
 
-if(i > 10) Log.d("TAG_", "1은 10보다 크다.");
-else Log.d("TAG_", "1은 10보다 작거나 같다."); 
+if (i > 10) Log.d("TAG_", "1은 10보다 크다.");
+else Log.d("TAG_", "1은 10보다 작거나 같다.");
 {% endhighlight %}<p></p>
 
 <div>&#149; &nbsp; if-else if문</div>
@@ -69,43 +69,43 @@ else Log.d("TAG_", "1은 10보다 작거나 같다.");
 <div>&nbsp; &nbsp; 조건식의 결과가 참인 것이 하나도 없을 경우 else블럭의 문장이 수행된다.</div>
 <div>&nbsp; &nbsp; else블럭이 생략되어 있을 경우 if-else if문의 어떤 블럭도 수행되지 않을 수 있다.</div>      
 {% highlight java %}
-if(i > 10){
-	Log.d("TAG_", "1은 10보다 크다.");	
-} else if(i > 0){
-	Log.d("TAG_", "1은 0보다 크고 10보다 작거나 같다.");
+if (i > 10) {
+    Log.d("TAG_", "1은 10보다 크다.");
+} else if (i > 0) {
+    Log.d("TAG_", "1은 0보다 크고 10보다 작거나 같다.");
 } else {
-	Log.d("TAG_", "1은 0과 같거나 작다.");
-}     
+    Log.d("TAG_", "1은 0과 같거나 작다.");
+}
 {% endhighlight %}<p></p>
 
 <div>&nbsp; &nbsp; 조건식이 순차적으로 진행되므로 중복되는 조건은 생략한다.</div>
 <div>&nbsp; &nbsp; 위의 if-else if문을 if문으로 분리시키면 다음과 같다.</div>	   
 {% highlight java %}
-if(i > 10){
-	Log.d("TAG_", "1은 10보다 크다.");	
-}					      	   
-if(i > 0 && i <= 10){
-	Log.d("TAG_", "1은 0보다 크고 10보다 작거나 같다.");
+if (i > 10) {
+    Log.d("TAG_", "1은 10보다 크다.");
 }
-if(i <= 0){	       
-	Log.d("TAG_", "1은 0보다 작거나 같다.");
-}	 
+if (i > 0 && i <= 10) {
+    Log.d("TAG_", "1은 0보다 크고 10보다 작거나 같다.");
+}
+if (i <= 0) {
+    Log.d("TAG_", "1은 0보다 작거나 같다.");
+} 
 {% endhighlight %}<p></p>
 
 <div>&#149; &nbsp; 중첩 if문 </div>
 <div>&nbsp; &nbsp; if문의 블럭 내에 또 다른 if문을 포함시키는 것.</div>
 <div>&nbsp; &nbsp; 괄호가 생략될 경우 else블럭은 가까운 if문에 속한 것으로 간주되기 때문에 괄호 생략에 더욱 조심해야 한다.</div>	    
 {% highlight java %}
-if(condition1){
-	// condition1 == true
-	if(condition2){
-		// condition1, condition2 == true
-	} else {
-		// condition1 == true, condition2 == false
-	}
+if (condition1) {
+    // condition1 == true
+    if (condition2) {
+        // condition1, condition2 == true
+    } else {
+        // condition1 == true, condition2 == false
+    }
 } else {
-	// condition1 == false
-}    
+    // condition1 == false
+}
 {% endhighlight %}<p></p>
 <br>
 
@@ -117,22 +117,25 @@ if(condition1){
 <div>case문의 값은 상수(정수)와 문자열(JDK1.7부터)만 가능하며 중복되지 않아야 한다.</div>
 <div>조건식을 잘 만들어서 case문의 개수를 최소화하는 것이 중요하다.</div>	   
 {% highlight java %}
-switch(condition){
-	case value1: // condition == value1 
-		break;
-	case value2: // condition == value2  
-		break;
-	default: // condition == null
+switch (condition) {
+    case value1: // condition == value1 
+        break;
+    case value2: // condition == value2  
+        break;
+    default: // condition == null
 }	       
 {% endhighlight %}<p></p>
 <div>&#149; &nbsp; break문</div>
 <div>&nbsp; &nbsp; 각 case문의 영역을 구분한다.</div>
 <div>&nbsp; &nbsp; 생략될 경우 다른 break문을 만나거나 switch문 블럭의 끝(})을 만날 때까지 나오는 모든 문장들을 수행한다.</div>
 {% highlight java %}
-switch(level){
-	case 5:	HardModeOpen();    // 4, 1의 문장들도 수행되어 모든 난이도를 할 수 있다.
-	case 4:	MediumModeOpen();  // 1의 문장도 수행되어 중간 난이도와 보통 난이도를 할 수 있다.
-	case 1:	NormalModeOpen();  // 보통 난이도만 할 수 있다.
+switch (level) {
+    case 5:
+        HardModeOpen();    // 4, 1의 문장들도 수행되어 모든 난이도를 할 수 있다.
+    case 4:
+        MediumModeOpen();  // 1의 문장도 수행되어 중간 난이도와 보통 난이도를 할 수 있다.
+    case 1:
+        NormalModeOpen();  // 보통 난이도만 할 수 있다.
 }		   
 {% endhighlight %}<p></p>
 <div>&nbsp; &nbsp; 중첩으로 사용할 경우 break문을 빼먹지 않도록 주의한다.</div>
@@ -165,19 +168,20 @@ for (initialization; condition; increment;) {
 <div>&nbsp; &nbsp; 매 반복마다 수행된다.</div>
 <div>&nbsp; &nbsp; 쉼표를 이용해서 두 문장 이상을 하나로 연결해서 사용할 수 있다.</div>
 {% highlight java %}
-for(int i = 0, j = 0; i < 10; i++) ; 
-for(;;) ;    // 초기화, 조건식, 증감식 모두 생략 가능
-for(int i = 0; i < 10; i++, j*=3) ;   
+for (int i = 0, j = 0; i < 10; i++) ;
+for (; ; ) ;    // 초기화, 조건식, 증감식 모두 생략 가능
+for (int i = 0; i < 10; i++, j *= 3) ;
 {% endhighlight %}<p></p>
 
 <div>&#149; &nbsp; 빈 문장 :&nbsp; 블럭 내에 세미콜론( ; )만 두거나 괄호 안을 비워둔다.</div>
 <div>&nbsp; &nbsp; 아무 일도 하지 않는 채 조건식과 증감식을 반복하며 시간을 보낸다.</div>
 {% highlight java %}
-for(int i = 0; i < 10; i++) {
-	;
-}			     
-for(int i = 0; i < 10; i++) ; 
-for(int i = 0; i < 10; i++) { }
+for (int i = 0; i < 10; i++) {
+    ;
+}
+for (int i = 0; i < 10; i++) ;
+for (int i = 0; i < 10; i++) {
+}
 {% endhighlight %}<p></p>	     
 
 <div>&#149; &nbsp; 향상된 for문</div>
@@ -194,13 +198,13 @@ if ( variable  : 배열/컬렉션 ) {
 int[] arr = {1, 2, 3, 4};
 
 // 일반
-for(int i = 0; ; < arr.length; i++) {
-	j = arr[i];
+for (int i = 0; i < arr.length; i++) {
+    j = arr[i];
 }
 
 // 읽어오는 용도
-for(int tmp : arr){
-	j = tmp
+for (int tmp : arr) {
+    j = tmp;
 }		      
 {% endhighlight %}<p></p>
 <br>
@@ -209,9 +213,9 @@ for(int tmp : arr){
 				      
 <div>초기화나 증감식이 필요하지 않는 경우 사용한다.</div>  
 {% highlight java %}
-while(condition){
-	// condition == true
-}    			   
+while (condition) {
+    // condition == true
+}   
 {% endhighlight %}<p></p>
 
 <div>조건식을 생략할 수 없다.</div>
@@ -224,8 +228,8 @@ while(condition){
 <div>&nbsp; &nbsp; 처음 한 번은 반드시 수행된다.</div>      
 {% highlight java %}
 do {
-	// condition == true
-} while(condition) ;					   
+    // condition == true
+} while (condition);					   
 {% endhighlight %}<p></p>
 <div>&nbsp; &nbsp; 끝에 세미콜론( ; )을 잊지 않도록 주의한다.</div>
 <div>&nbsp; &nbsp; 반복적으로 사용자의 입력을 받아서 처리할 때 유용하다. ex) 숫자 맞추기</div>
@@ -236,16 +240,16 @@ do {
 <div>자신이 포함된 가장 가까운 반복문을 벗어난다.</div>
 <div>무한 반복문에는 항상 조건문과 같이 사용된다.</div>   
 {% highlight java %}
-for(int i = 0; i < 10; i++){
-	for(int j = 0; j < 10; j++){  
-		if(i == j) break;   // 현재 for문이 중단되고 상위 for문의 다음 문장이 진행된다.
-	}
+for (int i = 0; i < 10; i++) {
+    for (int j = 0; j < 10; j++) {
+        if (i == j) break;   // 현재 for문이 중단되고 상위 for문의 다음 문장이 진행된다.
+    }
 }
 
-while(i < 10){
-	if(i == 5) break;  // while문을 중단한다.
-	i++;
-}	   
+while (i < 10) {
+    if (i == 5) break;  // while문을 중단한다.
+    i++;
+}
 {% endhighlight %}<p></p>
 <br>
 
@@ -255,10 +259,10 @@ while(i < 10){
 <div>for문의 경우 증감식으로, while문과 do-while문의 경우 조건식으로 이동한다.</div>
 <div>전체 반복 중에 특정조건을 만족하는 경우를 제외할 때 유용하다.</div>	    
 {% highlight java %}
-for(int i = 0; i < 10; i++){
-	if(i % 2 == 0) continue;
-	Log.d("TAG_", i + "");  // 홀수만 출력한다.
-}      
+for (int i = 0; i < 10; i++) {
+    if (i % 2 == 0) continue;
+    Log.d("TAG_", i + "");  // 홀수만 출력한다.
+}     
 {% endhighlight %}<p></p>
 <br>
 
@@ -267,11 +271,12 @@ for(int i = 0; i < 10; i++){
 <div>반복문 앞에 이름을 붙여주어 break/continue문을 수행할 반복문을 임의로 지정해줄 수 있다.</div>
 <div>하나 이상의 반복문을 벗어나거나 반복을 건너뛸 수 있다.</div>	       
 {% highlight java %}
-Loop : for(int i=0; i<10; i++){
-	for(int j=0; j<10; j++){
-		if(j==5) continue Loop;
-	}
-}    
+Loop:
+for (int i = 0; i < 10; i++) {
+    for (int j = 0; j < 10; j++) {
+        if (j == 5) continue Loop;
+    }
+}  
 {% endhighlight %}<p></p>
 <br>
 <br>

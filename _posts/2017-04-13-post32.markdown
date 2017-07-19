@@ -24,7 +24,7 @@ category : java
 <div>값이 정수면 변수의 타입도 정수(byte, short, int, long)여야 한다.</div>
 <div>타입이 같은 변수는 콤마(,)로 구분해서 같이 선언할 수 있다.</div>
 {% highlight java %}
-int a , b;
+int a, b;
 int c = 0, d = 0;
 {% endhighlight %}<p></p>
 <br>
@@ -39,7 +39,7 @@ int c = 0, d = 0;
 <div>변수 선언과 동시에 생성된 공간에 값을 저장한다.</div> 
 <div>값을 저장할 때는 대입연산자(=)를 사용한다.</div>
 {% highlight java %}
-int a ;        // Initialization X
+int a;         // Initialization X
 int b = 0;     // Initialization O
 {% endhighlight %}<p></p>		   
 <div>메모리는 여러 프로그램에서 공유하는 자원으로, 새로운 값을 저장하면 기존 값은 사라진다.</div>
@@ -51,7 +51,7 @@ int b = 0;     // Initialization O
 <div>값을 교환시키는 연산자가 없다.</div>
 <div>임시 저장공간으로 쓰일 변수를 하나 더 선언해서 값을 회전시켜 교환한다.</div>
 {% highlight java %}
-int a = 1 , b =5;
+int a = 1, b = 5;
 int temp;
 
 temp = a;
