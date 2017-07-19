@@ -56,10 +56,10 @@ if(i <= 10) Log.d("TAG_", "1은 10보다 작거나 같다.");
 if(i > 10){
 	Log.d("TAG_", "1은 10보다 크다.");
 } else {
-	Log.d("1은 10보다 작거나 같다.");
+	Log.d("TAG_", "1은 10보다 작거나 같다.");
 }
 
-if(i > 10) Log.d("TAG_"1은 10보다 크다.");
+if(i > 10) Log.d("TAG_", "1은 10보다 크다.");
 else Log.d("TAG_", "1은 10보다 작거나 같다."); 
 {% endhighlight %}<p></p>
 
@@ -257,7 +257,7 @@ while(i < 10){
 {% highlight java %}
 for(int i = 0; i < 10; i++){
 	if(i % 2 == 0) continue;
-	Log.d("TAG_", i);  // 홀수만 출력한다.
+	Log.d("TAG_", i + "");  // 홀수만 출력한다.
 }      
 {% endhighlight %}<p></p>
 <br>
