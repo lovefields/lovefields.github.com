@@ -189,33 +189,35 @@ while (st.hasMoreTokens()) {
 String source = "1,2, ,,5,6";
 String delim = ",";
 
-String[] sp = source.split(",");
+String[] sp = source.split(delim);
 StringTokenizer st = new StringTokenizer(source, delim);
 
 for (int i = 0; i < sp.length; i++) {
-    Log.d("TAG_TEST", sp[i]);                    // 1|2| ||5|6
+    Log.d("TAG_", sp[i] + "-");
+
+}
 
 int i = 0;
 for (; st.hasMoreTokens(); i++) {
-    Log.d("TAG_TEST", st.nextToken());           // 1|2| |5|6
+    Log.d("TAG_", st.nextToken() + "-");
 }
 
-Log.d("TAG_TEST", sp.length + "");               // 6
-Log.d("TAG_TEST", i + "");                       // 5
+Log.d("TAG_", sp.length + "");               // 6
+Log.d("TAG_", i + "");                       // 5
 {% endhighlight %}
 {% highlight java %}
-D/TAG_TEST: 1-
-D/TAG_TEST: 2-
-D/TAG_TEST:  -
-D/TAG_TEST: -
-D/TAG_TEST: 5-
-D/TAG_TEST: 6-
+D/TAG_: 1-
+D/TAG_: 2-
+D/TAG_:  -
+D/TAG_: -
+D/TAG_: 5-
+D/TAG_: 6-
 
-D/TAG_TEST: 1
-D/TAG_TEST: 2
-D/TAG_TEST:  
-D/TAG_TEST: 5
-D/TAG_TEST: 6
+D/TAG_: 1-
+D/TAG_: 2-
+D/TAG_:  -
+D/TAG_: 5-
+D/TAG_: 6-
 {% endhighlight %}<p></p>
 <div>StringTokenizer는 빈 문자열을 토큰으로 인식하지 않는다.</div>
 <div>split()은 데이터를 토큰으로 잘라낸 결과를 배열에 담아서 반환하기 때문에 많은 양의 데이터를 다룰 경우,</div>

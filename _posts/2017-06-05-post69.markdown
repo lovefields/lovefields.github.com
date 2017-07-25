@@ -8,7 +8,7 @@ keywords : android,java,androidstudio,method,선언,class,요소,언어,자바�
 image : /img/java.png
 category : java
 ---
-<div><span class="red">Android는 일부 Java 8 언어 기능을 지원하지 않습니다.</span><div>
+<div><span class="red">Android는 일부 Java 8 언어 기능을 지원하지 않습니다.</span></div>
 <div><span class="red">Android Studio 2.1 이상 버전에서는 Jack toolchain을 사용하여 Java 8을 사용할 수 있습니다만</span></div>
 <div><span class="red">해당 패키지는 지원하지 않아 EditPlus로 실행하였습니다.</span></div>
 <br>

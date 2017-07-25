@@ -93,7 +93,7 @@ for(int i=0; i<o.length; i++){
 <div>키워드 class 대신 interface를 사용한다.</div>
 <div>접근 제어자로 public 또는 default를 사용할 수 있다.</div>
 <div>모든 멤버변수는 public static final 이어야 하며, 생략할 수 있다.</div>
-<div>모든 메서드는 pubblic abstract 이어야 하며, 생략할 수 있다. (JDK1.8부터 static 메서드와 default 메서드는 예외)</div>
+<div>모든 메서드는 public abstract 이어야 하며, 생략할 수 있다. (JDK1.8부터 static 메서드와 default 메서드는 예외)</div>
 {% highlight java %}
 interface InterfaceName{
     public static final int A = 0;

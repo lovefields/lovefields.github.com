@@ -20,7 +20,7 @@ category : java
 
 <div><strong>선언</strong></div>
 <div><span class="blue">package</span> 패키지명;</div><p></p>
-<div>패키지 선언문은 반드시 소스파일에서 주석과 공백을 제외한 첫 번째 문자잉어야 한다.</div>
+<div>패키지 선언문은 반드시 소스파일에서 주석과 공백을 제외한 첫 번째 문장이어야 한다.</div>
 <div>하나의 소스 파일에 단 한번만 선언될 수 있다.</div>
 <br>
 <br>
