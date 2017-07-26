@@ -25,7 +25,7 @@ category : java
 <br>
 <br>
 
-<div><strong>java.util.Comparator&lt;T&gt;</strong></div>
+<div><strong>java.util.Comparator&lt;T&gt;</strong></div><p></p>
 <div>기본 정렬 기준 외에 다른 기준으로 정렬하고 싶을 때 사용한다.</div>
 {% highlight java %}
 public interface Comparator<T> {
@@ -33,7 +33,7 @@ public interface Comparator<T> {
     ...
 }
 {% endhighlight %}<p></p>
-<div>구현할 때 equals()를 오버라이딩할 필요가 있을 수 있다.
+<div>구현할 때 equals()를 오버라이딩할 필요가 있을 수 있다.</div>
 
 <br>
 <br>
@@ -51,7 +51,7 @@ public interface Comparable<T>{
 <br>
 <br>
 
-<div><strong>compare() & compareTo()</strong></div>
+<div><strong>compare() & compareTo()</strong></div><p></p>
 <div>두 객체를 비교한다.</div>
 <div>같으면 0, 비교하는 값보다 작으면 음수, 크면 양수를 반환하도록 구현해야 한다.</div>
 {% highlight java %}
@@ -71,7 +71,7 @@ public final class Integer extends Number implements Comparable<Integer> {
 <br>
 <br>
 
-<div><strong>Arrays.sort()</strong></div>
+<div><strong>Arrays.sort()</strong></div><p></p>
 <div>배열을 정렬할 때, Comparator를 지정해주지 않으면 저장하는 객체에 구현된 내용에 따라 정렬된다.</div>
 {% highlight java %}
 public static void sort(Object[] a)                             // 객체 배열에 저장된 객체가 구현한 Comparable에 의한 정렬
@@ -81,7 +81,7 @@ public static <T> void sort(T[] a, Comparator<? super T> c)     // 지정한 com
 <br>
 <br>
 
-<div><strong>String</strong></div>
+<div><strong>String</strong></div><p></p>
 <div>String의 Comparable 구현은 문자열이 사전 순으로 정렬되도록 작성되어 있다.</div>
 <div>문자열의 오름차순 정렬은 공백, 대문자, 소문자 순으로, 문자의 유니코드의 순서가 작은 값에서부터 큰 값으로 정렬된다.</div><p></p>
 <div>&#149;&nbsp; 대소문자 구분 없이 정렬</div>
@@ -92,7 +92,7 @@ public static final Comparator<String> CASE_INSENSITIVE_ORDER = new CaseInsensit
 Arrays.sort(strArr, String.CASE_INSENSITIVE_ORDER);
 {% endhighlight %}<br>
 <div>&#149;&nbsp; 내림차순 정렬</div>
-<div>String에 구현된 compareTo() 결과에 -1을 곱한다.</div>
+<div>&nbsp; &nbsp; String에 구현된 compareTo() 결과에 -1을 곱한다.</div>
 {% highlight java %}
 public class Test implements Comparator {
     @Override
