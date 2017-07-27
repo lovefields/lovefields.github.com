@@ -57,7 +57,7 @@ public class Test {
 {% endhighlight %}<p></p>
 <div>&#149;&nbsp; 열거형 상수간의 비교</div>
 <div>&nbsp; &nbsp; equals()가 아닌 '=='로 비교 가능하다.</div>
-<div>&nbsp; &nbsp; '<', '>'와 가은 비교 연산자는 사용할 수 없고 compareTo()는 사용 가능하다.</div>
+<div>&nbsp; &nbsp; '<', '>'와 같은 비교 연산자는 사용할 수 없고 compareTo()는 사용 가능하다.</div>
 <div>&nbsp; &nbsp; switch문의 조건식에도 열거형을 사용할 수 있다.</div>
 {% highlight java %}
 if(num == Number.ZERO){
