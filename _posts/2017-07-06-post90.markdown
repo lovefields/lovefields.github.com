@@ -50,7 +50,7 @@ category : java
 |boolean|containsKey(Object key)|TreeMap에 지정된 키가 포함되어 있는 지 확인. 있으면 true|
 |boolean|containsValue(Object value)|TreeMap에 지정된 값이 포함되어 있는 지 확인. 있으면 true|
 |NavigableSet<K>|descendingKeySet()|TreeMap에 저장된 키를 내림차순으로 정렬해서 NavigableSet에 담아 반환|
-|NavigableMap<K, V>|descendingMap()|TreeMap에 저장된 요소들을 키를 기준으로 내림차순 정렬해서 NavigabableMap에 담아 반환|
+|NavigableMap<K, V>|descendingMap()|TreeMap에 저장된 요소들을 키를 기준으로 내림차순 정렬해서 NavigableMap에 담아 반환|
 |Set<Entry<K, V>>|entrySet()|TreeeMap에 저장된 키와 값을 엔트리(키와 값의 결합)의 형태로 Set에 저장해서 반환|
 |Entry<K, V>|firstEntry()|TreeMap에 저장된 첫 번째(가장 작은) 키와 값의 쌍(Map.Entry) 반환|
 |K|firstKey()|TreeMap에 저장된 첫 번째(가장 작은) 키를 반환|
@@ -59,7 +59,7 @@ category : java
 |void|forEach(BiConsumer<? super K, ? super V> action)|모든 엔트리에 지정된 액션을 실행|
 |V|get(Object key)|지정된 키의 값을 반환|
 |SortedMap<K, V>|headMap(K toKey)|TreeMap에 저장된 첫 번째 요소부터 지정된 범위에 속한 모든 요소가 담긴 SortedMap을 반환(toKey는 미포함)|
-|NavigableMap<K, V>|headMap(K toKey, boolean inclusive)|TreeMap에 저장된 첫 번째 요소부터 지정된 범위에 속한 모든 요소가 담긴 SortedMap을 반환. inclusive의 값이 true면 toKey도 포함|
+|NavigableMap<K, V>|headMap(K toKey, boolean inclusive)|TreeMap에 저장된 첫 번째 요소부터 지정된 범위에 속한 모든 요소가 담긴 NavigableMap을 반환. inclusive의 값이 true면 toKey도 포함|
 |Entry<K, V>|higherEntry(K key)|지정된 key보다 큰 키 중에서 제일 작은 키의 쌍(Map.Entry) 반환. 없으면 null|
 |K|higherKey(K key)|지정된 key보다 큰 키 중에서 제일 작은 키의 쌍(Map.Entry) 반환. 없으면 null|
 |Set<K>|keySet()|TreeMap에 저장된 모든 키를 담은 Set 반환|
