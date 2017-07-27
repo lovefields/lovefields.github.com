@@ -219,7 +219,7 @@ static <T extends A> void method2(ArrayList<T> list, ArrayList<T> list2) { }
 public static <T extends Comparable<? super T>> void sort(List<T> list) { ... }
 {% endhighlight %}<p></p>
 <div>&nbsp; &nbsp; 타입 T를 요소로 하는 List를 매개변수로 허용.</div>
-<div>&nbsp; &nbsp; 'T'는 Comparable을 구현한 클래스여야 한다. (<T extends Comparable>)</div>
+<div>&nbsp; &nbsp; 'T'는 Comparable을 구현한 클래스여야 한다. (&lt;T extends Comparable&gt;)</div>
 <div>&nbsp; &nbsp; 'T' 또는 그 조상의 타입을 비교하는 Comparable이어야 한다. (Comparable<? super T>)</div>
 
 <br>
