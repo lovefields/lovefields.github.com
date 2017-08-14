@@ -114,8 +114,8 @@ StringBuffer sb2 = sb1.append(".github");
 StringBuffer sb1 = new StringBuffer("love");
 StringBuffer sb2 = new StringBuffer("love");
 
-Log.d("TAG_TEST", (sb1 == sb2) + "");       // false
-Log.d("TAG_TEST", sb1.equals(sb2) + "");    // false
+Log.d("TAG_", (sb1 == sb2) + "");       // false
+Log.d("TAG_", sb1.equals(sb2) + "");    // false
 {% endhighlight %}<p></p>
 <div>toString()은 오버라이딩 되어 있어서 담고 있는 문자열을 String으로 반환한다.</div>
 <div>StringBuffer 인스턴스에 담긴 문자열을 비교하기 위해서는 toString()으로 String 인스턴스를 얻어야 한다.</div>
@@ -123,7 +123,7 @@ Log.d("TAG_TEST", sb1.equals(sb2) + "");    // false
 String s1 = sb1.toString();
 String s2 = sb2.toString();
 
-Log.d("TAG_TEST", s1.equals(s2) + "");      // true
+Log.d("TAG_", s1.equals(s2) + "");      // true
 {% endhighlight %}
 <br>
 <br>

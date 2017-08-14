@@ -95,10 +95,10 @@ String str2 = "a";
 String str3 = new String("a");
 String str4 = new String("a");
 
-Log.d("TAG_TEST", str1.equals(str2) + "");    // true
-Log.d("TAG_TEST", str3.equals(str4) + "");    // true
-Log.d("TAG_TEST", (str1 == str2) + "");       // true
-Log.d("TAG_TEST", (str3 == str4) + "");       // false
+Log.d("TAG_", str1.equals(str2) + "");    // true
+Log.d("TAG_", str3.equals(str4) + "");    // true
+Log.d("TAG_", (str1 == str2) + "");       // true
+Log.d("TAG_", (str3 == str4) + "");       // false
 {% endhighlight %}
 
 <br>
@@ -135,7 +135,7 @@ String str = new String("Love");       // "Love"
 <div><strong>String(char[] value)</strong></div>
 <div>주어진 문자열(value)을 갖는 String 인스턴스를 생성.</div>
 {% highlight java %}
-char[] c = {L, o, v, e};
+char[] c = {'L', 'o', 'v', 'e'};
 String str = new String(c);            // "Love"
 {% endhighlight %}
 <br>
