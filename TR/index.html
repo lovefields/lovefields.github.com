@@ -14,13 +14,81 @@
 <meta property="og:description" content="">
 
 <title>blog</title>
+<style>
+.clearfix::after{display:block;content:'';clear:both}
+a,button,input[type='submit'],input[type='button'],input[type='reset']{border:0;background:transparent;cursor:pointer}
 
+.ts,.ts::before,.ts::after{-ms-transition:all 0.5s ease;-moz-transition:all 0.5s ease;-webkit-transition:all 0.5s ease;transition:all 0.5s ease}
+html{height:100%}
+body.act{height:100%;overflow:auto;overflow-y:hidden}
+
+
+.menu{position:fixed;top:0;right:0;width:100px;height:30px;background:red}
+
+.aside{position:fixed;top:0;left:0;width:200px;bottom:0;overflow-y:auto;transform:translateX(-200px)}
+.aside.act{transform:translateX(0)}
+.aside .item{height:25px;margin-bottom:10px;background:#fff}
+.section .row{height:500px;background:#f1f1f1}
+.section .row:nth-child(2n){background:#fff}  
+</style>
 </head>
 <body>
 <div class="wrap">
+  <button class="menu">menu</button>
+  
+  <main class="container">
+    <aside class="aside ts">
+      <ul class="list">
+        <li class="item"><a href="#" class="link">menu1</a></li>
+        <li class="item"><a href="#" class="link">menu1</a></li>
+        <li class="item"><a href="#" class="link">menu1</a></li>
+        <li class="item"><a href="#" class="link">menu1</a></li>
+        <li class="item"><a href="#" class="link">menu1</a></li>
+        <li class="item"><a href="#" class="link">menu1</a></li>
+        <li class="item"><a href="#" class="link">menu1</a></li>
+        <li class="item"><a href="#" class="link">menu1</a></li>
+        <li class="item"><a href="#" class="link">menu1</a></li>
+        <li class="item"><a href="#" class="link">menu1</a></li>
+        <li class="item"><a href="#" class="link">menu1</a></li>
+        <li class="item"><a href="#" class="link">menu1</a></li>
+        <li class="item"><a href="#" class="link">menu1</a></li>
+        <li class="item"><a href="#" class="link">menu1</a></li>
+        <li class="item"><a href="#" class="link">menu1</a></li>
+        <li class="item"><a href="#" class="link">menu1</a></li>
+        <li class="item"><a href="#" class="link">menu1</a></li>
+        <li class="item"><a href="#" class="link">menu1</a></li>
+        <li class="item"><a href="#" class="link">menu1</a></li>
+        <li class="item"><a href="#" class="link">menu1</a></li>
+      </ul>
+    </aside>
 
+    <section class="section">
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+    </section>
+  </main>
 </div>
 <script type="text/javascript" src="common/js/jquery-2.2.0.min.js"></script>
 <script type="text/javascript" src="common/js/common.js"></script>
+ <script>
+   let btn = document.querySelector('.menu');
+let aside = document.querySelector('.aside');
+let wrap = document.querySelector('.wrap');
+let scroll = true;
+
+btn.addEventListener('click', function(e){
+  aside.classList.toggle('act');
+  document.body.classList.toggle('act');
+
+});
+  </script>
 </body>
 </html>
