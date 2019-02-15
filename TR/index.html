@@ -17,8 +17,7 @@
 a,button,input[type='submit'],input[type='button'],input[type='reset']{border:0;background:transparent;cursor:pointer}
 
 .ts,.ts::before,.ts::after{-ms-transition:all 0.5s ease;-moz-transition:all 0.5s ease;-webkit-transition:all 0.5s ease;transition:all 0.5s ease}
-html{height:100%}
-body.act{height:100%;overflow:auto;overflow-y:hidden}
+
 
 
 .menu{position:fixed;top:0;right:0;width:100px;height:30px;background:red}
@@ -78,13 +77,34 @@ body.act{height:100%;overflow:auto;overflow-y:hidden}
    let btn = document.querySelector('.menu');
 let aside = document.querySelector('.aside');
 let wrap = document.querySelector('.wrap');
-let scroll = true;
+let disableScroll = false;
+let scrollTop;
 
 btn.addEventListener('click', function(e){
   aside.classList.toggle('act');
-  document.body.classList.toggle('act');
+  //document.body.classList.toggle('act');
 
+  if(disableScroll == false){
+	  disableScroll = true;
+	  scrollTop = window.scrollY;
+  }else{
+  	disableScroll = false;
+  }
 });
+	 
+let scrollTrigger = document.createEvent('HTMLEvents);
+scrollTrigger.initEvent('scroll', true, false);
+	 
+window.addEventListener('scroll', function(){
+	if(disableScroll == true){
+	   window.scrollTo(0,scrollTop)
+	}
+});
+	 
+window.addEventListener('touchmove', function(){
+	window.dispatchEvent(scrollTrigger);
+});
+	
   </script>
 </body>
 </html>
