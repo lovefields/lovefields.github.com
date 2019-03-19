@@ -13,4 +13,4 @@ category : all
 
 이전 되는 블로그 주소는 다음과 같습니다.
 
-<a href="https://dico.devellany.com" target="_blank">https://dico.devellany.com</a>
+<a href="https://dico.me" target="_blank">https://dico.me</a>
