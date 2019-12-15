@@ -3,7 +3,7 @@ This blog is lovefield's team blog
 
 ## User
 1. lovefield
-2. 민겔
+2. 민갤
 
 ## Category
 1. Front end
