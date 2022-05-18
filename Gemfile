@@ -25,7 +25,7 @@ gem 'wdm', '~> 0.1.0' if Gem.win_platform?
 #   gem "jekyll-github-metadata", "~> 1.0"
 # end
 
-gem 'nokogiri', '~> 1.11'
+gem 'nokogiri', '~> 1.13'
 
 gem 'fastimage', '~> 2.0', '>= 2.0.1'
 
